@@ -1,128 +1,278 @@
-<!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>The Wedding Crashers</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Wedding Crashers — Wedding Photography & Videography</title>
+  <meta name="description" content="Wedding photography & videography across the UK and beyond — adaptable style to match your vision." />
+  <link rel="canonical" href="https://theweddingcrashers.uk/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <meta property="og:title" content="The Wedding Crashers — Wedding Photo & Video" />
+  <meta property="og:description" content="UK‑based, destination‑friendly. Photography & videography tailored to your day." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://theweddingcrashers.uk/" />
+  <meta property="og:image" content="images/og-cover.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root{ --bg:#ffffff; --panel:#f7f7f8; --muted:#5b5f66; --text:#111216; --accent:#f4c9d8; --accent-strong:#f19bb8; --ring: rgba(241,155,184,.35); --radius:18px; --shadow:0 10px 24px rgba(0,0,0,.08); --max:1180px; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{ margin:0; background: radial-gradient(1200px 600px at 80% -10%, rgba(241,155,184,.18), transparent 60%), radial-gradient(900px 500px at -10% 10%, rgba(244,201,216,.10), transparent 50%), var(--bg); color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; line-height:1.6; }
+    a{color:var(--text); text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+    /* Brand mark using CSS mask so we can tint blush */
+    .brandmark, .brandmark-sm, .brandmark-lg{display:inline-block; background:var(--accent); -webkit-mask: url('images/logo.svg') no-repeat center / contain; mask: url('images/logo.svg') no-repeat center / contain}
+    .brandmark{width:36px; height:36px}
+    .brandmark-sm{width:28px; height:28px}
+    .brandmark-lg{width:86px; height:86px}
+    .sr-only{position:absolute; left:-9999px}
+
+    .nav{position:sticky; top:0; backdrop-filter:saturate(140%) blur(10px); background:rgba(255,255,255,.86); z-index:40; border-bottom:1px solid rgba(0,0,0,.06)}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; height:72px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .menu{display:flex; gap:18px; align-items:center}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; height:42px; padding:0 16px; border-radius:12px; border:1px solid rgba(0,0,0,.08); background:rgba(0,0,0,.04); color:var(--text); font-weight:600; transition:all .2s ease; box-shadow:0 4px 12px rgba(0,0,0,.06)}
+    .btn:hover{transform:translateY(-1px); background:rgba(0,0,0,.06)}
+    .btn.primary{background:linear-gradient(180deg, var(--accent), var(--accent-strong)); color:#111; border:0}
+    .btn.primary:hover{filter:brightness(1.05)}
+
+    .hero{position:relative; padding:120px 0 80px}
+    .hero-wrap{display:grid; grid-template-columns: 1.1fr .9fr; gap:36px; align-items:center}
+    .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:600; color:#111; background:var(--accent); padding:6px 10px; border-radius:999px; letter-spacing:.4px}
+    .hero h2{font-family:"Playfair Display", serif; font-size:56px; line-height:1.04; margin:14px 0 12px}
+    .hero p{font-size:18px; color:var(--muted); max-width:52ch}
+    .hero-card{background:var(--panel); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow)}
+    .hero-card img{display:block; width:100%; height:420px; object-fit:cover}
+    .hero-card .cap{padding:14px 16px; color:var(--muted); font-size:13px}
+    .hero-logo{margin-bottom:12px}
+
+    .trust{padding:24px 0 8px; opacity:.9}
+    .trust ul{display:flex; gap:22px; flex-wrap:wrap; list-style:none; padding:0; margin:0}
+    .trust li{font-size:13px; color:var(--muted)}
+
+    .section{padding:80px 0}
+    .section h3{font-family:"Playfair Display", serif; font-size:40px; margin:0 0 20px}
+    .section p.lead{color:var(--muted); margin-top:-8px}
+
+    .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:8px}
+    .gcard{grid-column: span 3; position:relative; border-radius:14px; overflow:hidden; border:1px solid rgba(0,0,0,.06)}
+    .gcard img{width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:1/1}
+    .gcard button{all:unset; cursor:pointer; position:absolute; inset:0}
+
+    .vgrid{display:grid; grid-template-columns:repeat(12,1fr); gap:10px}
+    .vcard{grid-column: span 6; position:relative; border-radius:16px; overflow:hidden; border:1px solid rgba(0,0,0,.06); background:var(--panel)}
+    .vthumb{aspect-ratio:16/9; width:100%; height:auto; display:block; object-fit:cover}
+    .play{position:absolute; inset:auto auto 16px 16px; height:48px; width:48px; border-radius:12px; display:grid; place-items:center; background:rgba(0,0,0,.6); color:#fff; font-size:20px; user-select:none}
+
+    details{background:var(--panel); border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:16px 18px; box-shadow:var(--shadow)}
+    details+details{margin-top:10px}
+    summary{font-weight:600; cursor:pointer}
+    details p{color:var(--muted)}
+
+    form{display:grid; gap:12px}
+    .field{display:grid; gap:6px}
+    input, textarea{background:#ffffff; border:1px solid rgba(0,0,0,.12); padding:12px 14px; border-radius:12px; color:var(--text); font:inherit; outline:none}
+    input:focus, textarea:focus{border-color:var(--accent-strong); box-shadow:0 0 0 4px var(--ring)}
+    .two{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    .note{font-size:12px; color:var(--muted)}
+
+    footer{padding:40px 0 60px; color:var(--muted)}
+    .foot{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px}
+
+    .lightbox{position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.85); z-index:100}
+    .lightbox.visible{display:grid}
+    .lightbox img{max-width:min(96vw, 1400px); max-height:86vh; border-radius:12px}
+    .lb-close,.lb-prev,.lb-next{position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); height:44px; width:44px; border-radius:12px; display:grid; place-items:center; cursor:pointer; user-select:none}
+    .lb-close{top:24px; right:24px; transform:none}
+    .lb-prev{left:24px}
+    .lb-next{right:24px}
+
+    @media (max-width: 980px){ .hero{padding:90px 0 54px} .hero-wrap{grid-template-columns:1fr; gap:20px} .gcard{grid-column: span 6} .two{grid-template-columns:1fr} }
+    @media (max-width: 560px){ .gcard{grid-column: span 12} .hero h2{font-size:40px} }
+  </style>
 </head>
-<body class="is-preload">
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand" aria-label="The Wedding Crashers home">
+        <span class="brandmark" aria-hidden="true"></span>
+        <span class="sr-only">The Wedding Crashers</span>
+      </a>
+      <div class="menu" role="navigation" aria-label="Main">
+        <a href="/packages.html">Packages</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#video">Video</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="btn primary" href="#contact">Check our dates</a>
+      </div>
+    </div>
+  </nav>
 
-	<!-- Wrapper -->
-	<div id="wrapper" class="fade-in">
+  <header class="hero">
+    <div class="container hero-wrap">
+      <div>
+        <div class="hero-logo"><span class="brandmark-sm" aria-hidden="true"></span></div>
+        <span class="eyebrow">United Kingdom • Photography &amp; Videography • Destination‑friendly</span>
+        <h2>Honest moments. <br/>Gorgeous edits. <br/>Zero cheese.</h2>
+        <p>Every couple, every day, every brief is different. We adapt our approach to your vision — from documentary to editorial or somewhere in between — so the work feels unmistakably <em>you</em>.</p>
+        <div class="trust">
+          <ul>
+            <li>⭐ 5★ client reviews</li>
+            <li>🎥 4K film + drone options</li>
+            <li>📍 United Kingdom • Available worldwide</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Featured gallery preview">
+        <img loading="eager" src="images/3-1.png" alt="Couple laughing during confetti toss" />
+        <div class="cap">Photography &amp; videography by Hunter &amp; Joey.</div>
+      </aside>
+    </div>
+  </header>
 
-		<!-- Intro -->
-		<div id="intro">
-			<h1>Bespoke Wedding Photography and Videography Services<br /></h1>
-			<ul class="actions">
-				<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-			</ul>
-		</div>
+  <section id="gallery" class="section">
+    <div class="container">
+      <h3>Gallery</h3>
+      <p class="lead">A rotating selection — replace these with your best bangers.</p>
+      <div class="grid" id="grid">
 
-		<!-- Header -->
-		<header id="header">
-			<a href="index.html" class="logo">The Wedding Crashers</a>
-		</header>
+        <figure class="gcard"><img loading="lazy" src="images/3-2.png" alt="First dance"/><button data-full="images/3-2.png" aria-label="Open image"></button></figure>
+        <figure class="gcard"><img loading="lazy" src="images/3-3.png" alt="Confetti"/><button data-full="images/3-3.png" aria-label="Open image"></button></figure>
+        <figure class="gcard"><img loading="lazy" src="images/3-4.png" alt="Ceremony"/><button data-full="images/3-4.png" aria-label="Open image"></button></figure>
+        <figure class="gcard"><img loading="lazy" src="images/3-5.png" alt="Speeches"/><button data-full="images/3-5.png" aria-label="Open image"></button></figure>
+        <figure class="gcard"><img loading="lazy" src="images/3-6.png" alt="Details"/><button data-full="images/3-6.png" aria-label="Open image"></button></figure>
+        <figure class="gcard"><img loading="lazy" src="images/3-7.png" alt="Couple portrait"/><button data-full="images/3-7.png" aria-label="Open image"></button></figure>
+        <figure class="gcard"><img loading="lazy" src="images/3-8.png" alt="Dance floor"/><button data-full="images/3-8.png" aria-label="Open image"></button></figure>
+        <figure class="gcard"><img loading="lazy" src="images/3-9.png" alt="Family"/><button data-full="images/3-9.png" aria-label="Open image"></button></figure>
+        <figure class="gcard"><img loading="lazy" src="images/3-10.png" alt="Venue"/><button data-full="images/3-10.png" aria-label="Open image"></button></figure>
+        <figure class="gcard"><img loading="lazy" src="images/3-11.png" alt="Golden hour"/><button data-full="images/3-11.png" aria-label="Open image"></button></figure>
+        <figure class="gcard"><img loading="lazy" src="images/3-12.png" alt="Entrance"/><button data-full="images/3-12.png" aria-label="Open image"></button></figure>
+        <figure class="gcard"><img loading="lazy" src="images/3-13.png" alt="Cake"/><button data-full="images/3-13.png" aria-label="Open image"></button></figure>
+      </div>
+    </div>
+  </section>
 
-		<!-- Main -->
-		<div id="main">
+  <section id="video" class="section">
+    <div class="container">
+      <h3>Highlight Films</h3>
+      <p class="lead">Short, story‑driven edits with clean audio from vows & speeches. Tap a thumbnail to play.</p>
+      <div class="vgrid">
+        <figure class="vcard"><img class="vthumb" src="images/3-14.png" alt="Highlight film 1 poster" loading="lazy"/><button class="play" aria-label="Play video" data-video="/videos/vid1.mp4">▶</button></figure>
+        <figure class="vcard"><img class="vthumb" src="images/3-15.png" alt="Highlight film 2 poster" loading="lazy"/><button class="play" aria-label="Play video" data-video="/videos/vid2.mp4">▶</button></figure>
+        <figure class="vcard"><img class="vthumb" src="images/3-16.png" alt="Highlight film 3 poster" loading="lazy"/><button class="play" aria-label="Play video" data-video="/videos/vid3.mp4">▶</button></figure>
+        <figure class="vcard"><img class="vthumb" src="images/3-17.png" alt="Highlight film 4 poster" loading="lazy"/><button class="play" aria-label="Play video" data-video="/videos/vid4.mp4">▶</button></figure>
+      </div>
+    </div>
+  </section>
 
-			<!-- Featured Post -->
-			<article class="post featured">
-				<header class="major">
-					<h2><a href="#">We Love<br />Love</a></h2>
-					<p>We are a bespoke wedding videography and photography service, specialising in capturing raw moments in an editorial magazine style, as well as producing candid sentimental couple films that capture real love stories - turning them into an iconic piece of keepsake memorabilia for you to cherish forever.</p>
-				</header>
-				<a href="#" class="image main">
-					<img src="images/FullSizeRender-2.jpg" alt="" />
-				</a>
-			</article>
+  <section id="about" class="section">
+    <div class="container">
+      <h3>Hey, we're Hunter &amp; Joey</h3>
+      <p class="lead">We’re post‑graduate creatives specialising in wedding <strong>photography &amp; videography</strong>. We’ve trained and worked closely with an established wedding studio, delivering coverage for everything from intimate city ceremonies to multi‑day destination events. Our process is collaborative and professional — we shape the brief with you and tailor the style to your plans.</p>
+      <ul>
+        <li>Flexible coverage — photography, videography, or both</li>
+        <li>Delivery you can use anywhere — web, social, and print</li>
+        <li>Clear communication, timelines, and simple contracts</li>
+      </ul>
+      <a class="btn" href="#contact">Make an enquiry</a>
+    </div>
+  </section>
 
-			<!-- Video Tile 1 -->
-			<article>
-				<a class="image" style="display: block; overflow: hidden;">
-					<video autoplay muted loop playsinline style="width: 100%; height: auto; display: block; object-fit: cover;">
-						<source src="videos/FullSizeRender-1.MP4" type="video/mp4">
-						Your browser does not support the video tag.
-					</video>
-				</a>
-			</article>
+  <section class="section">
+    <div class="container">
+      <h3>FAQ</h3>
+      <details><summary>Do you travel?</summary><p>Yes — we’re UK‑based and destination‑friendly.</p></details>
+      <details><summary>How do we book?</summary><p>Enquire via the form — we’ll confirm your date, sign a simple contract, and take a 25% retainer to lock it in.</p></details>
+      <details><summary>What’s the turnaround?</summary><p>Preview selects within a week. Full photo gallery 4–6 weeks. Highlight film 6–8 weeks.</p></details>
+    </div>
+  </section>
 
-			<!-- Image Tile 1 -->
-			<article>
-				<a class="image" style="display: block; overflow: hidden;">
-					<img src="images/FullSizeRender-4.jpg" alt="" style="width: 100%; height: auto; display: block; object-fit: cover;">
-				</a>
-			</article>
+  <section id="contact" class="section">
+    <div class="container">
+      <h3>Check our dates</h3>
+      <p class="lead">Tell us a little about your day — we’ll reply with availability and package suggestions.</p>
+      <form id="contactForm" action="https://formspree.io/f/meornelq" method="POST">
+        <div class="two">
+          <label class="field"><span>Your name</span><input required name="name" placeholder="Alex &amp; Jamie" /></label>
+          <label class="field"><span>Email</span><input required type="email" name="email" placeholder="you@example.com" /></label>
+        </div>
+        <div class="two">
+          <label class="field"><span>Wedding date</span><input type="date" name="date" /></label>
+          <label class="field"><span>Venue / Location</span><input name="venue" placeholder="Battersea Arts Centre, London" /></label>
+        </div>
+        <label class="field"><span>What are you looking for?</span><textarea name="message" rows="5" placeholder="Photography, videography, or both? Visual references welcome."></textarea></label>
+        <input type="hidden" name="_subject" value="TWC Website Enquiry" />
+        <button class="btn primary" type="submit">Send enquiry</button>
+        <p class="note">By submitting you agree to our privacy policy. We reply within 24–48h.</p>
+      </form>
+    </div>
+  </section>
 
-			<!-- Video Tile 2 -->
-			<article>
-				<a class="image" style="display: block; overflow: hidden;">
-					<video autoplay muted loop playsinline style="width: 100%; height: auto; display: block; object-fit: cover;">
-						<source src="videos/FullSizeRender-3.MP4" type="video/mp4">
-						Your browser does not support the video tag.
-					</video>
-				</a>
-			</article>
+  <footer>
+    <div class="container foot">
+      <small>© <span id="year"></span> The Wedding Crashers • United Kingdom</small>
+      <div>
+        <a href="#" aria-label="Instagram">Instagram</a> •
+        <a href="mailto:hello@theweddingcrashers.uk" aria-label="Email">hello@theweddingcrashers.uk</a>
+      </div>
+    </div>
+  </footer>
 
-			<!-- Image Tile 2 -->
-			<article>
-				<a href="#" class="image" style="display: block; overflow: hidden;">
-					<img src="images/FullSizeRender-5.jpg" alt="" style="width: 100%; height: auto; display: block; object-fit: cover;">
-				</a>
-			</article>
+  <!-- Lightboxes -->
+  <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Image viewer">
+    <button class="lb-close" aria-label="Close lightbox" title="Close" id="lbClose">✕</button>
+    <button class="lb-prev" aria-label="Previous" title="Previous" id="lbPrev">‹</button>
+    <img alt="Expanded gallery image" id="lbImg" />
+    <button class="lb-next" aria-label="Next" title="Next" id="lbNext">›</button>
+  </div>
+  <div class="lightbox" id="videobox" aria-modal="true" role="dialog" aria-label="Video player">
+    <button class="lb-close" aria-label="Close video" title="Close" id="vbClose">✕</button>
+    <video id="vbVideo" controls playsinline style="max-width:min(96vw, 1400px); max-height:86vh; border-radius:12px;"></video>
+  </div>
 
-			<!-- Image Tile 3 -->
-			<article>
-				<a href="#" class="image" style="display: block; overflow: hidden;">
-					<img src="images/FullSizeRender-3.jpg" alt="" style="width: 100%; height: auto; display: block; object-fit: cover;">
-				</a>
-			</article>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-			<!-- Image Tile 4 -->
-			<article>
-				<a href="#" class="image" style="display: block; overflow: hidden;">
-					<img src="images/FullSizeRender-1.jpg" alt="" style="width: 100%; height: auto; display: block; object-fit: cover;">
-				</a>
-			</article>
+    // Lightbox (images)
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbPrev = document.getElementById('lbPrev');
+    const lbNext = document.getElementById('lbNext');
+    const lbClose = document.getElementById('lbClose');
+    const buttons = [...document.querySelectorAll('.gcard button')];
+    let idx = -1;
+    function openAt(i){ idx = i; lbImg.src = buttons[idx].dataset.full; lightbox.classList.add('visible'); }
+    function next(){ idx = (idx + 1) % buttons.length; lbImg.src = buttons[idx].dataset.full; }
+    function prev(){ idx = (idx - 1 + buttons.length) % buttons.length; lbImg.src = buttons[idx].dataset.full; }
+    function close(){ lightbox.classList.remove('visible'); lbImg.removeAttribute('src'); }
+    buttons.forEach((b,i)=> b.addEventListener('click', ()=>openAt(i)) );
+    lbNext.addEventListener('click', next); lbPrev.addEventListener('click', prev); lbClose.addEventListener('click', close);
+    lightbox.addEventListener('click', e=>{ if(e.target===lightbox) close(); });
+    document.addEventListener('keydown', e=>{ if(lightbox.classList.contains('visible')){ if(e.key==='Escape') close(); if(e.key==='ArrowRight') next(); if(e.key==='ArrowLeft') prev(); } if(document.getElementById('videobox')?.classList.contains('visible') && e.key==='Escape') closeVideo(); });
 
-		</div> <!-- End of #main -->
+    // Fade‑in thumbs
+    const obs = 'IntersectionObserver' in window ? new IntersectionObserver((entries)=>{ entries.forEach(el=>{ if(el.isIntersecting){ el.target.style.opacity=1; obs.unobserve(el.target); } }); }, {rootMargin:'120px'}) : null;
+    document.querySelectorAll('.gcard img').forEach(img=>{ img.style.opacity=.001; img.style.transition='opacity .6s ease'; obs && obs.observe(img); });
 
-		<!-- Footer -->
-		<footer style="color: white; font-size: 1.25em; font-weight: bold; text-align: center; padding: 2em;">
-			<p>Contact us at: 
-				<a href="mailto:theweddingcrashers.contact@gmail.com" style="color: white; text-decoration: underline;">
-					theweddingcrashers.contact@gmail.com
-				</a>
-			</p>
-			<p>Follow us on Instagram: 
-				<a href="https://www.instagram.com/thewedding.crashers" style="color: white; text-decoration: underline;">
-					@thewedding.crashers
-				</a>
-			</p>
-		</footer>
+    // Form — redirect to thank you
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', async (e)=>{ e.preventDefault(); const fd = new FormData(form); try{ const r = await fetch(form.action, { method:'POST', body: fd, headers: { 'Accept': 'application/json' }}); if(r.ok){ form.reset(); window.location.href = 'thank-you.html'; } else { alert('Sorry — something went wrong. Email us at hello@theweddingcrashers.uk'); } }catch(err){ alert('Network error — please try again or email us.'); } });
 
-		<!-- Copyright -->
-		<div id="copyright">
-			<ul><li>&copy; The Wedding Crashers</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-		</div>
-
-	</div> <!-- End of #wrapper -->
-
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrollex.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-
+    // Video modal
+    const videobox = document.getElementById('videobox');
+    const vbClose = document.getElementById('vbClose');
+    const vbVideo = document.getElementById('vbVideo');
+    const vButtons = [...document.querySelectorAll('.vcard .play')];
+    function openVideo(src){ vbVideo.src = src; vbVideo.currentTime = 0; vbVideo.play(); videobox.classList.add('visible'); }
+    function closeVideo(){ vbVideo.pause(); vbVideo.removeAttribute('src'); videobox.classList.remove('visible'); }
+    vButtons.forEach(b=> b.addEventListener('click', ()=> openVideo(b.dataset.video)) ); vbClose.addEventListener('click', closeVideo); videobox.addEventListener('click', e=>{ if(e.target===videobox) closeVideo(); });
+  </script>
 </body>
 </html>

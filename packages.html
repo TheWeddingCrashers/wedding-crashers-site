@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Packages — The Wedding Crashers</title>
+  <meta name="description" content="Wedding photography & videography packages — flexible coverage tailored to your day." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{ --bg:#ffffff; --panel:#f7f7f8; --muted:#5b5f66; --text:#111216; --accent:#f4c9d8; --accent-strong:#f19bb8; --ring: rgba(241,155,184,.35); --radius:18px; --shadow:0 10px 24px rgba(0,0,0,.08); --max:980px; }
+    *{box-sizing:border-box}
+    body{ margin:0; background: radial-gradient(1200px 600px at 80% -10%, rgba(241,155,184,.18), transparent 60%), radial-gradient(900px 500px at -10% 10%, rgba(244,201,216,.12), transparent 50%), var(--bg); color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; line-height:1.6; }
+    .wrap{max-width:var(--max); margin:0 auto; padding:32px 20px 60px}
+    a{color:var(--text); text-decoration:none}
+    header{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:18px 0}
+    .logo{display:flex; align-items:center; gap:10px}
+    .mark{width:28px; height:28px; border-radius:10px; background:linear-gradient(135deg,var(--accent), var(--accent-strong)); display:grid; place-items:center; color:#111; font-weight:700}
+    h1{font-family:"Playfair Display", serif; font-size:34px; margin:0}
+    .card{background:var(--panel); border:1px solid rgba(0,0,0,.06); border-radius:20px; padding:22px 18px; box-shadow:var(--shadow)}
+    .grid{display:grid; grid-template-columns:1fr; gap:16px}
+    .kicker{display:inline-block; font-size:12px; padding:6px 10px; border-radius:999px; background:rgba(244,201,216,.18); border:1px solid var(--ring); margin-bottom:8px}
+    h2{font-family:"Playfair Display", serif; font-size:28px; margin:0 0 10px}
+    p{color:var(--muted)}
+    .fine{font-size:13px; color:var(--muted)}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; height:44px; padding:0 16px; border-radius:12px; border:1px solid rgba(0,0,0,.08); background:rgba(0,0,0,.04); color:var(--text); font-weight:600}
+    .btn.primary{background:linear-gradient(180deg, var(--accent), var(--accent-strong)); color:#111; border:0}
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    footer{margin-top:26px; font-size:12px; color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo"><span class="brandmark" aria-hidden="true"></span><strong>The Wedding Crashers</strong></div>
+      <a class="btn" href="index.html">← Back to home</a>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <span class="kicker">Packages</span>
+        <h2>Photography or Videography starting at £1,750</h2>
+        <p>Perfect for single‑discipline coverage — we’ll tailor hours, deliverables and style to your day. Full briefs and options on enquiry.</p>
+        <div class="cta">
+          <a class="btn primary" href="index.html#contact">Send an enquiry</a>
+          <a class="btn" href="index.html#gallery">View our work</a>
+        </div>
+        <p class="fine">Includes planning call, timeline guidance and delivery-ready files for web/social/print.</p>
+      </section>
+
+      <section class="card">
+        <h2>Both (Photo + Video) from £2,800</h2>
+        <p>Seamless hybrid coverage by the two of us — consistent colour, matching edits, aligned storytelling. Custom quotes based on hours and travel.</p>
+        <div class="cta">
+          <a class="btn primary" href="index.html#contact">Check our dates</a>
+        </div>
+        <p class="fine">Upgrades: second shooters, drone, speeches multi‑mic audio, next‑day selects, albums.</p>
+      </section>
+    </div>
+
+    <footer>Prefer to chat? Email <a href="mailto:hello@theweddingcrashers.uk">hello@theweddingcrashers.uk</a></footer>
+  </div>
+</body>
+</html>
