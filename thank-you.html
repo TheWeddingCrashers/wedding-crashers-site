@@ -68,13 +68,25 @@
     .wrap, .card, footer { position: relative; z-index: 1; }
     .brandmark-lg { display: none !important; }
 
-  </style>
+      /* Visible SVG logo image inside the card */
+    .brandimg-lg{ width:120px; height:auto; display:block; margin:0 auto 12px; filter: drop-shadow(0 1px 0 rgba(0,0,0,.06)); }
+    /* Keep masked brandmark hidden to avoid compatibility issues */
+    .brandmark-lg{ display:none !important; }
+
+/* === TWC: Square buttons on thank-you page === */
+.btn{ border-radius:0 !important; }
+/* Ensure logo image shows */
+.brandimg-lg{ display:block !important; }
+.brandmark-lg{ display:none !important; }
+
+</style>
 </head>
 <body>
   <div class="bg-logo" aria-hidden="true"></div>
   <main class="wrap">
     <section class="card" aria-label="Thank you">
       <div class="brandmark-lg" role="img" aria-label="The Wedding Crashers logo"></div>
+      <img class="brandimg-lg" src="images/logo.svg" alt="The Wedding Crashers logo">
       <h1>Woohoo — enquiry sent! 🎉</h1>
       <p class="lead">Thank you for getting in touch. We can’t wait to <em>crash</em> your wedding — we’ll reply within 24–48 hours.</p>
       <div class="btns">

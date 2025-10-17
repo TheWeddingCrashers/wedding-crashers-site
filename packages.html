@@ -51,7 +51,6 @@
       z-index: 0;
     }
     .wrap, header, .grid, footer { position: relative; z-index: 1; }
-    .brandmark, .brandimg { display: none !important; }
 
   
     /* === Centered page title, pulled close to header logo === */
@@ -65,7 +64,17 @@
     }
     .wrap{ padding-top: 20px; }
 
-  </style>
+      /* Ensure logo image fallback is always visible on packages */
+    .brandimg{display:inline-block !important}
+    .brandmark{display:none}
+
+/* === TWC: Square buttons site-wide on packages page === */
+.btn{ border-radius:0 !important; }
+/* Ensure logo image shows */
+.brandimg{ display:inline-block !important; }
+.brandmark{ display:none !important; }
+
+</style>
 </head>
 <body>
   <div class="bg-logo" aria-hidden="true"></div>
