@@ -5,46 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Wedding Crashers — Wedding Photography & Videography</title>
   <meta name="description" content="Wedding photography & videography across the UK and beyond — adaptable style to match your vision." />
-  <link rel="canonical" href="https://theweddingcrashers.uk/" />
+  <link rel="canonical" href="index.html" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <meta property="og:title" content="The Wedding Crashers — Wedding Photo & Video" />
-  <meta property="og:description" content="UK‑based, destination‑friendly. Photography & videography tailored to your day." />
+  <meta property="og:description" content="UK-based, destination-friendly. Photography & videography tailored to your day." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://theweddingcrashers.uk/" />
-  <meta property="og:image" content="images/og-cover.jpg" />
+  <meta property="og:url" content="index.html" />
+  <meta property="og:image" content="images/3-1.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <style>
-    :root{ --bg:#ffffff; --panel:#f7f7f8; --muted:#5b5f66; --text:#111216; --accent:#f4c9d8; --accent-strong:#f19bb8; --ring: rgba(241,155,184,.35); --radius:18px; --shadow:0 10px 24px rgba(0,0,0,.08); --max:1180px; }
+    :root{
+      --bg:#ffffff; --panel:#f7f7f8; --muted:#5b5f66; --text:#111216;
+      --accent:#f4c9d8; --accent-strong:#f19bb8; --ring: rgba(241,155,184,.35);
+      --radius:18px; --shadow:0 10px 24px rgba(0,0,0,.08); --max:1180px;
+    }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{ margin:0; background: radial-gradient(1200px 600px at 80% -10%, rgba(241,155,184,.18), transparent 60%), radial-gradient(900px 500px at -10% 10%, rgba(244,201,216,.10), transparent 50%), var(--bg); color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; line-height:1.6; }
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(241,155,184,.18), transparent 60%),
+        radial-gradient(900px 500px at -10% 10%, rgba(244,201,216,.10), transparent 50%),
+        var(--bg);
+      color:var(--text);
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height:1.6;
+    }
     a{color:var(--text); text-decoration:none}
     .container{max-width:var(--max); margin:0 auto; padding:0 20px}
 
-    /* Brand mark using CSS mask so we can tint blush */
-    .brandmark, .brandmark-sm, .brandmark-lg{display:inline-block; background:var(--accent); -webkit-mask: url('images/logo.svg') no-repeat center / contain; mask: url('images/logo.svg') no-repeat center / contain}
+    /* Brand mark using CSS mask (blush tint) — <img> fallback shows by default */
+    .brandmark, .brandmark-sm, .brandmark-lg{
+      display:none; background:var(--accent);
+      -webkit-mask: url('images/logo.svg') no-repeat center / contain;
+      mask: url('images/logo.svg') no-repeat center / contain;
+    }
     .brandmark{width:36px; height:36px}
     .brandmark-sm{width:28px; height:28px}
     .brandmark-lg{width:86px; height:86px}
     .sr-only{position:absolute; left:-9999px}
+    .brandimg{height:36px; width:auto; display:inline-block; vertical-align:middle}
+    .brandimg-sm{height:28px; width:auto; display:inline-block; vertical-align:middle}
+    /* When masks are supported AND the SVG loads, show blush mask + hide <img> */
+    .mask-ok .brandmark, .mask-ok .brandmark-sm{display:inline-block}
+    .mask-ok .brandimg, .mask-ok .brandimg-sm{display:none}
 
-    .nav{position:sticky; top:0; backdrop-filter:saturate(140%) blur(10px); background:rgba(255,255,255,.86); z-index:40; border-bottom:1px solid rgba(0,0,0,.06)}
+    .nav{
+      position:sticky; top:0; backdrop-filter:saturate(140%) blur(10px);
+      background:rgba(255,255,255,.86); z-index:40; border-bottom:1px solid rgba(0,0,0,.06)
+    }
     .nav-inner{display:flex; align-items:center; justify-content:space-between; height:72px}
     .brand{display:flex; align-items:center; gap:12px}
     .menu{display:flex; gap:18px; align-items:center}
-    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; height:42px; padding:0 16px; border-radius:12px; border:1px solid rgba(0,0,0,.08); background:rgba(0,0,0,.04); color:var(--text); font-weight:600; transition:all .2s ease; box-shadow:0 4px 12px rgba(0,0,0,.06)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      height:42px; padding:0 16px; border-radius:12px; border:1px solid rgba(0,0,0,.08);
+      background:rgba(0,0,0,.04); color:var(--text); font-weight:600;
+      transition:all .2s ease; box-shadow:0 4px 12px rgba(0,0,0,.06)
+    }
     .btn:hover{transform:translateY(-1px); background:rgba(0,0,0,.06)}
     .btn.primary{background:linear-gradient(180deg, var(--accent), var(--accent-strong)); color:#111; border:0}
     .btn.primary:hover{filter:brightness(1.05)}
 
     .hero{position:relative; padding:120px 0 80px}
     .hero-wrap{display:grid; grid-template-columns: 1.1fr .9fr; gap:36px; align-items:center}
-    .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:600; color:#111; background:var(--accent); padding:6px 10px; border-radius:999px; letter-spacing:.4px}
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:600; color:#111;
+      background:var(--accent); padding:6px 10px; border-radius:999px; letter-spacing:.4px
+    }
     .hero h2{font-family:"Playfair Display", serif; font-size:56px; line-height:1.04; margin:14px 0 12px}
     .hero p{font-size:18px; color:var(--muted); max-width:52ch}
     .hero-card{background:var(--panel); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow)}
@@ -88,13 +121,193 @@
     .lightbox{position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.85); z-index:100}
     .lightbox.visible{display:grid}
     .lightbox img{max-width:min(96vw, 1400px); max-height:86vh; border-radius:12px}
-    .lb-close,.lb-prev,.lb-next{position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); height:44px; width:44px; border-radius:12px; display:grid; place-items:center; cursor:pointer; user-select:none}
+    .lb-close,.lb-prev,.lb-next{
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18);
+      height:44px; width:44px; border-radius:12px; display:grid; place-items:center; cursor:pointer; user-select:none
+    }
     .lb-close{top:24px; right:24px; transform:none}
     .lb-prev{left:24px}
     .lb-next{right:24px}
 
-    @media (max-width: 980px){ .hero{padding:90px 0 54px} .hero-wrap{grid-template-columns:1fr; gap:20px} .gcard{grid-column: span 6} .two{grid-template-columns:1fr} }
-    @media (max-width: 560px){ .gcard{grid-column: span 12} .hero h2{font-size:40px} }
+    @media (max-width: 980px){
+      .hero{padding:90px 0 54px}
+      .hero-wrap{grid-template-columns:1fr; gap:20px}
+      .gcard{grid-column: span 6}
+      .two{grid-template-columns:1fr}
+    }
+    @media (max-width: 560px){
+      .gcard{grid-column: span 12}
+      .hero h2{font-size:40px}
+    }
+  
+    /* === Fullscreen Logo Hero === */
+    .logo-hero{
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 48px 20px;
+    }
+    .logo-hero .hero-big-logo{
+      width: min(80vw, 920px);
+      height: auto;
+      display:block;
+      filter: drop-shadow(0 1px 0 rgba(0,0,0,.06));
+    }
+    /* Hide small logos in nav and hero */
+    .brand{ display: none !important; }
+    .hero-logo{ display: none !important; }
+
+  
+    /* === Contact: Instagram CTA === */
+    .insta-cta{
+      margin-top: 8px;
+      font-weight: 700;
+      color: var(--accent-strong);
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .insta-cta a{
+      color: var(--accent-strong);
+      text-decoration: underline;
+      font-weight: 700;
+    }
+
+    /* === Gallery Carousel === */
+    .carousel{position:relative; overflow:hidden; border-radius:14px}
+    .carousel-viewport{scroll-behavior:smooth; display:flex; gap:8px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px; scrollbar-width:none}
+    .carousel-viewport::-webkit-scrollbar{display:none}
+    .slide{flex:0 0 auto; width:min(80vw, 820px); aspect-ratio: 3 / 2; position:relative; border-radius:14px; overflow:hidden; scroll-snap-align:center; border:1px solid rgba(0,0,0,.06)}
+    .slide img{width:100%; height:100%; object-fit:cover; display:block}
+    .caro-btn{
+      position:absolute; top:50%; transform:translateY(-50%);
+      height:44px; width:44px; border-radius:12px; border:1px solid rgba(0,0,0,.12);
+      background:rgba(255,255,255,.9); box-shadow:0 6px 16px rgba(0,0,0,.12);
+      display:grid; place-items:center; font-size:20px; cursor:pointer; user-select:none; z-index:2
+    }
+    .caro-prev{left:10px}
+    .caro-next{right:10px}
+    @media (max-width: 720px){
+      .slide{width:92vw}
+    }
+
+  
+    /* === Tighten hero spacing & single-column layout === */
+    .hero{ padding: 36px 0 60px; }
+    .hero-wrap{ display:block; }
+    .hero h2{ margin-top: 6px; }
+
+  
+    /* === Center the hero text block === */
+    .hero .container{
+      max-width: 880px;
+      text-align: center;
+    }
+    .hero h2{ text-align:center; }
+    .hero p{ text-align:center; margin-left:auto; margin-right:auto; }
+    .trust{ display:flex; justify-content:center; }
+    .trust ul{ justify-content:center; }
+
+    /* === Showreel Carousel (single-slot, future-proof for more) === */
+    .showreel{position:relative; overflow:hidden; border-radius:16px}
+    .showreel-viewport{scroll-behavior:smooth; display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px; scrollbar-width:none}
+    .showreel-viewport::-webkit-scrollbar{display:none}
+    .reel{flex:0 0 auto; width:min(88vw, 980px); aspect-ratio: 16 / 9; position:relative; border-radius:16px; overflow:hidden; scroll-snap-align:center; background:var(--panel); border:1px solid rgba(0,0,0,.06)}
+    .reel img{width:100%; height:100%; object-fit:cover; display:block}
+    .reel .play{position:absolute; inset:auto auto 16px 16px; height:56px; width:56px; border-radius:14px; display:grid; place-items:center; background:rgba(0,0,0,.65); color:#fff; font-size:22px; user-select:none}
+    .reel .label{position:absolute; top:12px; left:12px; background:rgba(255,255,255,.85); padding:6px 10px; border-radius:999px; font-size:12px; font-weight:700}
+    .reel-btn{
+      position:absolute; top:50%; transform:translateY(-50%);
+      height:44px; width:44px; border-radius:12px; border:1px solid rgba(0,0,0,.12);
+      background:rgba(255,255,255,.9); box-shadow:0 6px 16px rgba(0,0,0,.12);
+      display:grid; place-items:center; font-size:20px; cursor:pointer; user-select:none; z-index:2
+    }
+    .reel-prev{left:10px}
+    .reel-next{right:10px}
+
+    /* === Social card inside Contact section === */
+    .social-card{
+      margin: 18px auto 0;
+      max-width: 720px;
+      background: var(--panel);
+      border: 1px solid rgba(0,0,0,.06);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 20px 18px;
+      text-align: center;
+    }
+    .social-card h4{
+      font-family:"Playfair Display", serif;
+      font-size: 28px;
+      margin: 6px 0 8px;
+    }
+    .social-actions{
+      display:flex; justify-content:center; flex-wrap:wrap; gap:10px;
+    }
+    .btn.ig{
+      background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+      color:#111; border:0;
+    }
+
+  
+    /* === Overrides: tighten gap between logo and hero === */
+    .logo-hero{ padding-bottom: 16px; }
+    .hero{ padding: 16px 0 56px; }
+
+  
+    /* === Index overrides: center hero + tighten spacing === */
+    .logo-hero{ padding-bottom: 10px; }
+    .hero{ padding: 20px 0 56px; }
+    .hero .container{ max-width: 880px; text-align:center; }
+    .hero h2{ text-align:center; margin: 4px 0 10px; }
+    .hero p{ text-align:center; margin-left:auto; margin-right:auto; }
+    .trust{ display:flex; justify-content:center; }
+    .trust ul{ justify-content:center; }
+
+  
+    /* === Force hero heading to two lines === */
+    .hero h2 .hline{ display:block; }
+    .hero h2 .hline:first-child{ white-space:nowrap; }
+    @media (max-width: 560px){
+      .hero h2 .hline:first-child{ white-space:normal; }
+    }
+
+  
+    /* === Softer, pinker site background === */
+    body{
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(241,155,184,.28), transparent 60%),
+        radial-gradient(900px 500px at -10% 10%, rgba(244,201,216,.22), transparent 50%),
+        var(--bg);
+    }
+
+    /* === Showreel: hide arrows, center blush play button === */
+    .reel-btn{ display:none !important; }
+    .reel .play{
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      height:72px; width:72px; border-radius:999px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+      color:#111; font-size:24px; border:0;
+      box-shadow: 0 10px 28px rgba(0,0,0,.18);
+    }
+
+    /* === Gallery slides: show full image (no cropping) === */
+    .slide{
+      width: min(86vw, 1100px);
+      height: min(72vh, 780px);
+      aspect-ratio: auto;
+      background:#fff;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .slide img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
+    }
+
   </style>
 </head>
 <body>
@@ -102,10 +315,11 @@
     <div class="container nav-inner">
       <a href="index.html" class="brand" aria-label="The Wedding Crashers home">
         <span class="brandmark" aria-hidden="true"></span>
+        <img class="brandimg" src="images/logo.svg" alt="">
         <span class="sr-only">The Wedding Crashers</span>
       </a>
       <div class="menu" role="navigation" aria-label="Main">
-        <a href="/packages.html">Packages</a>
+        <a href="packages.html">Packages</a>
         <a href="#gallery">Gallery</a>
         <a href="#video">Video</a>
         <a href="#about">About</a>
@@ -115,12 +329,20 @@
     </div>
   </nav>
 
+  
+  <section class="logo-hero" aria-label="Brand logo">
+    <img class="hero-big-logo" src="images/logo.svg" alt="The Wedding Crashers">
+  </section>
+
   <header class="hero">
     <div class="container hero-wrap">
       <div>
-        <div class="hero-logo"><span class="brandmark-sm" aria-hidden="true"></span></div>
-        <span class="eyebrow">United Kingdom • Photography &amp; Videography • Destination‑friendly</span>
-        <h2>Honest moments. <br/>Gorgeous edits. <br/>Zero cheese.</h2>
+        <div class="hero-logo">
+          <span class="brandmark-sm" aria-hidden="true"></span>
+          <img class="brandimg-sm" src="images/logo.svg" alt="">
+        </div>
+        <span class="eyebrow">United Kingdom • Photography &amp; Videography • Destination-friendly</span>
+        <h2><span class="hline">Honest moments. Gorgeous edits.</span><span class="hline">Zero cheese.</span></h2>
         <p>Every couple, every day, every brief is different. We adapt our approach to your vision — from documentary to editorial or somewhere in between — so the work feels unmistakably <em>you</em>.</p>
         <div class="trust">
           <ul>
@@ -130,52 +352,49 @@
           </ul>
         </div>
       </div>
-      <aside class="hero-card" aria-label="Featured gallery preview">
-        <img loading="eager" src="images/3-1.png" alt="Couple laughing during confetti toss" />
-        <div class="cap">Photography &amp; videography by Hunter &amp; Joey.</div>
-      </aside>
     </div>
   </header>
 
-  <section id="gallery" class="section">
-    <div class="container">
-      <h3>Gallery</h3>
-      <p class="lead">A rotating selection — replace these with your best bangers.</p>
-      <div class="grid" id="grid">
-
-        <figure class="gcard"><img loading="lazy" src="images/3-2.png" alt="First dance"/><button data-full="images/3-2.png" aria-label="Open image"></button></figure>
-        <figure class="gcard"><img loading="lazy" src="images/3-3.png" alt="Confetti"/><button data-full="images/3-3.png" aria-label="Open image"></button></figure>
-        <figure class="gcard"><img loading="lazy" src="images/3-4.png" alt="Ceremony"/><button data-full="images/3-4.png" aria-label="Open image"></button></figure>
-        <figure class="gcard"><img loading="lazy" src="images/3-5.png" alt="Speeches"/><button data-full="images/3-5.png" aria-label="Open image"></button></figure>
-        <figure class="gcard"><img loading="lazy" src="images/3-6.png" alt="Details"/><button data-full="images/3-6.png" aria-label="Open image"></button></figure>
-        <figure class="gcard"><img loading="lazy" src="images/3-7.png" alt="Couple portrait"/><button data-full="images/3-7.png" aria-label="Open image"></button></figure>
-        <figure class="gcard"><img loading="lazy" src="images/3-8.png" alt="Dance floor"/><button data-full="images/3-8.png" aria-label="Open image"></button></figure>
-        <figure class="gcard"><img loading="lazy" src="images/3-9.png" alt="Family"/><button data-full="images/3-9.png" aria-label="Open image"></button></figure>
-        <figure class="gcard"><img loading="lazy" src="images/3-10.png" alt="Venue"/><button data-full="images/3-10.png" aria-label="Open image"></button></figure>
-        <figure class="gcard"><img loading="lazy" src="images/3-11.png" alt="Golden hour"/><button data-full="images/3-11.png" aria-label="Open image"></button></figure>
-        <figure class="gcard"><img loading="lazy" src="images/3-12.png" alt="Entrance"/><button data-full="images/3-12.png" aria-label="Open image"></button></figure>
-        <figure class="gcard"><img loading="lazy" src="images/3-13.png" alt="Cake"/><button data-full="images/3-13.png" aria-label="Open image"></button></figure>
-      </div>
+  
+<section id="gallery" class="section">
+  <div class="container">
+    <h3>Gallery</h3>
+    <p class="lead">Swipe or use the arrows to browse. Tap any image to open full-size.</p>
+    <div class="carousel" id="galleryCarousel" aria-label="Image carousel">
+      <button class="caro-btn caro-prev" aria-label="Previous image" id="caroPrev">‹</button>
+      <div class="carousel-viewport" id="caroViewport">
+        <!-- slides injected by JS -->
+        </div>
+      <button class="caro-btn caro-next" aria-label="Next image" id="caroNext">›</button>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="video" class="section">
-    <div class="container">
-      <h3>Highlight Films</h3>
-      <p class="lead">Short, story‑driven edits with clean audio from vows & speeches. Tap a thumbnail to play.</p>
-      <div class="vgrid">
-        <figure class="vcard"><img class="vthumb" src="images/3-14.png" alt="Highlight film 1 poster" loading="lazy"/><button class="play" aria-label="Play video" data-video="/videos/vid1.mp4">▶</button></figure>
-        <figure class="vcard"><img class="vthumb" src="images/3-15.png" alt="Highlight film 2 poster" loading="lazy"/><button class="play" aria-label="Play video" data-video="/videos/vid2.mp4">▶</button></figure>
-        <figure class="vcard"><img class="vthumb" src="images/3-16.png" alt="Highlight film 3 poster" loading="lazy"/><button class="play" aria-label="Play video" data-video="/videos/vid3.mp4">▶</button></figure>
-        <figure class="vcard"><img class="vthumb" src="images/3-17.png" alt="Highlight film 4 poster" loading="lazy"/><button class="play" aria-label="Play video" data-video="/videos/vid4.mp4">▶</button></figure>
+
+  
+<section id="video" class="section">
+  <div class="container">
+    <h3>Showreel</h3>
+    <p class="lead">A taste of our style. Tap play to watch.</p>
+    <div class="showreel" id="showreel" aria-label="Showreel carousel">
+      <button class="reel-btn reel-prev" aria-label="Previous video" id="reelPrev">‹</button>
+      <div class="showreel-viewport" id="reelViewport">
+        <figure class="reel">
+          <img class="vthumb" src="images/3-14.png" alt="Showreel thumbnail" loading="lazy"/>
+          <div class="label">Showreel</div>
+          <button class="play" aria-label="Play showreel" data-video="videos/vid1.mp4">▶</button>
+        </figure>
       </div>
+      <button class="reel-btn reel-next" aria-label="Next video" id="reelNext">›</button>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <section id="about" class="section">
     <div class="container">
       <h3>Hey, we're Hunter &amp; Joey</h3>
-      <p class="lead">We’re post‑graduate creatives specialising in wedding <strong>photography &amp; videography</strong>. We’ve trained and worked closely with an established wedding studio, delivering coverage for everything from intimate city ceremonies to multi‑day destination events. Our process is collaborative and professional — we shape the brief with you and tailor the style to your plans.</p>
+      <p class="lead">We’re post-graduate creatives specialising in wedding <strong>photography &amp; videography</strong>. We’ve trained and worked closely with an established wedding studio, delivering coverage for everything from intimate city ceremonies to multi-day destination events. Our process is collaborative and professional — we shape the brief with you and tailor the style to your plans.</p>
       <ul>
         <li>Flexible coverage — photography, videography, or both</li>
         <li>Delivery you can use anywhere — web, social, and print</li>
@@ -188,7 +407,7 @@
   <section class="section">
     <div class="container">
       <h3>FAQ</h3>
-      <details><summary>Do you travel?</summary><p>Yes — we’re UK‑based and destination‑friendly.</p></details>
+      <details><summary>Do you travel?</summary><p>Yes — we’re UK-based and destination-friendly.</p></details>
       <details><summary>How do we book?</summary><p>Enquire via the form — we’ll confirm your date, sign a simple contract, and take a 25% retainer to lock it in.</p></details>
       <details><summary>What’s the turnaround?</summary><p>Preview selects within a week. Full photo gallery 4–6 weeks. Highlight film 6–8 weeks.</p></details>
     </div>
@@ -212,16 +431,20 @@
         <button class="btn primary" type="submit">Send enquiry</button>
         <p class="note">By submitting you agree to our privacy policy. We reply within 24–48h.</p>
       </form>
+
+        <div class="social-card" aria-label="Social media">
+          <h4>Prefer socials?</h4>
+          <p class="lead">We love a DM. You can reach us here:</p>
+          <div class="social-actions">
+            <a class="btn ig" href="https://instagram.com/thewedding.crashers" target="_blank" rel="noopener">📸 @thewedding.crashers</a>
+          </div>
+        </div>
     </div>
   </section>
 
   <footer>
     <div class="container foot">
       <small>© <span id="year"></span> The Wedding Crashers • United Kingdom</small>
-      <div>
-        <a href="#" aria-label="Instagram">Instagram</a> •
-        <a href="mailto:hello@theweddingcrashers.uk" aria-label="Email">hello@theweddingcrashers.uk</a>
-      </div>
     </div>
   </footer>
 
@@ -240,30 +463,80 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Lightbox (images)
+    // Detect CSS mask support + successful SVG load, then swap to masked blush mark
+    (function(){
+      const supportsMask = (window.CSS && (CSS.supports('mask: url("images/logo.svg")') || CSS.supports('-webkit-mask: url("images/logo.svg")')));
+      if(!supportsMask) return; // keep image fallback
+      const img = new Image();
+      img.onload = ()=> document.body.classList.add('mask-ok');
+      img.onerror = ()=> {};
+      img.src = 'images/logo.svg';
+    })();
+
+    
+    // Lightbox (images) — updated to work with carousel slides
     const lightbox = document.getElementById('lightbox');
     const lbImg = document.getElementById('lbImg');
     const lbPrev = document.getElementById('lbPrev');
     const lbNext = document.getElementById('lbNext');
     const lbClose = document.getElementById('lbClose');
-    const buttons = [...document.querySelectorAll('.gcard button')];
-    let idx = -1;
-    function openAt(i){ idx = i; lbImg.src = buttons[idx].dataset.full; lightbox.classList.add('visible'); }
-    function next(){ idx = (idx + 1) % buttons.length; lbImg.src = buttons[idx].dataset.full; }
-    function prev(){ idx = (idx - 1 + buttons.length) % buttons.length; lbImg.src = buttons[idx].dataset.full; }
-    function close(){ lightbox.classList.remove('visible'); lbImg.removeAttribute('src'); }
-    buttons.forEach((b,i)=> b.addEventListener('click', ()=>openAt(i)) );
-    lbNext.addEventListener('click', next); lbPrev.addEventListener('click', prev); lbClose.addEventListener('click', close);
-    lightbox.addEventListener('click', e=>{ if(e.target===lightbox) close(); });
-    document.addEventListener('keydown', e=>{ if(lightbox.classList.contains('visible')){ if(e.key==='Escape') close(); if(e.key==='ArrowRight') next(); if(e.key==='ArrowLeft') prev(); } if(document.getElementById('videobox')?.classList.contains('visible') && e.key==='Escape') closeVideo(); });
 
-    // Fade‑in thumbs
-    const obs = 'IntersectionObserver' in window ? new IntersectionObserver((entries)=>{ entries.forEach(el=>{ if(el.isIntersecting){ el.target.style.opacity=1; obs.unobserve(el.target); } }); }, {rootMargin:'120px'}) : null;
-    document.querySelectorAll('.gcard img').forEach(img=>{ img.style.opacity=.001; img.style.transition='opacity .6s ease'; obs && obs.observe(img); });
+    let gallerySources = [];
+    let gIndex = -1;
+
+    function lbOpenAt(i){
+      gIndex = i;
+      lbImg.src = gallerySources[gIndex];
+      lightbox.classList.add('visible');
+    }
+    function lbNextFn(){
+      if(gallerySources.length === 0) return;
+      gIndex = (gIndex + 1) % gallerySources.length;
+      lbImg.src = gallerySources[gIndex];
+    }
+    function lbPrevFn(){
+      if(gallerySources.length === 0) return;
+      gIndex = (gIndex - 1 + gallerySources.length) % gallerySources.length;
+      lbImg.src = gallerySources[gIndex];
+    }
+    function lbCloseFn(){
+      lightbox.classList.remove('visible');
+      lbImg.removeAttribute('src');
+    }
+
+    lbNext.addEventListener('click', lbNextFn);
+    lbPrev.addEventListener('click', lbPrevFn);
+    lbClose.addEventListener('click', lbCloseFn);
+    lightbox.addEventListener('click', e=>{ if(e.target===lightbox) lbCloseFn(); });
+
+    document.addEventListener('keydown', e=>{
+      if(lightbox.classList.contains('visible')){
+        if(e.key==='Escape') lbCloseFn();
+        if(e.key==='ArrowRight') lbNextFn();
+        if(e.key==='ArrowLeft') lbPrevFn();
+      }
+      if(document.getElementById('videobox')?.classList.contains('visible') && e.key==='Escape') closeVideo();
+    });
+    
+    // Fade-in thumbs
+    const obs = 'IntersectionObserver' in window ? new IntersectionObserver((entries)=>{
+      entries.forEach(el=>{ if(el.isIntersecting){ el.target.style.opacity=1; obs.unobserve(el.target); } });
+    }, {rootMargin:'120px'}) : null;
+    document.querySelectorAll('.gcard img').forEach(img=>{
+      img.style.opacity=.001; img.style.transition='opacity .6s ease'; obs && obs.observe(img);
+    });
 
     // Form — redirect to thank you
     const form = document.getElementById('contactForm');
-    form.addEventListener('submit', async (e)=>{ e.preventDefault(); const fd = new FormData(form); try{ const r = await fetch(form.action, { method:'POST', body: fd, headers: { 'Accept': 'application/json' }}); if(r.ok){ form.reset(); window.location.href = 'thank-you.html'; } else { alert('Sorry — something went wrong. Email us at hello@theweddingcrashers.uk'); } }catch(err){ alert('Network error — please try again or email us.'); } });
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const fd = new FormData(form);
+      try{
+        const r = await fetch(form.action, { method:'POST', body: fd, headers: { 'Accept': 'application/json' }});
+        if(r.ok){ form.reset(); window.location.href = 'thank-you.html'; }
+        else { alert('Sorry — something went wrong. Email us at hello@theweddingcrashers.uk'); }
+      }catch(err){ alert('Network error — please try again or email us.'); }
+    });
 
     // Video modal
     const videobox = document.getElementById('videobox');
@@ -272,7 +545,125 @@
     const vButtons = [...document.querySelectorAll('.vcard .play')];
     function openVideo(src){ vbVideo.src = src; vbVideo.currentTime = 0; vbVideo.play(); videobox.classList.add('visible'); }
     function closeVideo(){ vbVideo.pause(); vbVideo.removeAttribute('src'); videobox.classList.remove('visible'); }
-    vButtons.forEach(b=> b.addEventListener('click', ()=> openVideo(b.dataset.video)) ); vbClose.addEventListener('click', closeVideo); videobox.addEventListener('click', e=>{ if(e.target===videobox) closeVideo(); });
+    vButtons.forEach(b=> b.addEventListener('click', ()=> openVideo(b.dataset.video)) );
+    vbClose.addEventListener('click', closeVideo);
+    videobox.addEventListener('click', e=>{ if(e.target===videobox) closeVideo(); });
+  
+    // === Carousel Controls ===
+
+    // === Build slides dynamically from images 3-1.png .. 3-46.png ===
+    (()=>{
+      const total = 46;
+      const viewport = document.getElementById('caroViewport');
+      const frag = document.createDocumentFragment();
+      for(let i=1;i<=total;i++){
+        const fig = document.createElement('figure');
+        fig.className = 'slide';
+        const img = document.createElement('img');
+        img.loading = 'lazy';
+        img.alt = `Gallery image ${i}`;
+        img.src = `images/3-${i}.png`;
+        img.setAttribute('data-full', `images/3-${i}.png`);
+        // If an image fails to load (in case some numbers are missing), hide the slide
+        img.onerror = ()=> { fig.style.display = 'none'; };
+        fig.appendChild(img);
+        frag.appendChild(fig);
+      }
+      viewport.appendChild(frag);
+
+      // build sources + click handlers for lightbox
+      const builtSlides = Array.from(viewport.querySelectorAll('.slide'));
+      gallerySources = builtSlides.map(s => {
+        const im = s.querySelector('img');
+        return im?.dataset.full || im?.src;
+      }).filter(Boolean);
+      builtSlides.forEach((s, i) => {
+        s.addEventListener('click', () => lbOpenAt(i));
+      });
+    })();
+
+    (()=>{
+      const viewport = document.getElementById('caroViewport');
+      const slides = Array.from(viewport.querySelectorAll('.slide'));
+      const prev = document.getElementById('caroPrev');
+      const next = document.getElementById('caroNext');
+
+      function slideWidth(){
+        const first = slides[0];
+        return first.getBoundingClientRect().width + 8; // include gap
+      }
+      function go(delta){
+        viewport.scrollBy({ left: delta * slideWidth(), behavior: 'smooth' });
+      }
+      prev.addEventListener('click', ()=> go(-1));
+      next.addEventListener('click', ()=> go(1));
+
+      // Keyboard support when carousel in view
+      viewport.addEventListener('keydown', (e)=>{
+        if(e.key==='ArrowRight') go(1);
+        if(e.key==='ArrowLeft') go(-1);
+      });
+      viewport.setAttribute('tabindex','0');
+
+      // Click to open existing lightbox
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lbImg');
+      function openLight(src){ lbImg.src = src; lb.classList.add('visible'); }
+      slides.forEach(fig=>{
+        fig.addEventListener('click', ()=>{
+          const img = fig.querySelector('img');
+          openLight(img.dataset.full || img.src);
+        });
+      });
+
+      // Basic drag/swipe
+      let startX=0, scrollStart=0, dragging=false;
+      viewport.addEventListener('pointerdown', (e)=>{
+        dragging=true; startX=e.clientX; scrollStart=viewport.scrollLeft; viewport.setPointerCapture(e.pointerId);
+      });
+      viewport.addEventListener('pointermove', (e)=>{
+        if(!dragging) return;
+        const dx = e.clientX - startX;
+        viewport.scrollLeft = scrollStart - dx;
+      });
+      viewport.addEventListener('pointerup', ()=> dragging=false);
+      viewport.addEventListener('pointercancel', ()=> dragging=false);
+    })();
+
+  
+    // === Showreel Carousel Controls ===
+    (()=>{
+      const viewport = document.getElementById('reelViewport');
+      if(!viewport) return;
+      const reels = Array.from(viewport.querySelectorAll('.reel'));
+      const prev = document.getElementById('reelPrev');
+      const next = document.getElementById('reelNext');
+
+      function reelWidth(){
+        const first = reels[0];
+        return first.getBoundingClientRect().width + 10; // gap
+      }
+      function go(delta){
+        viewport.scrollBy({ left: delta * reelWidth(), behavior: 'smooth' });
+      }
+      prev.addEventListener('click', ()=> go(-1));
+      next.addEventListener('click', ()=> go(1));
+
+      // Hook to existing video modal
+      const videobox = document.getElementById('videobox');
+      const vbClose = document.getElementById('vbClose');
+      const vbVideo = document.getElementById('vbVideo');
+      function openVideo(src){ vbVideo.src = src; vbVideo.currentTime = 0; vbVideo.play(); videobox.classList.add('visible'); }
+      function closeVideo(){ vbVideo.pause(); vbVideo.removeAttribute('src'); videobox.classList.remove('visible'); }
+      reels.forEach(r=>{
+        r.querySelector('.play').addEventListener('click', (e)=>{
+          e.stopPropagation();
+          const src = e.currentTarget.dataset.video;
+          openVideo(src);
+        });
+      });
+    })();
+
   </script>
 </body>
 </html>
