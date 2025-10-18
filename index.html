@@ -55,10 +55,13 @@
     .mask-ok .brandmark, .mask-ok .brandmark-sm{display:inline-block}
     /* .mask-ok .brandimg, .mask-ok .brandimg-sm{display:none} */
 
-    .nav{ background:#f19bb8 !important; border-bottom:0 !important; color:#fff; position:sticky; top:0;  z-index:40; }
-    .nav-inner{ display:flex; align-items:center; justify-content:center !important; height:66px !important; }
+    .nav{
+      position:sticky; top:0; backdrop-filter:saturate(140%) blur(10px);
+      background:rgba(255,255,255,.86); z-index:40; border-bottom:1px solid rgba(0,0,0,.06)
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; height:72px}
     .brand{display:flex; align-items:center; gap:12px}
-    .menu{ display:flex; gap:14px; align-items:center; justify-content:center; margin:0 auto; }
+    .menu{display:flex; gap:18px; align-items:center}
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
       height:42px; padding:0 16px; border-radius:12px; border:1px solid rgba(0,0,0,.08);
@@ -306,330 +309,97 @@
     }
 
   
-/* === TWC: Dual dropdown nav (simple & clean) === */
-.menu{ display:flex; gap:14px; align-items:center; justify-content:center; margin:0 auto; }
-.dd{
-  position:relative;
+/* === TWC: Fixed background logo with subtle parallax === */
+.bg-logo{
+  position: fixed;
+  inset: 0;
+  background: url('images/logo.svg') center 12% / 120vmin no-repeat;
+  opacity: 0.75;                /* subtle, feels like paper watermark */
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;        /* hint for smoother parallax */
 }
-.dd > summary{
-  list-style:none;
-  cursor:pointer;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  height:36px;
-  padding:0 12px;
-  border:1px solid rgba(255,255,255,0.9);
-  background:transparent;
-  color:#fff;
-  font-family: 'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  text-transform: uppercase;
-  letter-spacing:.14em;
-  font-weight:400;
-  user-select:none;
-}
-.dd > summary::-webkit-details-marker{ display:none; }
-.dd[open] > summary{ background:rgba(255,255,255,.12); }
-
-.dd .dd-panel{
-  position:absolute;
-  top:42px;
-  left:0;
-  min-width:220px;
-  background:#fff;
-  color:#111;
-  border:1px solid rgba(0,0,0,.12);
-  box-shadow:0 12px 28px rgba(0,0,0,.18);
-  padding:6px;
-  display:flex;
-  flex-direction:column;
-  z-index:50;
-}
-.dd.right .dd-panel{ right:0; left:auto; }
-
-.dd .dd-panel a{
-  padding:10px 10px;
-  text-decoration:none;
-  color:#111;
-  border-radius:0;
-  font-weight:600;
-  letter-spacing:.02em;
-}
-.dd .dd-panel a:hover{ background:rgba(0,0,0,.04); }
-
-/* Mobile: keep it tidy */
-@media (max-width: 640px){
-  .menu{ display:flex; gap:14px; align-items:center; justify-content:center; margin:0 auto; }
-  .dd .dd-panel{ min-width: 180px; }
+/* Make normal content render above the bg logo */
+.nav, header, section, footer, .logo-hero, .hero, .section, .container{
+  position: relative;
+  z-index: 1;
 }
 
-
-/* === Centered dropdown restyle === */
-.dd > summary{
-  border:1px solid #ffffff;
-  color:#ffffff;
-  background:transparent;
-  border-radius:0 !important;
-  height:38px;
-  padding:0 14px;
-}
-.dd[open] > summary{ background: rgba(255,255,255,0.14); }
-
-/* Dropdown panel stays white with dark text */
-.dd .dd-panel{
-  background:#ffffff;
-  color:#111;
-  border:1px solid rgba(0,0,0,.12);
-}
-.dd .dd-panel a{ color:#111; }
-
-/* Mobile: keep centered with a little tighter gap */
-@media (max-width: 640px){
-  .menu{ gap:10px; }
-  .dd > summary{ height:40px; padding:0 12px; }
-}
-
-/* === Refined dropdown buttons alignment === */
-.dd > summary{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  vertical-align:middle;
-  height:38px;
-  padding:0 14px;
-  margin:0;
-  border:1px solid #ffffff;
-  background:transparent !important;
-  color:#ffffff;
-  border-radius:0 !important;
-  text-transform:uppercase;
-  letter-spacing:.14em;
-}
-.dd[open] > summary{
-  background:transparent !important; /* remove extra white box when open */
-}
-.menu{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:16px;
-  margin:0 auto;
-}
+/* Hide the standalone big logo section since we're using the bg logo */
+.logo-hero{ display:none !important; }
 
 
-/* === TWC: Themed dropdown panel === */
-.dd .dd-panel{
-  background: #f19bb8 !important;
-  border: 1px solid #ffffff !important;
-  padding: 8px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  min-width: 220px;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-}
-.dd .dd-panel a{
-  color: #ffffff !important;
-  font-family: 'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  font-weight: 400;
-  padding: 10px 16px;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-}
-.dd .dd-panel a:hover{
-  transform: scale(1.05);
-}
+/* === TWC: Temporary hero blank gap (hide text, keep space) === */
+.hero .eyebrow,
+.hero h2,
+.hero p,
+.hero .trust{ display:none !important; }
+.hero{ padding: 60px 0 80px !important; }
+.hero .container > div{ min-height: 280px !important; }
 
 
-/* === TWC: FINAL OVERRIDES (high specificity) === */
-body .nav{
-  background:#f19bb8 !important;
-  border-bottom:0 !important;
-}
-body .nav-inner{
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  height:66px !important;
-}
-/* Center the menu container */
-body .menu{
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  gap:16px !important;
-  margin:0 auto !important;
-}
-
-/* Remove any extra fills from summary buttons; keep thin white outline */
-body .dd > summary{
-  background:transparent !important;
-  border:1px solid #ffffff !important;
-  color:#ffffff !important;
-  border-radius:0 !important;
-  height:38px !important;
-  padding:0 14px !important;
-  display:inline-flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  text-transform:uppercase !important;
-  letter-spacing:.14em !important;
-  font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
-  font-weight:400 !important;
-  box-shadow:none !important;
-  outline:none !important;
-}
-/* Remove default details marker spacing */
-body .dd > summary::-webkit-details-marker{ display:none !important; }
-body .dd{ background:transparent !important; border:0 !important; }
-
-/* Themed dropdown panel: solid pink with white border */
-body .dd .dd-panel{
-  position:absolute !important;
-  top:42px !important;
-  min-width:220px !important;
-  background:#f19bb8 !important;
-  color:#ffffff !important;
-  border:1px solid #ffffff !important;
-  border-radius:0 !important;
-  box-shadow:0 10px 24px rgba(0,0,0,0.18) !important;
-  padding:6px 0 !important;
-  z-index:50 !important;
-}
-body .dd.right .dd-panel{ right:0 !important; left:auto !important; }
-body .dd.left  .dd-panel{ left:0 !important; right:auto !important; }
-
-/* Dropdown links styled like buttons (white, caps, spaced) */
-body .dd .dd-panel a{
-  color:#ffffff !important;
-  font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
-  text-transform:uppercase !important;
-  letter-spacing:.14em !important;
-  font-weight:400 !important;
-  padding:10px 16px !important;
-  text-decoration:none !important;
-  display:block !important;
-  transform-origin: left center !important;
-  transition: transform .18s ease !important;
-}
-body .dd .dd-panel a:hover{ transform: scale(1.05) !important; }
-
-/* Ensure only ONE hero logo under buttons (keep big, hide small) */
-body .brand{ display:none !important; }
-body .hero-logo{ display:none !important; }
-body .logo-hero{ display:grid !important; }
-
-
-/* === TWC: Left/Right dropdowns with equal heights, no glow === */
-.nav-inner{
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  height:66px !important;
-}
-.menu{
-  display:flex !important;
-  align-items:center !important;
-  justify-content:space-between !important; /* push to edges */
-  width: min(1180px, 100%) !important;
-  gap:16px !important;
-  margin:0 auto !important;
-}
+/* === TWC: Solid pink nav with left/right dropdowns === */
+.nav{ background:#f19bb8 !important; border-bottom:0 !important; color:#fff; position:sticky; top:0; z-index:40; }
+.nav-inner{ display:flex !important; align-items:center !important; justify-content:center !important; height:66px !important; }
+.menu{ display:flex !important; align-items:center !important; justify-content:space-between !important; width:min(var(--max),100%) !important; gap:16px !important; margin:0 auto !important; }
 .dd{ position:relative !important; }
 .dd.left{ margin-right:auto !important; }
 .dd.right{ margin-left:auto !important; }
-
-/* Buttons: fixed height, transparent fill, white outline, no glow */
 .dd > summary{
   -webkit-appearance:none; appearance:none;
-  box-sizing:border-box !important;
-  height:40px !important;
-  padding:0 16px !important;
-  margin:0 !important;
-  display:inline-flex !important;
-  align-items:center !important;
-  justify-content:center !important;
   background:transparent !important;
   color:#ffffff !important;
-  border:1px solid #ffffff !important;
+  border:1px solid rgba(255,255,255,0.95) !important;
   border-radius:0 !important;
-  text-transform:uppercase !important;
-  letter-spacing:.14em !important;
+  height:40px !important;
+  line-height:40px !important;
+  padding:0 16px !important;
+  margin:0 !important;
+  display:inline-flex !important; align-items:center !important; justify-content:center !important;
+  text-transform:uppercase !important; letter-spacing:.14em !important;
   font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
   font-weight:400 !important;
-  box-shadow:none !important;          /* remove glow */
-  outline:none !important;             /* remove focus ring glow */
+  box-shadow:none !important; text-shadow:none !important; filter:none !important; outline:none !important;
 }
-.dd > summary:hover{ background:transparent !important; }
-.dd > summary:focus{ outline:none !important; box-shadow:none !important; }
 .dd > summary::-webkit-details-marker{ display:none !important; }
-
-/* Dropdown panel theme */
 .dd .dd-panel{
-  position:absolute !important;
-  top:44px !important;
-  min-width:220px !important;
-  background:#f19bb8 !important;
-  color:#ffffff !important;
-  border:1px solid #ffffff !important;
-  border-radius:0 !important;
-  box-shadow:0 10px 24px rgba(0,0,0,0.18) !important;
-  padding:6px 0 !important;
-  z-index:50 !important;
+  position:absolute !important; top:44px !important; min-width:220px !important;
+  background:#f19bb8 !important; color:#ffffff !important;
+  border:1px solid #ffffff !important; border-radius:0 !important;
+  box-shadow:0 10px 24px rgba(0,0,0,0.18) !important; padding:6px 0 !important; z-index:50 !important;
 }
-.dd.left  .dd-panel{ left:0 !important; right:auto !important; }
-.dd.right .dd-panel{ right:0 !important; left:auto !important; }
-
-/* Dropdown links style and subtle hover scale */
+.dd.left .dd-panel{ left:0 !important; } .dd.right .dd-panel{ right:0 !important; }
 .dd .dd-panel a{
-  display:block !important;
-  padding:10px 16px !important;
-  color:#ffffff !important;
-  text-decoration:none !important;
-  text-transform:uppercase !important;
-  letter-spacing:.14em !important;
+  color:#ffffff !important; text-decoration:none !important;
+  text-transform:uppercase !important; letter-spacing:.14em !important;
   font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
-  font-weight:400 !important;
-  transform-origin:left center !important;
-  transition: transform .18s ease !important;
+  font-weight:400 !important; display:block !important; padding:10px 16px !important;
+  transform-origin:left center !important; transition: transform .18s ease !important;
 }
 .dd .dd-panel a:hover{ transform: scale(1.05) !important; }
 
 
-/* === TWC: Anti-glow hard kill for nav buttons === */
-.nav, body .nav{ 
-  backdrop-filter: none !important; 
-  -webkit-backdrop-filter: none !important;
+/* === TWC: Centered text-only nav (no boxes) === */
+.nav{ background:#f19bb8 !important; border-bottom:0 !important; color:#fff; position:sticky; top:0; z-index:40; }
+.nav-inner{ display:flex !important; align-items:center !important; justify-content:center !important; height:66px !important; }
+.menu{
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  gap: 22px !important; margin: 0 auto !important; width: auto !important;
 }
-/* Buttons in nav (summarys + any anchors) */
-.nav .menu a,
-.dd > summary{
-  box-shadow: none !important;
-  text-shadow: none !important;
-  filter: none !important;
-  outline: none !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  background: transparent !important;
+.menu a{
+  color:#ffffff !important; text-decoration:none !important;
+  font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
+  text-transform:uppercase !important; letter-spacing:.14em !important; font-weight:400 !important;
+  padding: 8px 2px !important; line-height: 1 !important; border:0 !important; background:transparent !important;
 }
-.dd > summary:focus,
-.dd > summary:focus-visible,
-.dd > summary:active{
-  outline: none !important;
-  box-shadow: none !important;
-  filter: none !important;
-  background: transparent !important;
-}
-/* Mobile tap highlight */
-* {
-  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
-}
+.menu a:hover{ text-decoration: underline; }
+/* Kill any leftover dropdown styling */
+.dd, .dd *{ all: unset; }
 
 </style>
 </head>
 <body>
+  <div class="bg-logo" aria-hidden="true"></div>
   <nav class="nav">
     <div class="container nav-inner">
       <a href="index.html" class="brand" aria-label="The Wedding Crashers home">
@@ -638,25 +408,12 @@ body .logo-hero{ display:grid !important; }
         <span class="sr-only">The Wedding Crashers</span>
       </a>
       <div class="menu" role="navigation" aria-label="Main">
-  <details class="dd left">
-    <summary>Menu ▾</summary>
-    <nav class="dd-panel">
       <a href="packages.html">Packages</a>
       <a href="#gallery">Gallery</a>
       <a href="#video">Video</a>
       <a href="#about">About</a>
-    </nav>
-  </details>
-
-  <details class="dd right">
-    <summary>Contact ▾</summary>
-    <nav class="dd-panel">
-      <a href="#contact">Contact form</a>
-      <a href="#contact">Check our dates</a>
-      <a href="https://instagram.com/thewedding.crashers" target="_blank" rel="noopener">Instagram</a>
-    </nav>
-  </details>
-</div>
+      <a href="#contact">Contact</a>
+    </div>
     </div>
   </nav>
 
@@ -999,34 +756,20 @@ body .logo-hero{ display:grid !important; }
 
 <script>
 (() => {
-  const dropdowns = Array.from(document.querySelectorAll('.dd'));
-  function closeAll(except=null){
-    dropdowns.forEach(d => { if(d !== except) d.removeAttribute('open'); });
+  const bg = document.querySelector('.bg-logo');
+  if(!bg) return;
+  let ticking = false;
+  function onScroll(){
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY * 0.05; // subtle movement
+      bg.style.transform = `translateY(${y}px)`;
+      ticking = false;
+    });
   }
-  // Close when pointer leaves the dropdown area
-  dropdowns.forEach(d => {
-    d.addEventListener('pointerleave', () => {
-      d.removeAttribute('open');
-    });
-    // Optional: close when a link is clicked
-    const panel = d.querySelector('.dd-panel');
-    if(panel){
-      panel.addEventListener('click', (e) => {
-        if(e.target.tagName === 'A'){
-          d.removeAttribute('open');
-        }
-      });
-    }
-    // Ensure only one is open at a time
-    d.addEventListener('toggle', () => {
-      if(d.open) closeAll(d);
-    });
-  });
-  // Close on outside click
-  document.addEventListener('pointerdown', (e) => {
-    const within = e.target.closest && e.target.closest('.dd');
-    if(!within) closeAll();
-  });
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 })();
 </script>
 
