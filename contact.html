@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Contact — The Wedding Crashers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{ --bg:#ffffff; --panel:#f7f7f8; --muted:#5b5f66; --text:#111216; --accent:#f4c9d8; --accent-strong:#f19bb8; --max:1180px; }
+@font-face{
+  font-family:'Hillstown Sans';
+  src: url('fonts/Hillstown Sans Clean Demo.otf') format('opentype');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+*{box-sizing:border-box}
+body{ margin:0; background: var(--bg); color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
+.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
+.nav{ background:#f19bb8; position:sticky; top:0; z-index:40; }
+.nav-inner{ height:66px; display:flex; align-items:center; justify-content:center; }
+.menu{ display:flex; gap:22px; align-items:center; justify-content:center; }
+.menu a{ color:#fff; text-decoration:none; font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; text-transform:uppercase; letter-spacing:.14em; font-weight:400; padding:8px 2px; }
+.menu a:hover{ text-decoration:underline; }
+.bg-logo{ position:fixed; inset:0; background:url('images/logo.svg') center 12%/120vmin no-repeat; opacity:.15; pointer-events:none; z-index:0; will-change:transform; }
+main{ position:relative; z-index:1; }
+.section{ padding:80px 0; }
+h1,h2,h3{ font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; text-align:center; text-transform:uppercase; letter-spacing:.08em; margin:0 0 10px; }
+.lead{ text-align:center; color:var(--muted); }
+
+/* Basic card + grid styles in case the extracted form uses them */
+.card{ background:var(--panel); border:1px solid rgba(0,0,0,.06); border-radius:0; padding:22px 18px; box-shadow:none; }
+.grid{ display:grid; gap:12px; }
+.grid label{ display:flex; flex-direction:column; gap:6px; font-weight:600; color:#333; }
+input, textarea{ width:100%; padding:10px 12px; border:1px solid #ddd; border-radius:0; font:inherit; }
+.btn{ display:inline-flex; align-items:center; justify-content:center; height:44px; padding:0 16px; border:1px solid rgba(0,0,0,.08); background:rgba(0,0,0,.04); color:#111; font-weight:600; border-radius:0; }
+.btn.primary{ background:#f19bb8; color:#111; border:0; }
+
+/* Contact page spacing */
+.section.contact-hero{ padding-top: 80px; padding-bottom: 40px; }
+
+/* === Shared pink nav bar === */
+.nav{ background:#f19bb8; position:sticky; top:0; z-index:40; }
+.nav-inner{ height:66px; display:flex; align-items:center; justify-content:center; }
+.menu{ display:flex; gap:22px; align-items:center; justify-content:center; }
+.menu a{ color:#fff; text-decoration:none; font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; text-transform:uppercase; letter-spacing:.14em; font-weight:400; padding:8px 2px; }
+.menu a:hover{ text-decoration:underline; }
+
+
+/* Background logo */
+.bg-logo{ position:fixed; inset:0; background:url('images/logo.svg') center 12%/120vmin no-repeat; opacity:.75; pointer-events:none; z-index:0; will-change:transform; }
+
+
+/* === TWC: Uniform pink nav across site === */
+:root { --max:1180px; }
+.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
+
+/* Typography smoothing for crisp text */
+html, body, .nav, .menu a, h1, h2, h3 {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.nav{
+  background:#f19bb8 !important;
+  position:sticky; top:0; z-index:40;
+  border-bottom:0 !important;
+}
+.nav-inner{
+  height:66px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+.menu{
+  display:flex !important;
+  gap:22px !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin:0 auto !important;
+}
+.menu a{
+  color:#ffffff !important;
+  text-decoration:none !important;
+  font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
+  text-transform:uppercase !important;
+  letter-spacing:.14em !important;
+  font-weight:400 !important;
+  font-size:14px !important;       /* consistent size across pages */
+  line-height:1 !important;
+  padding:8px 2px !important;
+  border:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  text-shadow:none !important;
+  filter:none !important;
+  outline:none !important;
+}
+.menu a:hover{ text-decoration:underline !important; }
+
+</style>
+</head>
+<body>
+<div class="bg-logo" aria-hidden="true"></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="menu" role="navigation" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="packages.html">Packages</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="video.html">Video</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+  </div>
+</nav>
+<main>
+  <section class="section contact-hero">
+    <div class="container">
+      <h1>Contact</h1>
+      <p class="lead">Tell us about your day & we'll get back to you.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container">
+      <h3>Check our dates</h3>
+      <p class="lead">Tell us a little about your day — we’ll reply with availability and package suggestions.</p>
+      <form id="contactForm" action="https://formspree.io/f/meornelq" method="POST">
+        <div class="two">
+          <label class="field"><span>Your name</span><input required name="name" placeholder="Alex &amp; Jamie" /></label>
+          <label class="field"><span>Email</span><input required type="email" name="email" placeholder="you@example.com" /></label>
+        </div>
+        <div class="two">
+          <label class="field"><span>Wedding date</span><input type="date" name="date" /></label>
+          <label class="field"><span>Venue / Location</span><input name="venue" placeholder="Battersea Arts Centre, London" /></label>
+        </div>
+        <label class="field"><span>What are you looking for?</span><textarea name="message" rows="5" placeholder="Photography, videography, or both? Visual references welcome."></textarea></label>
+        <input type="hidden" name="_subject" value="TWC Website Enquiry" />
+        <button class="btn primary" type="submit">Send enquiry</button>
+        <p class="note">By submitting you agree to our privacy policy. We reply within 24–48h.</p>
+      </form>
+
+        <div class="social-card" aria-label="Social media">
+          <h4>Prefer socials?</h4>
+          <p class="lead">We love a DM. You can reach us here:</p>
+          <div class="social-actions">
+            <a class="btn ig" href="https://instagram.com/thewedding.crashers" target="_blank" rel="noopener">📸 @thewedding.crashers</a>
+          </div>
+        </div>
+    </div>
+  </section>
+
+</main>
+<script>
+(function(){
+  var bg = document.querySelector('.bg-logo');
+  if(!bg) return;
+  var ticking=false;
+  function onScroll(){
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      var y = window.scrollY * 0.05;
+      bg.style.transform = 'translateY(' + y + 'px)';
+      ticking=false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
