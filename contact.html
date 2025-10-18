@@ -5,8 +5,7 @@
 <title>Contact — The Wedding Crashers</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<style>
-:root{ --bg:#ffffff; --panel:#f7f7f8; --muted:#5b5f66; --text:#111216; --accent:#f4c9d8; --accent-strong:#f19bb8; --max:1180px; }
+<style>:root{ --bg:#ffffff; --panel:#f7f7f8; --muted:#5b5f66; --text:#111216; --accent:#f4c9d8; --accent-strong:#f19bb8; --max:1180px; }
 @font-face{
   font-family:'Hillstown Sans';
   src: url('fonts/Hillstown Sans Clean Demo.otf') format('opentype');
@@ -16,7 +15,7 @@
 }
 *{box-sizing:border-box}
 body{ margin:0; background: var(--bg); color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
-.container{     
+.container{     }
 .bg-logo{ position:fixed; inset:0; background:url('images/logo.svg') center 12%/120vmin no-repeat; opacity:.15; pointer-events:none; z-index:0; will-change:transform; }
 main{ position:relative; z-index:1; }
 .section{ padding:80px 0; }
@@ -42,26 +41,74 @@ input, textarea{ width:100%; padding:10px 12px; border:1px solid #ddd; border-ra
 
 :root { --max:1180px; }
 .container{      
+/* === END NAV FROM PACKAGES === */
+/* === NAV: single source of truth from packages === */
 
 
-/* === NAV FROM PACKAGES (LOCKED) === */
+
+/* === TWC: Uniform pink nav across site === */
+:root { --max:1180px; }
+
+.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
+
+
+
+/* === TWC: Uniform pink nav across site === */
+:root { --max:1180px; }
+
+.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
+/* === end nav === */
+/* === NAV (copied from packages) === */
+
+    :root{ --bg:#ffffff; --panel:#f7f7f8; --muted:#5b5f66; --text:#111216; --accent:#f4c9d8; --accent-strong:#f19bb8; --ring: rgba(241,155,184,.35); --radius:18px; --shadow:0 10px 24px rgba(0,0,0,.08); --max:980px; }
+
+
+
+/* === TWC: Uniform pink nav across site === */
+:root { --max:1180px; }
+
+.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
+
+
+
+/* === TWC: Uniform pink nav across site === */
+:root { --max:1180px; }
+
+.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
+/* === END NAV === */
+/* === NAV (copied from packages) === */
+
+    :root{ --bg:#ffffff; --panel:#f7f7f8; --muted:#5b5f66; --text:#111216; --accent:#f4c9d8; --accent-strong:#f19bb8; --ring: rgba(241,155,184,.35); --radius:18px; --shadow:0 10px 24px rgba(0,0,0,.08); --max:980px; }
+
+
+
+/* === TWC: Uniform pink nav across site === */
+:root { --max:1180px; }
+
+.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
+
+
 /* Typography smoothing for crisp text */
-html, body, .nav, .menu a, h1, h2, h3{
+html, body, .nav, .menu a, h1, h2, h3 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
+
+
 .nav{
   background:#f19bb8 !important;
   position:sticky; top:0; z-index:40;
   border-bottom:0 !important;
 }
+
 .nav-inner{
   height:66px !important;
   display:flex !important;
   align-items:center !important;
   justify-content:center !important;
 }
+
 .menu{
   display:flex !important;
   gap:22px !important;
@@ -69,6 +116,7 @@ html, body, .nav, .menu a, h1, h2, h3{
   justify-content:center !important;
   margin:0 auto !important;
 }
+
 .menu a{
   color:#ffffff !important;
   text-decoration:none !important;
@@ -86,24 +134,38 @@ html, body, .nav, .menu a, h1, h2, h3{
   filter:none !important;
   outline:none !important;
 }
+
 .menu a:hover{ text-decoration:underline !important; }
+
+
+
+/* === TWC: Uniform pink nav across site === */
+:root { --max:1180px; }
+
+.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
+
+
 /* Typography smoothing for crisp text */
-html, body, .nav, .menu a{
+html, body, .nav, .menu a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
+
+
 .nav{
   background:#f19bb8 !important;
   position:sticky; top:0; z-index:40;
   border-bottom:0 !important;
 }
+
 .nav-inner{
   height:66px !important;
   display:flex !important;
   align-items:center !important;
   justify-content:center !important;
 }
+
 .menu{
   display:flex !important;
   gap:22px !important;
@@ -111,6 +173,7 @@ html, body, .nav, .menu a{
   justify-content:center !important;
   margin:0 auto !important;
 }
+
 .menu a{
   color:#ffffff !important;
   text-decoration:none !important;
@@ -128,65 +191,56 @@ html, body, .nav, .menu a{
   filter:none !important;
   outline:none !important;
 }
+
 .menu a:hover{ text-decoration:underline !important; }
-/* === END NAV FROM PACKAGES === */
+/* === END NAV === */
 </style>
 </head>
 <body>
+<nav class="nav" style="background:#f19bb8;position:sticky;top:0;z-index:40;border-bottom:0;display:block;">
+  <div class="container nav-inner" style="height:66px;display:flex;align-items:center;justify-content:center;margin:0 auto;padding:0 20px;max-width:1180px;">
+    <div class="menu" role="navigation" aria-label="Main" style="display:flex;gap:22px;align-items:center;justify-content:center;margin:0 auto;">
+      <a href="index.html" style="color:#fff;text-decoration:none;text-transform:uppercase;letter-spacing:.14em;font-weight:400;font-size:14px;line-height:1;padding:8px 2px;display:inline-block;">Home</a>
+      <a href="packages.html" style="color:#fff;text-decoration:none;text-transform:uppercase;letter-spacing:.14em;font-weight:400;font-size:14px;line-height:1;padding:8px 2px;display:inline-block;">Packages</a>
+      <a href="gallery.html" style="color:#fff;text-decoration:none;text-transform:uppercase;letter-spacing:.14em;font-weight:400;font-size:14px;line-height:1;padding:8px 2px;display:inline-block;">Gallery</a>
+      <a href="video.html" style="color:#fff;text-decoration:none;text-transform:uppercase;letter-spacing:.14em;font-weight:400;font-size:14px;line-height:1;padding:8px 2px;display:inline-block;">Video</a>
+      <a href="contact.html" style="color:#fff;text-decoration:none;text-transform:uppercase;letter-spacing:.14em;font-weight:400;font-size:14px;line-height:1;padding:8px 2px;display:inline-block;">Contact</a>
+    </div>
+  </div>
+</nav>
+
+
+
 <div class="bg-logo" aria-hidden="true"></div>
-<nav class="nav">
-  <div class="container nav-inner">
-    
-    <div class="menu" role="navigation" aria-label="Main">
-      <a href="index.html">Home</a>
-      <a href="packages.html">Packages</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="video.html">Video</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </div>
-
-  </div>
-</nav>
-
-  </div>
-</nav>
 <main>
-  <section class="section contact-hero">
-    <div class="container">
-      <h1>Contact</h1>
-      <p class="lead">Tell us about your day & we'll get back to you.</p>
-    </div>
-  </section>
+  <section class="section contact-hero" style="padding:80px 0 30px;text-align:center;">
+    <div class="container" style="max-width:980px;margin:0 auto;padding:0 20px;">
+      <h1 style="margin:0 0 10px;text-transform:uppercase;letter-spacing:.08em;">Contact</h1>
+      
+</section>
 
   <section id="contact" class="section">
-    <div class="container">
-      <h3>Check our dates</h3>
-      <p class="lead">Tell us a little about your day — we’ll reply with availability and package suggestions.</p>
-      <form id="contactForm" action="https://formspree.io/f/meornelq" method="POST">
-        <div class="two">
-          <label class="field"><span>Your name</span><input required name="name" placeholder="Alex &amp; Jamie" /></label>
-          <label class="field"><span>Email</span><input required type="email" name="email" placeholder="you@example.com" /></label>
-        </div>
-        <div class="two">
-          <label class="field"><span>Wedding date</span><input type="date" name="date" /></label>
-          <label class="field"><span>Venue / Location</span><input name="venue" placeholder="Battersea Arts Centre, London" /></label>
-        </div>
-        <label class="field"><span>What are you looking for?</span><textarea name="message" rows="5" placeholder="Photography, videography, or both? Visual references welcome."></textarea></label>
+    <div class="container" style="max-width:980px;margin:0 auto;padding:0 20px;">
+      
+      
+      <form id="contactForm" action="https://formspree.io/f/meornelq" method="POST" style="max-width:720px;margin:20px auto;background:#f7f7f8;border:1px solid rgba(0,0,0,.06);padding:22px 18px;" style="max-width:720px;margin:20px auto;background:#f7f7f8;border:1px solid rgba(0,0,0,.06);padding:24px;display:flex;flex-direction:column;gap:20px;">
+        <div class="two" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <label class="field" style="display:flex;flex-direction:column;gap:6px;font-weight:600;color:#333;"><span>Your name</span><input required name="name" placeholder="Alex &amp; Jamie" / style="width:100%;padding:12px;border:1px solid #ddd;border-radius:0;font:inherit;" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:0;font:inherit;"></label>
+          <label class="field" style="display:flex;flex-direction:column;gap:6px;font-weight:600;color:#333;"><span>Email</span><input required type="email" name="email" placeholder="you@example.com" / style="width:100%;padding:12px;border:1px solid #ddd;border-radius:0;font:inherit;" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:0;font:inherit;"></label>
+<div class="two" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <label class="field" style="display:flex;flex-direction:column;gap:6px;font-weight:600;color:#333;"><span>Wedding date</span><input type="date" name="date" / style="width:100%;padding:12px;border:1px solid #ddd;border-radius:0;font:inherit;" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:0;font:inherit;"></label>
+          <label class="field" style="display:flex;flex-direction:column;gap:6px;font-weight:600;color:#333;"><span>Venue / Location</span><input name="venue" placeholder="Battersea Arts Centre, London" / style="width:100%;padding:12px;border:1px solid #ddd;border-radius:0;font:inherit;" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:0;font:inherit;"></label>
+<div style="grid-column:1 / -1;"><label class="field" style="display:flex;flex-direction:column;gap:6px;font-weight:600;color:#333;"><span>What are you looking for?</span><textarea name="message" rows="5" placeholder="Photography, videography, or both? Visual references welcome." style="width:100%;padding:12px;border:1px solid #ddd;border-radius:0;font:inherit;" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:0;font:inherit;min-height:120px;"></textarea></label></div>
         <input type="hidden" name="_subject" value="TWC Website Enquiry" />
-        <button class="btn primary" type="submit">Send enquiry</button>
-        <p class="note">By submitting you agree to our privacy policy. We reply within 24–48h.</p>
+        <div style="display:flex;justify-content:center;margin-top:20px;"><button class="btn primary" type="submit" style="height:44px;padding:0 18px;border:0;background:#f19bb8;color:#111;font-weight:700;">Send enquiry</button></div></section>
       </form>
 
-        <div class="social-card" aria-label="Social media">
-          <h4>Prefer socials?</h4>
-          <p class="lead">We love a DM. You can reach us here:</p>
-          <div class="social-actions">
-            <a class="btn ig" href="https://instagram.com/thewedding.crashers" target="_blank" rel="noopener">📸 @thewedding.crashers</a>
-          </div>
-        </div>
-    </div>
-  </section>
+        <div class="social-card" style="max-width:720px;margin:24px auto;background:#fff;border:1px solid rgba(0,0,0,.06);padding:18px 16px;">
+          
+          <p class="lead" style="text-align:center;font-size:1.1rem;margin-bottom:16px;">Follow us on Insta</p>
+          <div class="social-actions" style="display:flex;justify-content:center;">
+            <a class="btn ig" href="https://instagram.com/thewedding.crashers" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 16px;border:1px solid rgba(0,0,0,.08);background:#fff;color:#111;font-weight:600;text-decoration:none;">📸 @thewedding.crashers</a>
+</section>
 
 </main>
 <script>

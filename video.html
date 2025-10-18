@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>The Wedding Crashers — Video</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{ --bg:#ffffff; --text:#111216; --accent:#f4c9d8; --accent-strong:#f19bb8; --max:1180px; }
+
+@font-face{
+  font-family:'Hillstown Sans';
+  src: url('fonts/Hillstown Sans Clean Demo.otf') format('opentype');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{ background: var(--bg); color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
+
+/* Pink nav */
+.nav{
+  background:#f19bb8;
+  position:sticky; top:0; z-index:40;
+  border-bottom:0;
+}
+.nav-inner{
+  height:66px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.menu{
+  display:flex;
+  gap:22px;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto;
+}
+.menu a{
+  color:#ffffff;
+  text-decoration:none;
+  font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-weight:400;
+  font-size:14px;
+  line-height:1;
+  padding:8px 2px;
+}
+.menu a:hover{ text-decoration:underline; }
+
+/* Video container */
+.stage{
+  display:flex;
+  justify-content:center;
+  padding:40px 0;
+}
+.stage video{
+  width:80vw;
+  max-width:1600px;
+  height:auto;
+  display:block;
+  border:0;
+  outline:0;
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="menu" role="navigation" aria-label="Main">
+      <a href="packages.html">Packages</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="video.html">Video</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="stage">
+    <video autoplay muted playsinline controls>
+      <source src="videos/mw.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</main>
+
+</body>
+</html>
