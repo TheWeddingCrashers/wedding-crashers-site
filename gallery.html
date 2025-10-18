@@ -18,41 +18,30 @@
 
 *{box-sizing:border-box}
 body{ margin:0; background: var(--bg); color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
-.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
-.nav{ background:#f19bb8; position:sticky; top:0; z-index:40; }
-.nav-inner{ height:66px; display:flex; align-items:center; justify-content:center; }
-.menu{ display:flex; gap:22px; align-items:center; justify-content:center; }
-.menu a{ color:#fff; text-decoration:none; font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; text-transform:uppercase; letter-spacing:.14em; font-weight:400; padding:8px 2px; }
-.menu a:hover{ text-decoration:underline; }
+.container{     
 .bg-logo{ position:fixed; inset:0; background:url('images/logo.svg') center 12%/120vmin no-repeat; opacity:.15; pointer-events:none; z-index:0; will-change:transform; }
 main{ position:relative; z-index:1; }
 .section{ padding:80px 0; }
 h1,h2,h3{ font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; text-align:center; text-transform:uppercase; letter-spacing:.08em; margin:0 0 10px; }
-.lead{ text-align:center; color:var(--muted); }
-
-/* === Shared pink nav bar === */
-.nav{ background:#f19bb8; position:sticky; top:0; z-index:40; }
-.nav-inner{ height:66px; display:flex; align-items:center; justify-content:center; }
-.menu{ display:flex; gap:22px; align-items:center; justify-content:center; }
-.menu a{ color:#fff; text-decoration:none; font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; text-transform:uppercase; letter-spacing:.14em; font-weight:400; padding:8px 2px; }
-.menu a:hover{ text-decoration:underline; }
+.lead{     
 
 
 /* Background logo */
 .bg-logo{ position:fixed; inset:0; background:url('images/logo.svg') center 12%/120vmin no-repeat; opacity:.75; pointer-events:none; z-index:0; will-change:transform; }
 
 
-/* === TWC: Uniform pink nav across site === */
-:root { --max:1180px; }
-.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
 
+:root { --max:1180px; }
+.container{      
+
+
+/* === NAV FROM PACKAGES (LOCKED) === */
 /* Typography smoothing for crisp text */
-html, body, .nav, .menu a, h1, h2, h3 {
+html, body, .nav, .menu a, h1, h2, h3{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
-
 .nav{
   background:#f19bb8 !important;
   position:sticky; top:0; z-index:40;
@@ -89,7 +78,49 @@ html, body, .nav, .menu a, h1, h2, h3 {
   outline:none !important;
 }
 .menu a:hover{ text-decoration:underline !important; }
-
+/* Typography smoothing for crisp text */
+html, body, .nav, .menu a{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+.nav{
+  background:#f19bb8 !important;
+  position:sticky; top:0; z-index:40;
+  border-bottom:0 !important;
+}
+.nav-inner{
+  height:66px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+.menu{
+  display:flex !important;
+  gap:22px !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin:0 auto !important;
+}
+.menu a{
+  color:#ffffff !important;
+  text-decoration:none !important;
+  font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
+  text-transform:uppercase !important;
+  letter-spacing:.14em !important;
+  font-weight:400 !important;
+  font-size:14px !important;
+  line-height:1 !important;
+  padding:8px 2px !important;
+  border:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  text-shadow:none !important;
+  filter:none !important;
+  outline:none !important;
+}
+.menu a:hover{ text-decoration:underline !important; }
+/* === END NAV FROM PACKAGES === */
 </style>
 </head>
 <body>
@@ -97,8 +128,6 @@ html, body, .nav, .menu a, h1, h2, h3 {
 <nav class="nav">
   <div class="container nav-inner">
     
-<nav class="nav">
-  <div class="container nav-inner">
     <div class="menu" role="navigation" aria-label="Main">
       <a href="index.html">Home</a>
       <a href="packages.html">Packages</a>
@@ -106,6 +135,8 @@ html, body, .nav, .menu a, h1, h2, h3 {
       <a href="video.html">Video</a>
       <a href="contact.html">Contact</a>
     </div>
+  </div>
+
   </div>
 </nav>
 
