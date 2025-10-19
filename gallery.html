@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -218,3 +219,109 @@ html,body{max-width:100%;overflow-x:hidden}
 
 </body>
 </html>
+=======
+---
+# Jekyll front matter so GitHub Pages processes Liquid
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery</title>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <style>
+    :root{ --bg:#111; --fg:#fff; --muted:#aaa; --card:#000; --border:#333; }
+    body{ margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:var(--bg); color:var(--fg); }
+    header{ padding:12px 16px; font-size:14px; opacity:.8 }
+    .grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:12px; padding:16px; max-width:1400px; margin:0 auto; }
+    .item{ position:relative; overflow:hidden; border-radius:8px; background:var(--card); }
+    .item img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .ph{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--muted); border:1px dashed var(--border); }
+    .notice{ max-width:760px; margin:24px auto; padding:16px; border:1px dashed var(--border); border-radius:8px; color:var(--muted); }
+    code{ background:#222; padding:2px 6px; border-radius:4px; }
+  </style>
+</head>
+<body>
+  <header>Gallery</header>
+  <main>
+    <div id="grid" class="grid"></div>
+    <div id="msg" class="notice" style="display:none"></div>
+  </main>
+
+  <!-- Liquid will render this into a JSON array on GitHub Pages. Locally it will contain raw tags. -->
+  <script type="application/json" id="filelist">
+  [
+    {% assign imgs = site.static_files | where_exp: "f", "f.path contains '/images/'" %}
+    {% for f in imgs %}
+      {% assign ext = f.extname | downcase %}
+      {% assign nm = f.name | downcase %}
+      {% if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.webp' %}
+        {% unless nm contains '(' %}
+          "{{ f.path | uri_escape | escape }}"{% unless forloop.last %},{% endunless %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+  ]
+  </script>
+
+  <script>
+    const v = '20251019204922'; // cache-buster
+    const grid = document.getElementById('grid');
+    const msg  = document.getElementById('msg');
+
+    function createItem(src){
+      const wrap = document.createElement('div');
+      wrap.className = 'item';
+
+      const img = document.createElement('img');
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.alt = '';
+      img.src = src + (src.includes('?') ? '&' : '?') + 'v=' + v;
+
+      const ph = document.createElement('div');
+      ph.className = 'ph';
+      ph.textContent = 'Loading…';
+
+      wrap.appendChild(ph);
+      wrap.appendChild(img);
+      img.addEventListener('load', () => ph.remove());
+      img.addEventListener('error', () => wrap.remove());
+      return wrap;
+    }
+
+    function showMessage(html){
+      msg.style.display = 'block';
+      msg.innerHTML = html;
+    }
+
+    // Try to parse the JSON list (works on live GitHub Pages).
+    let files = [];
+    try{
+      const raw = document.getElementById('filelist').textContent.trim();
+      // Quick heuristic: if it still contains Liquid tags, skip parsing.
+      if(raw.includes('{%') || raw.includes('{{')){
+        throw new Error('Liquid not processed');
+      }
+      files = JSON.parse(raw);
+    }catch(e){
+      // Graceful local fallback
+      showMessage(
+        'To see your real images list, open this page on your live site (GitHub Pages) so Jekyll can build it.<br><br>' +
+        'Local preview tip: this file intentionally avoids crashing offline. Push it, then visit ' +
+        '<code>https://YOURDOMAIN/gallery.html?v=' + v + '</code> after deploy.'
+      );
+    }
+
+    if(Array.isArray(files) && files.length){
+      files.forEach(src => grid.appendChild(createItem(src)));
+    }else if(!msg.textContent){
+      showMessage('No images were found in <code>/images</code>.');
+    }
+  </script>
+</body>
+</html>
+>>>>>>> Stashed changes
