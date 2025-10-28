@@ -95,6 +95,7 @@
       .photo-section img{ width:240px; height:240px; }
     }
   </style>
+  <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
 </head>
 
 <body>
@@ -132,5 +133,20 @@
       </div>
     </section>
   </main>
+
+<script>
+(function(){
+  const version = new Date().toISOString().slice(0,13).replace(/\D/g,'');
+  document.querySelectorAll('a[href$=".html"]').forEach(a=>{
+    try{
+      const url = new URL(a.href, location.origin);
+      if(url.origin === location.origin){
+        url.searchParams.set('v', version);
+        a.href = url.toString();
+      }
+    }catch(e){}
+  });
+})();
+</script>
 </body>
 </html>

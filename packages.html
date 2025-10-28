@@ -76,6 +76,7 @@ ul li{margin:6px 0 0 0}
 }
 footer{height:40px}
 </style>
+  <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
 </head>
 <body>
 <nav class="nav">
@@ -156,5 +157,20 @@ footer{height:40px}
 </section>
 </main>
 <footer></footer>
+
+<script>
+(function(){
+  const version = new Date().toISOString().slice(0,13).replace(/\D/g,'');
+  document.querySelectorAll('a[href$=".html"]').forEach(a=>{
+    try{
+      const url = new URL(a.href, location.origin);
+      if(url.origin === location.origin){
+        url.searchParams.set('v', version);
+        a.href = url.toString();
+      }
+    }catch(e){}
+  });
+})();
+</script>
 </body>
 </html>

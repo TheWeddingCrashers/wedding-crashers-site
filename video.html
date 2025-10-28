@@ -96,6 +96,7 @@
       .video-wrapper { width:90%; }
     }
   </style>
+  <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
 </head>
 
 <body>
@@ -131,5 +132,20 @@
 
     <script src="https://player.vimeo.com/api/player.js"></script>
   </main>
+
+<script>
+(function(){
+  const version = new Date().toISOString().slice(0,13).replace(/\D/g,'');
+  document.querySelectorAll('a[href$=".html"]').forEach(a=>{
+    try{
+      const url = new URL(a.href, location.origin);
+      if(url.origin === location.origin){
+        url.searchParams.set('v', version);
+        a.href = url.toString();
+      }
+    }catch(e){}
+  });
+})();
+</script>
 </body>
 </html>
