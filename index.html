@@ -1,196 +1,136 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<head><link as_="image" href="images/logo.svg" rel="preload"/>
-<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Home — The Wedding Crashers</title>
-<style>:root{ --max:1180px; }
+<head>
+  <link as="image" href="images/logo.svg" rel="preload"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Home — The Wedding Crashers</title>
 
-@font-face{
-  font-family:'Hillstown Sans';
-  src: url('fonts/Hillstown Sans Clean Demo.otf') format('opentype');
-  font-weight:400;
-  font-style:normal;
-  font-display:swap;
-}
+  <style>
+    :root { --max:1180px; --pink:#f19bb8; }
 
-.container{ max-width:1180px; margin:0 auto; padding:0 20px; }
+    @font-face {
+      font-family:'Hillstown Sans';
+      src:url('fonts/Hillstown Sans Clean Demo.otf') format('opentype');
+      font-weight:400; font-style:normal; font-display:swap;
+    }
 
+    body {
+      margin:0;
+      font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:#fff;
+    }
 
-/* Background logo */
-.bg-logo{ position:fixed; inset:0; background:url('images/logo.svg') center 12%/120vmin no-repeat; opacity:.75; pointer-events:none; z-index:0; will-change:transform; }
+    .container { max-width:1180px; margin:0 auto; padding:0 20px; }
 
-main{ position:relative; z-index:1; }
-.section{ padding:120px 0; }
-/* === NAV: single source of truth from packages === */
+    /* Nav bar */
+    .nav { background:var(--pink); position:sticky; top:0; z-index:40; }
+    .nav-inner { height:66px; display:flex; align-items:center; justify-content:center; }
+    .menu { display:flex; gap:22px; align-items:center; justify-content:center; }
+    .menu a {
+      color:#fff; text-decoration:none; text-transform:uppercase;
+      letter-spacing:.14em; font-weight:400; padding:8px 2px;
+    }
+    .menu a:hover { text-decoration:underline; }
 
+    /* Background logo */
+    .bg-logo {
+      position:fixed; inset:0;
+      background:url('images/logo.svg') center 12%/120vmin no-repeat;
+      opacity:.75; pointer-events:none; z-index:0;
+    }
 
+    main { position:relative; z-index:1; text-align:center; min-height:calc(100svh - 66px); display:grid; place-items:center; padding:8vh 0; }
 
+    /* --- Hot pink speech box --- */
+    .speech-box {
+      background:rgba(241,155,184,0.92);
+      color:#fff;
+      padding:50px 60px;
+      border-radius:25px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+      max-width:820px;
+      width:min(90vw,820px);
+      text-align:center;
+      backdrop-filter:saturate(1.2) blur(4px);
+    }
+    .kicker {
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.85rem;
+      opacity:.85;
+      margin-bottom:8px;
+    }
+    .headline {
+      font-size:clamp(1.8rem, 2.6vw + 1rem, 2.6rem);
+      line-height:1.25;
+      margin:0 0 14px;
+    }
+    .body {
+      font-size:1.1rem;
+      line-height:1.7;
+      margin:0;
+    }
 
-:root { --max:1180px; }
+    /* --- Photo section for Hunter & Joey --- */
+    .photo-section {
+      margin-top:60px;
+      display:flex;
+      justify-content:center;
+      gap:30px;
+      flex-wrap:wrap;
+    }
+    .photo-section img {
+      width:280px;
+      height:280px;
+      object-fit:cover;
+      border-radius:20px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.15);
+      transition:transform 0.3s ease;
+    }
+    .photo-section img:hover { transform:scale(1.04); }
 
-.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
-
-
-
-
-:root { --max:1180px; }
-
-.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
-/* === end nav === */
-/* === NAV: single source of truth from packages === */
-
-
-
-/* === TWC: Uniform pink nav across site === */
-:root { --max:1180px; }
-
-.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
-
-
-/* Typography smoothing for crisp text */
-html, body, .nav, .menu a, h1, h2, h3 {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-
-.nav{
-  background:#f19bb8 !important;
-  position:sticky; top:0; z-index:40;
-  border-bottom:0 !important;
-}
-
-.nav-inner{
-  height:66px !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-}
-
-.menu{
-  display:flex !important;
-  gap:22px !important;
-  align-items:center !important;
-  justify-content:center !important;
-  margin:0 auto !important;
-}
-
-.menu a{
-  color:#ffffff !important;
-  text-decoration:none !important;
-  font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
-  text-transform:uppercase !important;
-  letter-spacing:.14em !important;
-  font-weight:400 !important;
-  font-size:14px !important;       /* consistent size across pages */
-  line-height:1 !important;
-  padding:8px 2px !important;
-  border:0 !important;
-  background:transparent !important;
-  box-shadow:none !important;
-  text-shadow:none !important;
-  filter:none !important;
-  outline:none !important;
-}
-
-.menu a:hover{ text-decoration:underline !important; }
-
-
-
-/* === TWC: Uniform pink nav across site === */
-:root { --max:1180px; }
-
-.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
-
-
-/* Typography smoothing for crisp text */
-html, body, .nav, .menu a {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-
-.nav{
-  background:#f19bb8 !important;
-  position:sticky; top:0; z-index:40;
-  border-bottom:0 !important;
-}
-
-.nav-inner{
-  height:66px !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-}
-
-.menu{
-  display:flex !important;
-  gap:22px !important;
-  align-items:center !important;
-  justify-content:center !important;
-  margin:0 auto !important;
-}
-
-.menu a{
-  color:#ffffff !important;
-  text-decoration:none !important;
-  font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
-  text-transform:uppercase !important;
-  letter-spacing:.14em !important;
-  font-weight:400 !important;
-  font-size:14px !important;
-  line-height:1 !important;
-  padding:8px 2px !important;
-  border:0 !important;
-  background:transparent !important;
-  box-shadow:none !important;
-  text-shadow:none !important;
-  filter:none !important;
-  outline:none !important;
-}
-
-.menu a:hover{ text-decoration:underline !important; }
-/* === end nav === */</style>
+    @media(max-width:600px){
+      .speech-box{ padding:32px 28px; }
+      .photo-section img{ width:240px; height:240px; }
+    }
+  </style>
 </head>
+
 <body>
-<nav class="nav">
-<div class="container nav-inner">
-<div aria-label="Main" class="menu" role="navigation">
-<a href="index.html">Home</a>
-<a href="packages.html">Packages</a>
-<a href="gallery.html">Gallery</a>
-<a href="video.html">Video</a>
-<a href="contact.html">Contact</a>
-</div>
-</div>
-</nav>
-<div aria-hidden="true" class="bg-logo"></div>
-<main>
-<section class="section">
-<div class="container">
-<!-- Blank slate: background logo only -->
-<div class="hero-intro" style="text-align:center; padding:80px 0;"><h1 style="margin:0 0 10px; text-transform:uppercase; letter-spacing:.08em; font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;">The Wedding Crashers</h1><p class="lead" style="max-width:760px;margin:10px auto 0;color:#5b5f66; font-size:1.1rem;">We’re a photography and videography duo capturing honest, cinematic love stories. Started by two film graduates, we’ve been doing this for 2 years—obsessed with storytelling, beautiful light, and zero cheese.</p></div></div></section>
-</main>
-<script>
-(function(){
-  var bg = document.querySelector('.bg-logo');
-  if(!bg) return;
-  var ticking=false;
-  function onScroll(){
-    if(ticking) return;
-    ticking = true;
-    requestAnimationFrame(function(){
-      var y = window.scrollY * 0.05;
-      bg.style.transform = 'translateY(' + y + 'px)';
-      ticking=false;
-    });
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
-})();
-</script>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="menu" role="navigation" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="packages.html">Packages</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="video.html">Video</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Keep your signature background logo -->
+  <div class="bg-logo"></div>
+
+  <main>
+    <section class="speech-box" aria-label="Intro">
+      <div class="kicker">Hello from Hunter &amp; Joey</div>
+      <h1 class="headline">Capturing love stories with honesty, fun &amp; zero cheese.</h1>
+      <p class="body">
+        We’re two film and Photography graduates turned visual storytellers, working in the wedding industry now for two years, we now look forward to sharing our new adventure with The Wedding Crashers!
+        Our aim is simple... to create films and photos that feel as real and joyful as your day itself. No awkward poses, no forced smiles, just genuine moments captured in a way that’s fun and fresh.
+        All whilst having a laugh and a good time doing it!
+      </p>
+
+      <div class="photo-section">
+        <!-- Replace with your actual photo paths -->
+        <img src="images/hunter.jpg" alt="Hunter — The Wedding Crashers">
+        <img src="images/joey.jpg" alt="Joey — The Wedding Crashers">
+        <!-- Or swap for one joint photo -->
+        <!-- <img src="images/hunter-joey.jpg" alt="Hunter and Joey — The Wedding Crashers"> -->
+      </div>
+    </section>
+  </main>
 </body>
 </html>
