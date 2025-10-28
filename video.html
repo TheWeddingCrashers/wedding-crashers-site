@@ -1,92 +1,135 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<head><link as_="image" href="images/logo.svg" rel="preload"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>The Wedding Crashers — Video</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<style>
-:root{ --bg:#ffffff; --text:#111216; --accent:#f4c9d8; --accent-strong:#f19bb8; --max:1180px; }
+<head>
+  <link as="image" href="images/logo.svg" rel="preload"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>The Wedding Crashers — Video</title>
 
-@font-face{
-  font-family:'Hillstown Sans';
-  src: url('fonts/Hillstown Sans Clean Demo.otf') format('opentype');
-  font-weight:400;
-  font-style:normal;
-  font-display:swap;
-}
+  <style>
+    :root {
+      --bg:#ffffff;
+      --text:#111216;
+      --accent:#f4c9d8;
+      --accent-strong:#f19bb8;
+      --max:1180px;
+    }
 
-*{box-sizing:border-box;margin:0;padding:0;}
-body{ background: var(--bg); color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
+    @font-face {
+      font-family:'Hillstown Sans';
+      src:url('fonts/Hillstown Sans Clean Demo.otf') format('opentype');
+      font-weight:400;
+      font-style:normal;
+      font-display:swap;
+    }
 
-/* Pink nav */
-.nav{
-  background:#f19bb8;
-  position:sticky; top:0; z-index:40;
-  border-bottom:0;
-}
-.nav-inner{
-  height:66px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.menu{
-  display:flex;
-  gap:22px;
-  align-items:center;
-  justify-content:center;
-  margin:0 auto;
-}
-.menu a{
-  color:#ffffff;
-  text-decoration:none;
-  font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  text-transform:uppercase;
-  letter-spacing:.14em;
-  font-weight:400;
-  font-size:14px;
-  line-height:1;
-  padding:8px 2px;
-}
-.menu a:hover{ text-decoration:underline; }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body {
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
 
-/* Video container */
-.stage{
-  display:flex;
-  justify-content:center;
-  padding:40px 0;
-}
-.stage video{
-  width:80vw;
-  max-width:1600px;
-  height:auto;
-  display:block;
-  border:0;
-  outline:0;
-}
-</style>
+    /* Pink nav */
+    .nav {
+      background:#f19bb8;
+      position:sticky;
+      top:0;
+      z-index:40;
+      border-bottom:0;
+    }
+    .nav-inner {
+      height:66px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .menu {
+      display:flex;
+      gap:22px;
+      align-items:center;
+      justify-content:center;
+      margin:0 auto;
+    }
+    .menu a {
+      color:#ffffff;
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-weight:400;
+      font-size:14px;
+      line-height:1;
+      padding:8px 2px;
+    }
+    .menu a:hover { text-decoration:underline; }
+
+    /* Vimeo embed styling */
+    main {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:60px 0;
+      gap:80px;
+    }
+
+    .video-wrapper {
+      width:80%;
+      max-width:1000px;
+      aspect-ratio:16/9;
+      position:relative;
+      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+      border-radius:12px;
+      overflow:hidden;
+    }
+
+    iframe {
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      border:0;
+      border-radius:12px;
+    }
+
+    @media (max-width:700px){
+      main { padding:40px 0; gap:50px; }
+      .video-wrapper { width:90%; }
+    }
+  </style>
 </head>
+
 <body>
-<nav class="nav">
-<div class="nav-inner">
-<div aria-label="Main" class="menu" role="navigation">
-<a href="packages.html">Packages</a>
-<a href="gallery.html">Gallery</a>
-<a href="video.html">Video</a>
-<a href="contact.html">Contact</a>
-</div>
-</div>
-</nav>
-<main>
-<div class="stage">
-<video autoplay="" controls="" muted="" playsinline="">
-<source src="videos/mw.mp4" type="video/mp4"/>
-      Your browser does not support the video tag.
-    </video>
-</div>
-</main>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div aria-label="Main" class="menu" role="navigation">
+        <a href="packages.html">Packages</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="video.html">Video</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Vimeo video 1 -->
+    <div class="video-wrapper">
+      <iframe src="https://player.vimeo.com/video/1131352277?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        title="Catherine Wedding">
+      </iframe>
+    </div>
+
+    <!-- Vimeo video 2 -->
+    <div class="video-wrapper">
+      <iframe src="https://player.vimeo.com/video/1131352151?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        title="2025-10-18 05-07-42">
+      </iframe>
+    </div>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+  </main>
 </body>
 </html>
