@@ -2,15 +2,16 @@
 # Jekyll front matter so GitHub Pages processes Liquid
 ---
 <!DOCTYPE html>
+
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gallery</title>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <style>
+<head><link as_="image" href="images/logo.svg" rel="preload"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gallery</title>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
+<meta content="no-cache" http-equiv="Pragma"/>
+<meta content="0" http-equiv="Expires"/>
+<style>
     :root{ --bg:#111; --fg:#fff; --muted:#aaa; --card:#000; --border:#333; }
     body{ margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:var(--bg); color:var(--fg); }
     header{ padding:12px 16px; font-size:14px; opacity:.8 }
@@ -23,14 +24,13 @@
   </style>
 </head>
 <body>
-  <header>Gallery</header>
-  <main>
-    <div id="grid" class="grid"></div>
-    <div id="msg" class="notice" style="display:none"></div>
-  </main>
-
-  <!-- Liquid will render this into a JSON array on GitHub Pages. Locally it will contain raw tags. -->
-  <script type="application/json" id="filelist">
+<header>Gallery</header>
+<main>
+<div class="grid" id="grid"></div>
+<div class="notice" id="msg" style="display:none"></div>
+</main>
+<!-- Liquid will render this into a JSON array on GitHub Pages. Locally it will contain raw tags. -->
+<script id="filelist" type="application/json">
   [
     {% assign imgs = site.static_files | where_exp: "f", "f.path contains '/images/'" %}
     {% for f in imgs %}
@@ -44,8 +44,7 @@
     {% endfor %}
   ]
   </script>
-
-  <script>
+<script>
     const v = '20251019204922'; // cache-buster
     const grid = document.getElementById('grid');
     const msg  = document.getElementById('msg');
