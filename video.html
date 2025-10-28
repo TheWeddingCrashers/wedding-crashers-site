@@ -1,39 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Video | The Wedding Crashers</title>
-  <link rel="stylesheet" href="style.css" />
+  <link as="image" href="images/logo.svg" rel="preload"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>The Wedding Crashers — Video</title>
+
+  <style>
+    :root {
+      --bg:#ffffff;
+      --text:#111216;
+      --accent:#f4c9d8;
+      --accent-strong:#f19bb8;
+      --max:1180px;
+    }
+
+    @font-face {
+      font-family:'Hillstown Sans';
+      src:url('fonts/Hillstown Sans Clean Demo.otf') format('opentype');
+      font-weight:400;
+      font-style:normal;
+      font-display:swap;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body {
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+
+    /* Pink nav */
+    .nav {
+      background:#f19bb8;
+      position:sticky;
+      top:0;
+      z-index:40;
+      border-bottom:0;
+    }
+    .nav-inner {
+      height:66px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .menu {
+      display:flex;
+      gap:22px;
+      align-items:center;
+      justify-content:center;
+      margin:0 auto;
+    }
+    .menu a {
+      color:#ffffff;
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-weight:400;
+      font-size:14px;
+      line-height:1;
+      padding:8px 2px;
+    }
+    .menu a:hover { text-decoration:underline; }
+
+    /* Vimeo embed styling */
+    main {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:60px 0;
+      gap:80px;
+    }
+
+    .video-wrapper {
+      width:80%;
+      max-width:1000px;
+      aspect-ratio:16/9;
+      position:relative;
+      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+      border-radius:12px;
+      overflow:hidden;
+    }
+
+    iframe {
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      border:0;
+      border-radius:12px;
+    }
+
+    @media (max-width:700px){
+      main { padding:40px 0; gap:50px; }
+      .video-wrapper { width:90%; }
+    }
+  </style>
+  <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
 </head>
+
 <body>
-  <nav class="navbar">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="packages.html">Packages</a></li>
-      <li><a href="video.html" class="active">Video</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div aria-label="Main" class="menu" role="navigation">
+        <a href="packages.html">Packages</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="video.html">Video</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
   </nav>
 
-  <main style="display:flex; justify-content:center; align-items:center; flex-direction:column; padding:40px;">
-    <h2 style="margin-bottom:20px; font-weight:400;">Mike and Hannah</h2>
-    <div style="display:flex; justify-content:center; align-items:center; width:100%;">
+  <main>
+    <!-- Vimeo video 1 (Catherine) -->
+    <div class="video-wrapper">
       <iframe 
-        src="https://player.vimeo.com/video/1131406663?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-        width="80%" 
-        height="500" 
-        frameborder="0" 
-        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-        referrerpolicy="strict-origin-when-cross-origin" 
+        src="https://player.vimeo.com/video/1131352277?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        title="Catherine Wedding">
+      </iframe>
+    </div>
+
+    <!-- Vimeo video 2 (Mike Wedding) -->
+    <div class="video-wrapper">
+      <iframe 
+        src="https://player.vimeo.com/video/1131406663?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
         title="Mike Wedding">
       </iframe>
     </div>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
   </main>
 
-  <footer style="text-align:center; padding:20px; font-size:14px; opacity:0.7;">
-    <p>&copy; 2025 The Wedding Crashers. All rights reserved.</p>
-  </footer>
+<script>
+(function(){
+  const version = new Date().toISOString().slice(0,13).replace(/\D/g,'');
+  document.querySelectorAll('a[href$=".html"]').forEach(a=>{
+    try{
+      const url = new URL(a.href, location.origin);
+      if(url.origin === location.origin){
+        url.searchParams.set('v', version);
+        a.href = url.toString();
+      }
+    }catch(e){}
+  });
+})();
+</script>
 </body>
 </html>
