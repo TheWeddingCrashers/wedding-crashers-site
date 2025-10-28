@@ -6,7 +6,7 @@
   <title>Gallery — The Wedding Crashers</title>
   <meta http-equiv="Cache-Control" content="no-store, must-revalidate"/>
   <style>
-    :root { --max:1180px; --pink:#f19bb8; --gap:12px; }
+    :root { --max:1180px; --pink:#f19bb8; }
     *{box-sizing:border-box}
     body{ margin:0; background:#fff; color:#111216; font-family:-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
     .container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
@@ -18,12 +18,9 @@
     main{ padding:28px 0 60px; }
     header.page h1{ text-align:center; margin:0 0 16px; font-size:24px; letter-spacing:.08em; text-transform:uppercase; }
     .twc-gallery{ max-width:var(--max); margin:0 auto; padding:0 20px; }
-    .twc-gallery-grid{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:var(--gap); }
+    .twc-gallery-grid{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px; }
     @media (max-width:640px){ .twc-gallery-grid{ grid-template-columns:1fr; } }
     .twc-thumb{ width:100%; aspect-ratio:3/2; object-fit:cover; border-radius:10px; display:block; background:#eee; }
-    .twc-item{ position:relative; }
-    .twc-miss{ display:none; position:absolute; inset:auto 0 0 0; background:#ffebe9; color:#b00020; font-size:12px; padding:4px 6px; border-radius:6px; text-align:center; }
-    .twc-item.is-missing .twc-miss{ display:block; }
     /* Lightbox */
     .twc-lightbox{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.9); z-index:9999; }
     .twc-lightbox.open{ display:flex; }
@@ -51,1244 +48,206 @@
     <header class="page container"><h1>Gallery</h1></header>
     <section class="twc-gallery">
       <div class="twc-gallery-grid" id="twcGallery">
-        <figure class="twc-item" data-base="3-1" data-ext="png">
-  <a href="images/3-1.png" data-index="0">
-    <img class="twc-thumb" src="images/3-1.png" alt="Gallery image 1" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-1.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-2" data-ext="png">
-  <a href="images/3-2.png" data-index="1">
-    <img class="twc-thumb" src="images/3-2.png" alt="Gallery image 2" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-2.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-3" data-ext="png">
-  <a href="images/3-3.png" data-index="2">
-    <img class="twc-thumb" src="images/3-3.png" alt="Gallery image 3" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-3.png</figcaption>
-
-</figure>
-<figure class="twc-item" data-base="3-6" data-ext="png">
-  <a href="images/3-6.png" data-index="5">
-    <img class="twc-thumb" src="images/3-6.png" alt="Gallery image 6" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-6.png</figcaption>
-</figure>
-
-<figure class="twc-item" data-base="3-8" data-ext="png">
-  <a href="images/3-8.png" data-index="7">
-    <img class="twc-thumb" src="images/3-8.png" alt="Gallery image 8" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-8.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-9" data-ext="png">
-  <a href="images/3-9.png" data-index="8">
-    <img class="twc-thumb" src="images/3-9.png" alt="Gallery image 9" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-9.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-10" data-ext="png">
-  <a href="images/3-10.png" data-index="9">
-    <img class="twc-thumb" src="images/3-10.png" alt="Gallery image 10" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-10.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-11" data-ext="png">
-  <a href="images/3-11.png" data-index="10">
-    <img class="twc-thumb" src="images/3-11.png" alt="Gallery image 11" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-11.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-12" data-ext="png">
-  <a href="images/3-12.png" data-index="11">
-    <img class="twc-thumb" src="images/3-12.png" alt="Gallery image 12" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-12.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-13" data-ext="png">
-  <a href="images/3-13.png" data-index="12">
-    <img class="twc-thumb" src="images/3-13.png" alt="Gallery image 13" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-13.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-14" data-ext="png">
-  <a href="images/3-14.png" data-index="13">
-    <img class="twc-thumb" src="images/3-14.png" alt="Gallery image 14" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-14.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-15" data-ext="png">
-  <a href="images/3-15.png" data-index="14">
-    <img class="twc-thumb" src="images/3-15.png" alt="Gallery image 15" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-15.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-16" data-ext="png">
-  <a href="images/3-16.png" data-index="15">
-    <img class="twc-thumb" src="images/3-16.png" alt="Gallery image 16" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-16.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-17" data-ext="png">
-  <a href="images/3-17.png" data-index="16">
-    <img class="twc-thumb" src="images/3-17.png" alt="Gallery image 17" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-17.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-18" data-ext="png">
-  <a href="images/3-18.png" data-index="17">
-    <img class="twc-thumb" src="images/3-18.png" alt="Gallery image 18" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-18.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-19" data-ext="png">
-  <a href="images/3-19.png" data-index="18">
-    <img class="twc-thumb" src="images/3-19.png" alt="Gallery image 19" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-19.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-20" data-ext="png">
-  <a href="images/3-20.png" data-index="19">
-    <img class="twc-thumb" src="images/3-20.png" alt="Gallery image 20" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-20.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-21" data-ext="png">
-  <a href="images/3-21.png" data-index="20">
-    <img class="twc-thumb" src="images/3-21.png" alt="Gallery image 21" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-21.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-22" data-ext="png">
-  <a href="images/3-22.png" data-index="21">
-    <img class="twc-thumb" src="images/3-22.png" alt="Gallery image 22" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-22.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-23" data-ext="png">
-  <a href="images/3-23.png" data-index="22">
-    <img class="twc-thumb" src="images/3-23.png" alt="Gallery image 23" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-23.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-24" data-ext="png">
-  <a href="images/3-24.png" data-index="23">
-    <img class="twc-thumb" src="images/3-24.png" alt="Gallery image 24" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-24.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-25" data-ext="png">
-  <a href="images/3-25.png" data-index="24">
-    <img class="twc-thumb" src="images/3-25.png" alt="Gallery image 25" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-25.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-26" data-ext="png">
-  <a href="images/3-26.png" data-index="25">
-    <img class="twc-thumb" src="images/3-26.png" alt="Gallery image 26" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-26.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-27" data-ext="png">
-  <a href="images/3-27.png" data-index="26">
-    <img class="twc-thumb" src="images/3-27.png" alt="Gallery image 27" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-27.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-28" data-ext="png">
-  <a href="images/3-28.png" data-index="27">
-    <img class="twc-thumb" src="images/3-28.png" alt="Gallery image 28" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-28.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-29" data-ext="png">
-  <a href="images/3-29.png" data-index="28">
-    <img class="twc-thumb" src="images/3-29.png" alt="Gallery image 29" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-29.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-30" data-ext="png">
-  <a href="images/3-30.png" data-index="29">
-    <img class="twc-thumb" src="images/3-30.png" alt="Gallery image 30" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-30.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-31" data-ext="png">
-  <a href="images/3-31.png" data-index="30">
-    <img class="twc-thumb" src="images/3-31.png" alt="Gallery image 31" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-31.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-32" data-ext="png">
-  <a href="images/3-32.png" data-index="31">
-    <img class="twc-thumb" src="images/3-32.png" alt="Gallery image 32" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-32.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-33" data-ext="png">
-  <a href="images/3-33.png" data-index="32">
-    <img class="twc-thumb" src="images/3-33.png" alt="Gallery image 33" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-33.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-34" data-ext="png">
-  <a href="images/3-34.png" data-index="33">
-    <img class="twc-thumb" src="images/3-34.png" alt="Gallery image 34" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-34.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-35" data-ext="png">
-  <a href="images/3-35.png" data-index="34">
-    <img class="twc-thumb" src="images/3-35.png" alt="Gallery image 35" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-35.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-36" data-ext="png">
-  <a href="images/3-36.png" data-index="35">
-    <img class="twc-thumb" src="images/3-36.png" alt="Gallery image 36" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-36.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-37" data-ext="png">
-  <a href="images/3-37.png" data-index="36">
-    <img class="twc-thumb" src="images/3-37.png" alt="Gallery image 37" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-37.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-38" data-ext="png">
-  <a href="images/3-38.png" data-index="37">
-    <img class="twc-thumb" src="images/3-38.png" alt="Gallery image 38" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-38.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-39" data-ext="png">
-  <a href="images/3-39.png" data-index="38">
-    <img class="twc-thumb" src="images/3-39.png" alt="Gallery image 39" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-39.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-40" data-ext="png">
-  <a href="images/3-40.png" data-index="39">
-    <img class="twc-thumb" src="images/3-40.png" alt="Gallery image 40" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-40.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-41" data-ext="png">
-  <a href="images/3-41.png" data-index="40">
-    <img class="twc-thumb" src="images/3-41.png" alt="Gallery image 41" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-41.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-42" data-ext="png">
-  <a href="images/3-42.png" data-index="41">
-    <img class="twc-thumb" src="images/3-42.png" alt="Gallery image 42" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-42.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-43" data-ext="png">
-  <a href="images/3-43.png" data-index="42">
-    <img class="twc-thumb" src="images/3-43.png" alt="Gallery image 43" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-43.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-44" data-ext="png">
-  <a href="images/3-44.png" data-index="43">
-    <img class="twc-thumb" src="images/3-44.png" alt="Gallery image 44" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-44.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-45" data-ext="png">
-  <a href="images/3-45.png" data-index="44">
-    <img class="twc-thumb" src="images/3-45.png" alt="Gallery image 45" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-45.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="3-46" data-ext="png">
-  <a href="images/3-46.png" data-index="45">
-    <img class="twc-thumb" src="images/3-46.png" alt="Gallery image 46" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 3-46.png</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-1" data-ext="jpg">
-  <a href="images/4-1.jpg" data-index="46">
-    <img class="twc-thumb" src="images/4-1.jpg" alt="Gallery image 47" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-1.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-2" data-ext="jpg">
-  <a href="images/4-2.jpg" data-index="47">
-    <img class="twc-thumb" src="images/4-2.jpg" alt="Gallery image 48" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-2.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-3" data-ext="jpg">
-  <a href="images/4-3.jpg" data-index="48">
-    <img class="twc-thumb" src="images/4-3.jpg" alt="Gallery image 49" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-3.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-4" data-ext="jpg">
-  <a href="images/4-4.jpg" data-index="49">
-    <img class="twc-thumb" src="images/4-4.jpg" alt="Gallery image 50" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-4.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-5" data-ext="jpg">
-  <a href="images/4-5.jpg" data-index="50">
-    <img class="twc-thumb" src="images/4-5.jpg" alt="Gallery image 51" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-5.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-6" data-ext="jpg">
-  <a href="images/4-6.jpg" data-index="51">
-    <img class="twc-thumb" src="images/4-6.jpg" alt="Gallery image 52" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-6.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-7" data-ext="jpg">
-  <a href="images/4-7.jpg" data-index="52">
-    <img class="twc-thumb" src="images/4-7.jpg" alt="Gallery image 53" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-7.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-8" data-ext="jpg">
-  <a href="images/4-8.jpg" data-index="53">
-    <img class="twc-thumb" src="images/4-8.jpg" alt="Gallery image 54" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-8.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-9" data-ext="jpg">
-  <a href="images/4-9.jpg" data-index="54">
-    <img class="twc-thumb" src="images/4-9.jpg" alt="Gallery image 55" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-9.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-10" data-ext="jpg">
-  <a href="images/4-10.jpg" data-index="55">
-    <img class="twc-thumb" src="images/4-10.jpg" alt="Gallery image 56" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-10.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-11" data-ext="jpg">
-  <a href="images/4-11.jpg" data-index="56">
-    <img class="twc-thumb" src="images/4-11.jpg" alt="Gallery image 57" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-11.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-12" data-ext="jpg">
-  <a href="images/4-12.jpg" data-index="57">
-    <img class="twc-thumb" src="images/4-12.jpg" alt="Gallery image 58" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-12.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-13" data-ext="jpg">
-  <a href="images/4-13.jpg" data-index="58">
-    <img class="twc-thumb" src="images/4-13.jpg" alt="Gallery image 59" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-13.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-14" data-ext="jpg">
-  <a href="images/4-14.jpg" data-index="59">
-    <img class="twc-thumb" src="images/4-14.jpg" alt="Gallery image 60" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-14.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-15" data-ext="jpg">
-  <a href="images/4-15.jpg" data-index="60">
-    <img class="twc-thumb" src="images/4-15.jpg" alt="Gallery image 61" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-15.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-16" data-ext="jpg">
-  <a href="images/4-16.jpg" data-index="61">
-    <img class="twc-thumb" src="images/4-16.jpg" alt="Gallery image 62" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-16.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-17" data-ext="jpg">
-  <a href="images/4-17.jpg" data-index="62">
-    <img class="twc-thumb" src="images/4-17.jpg" alt="Gallery image 63" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-17.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-18" data-ext="jpg">
-  <a href="images/4-18.jpg" data-index="63">
-    <img class="twc-thumb" src="images/4-18.jpg" alt="Gallery image 64" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-18.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-19" data-ext="jpg">
-  <a href="images/4-19.jpg" data-index="64">
-    <img class="twc-thumb" src="images/4-19.jpg" alt="Gallery image 65" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-19.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-20" data-ext="jpg">
-  <a href="images/4-20.jpg" data-index="65">
-    <img class="twc-thumb" src="images/4-20.jpg" alt="Gallery image 66" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-20.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-21" data-ext="jpg">
-  <a href="images/4-21.jpg" data-index="66">
-    <img class="twc-thumb" src="images/4-21.jpg" alt="Gallery image 67" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-21.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-22" data-ext="jpg">
-  <a href="images/4-22.jpg" data-index="67">
-    <img class="twc-thumb" src="images/4-22.jpg" alt="Gallery image 68" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-22.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-23" data-ext="jpg">
-  <a href="images/4-23.jpg" data-index="68">
-    <img class="twc-thumb" src="images/4-23.jpg" alt="Gallery image 69" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-23.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-24" data-ext="jpg">
-  <a href="images/4-24.jpg" data-index="69">
-    <img class="twc-thumb" src="images/4-24.jpg" alt="Gallery image 70" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-24.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="4-25" data-ext="jpg">
-  <a href="images/4-25.jpg" data-index="70">
-    <img class="twc-thumb" src="images/4-25.jpg" alt="Gallery image 71" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 4-25.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-1" data-ext="jpg">
-  <a href="images/5-1.jpg" data-index="71">
-    <img class="twc-thumb" src="images/5-1.jpg" alt="Gallery image 72" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-1.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-2" data-ext="jpg">
-  <a href="images/5-2.jpg" data-index="72">
-    <img class="twc-thumb" src="images/5-2.jpg" alt="Gallery image 73" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-2.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-3" data-ext="jpg">
-  <a href="images/5-3.jpg" data-index="73">
-    <img class="twc-thumb" src="images/5-3.jpg" alt="Gallery image 74" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-3.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-4" data-ext="jpg">
-  <a href="images/5-4.jpg" data-index="74">
-    <img class="twc-thumb" src="images/5-4.jpg" alt="Gallery image 75" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-4.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-5" data-ext="jpg">
-  <a href="images/5-5.jpg" data-index="75">
-    <img class="twc-thumb" src="images/5-5.jpg" alt="Gallery image 76" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-5.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-6" data-ext="jpg">
-  <a href="images/5-6.jpg" data-index="76">
-    <img class="twc-thumb" src="images/5-6.jpg" alt="Gallery image 77" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-6.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-7" data-ext="jpg">
-  <a href="images/5-7.jpg" data-index="77">
-    <img class="twc-thumb" src="images/5-7.jpg" alt="Gallery image 78" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-7.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-8" data-ext="jpg">
-  <a href="images/5-8.jpg" data-index="78">
-    <img class="twc-thumb" src="images/5-8.jpg" alt="Gallery image 79" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-8.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-9" data-ext="jpg">
-  <a href="images/5-9.jpg" data-index="79">
-    <img class="twc-thumb" src="images/5-9.jpg" alt="Gallery image 80" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-9.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-10" data-ext="jpg">
-  <a href="images/5-10.jpg" data-index="80">
-    <img class="twc-thumb" src="images/5-10.jpg" alt="Gallery image 81" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-10.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-11" data-ext="jpg">
-  <a href="images/5-11.jpg" data-index="81">
-    <img class="twc-thumb" src="images/5-11.jpg" alt="Gallery image 82" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-11.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-12" data-ext="jpg">
-  <a href="images/5-12.jpg" data-index="82">
-    <img class="twc-thumb" src="images/5-12.jpg" alt="Gallery image 83" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-12.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-13" data-ext="jpg">
-  <a href="images/5-13.jpg" data-index="83">
-    <img class="twc-thumb" src="images/5-13.jpg" alt="Gallery image 84" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-13.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-14" data-ext="jpg">
-  <a href="images/5-14.jpg" data-index="84">
-    <img class="twc-thumb" src="images/5-14.jpg" alt="Gallery image 85" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-14.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-15" data-ext="jpg">
-  <a href="images/5-15.jpg" data-index="85">
-    <img class="twc-thumb" src="images/5-15.jpg" alt="Gallery image 86" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-15.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-16" data-ext="jpg">
-  <a href="images/5-16.jpg" data-index="86">
-    <img class="twc-thumb" src="images/5-16.jpg" alt="Gallery image 87" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-16.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-17" data-ext="jpg">
-  <a href="images/5-17.jpg" data-index="87">
-    <img class="twc-thumb" src="images/5-17.jpg" alt="Gallery image 88" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-17.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-18" data-ext="jpg">
-  <a href="images/5-18.jpg" data-index="88">
-    <img class="twc-thumb" src="images/5-18.jpg" alt="Gallery image 89" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-18.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-19" data-ext="jpg">
-  <a href="images/5-19.jpg" data-index="89">
-    <img class="twc-thumb" src="images/5-19.jpg" alt="Gallery image 90" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-19.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-20" data-ext="jpg">
-  <a href="images/5-20.jpg" data-index="90">
-    <img class="twc-thumb" src="images/5-20.jpg" alt="Gallery image 91" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-20.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-21" data-ext="jpg">
-  <a href="images/5-21.jpg" data-index="91">
-    <img class="twc-thumb" src="images/5-21.jpg" alt="Gallery image 92" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-21.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-22" data-ext="jpg">
-  <a href="images/5-22.jpg" data-index="92">
-    <img class="twc-thumb" src="images/5-22.jpg" alt="Gallery image 93" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-22.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-23" data-ext="jpg">
-  <a href="images/5-23.jpg" data-index="93">
-    <img class="twc-thumb" src="images/5-23.jpg" alt="Gallery image 94" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-23.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-24" data-ext="jpg">
-  <a href="images/5-24.jpg" data-index="94">
-    <img class="twc-thumb" src="images/5-24.jpg" alt="Gallery image 95" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-24.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-25" data-ext="jpg">
-  <a href="images/5-25.jpg" data-index="95">
-    <img class="twc-thumb" src="images/5-25.jpg" alt="Gallery image 96" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-25.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-26" data-ext="jpg">
-  <a href="images/5-26.jpg" data-index="96">
-    <img class="twc-thumb" src="images/5-26.jpg" alt="Gallery image 97" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-26.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-27" data-ext="jpg">
-  <a href="images/5-27.jpg" data-index="97">
-    <img class="twc-thumb" src="images/5-27.jpg" alt="Gallery image 98" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-27.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-28" data-ext="jpg">
-  <a href="images/5-28.jpg" data-index="98">
-    <img class="twc-thumb" src="images/5-28.jpg" alt="Gallery image 99" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-28.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-29" data-ext="jpg">
-  <a href="images/5-29.jpg" data-index="99">
-    <img class="twc-thumb" src="images/5-29.jpg" alt="Gallery image 100" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-29.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-30" data-ext="jpg">
-  <a href="images/5-30.jpg" data-index="100">
-    <img class="twc-thumb" src="images/5-30.jpg" alt="Gallery image 101" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-30.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="5-31" data-ext="jpg">
-  <a href="images/5-31.jpg" data-index="101">
-    <img class="twc-thumb" src="images/5-31.jpg" alt="Gallery image 102" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 5-31.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-1" data-ext="jpg">
-  <a href="images/6-1.jpg" data-index="102">
-    <img class="twc-thumb" src="images/6-1.jpg" alt="Gallery image 103" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-1.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-2" data-ext="jpg">
-  <a href="images/6-2.jpg" data-index="103">
-    <img class="twc-thumb" src="images/6-2.jpg" alt="Gallery image 104" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-2.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-3" data-ext="jpg">
-  <a href="images/6-3.jpg" data-index="104">
-    <img class="twc-thumb" src="images/6-3.jpg" alt="Gallery image 105" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-3.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-4" data-ext="jpg">
-  <a href="images/6-4.jpg" data-index="105">
-    <img class="twc-thumb" src="images/6-4.jpg" alt="Gallery image 106" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-4.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-5" data-ext="jpg">
-  <a href="images/6-5.jpg" data-index="106">
-    <img class="twc-thumb" src="images/6-5.jpg" alt="Gallery image 107" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-5.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-6" data-ext="jpg">
-  <a href="images/6-6.jpg" data-index="107">
-    <img class="twc-thumb" src="images/6-6.jpg" alt="Gallery image 108" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-6.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-7" data-ext="jpg">
-  <a href="images/6-7.jpg" data-index="108">
-    <img class="twc-thumb" src="images/6-7.jpg" alt="Gallery image 109" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-7.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-8" data-ext="jpg">
-  <a href="images/6-8.jpg" data-index="109">
-    <img class="twc-thumb" src="images/6-8.jpg" alt="Gallery image 110" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-8.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-9" data-ext="jpg">
-  <a href="images/6-9.jpg" data-index="110">
-    <img class="twc-thumb" src="images/6-9.jpg" alt="Gallery image 111" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-9.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-10" data-ext="jpg">
-  <a href="images/6-10.jpg" data-index="111">
-    <img class="twc-thumb" src="images/6-10.jpg" alt="Gallery image 112" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-10.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-11" data-ext="jpg">
-  <a href="images/6-11.jpg" data-index="112">
-    <img class="twc-thumb" src="images/6-11.jpg" alt="Gallery image 113" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-11.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-12" data-ext="jpg">
-  <a href="images/6-12.jpg" data-index="113">
-    <img class="twc-thumb" src="images/6-12.jpg" alt="Gallery image 114" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-12.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-13" data-ext="jpg">
-  <a href="images/6-13.jpg" data-index="114">
-    <img class="twc-thumb" src="images/6-13.jpg" alt="Gallery image 115" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-13.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-14" data-ext="jpg">
-  <a href="images/6-14.jpg" data-index="115">
-    <img class="twc-thumb" src="images/6-14.jpg" alt="Gallery image 116" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-14.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-15" data-ext="jpg">
-  <a href="images/6-15.jpg" data-index="116">
-    <img class="twc-thumb" src="images/6-15.jpg" alt="Gallery image 117" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-15.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-16" data-ext="jpg">
-  <a href="images/6-16.jpg" data-index="117">
-    <img class="twc-thumb" src="images/6-16.jpg" alt="Gallery image 118" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-16.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-17" data-ext="jpg">
-  <a href="images/6-17.jpg" data-index="118">
-    <img class="twc-thumb" src="images/6-17.jpg" alt="Gallery image 119" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-17.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-18" data-ext="jpg">
-  <a href="images/6-18.jpg" data-index="119">
-    <img class="twc-thumb" src="images/6-18.jpg" alt="Gallery image 120" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-18.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-19" data-ext="jpg">
-  <a href="images/6-19.jpg" data-index="120">
-    <img class="twc-thumb" src="images/6-19.jpg" alt="Gallery image 121" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-19.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-20" data-ext="jpg">
-  <a href="images/6-20.jpg" data-index="121">
-    <img class="twc-thumb" src="images/6-20.jpg" alt="Gallery image 122" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-20.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-21" data-ext="jpg">
-  <a href="images/6-21.jpg" data-index="122">
-    <img class="twc-thumb" src="images/6-21.jpg" alt="Gallery image 123" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-21.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-22" data-ext="jpg">
-  <a href="images/6-22.jpg" data-index="123">
-    <img class="twc-thumb" src="images/6-22.jpg" alt="Gallery image 124" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-22.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-23" data-ext="jpg">
-  <a href="images/6-23.jpg" data-index="124">
-    <img class="twc-thumb" src="images/6-23.jpg" alt="Gallery image 125" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-23.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-24" data-ext="jpg">
-  <a href="images/6-24.jpg" data-index="125">
-    <img class="twc-thumb" src="images/6-24.jpg" alt="Gallery image 126" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-24.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-25" data-ext="jpg">
-  <a href="images/6-25.jpg" data-index="126">
-    <img class="twc-thumb" src="images/6-25.jpg" alt="Gallery image 127" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-25.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-26" data-ext="jpg">
-  <a href="images/6-26.jpg" data-index="127">
-    <img class="twc-thumb" src="images/6-26.jpg" alt="Gallery image 128" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-26.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-27" data-ext="jpg">
-  <a href="images/6-27.jpg" data-index="128">
-    <img class="twc-thumb" src="images/6-27.jpg" alt="Gallery image 129" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-27.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-28" data-ext="jpg">
-  <a href="images/6-28.jpg" data-index="129">
-    <img class="twc-thumb" src="images/6-28.jpg" alt="Gallery image 130" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-28.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-29" data-ext="jpg">
-  <a href="images/6-29.jpg" data-index="130">
-    <img class="twc-thumb" src="images/6-29.jpg" alt="Gallery image 131" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-29.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-30" data-ext="jpg">
-  <a href="images/6-30.jpg" data-index="131">
-    <img class="twc-thumb" src="images/6-30.jpg" alt="Gallery image 132" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-30.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-31" data-ext="jpg">
-  <a href="images/6-31.jpg" data-index="132">
-    <img class="twc-thumb" src="images/6-31.jpg" alt="Gallery image 133" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-31.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-32" data-ext="jpg">
-  <a href="images/6-32.jpg" data-index="133">
-    <img class="twc-thumb" src="images/6-32.jpg" alt="Gallery image 134" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-32.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-33" data-ext="jpg">
-  <a href="images/6-33.jpg" data-index="134">
-    <img class="twc-thumb" src="images/6-33.jpg" alt="Gallery image 135" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-33.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-34" data-ext="jpg">
-  <a href="images/6-34.jpg" data-index="135">
-    <img class="twc-thumb" src="images/6-34.jpg" alt="Gallery image 136" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-34.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-35" data-ext="jpg">
-  <a href="images/6-35.jpg" data-index="136">
-    <img class="twc-thumb" src="images/6-35.jpg" alt="Gallery image 137" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-35.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-36" data-ext="jpg">
-  <a href="images/6-36.jpg" data-index="137">
-    <img class="twc-thumb" src="images/6-36.jpg" alt="Gallery image 138" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-36.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-37" data-ext="jpg">
-  <a href="images/6-37.jpg" data-index="138">
-    <img class="twc-thumb" src="images/6-37.jpg" alt="Gallery image 139" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-37.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-38" data-ext="jpg">
-  <a href="images/6-38.jpg" data-index="139">
-    <img class="twc-thumb" src="images/6-38.jpg" alt="Gallery image 140" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-38.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-39" data-ext="jpg">
-  <a href="images/6-39.jpg" data-index="140">
-    <img class="twc-thumb" src="images/6-39.jpg" alt="Gallery image 141" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-39.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-40" data-ext="jpg">
-  <a href="images/6-40.jpg" data-index="141">
-    <img class="twc-thumb" src="images/6-40.jpg" alt="Gallery image 142" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-40.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-41" data-ext="jpg">
-  <a href="images/6-41.jpg" data-index="142">
-    <img class="twc-thumb" src="images/6-41.jpg" alt="Gallery image 143" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-41.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-42" data-ext="jpg">
-  <a href="images/6-42.jpg" data-index="143">
-    <img class="twc-thumb" src="images/6-42.jpg" alt="Gallery image 144" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-42.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-43" data-ext="jpg">
-  <a href="images/6-43.jpg" data-index="144">
-    <img class="twc-thumb" src="images/6-43.jpg" alt="Gallery image 145" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-43.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-44" data-ext="jpg">
-  <a href="images/6-44.jpg" data-index="145">
-    <img class="twc-thumb" src="images/6-44.jpg" alt="Gallery image 146" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-44.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-45" data-ext="jpg">
-  <a href="images/6-45.jpg" data-index="146">
-    <img class="twc-thumb" src="images/6-45.jpg" alt="Gallery image 147" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-45.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-46" data-ext="jpg">
-  <a href="images/6-46.jpg" data-index="147">
-    <img class="twc-thumb" src="images/6-46.jpg" alt="Gallery image 148" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-46.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-47" data-ext="jpg">
-  <a href="images/6-47.jpg" data-index="148">
-    <img class="twc-thumb" src="images/6-47.jpg" alt="Gallery image 149" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-47.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-48" data-ext="jpg">
-  <a href="images/6-48.jpg" data-index="149">
-    <img class="twc-thumb" src="images/6-48.jpg" alt="Gallery image 150" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-48.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-49" data-ext="jpg">
-  <a href="images/6-49.jpg" data-index="150">
-    <img class="twc-thumb" src="images/6-49.jpg" alt="Gallery image 151" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-49.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-50" data-ext="jpg">
-  <a href="images/6-50.jpg" data-index="151">
-    <img class="twc-thumb" src="images/6-50.jpg" alt="Gallery image 152" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-50.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-51" data-ext="jpg">
-  <a href="images/6-51.jpg" data-index="152">
-    <img class="twc-thumb" src="images/6-51.jpg" alt="Gallery image 153" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-51.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-52" data-ext="jpg">
-  <a href="images/6-52.jpg" data-index="153">
-    <img class="twc-thumb" src="images/6-52.jpg" alt="Gallery image 154" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-52.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-53" data-ext="jpg">
-  <a href="images/6-53.jpg" data-index="154">
-    <img class="twc-thumb" src="images/6-53.jpg" alt="Gallery image 155" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-53.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-54" data-ext="jpg">
-  <a href="images/6-54.jpg" data-index="155">
-    <img class="twc-thumb" src="images/6-54.jpg" alt="Gallery image 156" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-54.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-55" data-ext="jpg">
-  <a href="images/6-55.jpg" data-index="156">
-    <img class="twc-thumb" src="images/6-55.jpg" alt="Gallery image 157" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-55.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-56" data-ext="jpg">
-  <a href="images/6-56.jpg" data-index="157">
-    <img class="twc-thumb" src="images/6-56.jpg" alt="Gallery image 158" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-56.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-57" data-ext="jpg">
-  <a href="images/6-57.jpg" data-index="158">
-    <img class="twc-thumb" src="images/6-57.jpg" alt="Gallery image 159" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-57.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-58" data-ext="jpg">
-  <a href="images/6-58.jpg" data-index="159">
-    <img class="twc-thumb" src="images/6-58.jpg" alt="Gallery image 160" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-58.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-59" data-ext="jpg">
-  <a href="images/6-59.jpg" data-index="160">
-    <img class="twc-thumb" src="images/6-59.jpg" alt="Gallery image 161" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-59.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-60" data-ext="jpg">
-  <a href="images/6-60.jpg" data-index="161">
-    <img class="twc-thumb" src="images/6-60.jpg" alt="Gallery image 162" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-60.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-61" data-ext="jpg">
-  <a href="images/6-61.jpg" data-index="162">
-    <img class="twc-thumb" src="images/6-61.jpg" alt="Gallery image 163" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-61.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-62" data-ext="jpg">
-  <a href="images/6-62.jpg" data-index="163">
-    <img class="twc-thumb" src="images/6-62.jpg" alt="Gallery image 164" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-62.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-63" data-ext="jpg">
-  <a href="images/6-63.jpg" data-index="164">
-    <img class="twc-thumb" src="images/6-63.jpg" alt="Gallery image 165" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-63.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-64" data-ext="jpg">
-  <a href="images/6-64.jpg" data-index="165">
-    <img class="twc-thumb" src="images/6-64.jpg" alt="Gallery image 166" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-64.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-65" data-ext="jpg">
-  <a href="images/6-65.jpg" data-index="166">
-    <img class="twc-thumb" src="images/6-65.jpg" alt="Gallery image 167" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-65.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-66" data-ext="jpg">
-  <a href="images/6-66.jpg" data-index="167">
-    <img class="twc-thumb" src="images/6-66.jpg" alt="Gallery image 168" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-66.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-67" data-ext="jpg">
-  <a href="images/6-67.jpg" data-index="168">
-    <img class="twc-thumb" src="images/6-67.jpg" alt="Gallery image 169" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-67.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-68" data-ext="jpg">
-  <a href="images/6-68.jpg" data-index="169">
-    <img class="twc-thumb" src="images/6-68.jpg" alt="Gallery image 170" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-68.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-69" data-ext="jpg">
-  <a href="images/6-69.jpg" data-index="170">
-    <img class="twc-thumb" src="images/6-69.jpg" alt="Gallery image 171" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-69.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-70" data-ext="jpg">
-  <a href="images/6-70.jpg" data-index="171">
-    <img class="twc-thumb" src="images/6-70.jpg" alt="Gallery image 172" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-70.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-71" data-ext="jpg">
-  <a href="images/6-71.jpg" data-index="172">
-    <img class="twc-thumb" src="images/6-71.jpg" alt="Gallery image 173" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-71.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-72" data-ext="jpg">
-  <a href="images/6-72.jpg" data-index="173">
-    <img class="twc-thumb" src="images/6-72.jpg" alt="Gallery image 174" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-72.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-73" data-ext="jpg">
-  <a href="images/6-73.jpg" data-index="174">
-    <img class="twc-thumb" src="images/6-73.jpg" alt="Gallery image 175" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-73.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-74" data-ext="jpg">
-  <a href="images/6-74.jpg" data-index="175">
-    <img class="twc-thumb" src="images/6-74.jpg" alt="Gallery image 176" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-74.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-75" data-ext="jpg">
-  <a href="images/6-75.jpg" data-index="176">
-    <img class="twc-thumb" src="images/6-75.jpg" alt="Gallery image 177" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-75.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-76" data-ext="jpg">
-  <a href="images/6-76.jpg" data-index="177">
-    <img class="twc-thumb" src="images/6-76.jpg" alt="Gallery image 178" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-76.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-77" data-ext="jpg">
-  <a href="images/6-77.jpg" data-index="178">
-    <img class="twc-thumb" src="images/6-77.jpg" alt="Gallery image 179" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-77.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-78" data-ext="jpg">
-  <a href="images/6-78.jpg" data-index="179">
-    <img class="twc-thumb" src="images/6-78.jpg" alt="Gallery image 180" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-78.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-79" data-ext="jpg">
-  <a href="images/6-79.jpg" data-index="180">
-    <img class="twc-thumb" src="images/6-79.jpg" alt="Gallery image 181" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-79.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-80" data-ext="jpg">
-  <a href="images/6-80.jpg" data-index="181">
-    <img class="twc-thumb" src="images/6-80.jpg" alt="Gallery image 182" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-80.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-81" data-ext="jpg">
-  <a href="images/6-81.jpg" data-index="182">
-    <img class="twc-thumb" src="images/6-81.jpg" alt="Gallery image 183" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-81.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-82" data-ext="jpg">
-  <a href="images/6-82.jpg" data-index="183">
-    <img class="twc-thumb" src="images/6-82.jpg" alt="Gallery image 184" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-82.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-83" data-ext="jpg">
-  <a href="images/6-83.jpg" data-index="184">
-    <img class="twc-thumb" src="images/6-83.jpg" alt="Gallery image 185" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-83.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-84" data-ext="jpg">
-  <a href="images/6-84.jpg" data-index="185">
-    <img class="twc-thumb" src="images/6-84.jpg" alt="Gallery image 186" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-84.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-85" data-ext="jpg">
-  <a href="images/6-85.jpg" data-index="186">
-    <img class="twc-thumb" src="images/6-85.jpg" alt="Gallery image 187" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-85.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-86" data-ext="jpg">
-  <a href="images/6-86.jpg" data-index="187">
-    <img class="twc-thumb" src="images/6-86.jpg" alt="Gallery image 188" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-86.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-87" data-ext="jpg">
-  <a href="images/6-87.jpg" data-index="188">
-    <img class="twc-thumb" src="images/6-87.jpg" alt="Gallery image 189" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-87.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-88" data-ext="jpg">
-  <a href="images/6-88.jpg" data-index="189">
-    <img class="twc-thumb" src="images/6-88.jpg" alt="Gallery image 190" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-88.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-89" data-ext="jpg">
-  <a href="images/6-89.jpg" data-index="190">
-    <img class="twc-thumb" src="images/6-89.jpg" alt="Gallery image 191" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-89.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="6-90" data-ext="jpg">
-  <a href="images/6-90.jpg" data-index="191">
-    <img class="twc-thumb" src="images/6-90.jpg" alt="Gallery image 192" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 6-90.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="10-1" data-ext="jpg">
-  <a href="images/10-1.jpg" data-index="192">
-    <img class="twc-thumb" src="images/10-1.jpg" alt="Gallery image 193" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 10-1.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="10-2" data-ext="jpg">
-  <a href="images/10-2.jpg" data-index="193">
-    <img class="twc-thumb" src="images/10-2.jpg" alt="Gallery image 194" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 10-2.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="10-3" data-ext="jpg">
-  <a href="images/10-3.jpg" data-index="194">
-    <img class="twc-thumb" src="images/10-3.jpg" alt="Gallery image 195" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 10-3.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="10-4" data-ext="jpg">
-  <a href="images/10-4.jpg" data-index="195">
-    <img class="twc-thumb" src="images/10-4.jpg" alt="Gallery image 196" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 10-4.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="10-5" data-ext="jpg">
-  <a href="images/10-5.jpg" data-index="196">
-    <img class="twc-thumb" src="images/10-5.jpg" alt="Gallery image 197" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 10-5.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="10-6" data-ext="jpg">
-  <a href="images/10-6.jpg" data-index="197">
-    <img class="twc-thumb" src="images/10-6.jpg" alt="Gallery image 198" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 10-6.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="10-7" data-ext="jpg">
-  <a href="images/10-7.jpg" data-index="198">
-    <img class="twc-thumb" src="images/10-7.jpg" alt="Gallery image 199" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 10-7.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="10-8" data-ext="jpg">
-  <a href="images/10-8.jpg" data-index="199">
-    <img class="twc-thumb" src="images/10-8.jpg" alt="Gallery image 200" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 10-8.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="10-9" data-ext="jpg">
-  <a href="images/10-9.jpg" data-index="200">
-    <img class="twc-thumb" src="images/10-9.jpg" alt="Gallery image 201" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 10-9.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="10-10" data-ext="jpg">
-  <a href="images/10-10.jpg" data-index="201">
-    <img class="twc-thumb" src="images/10-10.jpg" alt="Gallery image 202" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 10-10.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="10-11" data-ext="jpg">
-  <a href="images/10-11.jpg" data-index="202">
-    <img class="twc-thumb" src="images/10-11.jpg" alt="Gallery image 203" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 10-11.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="10-12" data-ext="jpg">
-  <a href="images/10-12.jpg" data-index="203">
-    <img class="twc-thumb" src="images/10-12.jpg" alt="Gallery image 204" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 10-12.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="10-13" data-ext="jpg">
-  <a href="images/10-13.jpg" data-index="204">
-    <img class="twc-thumb" src="images/10-13.jpg" alt="Gallery image 205" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 10-13.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="10-14" data-ext="jpg">
-  <a href="images/10-14.jpg" data-index="205">
-    <img class="twc-thumb" src="images/10-14.jpg" alt="Gallery image 206" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 10-14.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="10-15" data-ext="jpg">
-  <a href="images/10-15.jpg" data-index="206">
-    <img class="twc-thumb" src="images/10-15.jpg" alt="Gallery image 207" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 10-15.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="10-16" data-ext="jpg">
-  <a href="images/10-16.jpg" data-index="207">
-    <img class="twc-thumb" src="images/10-16.jpg" alt="Gallery image 208" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 10-16.jpg</figcaption>
-</figure>
-<figure class="twc-item" data-base="10-17" data-ext="jpg">
-  <a href="images/10-17.jpg" data-index="208">
-    <img class="twc-thumb" src="images/10-17.jpg" alt="Gallery image 209" loading="lazy" decoding="async"/>
-  </a>
-  <figcaption class="twc-miss" aria-hidden="true">Missing: 10-17.jpg</figcaption>
-</figure>
+        <a href="/images/3-1.png" data-index="0"><img class="twc-thumb" src="images/3-1.png" alt="Gallery image 1" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-1.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-2.png" data-index="1"><img class="twc-thumb" src="images/3-2.png" alt="Gallery image 2" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-2.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-3.png" data-index="2"><img class="twc-thumb" src="images/3-3.png" alt="Gallery image 3" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-3.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-8.png" data-index="7"><img class="twc-thumb" src="images/3-8.png" alt="Gallery image 8" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-8.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-10.png" data-index="8"><img class="twc-thumb" src="images/3-10.png" alt="Gallery image 9" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-10.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-12.png" data-index="9"><img class="twc-thumb" src="images/3-12.png" alt="Gallery image 10" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-12.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-14.png" data-index="10"><img class="twc-thumb" src="images/3-14.png" alt="Gallery image 11" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-14.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-16.png" data-index="11"><img class="twc-thumb" src="images/3-16.png" alt="Gallery image 12" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-16.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-17.png" data-index="12"><img class="twc-thumb" src="images/3-17.png" alt="Gallery image 13" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-17.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-18.png" data-index="13"><img class="twc-thumb" src="images/3-18.png" alt="Gallery image 14" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-18.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-19.png" data-index="14"><img class="twc-thumb" src="images/3-19.png" alt="Gallery image 15" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-19.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-20.png" data-index="15"><img class="twc-thumb" src="images/3-20.png" alt="Gallery image 16" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-20.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-22.png" data-index="16"><img class="twc-thumb" src="images/3-22.png" alt="Gallery image 17" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-22.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-23.png" data-index="17"><img class="twc-thumb" src="images/3-23.png" alt="Gallery image 18" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-23.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-24.png" data-index="18"><img class="twc-thumb" src="images/3-24.png" alt="Gallery image 19" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-24.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-25.png" data-index="19"><img class="twc-thumb" src="images/3-25.png" alt="Gallery image 20" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-25.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-26.png" data-index="20"><img class="twc-thumb" src="images/3-26.png" alt="Gallery image 21" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-26.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-27.png" data-index="21"><img class="twc-thumb" src="images/3-27.png" alt="Gallery image 22" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-27.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-28.png" data-index="22"><img class="twc-thumb" src="images/3-28.png" alt="Gallery image 23" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-28.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-29.png" data-index="23"><img class="twc-thumb" src="images/3-29.png" alt="Gallery image 24" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-29.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-30.png" data-index="24"><img class="twc-thumb" src="images/3-30.png" alt="Gallery image 25" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-30.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-31.png" data-index="25"><img class="twc-thumb" src="images/3-31.png" alt="Gallery image 26" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-31.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-32.png" data-index="26"><img class="twc-thumb" src="images/3-32.png" alt="Gallery image 27" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-32.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-33.png" data-index="27"><img class="twc-thumb" src="images/3-33.png" alt="Gallery image 28" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-33.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-34.png" data-index="28"><img class="twc-thumb" src="images/3-34.png" alt="Gallery image 29" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-34.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-35.png" data-index="29"><img class="twc-thumb" src="images/3-35.png" alt="Gallery image 30" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-35.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-36.png" data-index="30"><img class="twc-thumb" src="images/3-36.png" alt="Gallery image 31" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-36.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-37.png" data-index="31"><img class="twc-thumb" src="images/3-37.png" alt="Gallery image 32" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-37.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-38.png" data-index="32"><img class="twc-thumb" src="images/3-38.png" alt="Gallery image 33" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-38.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-39.png" data-index="33"><img class="twc-thumb" src="images/3-39.png" alt="Gallery image 34" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-39.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-40.png" data-index="34"><img class="twc-thumb" src="images/3-40.png" alt="Gallery image 35" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-40.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-41.png" data-index="35"><img class="twc-thumb" src="images/3-41.png" alt="Gallery image 36" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-41.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-42.png" data-index="36"><img class="twc-thumb" src="images/3-42.png" alt="Gallery image 37" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-42.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-43.png" data-index="37"><img class="twc-thumb" src="images/3-43.png" alt="Gallery image 38" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-43.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-44.png" data-index="38"><img class="twc-thumb" src="images/3-44.png" alt="Gallery image 39" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-44.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-45.png" data-index="39"><img class="twc-thumb" src="images/3-45.png" alt="Gallery image 40" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-45.png';this.parentElement.href=this.src;"></a>
+<a href="/images/3-46.png" data-index="40"><img class="twc-thumb" src="images/3-46.png" alt="Gallery image 41" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/3-46.png';this.parentElement.href=this.src;"></a>
+<a href="/images/4-1.jpg" data-index="41"><img class="twc-thumb" src="images/4-1.jpg" alt="Gallery image 42" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-1.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-2.jpg" data-index="42"><img class="twc-thumb" src="images/4-2.jpg" alt="Gallery image 43" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-2.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-3.jpg" data-index="43"><img class="twc-thumb" src="images/4-3.jpg" alt="Gallery image 44" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-3.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-4.jpg" data-index="44"><img class="twc-thumb" src="images/4-4.jpg" alt="Gallery image 45" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-4.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-5.jpg" data-index="45"><img class="twc-thumb" src="images/4-5.jpg" alt="Gallery image 46" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-5.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-6.jpg" data-index="46"><img class="twc-thumb" src="images/4-6.jpg" alt="Gallery image 47" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-6.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-7.jpg" data-index="47"><img class="twc-thumb" src="images/4-7.jpg" alt="Gallery image 48" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-7.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-8.jpg" data-index="48"><img class="twc-thumb" src="images/4-8.jpg" alt="Gallery image 49" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-8.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-9.jpg" data-index="49"><img class="twc-thumb" src="images/4-9.jpg" alt="Gallery image 50" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-9.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-10.jpg" data-index="50"><img class="twc-thumb" src="images/4-10.jpg" alt="Gallery image 51" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-10.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-11.jpg" data-index="51"><img class="twc-thumb" src="images/4-11.jpg" alt="Gallery image 52" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-11.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-12.jpg" data-index="52"><img class="twc-thumb" src="images/4-12.jpg" alt="Gallery image 53" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-12.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-13.jpg" data-index="53"><img class="twc-thumb" src="images/4-13.jpg" alt="Gallery image 54" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-13.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-14.jpg" data-index="54"><img class="twc-thumb" src="images/4-14.jpg" alt="Gallery image 55" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-14.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-15.jpg" data-index="55"><img class="twc-thumb" src="images/4-15.jpg" alt="Gallery image 56" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-15.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-16.jpg" data-index="56"><img class="twc-thumb" src="images/4-16.jpg" alt="Gallery image 57" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-16.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-17.jpg" data-index="57"><img class="twc-thumb" src="images/4-17.jpg" alt="Gallery image 58" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-17.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-18.jpg" data-index="58"><img class="twc-thumb" src="images/4-18.jpg" alt="Gallery image 59" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-18.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-19.jpg" data-index="59"><img class="twc-thumb" src="images/4-19.jpg" alt="Gallery image 60" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-19.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-20.jpg" data-index="60"><img class="twc-thumb" src="images/4-20.jpg" alt="Gallery image 61" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-20.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-21.jpg" data-index="61"><img class="twc-thumb" src="images/4-21.jpg" alt="Gallery image 62" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-21.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-22.jpg" data-index="62"><img class="twc-thumb" src="images/4-22.jpg" alt="Gallery image 63" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-22.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-23.jpg" data-index="63"><img class="twc-thumb" src="images/4-23.jpg" alt="Gallery image 64" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-23.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-24.jpg" data-index="64"><img class="twc-thumb" src="images/4-24.jpg" alt="Gallery image 65" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-24.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/4-25.jpg" data-index="65"><img class="twc-thumb" src="images/4-25.jpg" alt="Gallery image 66" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/4-25.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-1.jpg" data-index="66"><img class="twc-thumb" src="images/5-1.jpg" alt="Gallery image 67" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-1.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-2.jpg" data-index="67"><img class="twc-thumb" src="images/5-2.jpg" alt="Gallery image 68" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-2.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-3.jpg" data-index="68"><img class="twc-thumb" src="images/5-3.jpg" alt="Gallery image 69" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-3.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-4.jpg" data-index="69"><img class="twc-thumb" src="images/5-4.jpg" alt="Gallery image 70" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-4.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-5.jpg" data-index="70"><img class="twc-thumb" src="images/5-5.jpg" alt="Gallery image 71" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-5.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-6.jpg" data-index="71"><img class="twc-thumb" src="images/5-6.jpg" alt="Gallery image 72" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-6.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-7.jpg" data-index="72"><img class="twc-thumb" src="images/5-7.jpg" alt="Gallery image 73" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-7.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-8.jpg" data-index="73"><img class="twc-thumb" src="images/5-8.jpg" alt="Gallery image 74" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-8.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-9.jpg" data-index="74"><img class="twc-thumb" src="images/5-9.jpg" alt="Gallery image 75" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-9.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-10.jpg" data-index="75"><img class="twc-thumb" src="images/5-10.jpg" alt="Gallery image 76" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-10.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-11.jpg" data-index="76"><img class="twc-thumb" src="images/5-11.jpg" alt="Gallery image 77" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-11.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-12.jpg" data-index="77"><img class="twc-thumb" src="images/5-12.jpg" alt="Gallery image 78" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-12.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-13.jpg" data-index="78"><img class="twc-thumb" src="images/5-13.jpg" alt="Gallery image 79" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-13.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-14.jpg" data-index="79"><img class="twc-thumb" src="images/5-14.jpg" alt="Gallery image 80" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-14.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-15.jpg" data-index="80"><img class="twc-thumb" src="images/5-15.jpg" alt="Gallery image 81" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-15.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-16.jpg" data-index="81"><img class="twc-thumb" src="images/5-16.jpg" alt="Gallery image 82" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-16.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-17.jpg" data-index="82"><img class="twc-thumb" src="images/5-17.jpg" alt="Gallery image 83" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-17.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-18.jpg" data-index="83"><img class="twc-thumb" src="images/5-18.jpg" alt="Gallery image 84" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-18.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-19.jpg" data-index="84"><img class="twc-thumb" src="images/5-19.jpg" alt="Gallery image 85" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-19.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-20.jpg" data-index="85"><img class="twc-thumb" src="images/5-20.jpg" alt="Gallery image 86" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-20.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-21.jpg" data-index="86"><img class="twc-thumb" src="images/5-21.jpg" alt="Gallery image 87" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-21.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-22.jpg" data-index="87"><img class="twc-thumb" src="images/5-22.jpg" alt="Gallery image 88" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-22.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-23.jpg" data-index="88"><img class="twc-thumb" src="images/5-23.jpg" alt="Gallery image 89" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-23.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-24.jpg" data-index="89"><img class="twc-thumb" src="images/5-24.jpg" alt="Gallery image 90" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-24.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-25.jpg" data-index="90"><img class="twc-thumb" src="images/5-25.jpg" alt="Gallery image 91" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-25.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-26.jpg" data-index="91"><img class="twc-thumb" src="images/5-26.jpg" alt="Gallery image 92" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-26.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-27.jpg" data-index="92"><img class="twc-thumb" src="images/5-27.jpg" alt="Gallery image 93" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-27.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-28.jpg" data-index="93"><img class="twc-thumb" src="images/5-28.jpg" alt="Gallery image 94" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-28.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-29.jpg" data-index="94"><img class="twc-thumb" src="images/5-29.jpg" alt="Gallery image 95" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-29.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-30.jpg" data-index="95"><img class="twc-thumb" src="images/5-30.jpg" alt="Gallery image 96" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-30.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/5-31.jpg" data-index="96"><img class="twc-thumb" src="images/5-31.jpg" alt="Gallery image 97" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/5-31.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-1.jpg" data-index="97"><img class="twc-thumb" src="images/6-1.jpg" alt="Gallery image 98" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-1.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-2.jpg" data-index="98"><img class="twc-thumb" src="images/6-2.jpg" alt="Gallery image 99" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-2.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-3.jpg" data-index="99"><img class="twc-thumb" src="images/6-3.jpg" alt="Gallery image 100" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-3.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-4.jpg" data-index="100"><img class="twc-thumb" src="images/6-4.jpg" alt="Gallery image 101" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-4.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-5.jpg" data-index="101"><img class="twc-thumb" src="images/6-5.jpg" alt="Gallery image 102" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-5.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-6.jpg" data-index="102"><img class="twc-thumb" src="images/6-6.jpg" alt="Gallery image 103" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-6.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-7.jpg" data-index="103"><img class="twc-thumb" src="images/6-7.jpg" alt="Gallery image 104" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-7.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-8.jpg" data-index="104"><img class="twc-thumb" src="images/6-8.jpg" alt="Gallery image 105" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-8.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-9.jpg" data-index="105"><img class="twc-thumb" src="images/6-9.jpg" alt="Gallery image 106" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-9.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-10.jpg" data-index="106"><img class="twc-thumb" src="images/6-10.jpg" alt="Gallery image 107" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-10.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-11.jpg" data-index="107"><img class="twc-thumb" src="images/6-11.jpg" alt="Gallery image 108" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-11.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-12.jpg" data-index="108"><img class="twc-thumb" src="images/6-12.jpg" alt="Gallery image 109" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-12.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-13.jpg" data-index="109"><img class="twc-thumb" src="images/6-13.jpg" alt="Gallery image 110" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-13.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-14.jpg" data-index="110"><img class="twc-thumb" src="images/6-14.jpg" alt="Gallery image 111" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-14.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-15.jpg" data-index="111"><img class="twc-thumb" src="images/6-15.jpg" alt="Gallery image 112" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-15.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-16.jpg" data-index="112"><img class="twc-thumb" src="images/6-16.jpg" alt="Gallery image 113" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-16.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-17.jpg" data-index="113"><img class="twc-thumb" src="images/6-17.jpg" alt="Gallery image 114" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-17.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-18.jpg" data-index="114"><img class="twc-thumb" src="images/6-18.jpg" alt="Gallery image 115" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-18.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-19.jpg" data-index="115"><img class="twc-thumb" src="images/6-19.jpg" alt="Gallery image 116" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-19.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-20.jpg" data-index="116"><img class="twc-thumb" src="images/6-20.jpg" alt="Gallery image 117" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-20.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-21.jpg" data-index="117"><img class="twc-thumb" src="images/6-21.jpg" alt="Gallery image 118" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-21.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-22.jpg" data-index="118"><img class="twc-thumb" src="images/6-22.jpg" alt="Gallery image 119" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-22.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-23.jpg" data-index="119"><img class="twc-thumb" src="images/6-23.jpg" alt="Gallery image 120" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-23.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-24.jpg" data-index="120"><img class="twc-thumb" src="images/6-24.jpg" alt="Gallery image 121" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-24.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-25.jpg" data-index="121"><img class="twc-thumb" src="images/6-25.jpg" alt="Gallery image 122" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-25.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-26.jpg" data-index="122"><img class="twc-thumb" src="images/6-26.jpg" alt="Gallery image 123" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-26.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-27.jpg" data-index="123"><img class="twc-thumb" src="images/6-27.jpg" alt="Gallery image 124" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-27.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-28.jpg" data-index="124"><img class="twc-thumb" src="images/6-28.jpg" alt="Gallery image 125" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-28.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-29.jpg" data-index="125"><img class="twc-thumb" src="images/6-29.jpg" alt="Gallery image 126" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-29.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-30.jpg" data-index="126"><img class="twc-thumb" src="images/6-30.jpg" alt="Gallery image 127" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-30.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-31.jpg" data-index="127"><img class="twc-thumb" src="images/6-31.jpg" alt="Gallery image 128" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-31.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-32.jpg" data-index="128"><img class="twc-thumb" src="images/6-32.jpg" alt="Gallery image 129" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-32.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-33.jpg" data-index="129"><img class="twc-thumb" src="images/6-33.jpg" alt="Gallery image 130" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-33.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-34.jpg" data-index="130"><img class="twc-thumb" src="images/6-34.jpg" alt="Gallery image 131" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-34.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-35.jpg" data-index="131"><img class="twc-thumb" src="images/6-35.jpg" alt="Gallery image 132" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-35.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-36.jpg" data-index="132"><img class="twc-thumb" src="images/6-36.jpg" alt="Gallery image 133" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-36.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-37.jpg" data-index="133"><img class="twc-thumb" src="images/6-37.jpg" alt="Gallery image 134" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-37.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-38.jpg" data-index="134"><img class="twc-thumb" src="images/6-38.jpg" alt="Gallery image 135" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-38.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-39.jpg" data-index="135"><img class="twc-thumb" src="images/6-39.jpg" alt="Gallery image 136" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-39.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-40.jpg" data-index="136"><img class="twc-thumb" src="images/6-40.jpg" alt="Gallery image 137" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-40.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-41.jpg" data-index="137"><img class="twc-thumb" src="images/6-41.jpg" alt="Gallery image 138" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-41.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-42.jpg" data-index="138"><img class="twc-thumb" src="images/6-42.jpg" alt="Gallery image 139" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-42.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-43.jpg" data-index="139"><img class="twc-thumb" src="images/6-43.jpg" alt="Gallery image 140" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-43.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-44.jpg" data-index="140"><img class="twc-thumb" src="images/6-44.jpg" alt="Gallery image 141" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-44.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-45.jpg" data-index="141"><img class="twc-thumb" src="images/6-45.jpg" alt="Gallery image 142" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-45.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-46.jpg" data-index="142"><img class="twc-thumb" src="images/6-46.jpg" alt="Gallery image 143" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-46.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-47.jpg" data-index="143"><img class="twc-thumb" src="images/6-47.jpg" alt="Gallery image 144" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-47.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-48.jpg" data-index="144"><img class="twc-thumb" src="images/6-48.jpg" alt="Gallery image 145" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-48.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-49.jpg" data-index="145"><img class="twc-thumb" src="images/6-49.jpg" alt="Gallery image 146" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-49.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-50.jpg" data-index="146"><img class="twc-thumb" src="images/6-50.jpg" alt="Gallery image 147" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-50.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-51.jpg" data-index="147"><img class="twc-thumb" src="images/6-51.jpg" alt="Gallery image 148" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-51.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-52.jpg" data-index="148"><img class="twc-thumb" src="images/6-52.jpg" alt="Gallery image 149" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-52.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-53.jpg" data-index="149"><img class="twc-thumb" src="images/6-53.jpg" alt="Gallery image 150" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-53.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-54.jpg" data-index="150"><img class="twc-thumb" src="images/6-54.jpg" alt="Gallery image 151" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-54.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-55.jpg" data-index="151"><img class="twc-thumb" src="images/6-55.jpg" alt="Gallery image 152" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-55.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-56.jpg" data-index="152"><img class="twc-thumb" src="images/6-56.jpg" alt="Gallery image 153" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-56.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-57.jpg" data-index="153"><img class="twc-thumb" src="images/6-57.jpg" alt="Gallery image 154" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-57.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-58.jpg" data-index="154"><img class="twc-thumb" src="images/6-58.jpg" alt="Gallery image 155" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-58.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-59.jpg" data-index="155"><img class="twc-thumb" src="images/6-59.jpg" alt="Gallery image 156" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-59.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-60.jpg" data-index="156"><img class="twc-thumb" src="images/6-60.jpg" alt="Gallery image 157" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-60.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-61.jpg" data-index="157"><img class="twc-thumb" src="images/6-61.jpg" alt="Gallery image 158" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-61.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-62.jpg" data-index="158"><img class="twc-thumb" src="images/6-62.jpg" alt="Gallery image 159" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-62.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-63.jpg" data-index="159"><img class="twc-thumb" src="images/6-63.jpg" alt="Gallery image 160" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-63.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-64.jpg" data-index="160"><img class="twc-thumb" src="images/6-64.jpg" alt="Gallery image 161" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-64.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-65.jpg" data-index="161"><img class="twc-thumb" src="images/6-65.jpg" alt="Gallery image 162" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-65.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-66.jpg" data-index="162"><img class="twc-thumb" src="images/6-66.jpg" alt="Gallery image 163" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-66.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-67.jpg" data-index="163"><img class="twc-thumb" src="images/6-67.jpg" alt="Gallery image 164" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-67.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-68.jpg" data-index="164"><img class="twc-thumb" src="images/6-68.jpg" alt="Gallery image 165" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-68.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-69.jpg" data-index="165"><img class="twc-thumb" src="images/6-69.jpg" alt="Gallery image 166" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-69.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-70.jpg" data-index="166"><img class="twc-thumb" src="images/6-70.jpg" alt="Gallery image 167" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-70.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-71.jpg" data-index="167"><img class="twc-thumb" src="images/6-71.jpg" alt="Gallery image 168" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-71.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-72.jpg" data-index="168"><img class="twc-thumb" src="images/6-72.jpg" alt="Gallery image 169" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-72.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-73.jpg" data-index="169"><img class="twc-thumb" src="images/6-73.jpg" alt="Gallery image 170" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-73.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-74.jpg" data-index="170"><img class="twc-thumb" src="images/6-74.jpg" alt="Gallery image 171" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-74.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-75.jpg" data-index="171"><img class="twc-thumb" src="images/6-75.jpg" alt="Gallery image 172" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-75.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-76.jpg" data-index="172"><img class="twc-thumb" src="images/6-76.jpg" alt="Gallery image 173" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-76.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-77.jpg" data-index="173"><img class="twc-thumb" src="images/6-77.jpg" alt="Gallery image 174" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-77.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-78.jpg" data-index="174"><img class="twc-thumb" src="images/6-78.jpg" alt="Gallery image 175" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-78.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-79.jpg" data-index="175"><img class="twc-thumb" src="images/6-79.jpg" alt="Gallery image 176" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-79.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-80.jpg" data-index="176"><img class="twc-thumb" src="images/6-80.jpg" alt="Gallery image 177" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-80.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-81.jpg" data-index="177"><img class="twc-thumb" src="images/6-81.jpg" alt="Gallery image 178" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-81.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-82.jpg" data-index="178"><img class="twc-thumb" src="images/6-82.jpg" alt="Gallery image 179" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-82.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-83.jpg" data-index="179"><img class="twc-thumb" src="images/6-83.jpg" alt="Gallery image 180" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-83.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-84.jpg" data-index="180"><img class="twc-thumb" src="images/6-84.jpg" alt="Gallery image 181" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-84.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-85.jpg" data-index="181"><img class="twc-thumb" src="images/6-85.jpg" alt="Gallery image 182" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-85.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-86.jpg" data-index="182"><img class="twc-thumb" src="images/6-86.jpg" alt="Gallery image 183" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-86.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-87.jpg" data-index="183"><img class="twc-thumb" src="images/6-87.jpg" alt="Gallery image 184" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-87.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-88.jpg" data-index="184"><img class="twc-thumb" src="images/6-88.jpg" alt="Gallery image 185" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-88.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-89.jpg" data-index="185"><img class="twc-thumb" src="images/6-89.jpg" alt="Gallery image 186" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-89.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/6-90.jpg" data-index="186"><img class="twc-thumb" src="images/6-90.jpg" alt="Gallery image 187" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/6-90.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/10-1.jpg" data-index="187"><img class="twc-thumb" src="images/10-1.jpg" alt="Gallery image 188" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/10-1.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/10-2.jpg" data-index="188"><img class="twc-thumb" src="images/10-2.jpg" alt="Gallery image 189" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/10-2.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/10-3.jpg" data-index="189"><img class="twc-thumb" src="images/10-3.jpg" alt="Gallery image 190" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/10-3.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/10-4.jpg" data-index="190"><img class="twc-thumb" src="images/10-4.jpg" alt="Gallery image 191" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/10-4.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/10-5.jpg" data-index="191"><img class="twc-thumb" src="images/10-5.jpg" alt="Gallery image 192" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/10-5.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/10-6.jpg" data-index="192"><img class="twc-thumb" src="images/10-6.jpg" alt="Gallery image 193" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/10-6.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/10-7.jpg" data-index="193"><img class="twc-thumb" src="images/10-7.jpg" alt="Gallery image 194" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/10-7.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/10-8.jpg" data-index="194"><img class="twc-thumb" src="images/10-8.jpg" alt="Gallery image 195" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/10-8.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/10-9.jpg" data-index="195"><img class="twc-thumb" src="images/10-9.jpg" alt="Gallery image 196" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/10-9.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/10-10.jpg" data-index="196"><img class="twc-thumb" src="images/10-10.jpg" alt="Gallery image 197" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/10-10.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/10-11.jpg" data-index="197"><img class="twc-thumb" src="images/10-11.jpg" alt="Gallery image 198" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/10-11.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/10-12.jpg" data-index="198"><img class="twc-thumb" src="images/10-12.jpg" alt="Gallery image 199" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/10-12.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/10-13.jpg" data-index="199"><img class="twc-thumb" src="images/10-13.jpg" alt="Gallery image 200" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/10-13.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/10-14.jpg" data-index="200"><img class="twc-thumb" src="images/10-14.jpg" alt="Gallery image 201" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/10-14.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/10-15.jpg" data-index="201"><img class="twc-thumb" src="images/10-15.jpg" alt="Gallery image 202" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/10-15.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/10-16.jpg" data-index="202"><img class="twc-thumb" src="images/10-16.jpg" alt="Gallery image 203" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/10-16.jpg';this.parentElement.href=this.src;"></a>
+<a href="/images/10-17.jpg" data-index="203"><img class="twc-thumb" src="images/10-17.jpg" alt="Gallery image 204" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/images/10-17.jpg';this.parentElement.href=this.src;"></a>
       </div>
     </section>
   </main>
@@ -1301,54 +260,7 @@
   </div>
 
   <script>
-    // ===== Auto-fallbacks for path/extension mismatches =====
-    (function(){
-      const ROOTS = ['images/', '/images/']; // relative then absolute
-      const EXT_ORDER = [
-        '{:ext}',
-        // common case toggles
-        (e)=> e.toLowerCase() === 'jpg' ? 'JPG' : e.toUpperCase(),
-        (e)=> e.toLowerCase() === 'jpg' ? 'jpeg' : (e.toLowerCase()==='png' ? 'PNG' : e)
-      ];
-      const figList = Array.from(document.querySelectorAll('.twc-item'));
-      figList.forEach(fig => {
-        const base = fig.dataset.base; // like '6-42'
-        const desired = fig.dataset.ext; // 'jpg' or 'png'
-        const a = fig.querySelector('a');
-        const img = fig.querySelector('img');
-        let tried = [];
-        // Build candidate src list
-        const candidates = [];
-        ROOTS.forEach(root => {
-          EXT_ORDER.forEach(rule => {
-            const ext = typeof rule === 'function' ? rule(desired) : desired;
-            const src = root + base + '.' + ext;
-            if(!tried.includes(src)) { candidates.push(src); tried.push(src); }
-          });
-          // For 3-*, if ext isn't png, also try png fallbacks
-          if (base.startsWith('3-') && desired.toLowerCase()!='png') {
-            ['png','PNG'].forEach(px => {
-              const src = root + base + '.' + px;
-              if(!tried.includes(src)) { candidates.push(src); tried.push(src); }
-            });
-          }
-        });
-
-        function tryNext(i){ 
-          if(i>=candidates.length){ fig.classList.add('is-missing'); return; }
-          const src = candidates[i];
-          img.onerror = function(){ tryNext(i+1); };
-          img.onload = function(){ 
-            a.href = src; fig.classList.remove('is-missing'); 
-            img.onerror = null; img.onload = null;
-          };
-          img.src = src;
-        }
-        tryNext(0);
-      });
-    })();
-
-    // ===== Lightbox =====
+    // Lightbox
     (function(){
       const links = Array.from(document.querySelectorAll('#twcGallery a'));
       const lb   = document.getElementById('twcLightbox');
