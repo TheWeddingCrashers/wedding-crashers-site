@@ -12,7 +12,7 @@
     *{ box-sizing:border-box; }
     body{ margin:0; background:var(--bg); color:var(--text); font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
 
-    /* Pink nav (consistent with other pages) */
+    /* Pink nav */
     .nav{ background:var(--pink); position:sticky; top:0; z-index:40; }
     .nav-inner{ height:66px; display:flex; align-items:center; justify-content:center; }
     .menu{ display:flex; gap:22px; align-items:center; justify-content:center; }
@@ -23,43 +23,21 @@
 
     .intro{ text-align:center; margin:8px 0 20px; color:var(--muted); font-size:14px; }
 
-    /* Responsive masonry-ish grid */
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap:14px;
-    }
-    .card{
-      position:relative; overflow:hidden; border-radius:14px; background:#f7f7f7;
-      box-shadow:0 8px 24px rgba(0,0,0,.06);
-      cursor:pointer;
-    }
+    /* Responsive grid */
+    .grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:14px; }
+    .card{ position:relative; overflow:hidden; border-radius:14px; background:#f7f7f7; box-shadow:0 8px 24px rgba(0,0,0,.06); cursor:pointer; }
     .card img{ width:100%; height:100%; object-fit:cover; display:block; aspect-ratio: 3/2; }
-    .ph{
-      position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-      font-size:12px; color:#999; background:#fafafa; border:1px dashed #e5e5e5;
-    }
+    .ph{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:12px; color:#999; background:#fafafa; border:1px dashed #e5e5e5; }
 
     /* Lightbox */
-    .lightbox{
-      position:fixed; inset:0; background:rgba(0,0,0,.85);
-      display:none; align-items:center; justify-content:center; padding:24px; z-index:1000;
-    }
+    .lightbox{ position:fixed; inset:0; background:rgba(0,0,0,.85); display:none; align-items:center; justify-content:center; padding:24px; z-index:1000; }
     .lightbox.open{ display:flex; }
     .lightbox img{ max-width:92vw; max-height:92vh; border-radius:10px; box-shadow:0 20px 60px rgba(0,0,0,.4); }
-    .lb-close{
-      position:fixed; top:16px; right:16px; background:#fff; border:none; border-radius:999px;
-      width:40px; height:40px; font-size:20px; cursor:pointer; box-shadow:0 6px 20px rgba(0,0,0,.2);
-    }
-    .lb-prev, .lb-next{
-      position:fixed; top:50%; transform:translateY(-50%);
-      background:#fff; border:none; border-radius:999px; width:48px; height:48px;
-      font-size:18px; cursor:pointer; box-shadow:0 6px 20px rgba(0,0,0,.2);
-    }
-    .lb-prev{ left:16px; }
-    .lb-next{ right:16px; }
+    .lb-close{ position:fixed; top:16px; right:16px; background:#fff; border:none; border-radius:999px; width:40px; height:40px; font-size:20px; cursor:pointer; box-shadow:0 6px 20px rgba(0,0,0,.2); }
+    .lb-prev, .lb-next{ position:fixed; top:50%; transform:translateY(-50%); background:#fff; border:none; border-radius:999px; width:48px; height:48px; font-size:18px; cursor:pointer; box-shadow:0 6px 20px rgba(0,0,0,.2); }
+    .lb-prev{ left:16px; } .lb-next{ right:16px; }
 
-    .note{ margin:18px auto; max-width:780px; color:#666; background:#fff5f9; border:1px solid #ffd3e3; padding:12px 14px; border-radius:10px; }
+    .note{ margin:18px auto; max-width:780px; color:#666; background:#fff5f9; border:1px solid #ffd3e3; padding:12px 14px; border-radius:10px; display:none; }
   </style>
 </head>
 <body>
@@ -78,10 +56,7 @@
   <main>
     <p class="intro">Tap any image to view larger.</p>
     <div id="grid" class="grid" aria-live="polite"></div>
-    <div id="emptyNote" class="note" style="display:none">
-      No images loaded yet. If your files are named like <code>images/3-1.png</code> to <code>images/3-46.png</code> (or <code>.jpg</code>), they’ll be picked up automatically.
-      If you use different names, tell me and I’ll wire them in.
-    </div>
+    <div id="emptyNote" class="note">No images found with the usual names. If your files use different names/paths, tell me a couple of examples and I’ll wire them in.</div>
   </main>
 
   <!-- Lightbox -->
@@ -93,15 +68,8 @@
   </div>
 
   <script>
-    // ======================
-    // Auto-detect images
-    // ======================
-    // We try common patterns you’ve used:
-    //   images/3-1.png … images/3-60.png (or .jpg)
-    //   images/(1).jpg … images/(60).jpg
-    // Only images that actually exist will render.
-
-    const MAX = 60; // increase if you have more
+    // Autodetect images using your common patterns (increase MAX if needed)
+    const MAX = 80; // try up to 80 numbers
     const patterns = [
       i => `images/3-${i}.png`,
       i => `images/3-${i}.jpg`,
@@ -110,99 +78,73 @@
       i => `images/${i}.png`
     ];
     const v = Date.now().toString().slice(0,10); // cache-buster
-
     const grid = document.getElementById('grid');
     const emptyNote = document.getElementById('emptyNote');
-
     const found = [];
 
-    function tryLoad(srcs, onFound){
-      let idx = 0;
+    function testOne(src, ondone){
       const img = new Image();
-      img.loading = 'eager'; // we remove quickly on error
-      img.decoding = 'async';
-
-      function next(){
-        if(idx >= srcs.length){ onFound(null); return; }
-        const src = srcs[idx] + (srcs[idx].includes('?') ? '&' : '?') + 'v=' + v;
-        img.onerror = () => { idx++; next(); };
-        img.onload = () => onFound(src);
-        img.src = src;
-      }
-      next();
+      img.onload  = () => ondone(src + (src.includes('?')?'&':'?') + 'v=' + v);
+      img.onerror = () => ondone(null);
+      img.src = src + (src.includes('?')?'&':'?') + 'v=' + v;
     }
 
-    async function buildList(){
+    async function detect(){
       for(let i=1;i<=MAX;i++){
         const candidates = patterns.map(p => p(i));
-        await new Promise(res=>{
-          tryLoad(candidates, foundSrc=>{
-            if(foundSrc){ found.push(foundSrc); }
-            res();
-          });
-        });
+        let hit = null;
+        for(const c of candidates){
+          // eslint-disable-next-line no-await-in-loop
+          hit = await new Promise(res => testOne(c, res));
+          if(hit) break;
+        }
+        if(hit) found.push(hit);
       }
       render();
     }
 
     function render(){
-      if(found.length === 0){
-        emptyNote.style.display = 'block';
-        return;
-      }
+      if(found.length === 0){ emptyNote.style.display = 'block'; return; }
       found.forEach(src=>{
         const card = document.createElement('div');
         card.className = 'card';
-
         const ph = document.createElement('div');
         ph.className = 'ph';
         ph.textContent = 'Loading…';
-        card.appendChild(ph);
-
         const img = document.createElement('img');
-        img.src = src;
         img.loading = 'lazy';
         img.decoding = 'async';
+        img.src = src;
         img.alt = '';
         img.addEventListener('load', ()=> ph.remove());
         img.addEventListener('error', ()=> card.remove());
+        card.appendChild(ph);
         card.appendChild(img);
-
         card.addEventListener('click', ()=> openLightbox(src));
         grid.appendChild(card);
       });
     }
 
-    // ============ Lightbox ============
+    // Lightbox
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lbImg');
     const btnClose = lb.querySelector('.lb-close');
     const btnPrev = lb.querySelector('.lb-prev');
     const btnNext = lb.querySelector('.lb-next');
-
     let idx = -1;
-    function openLightbox(src){
-      idx = found.indexOf(src);
-      lbImg.src = src;
-      lb.classList.add('open');
-    }
+
+    function openLightbox(src){ idx = found.indexOf(src); lbImg.src = src; lb.classList.add('open'); }
     function closeLightbox(){ lb.classList.remove('open'); lbImg.src=''; }
-    function prev(){ if(found.length){ idx = (idx-1+found.length)%found.length; lbImg.src = found[idx]; } }
-    function next(){ if(found.length){ idx = (idx+1)%found.length; lbImg.src = found[idx]; } }
+    function prev(){ if(found.length){ idx=(idx-1+found.length)%found.length; lbImg.src = found[idx]; } }
+    function next(){ if(found.length){ idx=(idx+1)%found.length; lbImg.src = found[idx]; } }
 
     btnClose.addEventListener('click', closeLightbox);
     btnPrev.addEventListener('click', prev);
     btnNext.addEventListener('click', next);
     lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLightbox(); });
-    document.addEventListener('keydown', (e)=>{
-      if(!lb.classList.contains('open')) return;
-      if(e.key === 'Escape') closeLightbox();
-      if(e.key === 'ArrowLeft') prev();
-      if(e.key === 'ArrowRight') next();
-    });
+    document.addEventListener('keydown', (e)=>{ if(!lb.classList.contains('open')) return; if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowLeft') prev(); if(e.key==='ArrowRight') next(); });
 
-    // Kick things off
-    buildList();
+    detect();
   </script>
 
   <!-- cache-buster for internal links -->
