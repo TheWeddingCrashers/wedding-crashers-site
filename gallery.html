@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="preload" as="image" href="images/logo.svg"/>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>The Wedding Crashers — Gallery</title>
   <meta http-equiv="Cache-Control" content="no-store, must-revalidate"/>
+  <link rel="preload" as="image" href="images/logo.svg"/>
 
   <style>
     :root{ --pink:#f19bb8; --bg:#ffffff; --text:#111216; --muted:#757575; }
@@ -20,16 +20,15 @@
     .menu a:hover{ text-decoration:underline; }
 
     main{ max-width:1200px; margin:0 auto; padding:28px 16px 60px; }
-
     .intro{ text-align:center; margin:8px 0 20px; color:var(--muted); font-size:14px; }
 
-    /* Responsive grid (kept exactly like your current site) */
-    .grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:14px; }
+    /* Responsive grid */
+    #grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:14px; }
     .card{ position:relative; overflow:hidden; border-radius:14px; background:#f7f7f7; box-shadow:0 8px 24px rgba(0,0,0,.06); cursor:pointer; }
     .card img{ width:100%; height:100%; object-fit:cover; display:block; aspect-ratio: 3/2; }
     .ph{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:12px; color:#999; background:#fafafa; border:1px dashed #e5e5e5; }
 
-    /* Lightbox (kept) */
+    /* Lightbox */
     .lightbox{ position:fixed; inset:0; background:rgba(0,0,0,.85); display:none; align-items:center; justify-content:center; padding:24px; z-index:1000; }
     .lightbox.open{ display:flex; }
     .lightbox img{ max-width:92vw; max-height:92vh; border-radius:10px; box-shadow:0 20px 60px rgba(0,0,0,.4); }
@@ -55,7 +54,7 @@
 
   <main>
     <p class="intro">Tap any image to view larger.</p>
-    <div id="grid" class="grid" aria-live="polite"></div>
+    <div id="grid" aria-live="polite"></div>
     <div id="emptyNote" class="note">No images found with the usual names. If your files use different names/paths, tell me a couple of examples and I’ll wire them in.</div>
   </main>
 
@@ -68,243 +67,133 @@
   </div>
 
   <script>
-// --- Progressive gallery patch (preferred 3- naming, progressive render, short timeouts) ---
-// Look for your common naming first: images/3-1..3-60
-const PREFERRED_MAX = 60; // bump if you add more, e.g. 80 or 100
-const FALLBACK_MAX = 0;   // set to e.g. 40 if you also want to try plain 1..40
-const exts = ["jpg","jpeg","png","webp","JPG","JPEG","PNG","WEBP"];
-const bases = ["images","Images","assets/images"];
+  // Clean progressive gallery
+  const PREFERRED_MAX = 80; // change if you have more
+  const FALLBACK_MAX = 0;   // set >0 if you also want plain 1..N
+  const exts = ["jpg","jpeg","png","webp","JPG","JPEG","PNG","WEBP"];
+  const bases = ["images","Images","assets/images"];
+  const v = Date.now().toString().slice(0,10); // cache-buster
 
-function buildPreferred(i){
-  const originals = [].concat(
-    exts.map(e=>`images/3-${i}.`+e),
-    ...bases.map(b => exts.map(e=>`${b}/3-${i}.`+e)),
-  );
-  const thumbs = originals.map(p => p.replace(/(^|\/)images(\/|$)/, "$1images/small$2"));
-  const larges = originals.map(p => p.replace(/(^|\/)images(\/|$)/, "$1images/large$2"));
-  return {thumbs, larges, originals};
-}
+  const grid = document.getElementById('grid');
+  const emptyNote = document.getElementById('emptyNote');
+  const found = []; // {thumb, full}
 
-function buildFallback(i){
-  const originals = [].concat(
-    exts.map(e=>`images/${i}.`+e),
-    exts.map(e=>`images/(${i}).`+e),
-    ...bases.map(b => exts.map(e=>`${b}/${i}.`+e)),
-  );
-  const thumbs = originals.map(p => p.replace(/(^|\/)images(\/|$)/, "$1images/small$2"));
-  const larges = originals.map(p => p.replace(/(^|\/)images(\/|$)/, "$1images/large$2"));
-  return {thumbs, larges, originals};
-}
-
-// Progressive detection + render
-const v = Date.now().toString().slice(0,10); // cache-buster
-let grid = document.getElementById('grid');
-let emptyNote = document.getElementById('emptyNote');
-if(!grid){ grid = document.querySelector('#grid, .grid, .gallery-grid') || document.body; }
-if(!emptyNote){
-  emptyNote = document.createElement('div');
-  emptyNote.id = 'emptyNote';
-  emptyNote.style.display = 'none';
-  emptyNote.textContent = 'No images found.';
-  document.body.appendChild(emptyNote);
-}
-const found = []; // [{thumb, full}]
-
-/*__PATCHED_OUT__ function probe(src, timeoutMs=1200){
-  return new Promise(res=>{
-    const img = new Image();
-    const q = src + (src.includes('?')?'&':'?') + 'v=' + v;
-    let done = false;
-    const finish = (val)=>{ if(!done){ done=true; res(val); } };
-    const timer = setTimeout(()=>finish(null), timeoutMs);
-    img.onload  = () => { clearTimeout(timer); finish(q); };
-    img.onerror = () => { clearTimeout(timer); finish(null); };
-    img.src = q;
-  });
-}
-
-function openLightbox(full){
-  // Fallback simple lightbox if site doesn't define one
-  const overlay = document.createElement('div');
-  Object.assign(overlay.style, {
-    position:'fixed', inset:'0', background:'rgba(0,0,0,0.85)',
-    display:'flex', alignItems:'center', justifyContent:'center', zIndex:9999
-  });
-  const img = document.createElement('img');
-  img.src = full; img.style.maxWidth='95vw'; img.style.maxHeight='95vh';
-  img.alt='';
-  overlay.appendChild(img);
-  overlay.addEventListener('click', ()=> document.body.removeChild(overlay));
-  document.body.appendChild(overlay);
-}
-
-/*__PATCHED_OUT__ function addCard(thumb, full){
-  const card = document.createElement('div');
-  card.className = 'card';
-
-  const ph = document.createElement('div');
-  ph.className = 'ph';
-  ph.textContent = 'Loading…';
-  ph.style.minHeight = '120px';
-  ph.style.display = 'flex';
-  ph.style.alignItems = 'center';
-  ph.style.justifyContent = 'center';
-
-  const img = document.createElement('img');
-  img.loading = 'lazy';
-  img.decoding = 'async';
-  img.src = thumb;
-  img.alt = '';
-  img.width = 900; img.height = 600;
-  img.addEventListener('load', ()=> ph.remove());
-  img.addEventListener('error', ()=> card.remove());
-
-  card.appendChild(ph);
-  card.appendChild(img);
-  card.addEventListener('click', ()=> openLightbox(full));
-  grid.appendChild(card);
-}
-
-async /*__PATCHED_OUT__ function tryCandidates({thumbs, larges, originals}){
-  let thumb=null, full=null;
-  for(const t of thumbs){ thumb = await probe(t); if(thumb) break; }
-  for(const L of larges){ full = await probe(L); if(full) break; }
-  if(!full){
-    for(const o of originals){ full = await probe(o); if(full) break; }
-  }
-  return (thumb || full) ? {thumb: thumb || full, full: full || thumb} : null;
-}
-
-async /*__PATCHED_OUT__ function detect(){
-  let any = false;
-
-  // Preferred: 3-1 .. 3-N
-  for(let i=1;i<=PREFERRED_MAX;i++){
-    const cand = await tryCandidates(buildPreferred(i));
-    if(cand){
-      found.push(cand);
-      addCard(cand.thumb, cand.full); // show immediately
-      any = true;
-    }
+  function buildPreferred(i){
+    const originals = [].concat(
+      exts.map(e=>`images/3-${i}.`+e),
+      ...bases.map(b => exts.map(e=>`${b}/3-${i}.`+e))
+    );
+    const thumbs = originals.map(p => p.replace(/(^|\/ )images(\/|$)/, "$1images/small$2").replace(/\s/g,''));
+    const larges = originals.map(p => p.replace(/(^|\/ )images(\/|$)/, "$1images/large$2").replace(/\s/g,''));
+    return {thumbs, larges, originals};
   }
 
-  // Optional fallback plain numbering if you set FALLBACK_MAX > 0
-  for(let i=1;i<=FALLBACK_MAX;i++){
-    const cand = await tryCandidates(buildFallback(i));
-    if(cand){
-      found.push(cand);
-      addCard(cand.thumb, cand.full);
-      any = true;
-    }
+  function buildFallback(i){
+    const originals = [].concat(
+      exts.map(e=>`images/${i}.`+e),
+      exts.map(e=>`images/(${i}).`+e),
+      ...bases.map(b => exts.map(e=>`${b}/${i}.`+e))
+    );
+    const thumbs = originals.map(p => p.replace(/(^|\/ )images(\/|$)/, "$1images/small$2").replace(/\s/g,''));
+    const larges = originals.map(p => p.replace(/(^|\/ )images(\/|$)/, "$1images/large$2").replace(/\s/g,''));
+    return {thumbs, larges, originals};
   }
 
-  if(!any){ emptyNote.style.display = 'block'; }
-}
-// --- End progressive gallery patch ---
+  function probe(src, timeoutMs=1200){
+    return new Promise(res=>{
+      const img = new Image();
+      const q = src + (src.includes('?')?'&':'?') + 'v=' + v;
+      let done = false;
+      const finish = (val)=>{ if(!done){ done=true; res(val); } };
+      const timer = setTimeout(()=>finish(null), timeoutMs);
+      img.onload  = () => { clearTimeout(timer); finish(q); };
+      img.onerror = () => { clearTimeout(timer); finish(null); };
+      img.src = q;
+    });
+  }
 
-
-    // Thumbnails-first gallery: prefer images/small for grid, images/large for lightbox.
-    // Falls back gracefully to originals and to legacy folders (Images/, assets/images) and extension variants.
-    const MAX = 120;
-    const exts = ["jpg","jpeg","png","webp","JPG","JPEG","PNG","WEBP"];
-    const bases = ["images","Images","assets/images"];
-
-    /*__PATCHED_OUT__ function buildCandidates(i){
-      const originals = [].concat(
-        exts.map(e=>`images/3-${i}.`+e),
-        exts.map(e=>`images/${i}.`+e),
-        exts.map(e=>`images/(${i}).`+e),
-        // legacy alt folders
-        ...bases.map(b => exts.map(e=>`${b}/3-${i}.`+e)),
-        ...bases.map(b => exts.map(e=>`${b}/${i}.`+e)),
-      );
-      const thumbs = originals.map(p => p.replace(/(^|\/)images(\/|$)/, "$1images/small$2"));
-      const larges = originals.map(p => p.replace(/(^|\/)images(\/|$)/, "$1images/large$2"));
-      return {thumbs, larges, originals};
-    }
-
-    const v = Date.now().toString().slice(0,10); // cache-buster
-    const grid = document.getElementById('grid');
-    const emptyNote = document.getElementById('emptyNote');
-    const found = []; // [{thumb, full}]
-
-    /*__PATCHED_OUT__ function probe(src){ 
-      return new Promise(res=>{
-        const img = new Image();
-        const q = src + (src.includes('?')?'&':'?') + 'v=' + v;
-        img.onload  = () => res(q);
-        img.onerror = () => res(null);
-        img.src = q;
-      });
-    }
-
-    async /*__PATCHED_OUT__ function detect(){
-      for(let i=1;i<=MAX;i++){
-        const {thumbs, larges, originals} = buildCandidates(i);
-        let thumb=null, full=null;
-
-        for(const t of thumbs){ thumb = await probe(t); if(thumb) break; }
-        for(const L of larges){ full = await probe(L); if(full) break; }
-        if(!full){
-          for(const o of originals){ full = await probe(o); if(full) break; }
-        }
-
-        if(thumb || full){
-          found.push({thumb: thumb || full, full: full || thumb});
-        }
-      }
-      render();
-    }
-
-    function render(){
-      if(found.length === 0){ emptyNote.style.display = 'block'; return; }
-      found.forEach(({thumb, full})=>{
-        const card = document.createElement('div');
-        card.className = 'card';
-
-        const ph = document.createElement('div');
-        ph.className = 'ph';
-        ph.textContent = 'Loading…';
-
-        const img = document.createElement('img');
-        img.loading = 'lazy';
-        img.decoding = 'async';
-        img.src = thumb;
-        img.alt = '';
-        img.width = 900; img.height = 600; // CLS hint
-        img.addEventListener('load', ()=> ph.remove());
-        img.addEventListener('error', ()=> card.remove());
-
-        card.appendChild(ph);
-        card.appendChild(img);
-        card.addEventListener('click', ()=> openLightbox(full));
-        grid.appendChild(card);
-      });
-    }
-
-    // Lightbox (kept the same behaviour)
+  function openLightbox(src){
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lbImg');
-    const btnClose = lb.querySelector('.lb-close');
-    const btnPrev = lb.querySelector('.lb-prev');
-    const btnNext = lb.querySelector('.lb-next');
-    let idx = -1;
+    lbImg.src = src;
+    lb.classList.add('open');
+  }
+  function closeLightbox(){
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    lb.classList.remove('open');
+    lbImg.src = '';
+  }
+  function prevNext(dir){
+    const lbImg = document.getElementById('lbImg');
+    const idx = found.findIndex(x=>x.full===lbImg.src);
+    if(idx === -1 || !found.length) return;
+    const next = (idx + dir + found.length) % found.length;
+    lbImg.src = found[next].full;
+  }
+  document.querySelector('.lb-close').addEventListener('click', closeLightbox);
+  document.querySelector('.lb-prev').addEventListener('click', ()=>prevNext(-1));
+  document.querySelector('.lb-next').addEventListener('click', ()=>prevNext(1));
+  document.getElementById('lightbox').addEventListener('click', (e)=>{ if(e.target.id==='lightbox') closeLightbox(); });
+  document.addEventListener('keydown', (e)=>{
+    const lb = document.getElementById('lightbox');
+    if(!lb.classList.contains('open')) return;
+    if(e.key==='Escape') closeLightbox();
+    if(e.key==='ArrowLeft') prevNext(-1);
+    if(e.key==='ArrowRight') prevNext(1);
+  });
 
-    function openLightbox(src){ idx = found.findIndex(x=>x.full===src); lbImg.src = src; lb.classList.add('open'); }
-    function closeLightbox(){ lb.classList.remove('open'); lbImg.src=''; }
-    function prev(){ if(found.length){ idx=(idx-1+found.length)%found.length; lbImg.src = found[idx].full; } }
-    function next(){ if(found.length){ idx=(idx+1)%found.length; lbImg.src = found[idx].full; } }
+  function addCard(thumb, full){
+    const card = document.createElement('div');
+    card.className = 'card';
 
-    btnClose.addEventListener('click', closeLightbox);
-    btnPrev.addEventListener('click', prev);
-    btnNext.addEventListener('click', next);
-    lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLightbox(); });
-    document.addEventListener('keydown', (e)=>{ if(!lb.classList.contains('open')) return; if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowLeft') prev(); if(e.key==='ArrowRight') next(); });
+    const ph = document.createElement('div');
+    ph.className = 'ph';
+    ph.textContent = 'Loading…';
 
-    detect();
+    const img = document.createElement('img');
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.src = thumb;
+    img.alt = '';
+    img.width = 900; img.height = 600;
+
+    img.addEventListener('load', ()=> ph.remove());
+    img.addEventListener('error', ()=> card.remove());
+
+    card.appendChild(ph);
+    card.appendChild(img);
+    card.addEventListener('click', ()=> openLightbox(full));
+    grid.appendChild(card);
+  }
+
+  async function tryCandidates({thumbs, larges, originals}){
+    let thumb=null, full=null;
+    for(const t of thumbs){ thumb = await probe(t); if(thumb) break; }
+    for(const L of larges){ full = await probe(L); if(full) break; }
+    if(!full){
+      for(const o of originals){ full = await probe(o); if(full) break; }
+    }
+    return (thumb || full) ? {thumb: thumb || full, full: full || thumb} : null;
+  }
+
+  async function detect(){
+    let any = false;
+    for(let i=1;i<=PREFERRED_MAX;i++){
+      const cand = await tryCandidates(buildPreferred(i));
+      if(cand){ found.push(cand); addCard(cand.thumb, cand.full); any = true; }
+    }
+    for(let i=1;i<=FALLBACK_MAX;i++){
+      const cand = await tryCandidates(buildFallback(i));
+      if(cand){ found.push(cand); addCard(cand.thumb, cand.full); any = true; }
+    }
+    if(!any){ emptyNote.style.display = 'block'; }
+  }
+
+  detect();
   </script>
 
-  <!-- cache-buster for internal links (kept) -->
+  <!-- cache-buster for internal links -->
   <script>
   (function(){
     const version = new Date().toISOString().slice(0,13).replace(/\D/g,'');
