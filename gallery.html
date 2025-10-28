@@ -68,13 +68,148 @@
   </div>
 
   <script>
+// --- Progressive gallery patch (preferred 3- naming, progressive render, short timeouts) ---
+// Look for your common naming first: images/3-1..3-60
+const PREFERRED_MAX = 60; // bump if you add more, e.g. 80 or 100
+const FALLBACK_MAX = 0;   // set to e.g. 40 if you also want to try plain 1..40
+const exts = ["jpg","jpeg","png","webp","JPG","JPEG","PNG","WEBP"];
+const bases = ["images","Images","assets/images"];
+
+function buildPreferred(i){
+  const originals = [].concat(
+    exts.map(e=>`images/3-${i}.`+e),
+    ...bases.map(b => exts.map(e=>`${b}/3-${i}.`+e)),
+  );
+  const thumbs = originals.map(p => p.replace(/(^|\/)images(\/|$)/, "$1images/small$2"));
+  const larges = originals.map(p => p.replace(/(^|\/)images(\/|$)/, "$1images/large$2"));
+  return {thumbs, larges, originals};
+}
+
+function buildFallback(i){
+  const originals = [].concat(
+    exts.map(e=>`images/${i}.`+e),
+    exts.map(e=>`images/(${i}).`+e),
+    ...bases.map(b => exts.map(e=>`${b}/${i}.`+e)),
+  );
+  const thumbs = originals.map(p => p.replace(/(^|\/)images(\/|$)/, "$1images/small$2"));
+  const larges = originals.map(p => p.replace(/(^|\/)images(\/|$)/, "$1images/large$2"));
+  return {thumbs, larges, originals};
+}
+
+// Progressive detection + render
+const v = Date.now().toString().slice(0,10); // cache-buster
+let grid = document.getElementById('grid');
+let emptyNote = document.getElementById('emptyNote');
+if(!grid){ grid = document.querySelector('#grid, .grid, .gallery-grid') || document.body; }
+if(!emptyNote){
+  emptyNote = document.createElement('div');
+  emptyNote.id = 'emptyNote';
+  emptyNote.style.display = 'none';
+  emptyNote.textContent = 'No images found.';
+  document.body.appendChild(emptyNote);
+}
+const found = []; // [{thumb, full}]
+
+/*__PATCHED_OUT__ function probe(src, timeoutMs=1200){
+  return new Promise(res=>{
+    const img = new Image();
+    const q = src + (src.includes('?')?'&':'?') + 'v=' + v;
+    let done = false;
+    const finish = (val)=>{ if(!done){ done=true; res(val); } };
+    const timer = setTimeout(()=>finish(null), timeoutMs);
+    img.onload  = () => { clearTimeout(timer); finish(q); };
+    img.onerror = () => { clearTimeout(timer); finish(null); };
+    img.src = q;
+  });
+}
+
+function openLightbox(full){
+  // Fallback simple lightbox if site doesn't define one
+  const overlay = document.createElement('div');
+  Object.assign(overlay.style, {
+    position:'fixed', inset:'0', background:'rgba(0,0,0,0.85)',
+    display:'flex', alignItems:'center', justifyContent:'center', zIndex:9999
+  });
+  const img = document.createElement('img');
+  img.src = full; img.style.maxWidth='95vw'; img.style.maxHeight='95vh';
+  img.alt='';
+  overlay.appendChild(img);
+  overlay.addEventListener('click', ()=> document.body.removeChild(overlay));
+  document.body.appendChild(overlay);
+}
+
+/*__PATCHED_OUT__ function addCard(thumb, full){
+  const card = document.createElement('div');
+  card.className = 'card';
+
+  const ph = document.createElement('div');
+  ph.className = 'ph';
+  ph.textContent = 'Loading…';
+  ph.style.minHeight = '120px';
+  ph.style.display = 'flex';
+  ph.style.alignItems = 'center';
+  ph.style.justifyContent = 'center';
+
+  const img = document.createElement('img');
+  img.loading = 'lazy';
+  img.decoding = 'async';
+  img.src = thumb;
+  img.alt = '';
+  img.width = 900; img.height = 600;
+  img.addEventListener('load', ()=> ph.remove());
+  img.addEventListener('error', ()=> card.remove());
+
+  card.appendChild(ph);
+  card.appendChild(img);
+  card.addEventListener('click', ()=> openLightbox(full));
+  grid.appendChild(card);
+}
+
+async /*__PATCHED_OUT__ function tryCandidates({thumbs, larges, originals}){
+  let thumb=null, full=null;
+  for(const t of thumbs){ thumb = await probe(t); if(thumb) break; }
+  for(const L of larges){ full = await probe(L); if(full) break; }
+  if(!full){
+    for(const o of originals){ full = await probe(o); if(full) break; }
+  }
+  return (thumb || full) ? {thumb: thumb || full, full: full || thumb} : null;
+}
+
+async /*__PATCHED_OUT__ function detect(){
+  let any = false;
+
+  // Preferred: 3-1 .. 3-N
+  for(let i=1;i<=PREFERRED_MAX;i++){
+    const cand = await tryCandidates(buildPreferred(i));
+    if(cand){
+      found.push(cand);
+      addCard(cand.thumb, cand.full); // show immediately
+      any = true;
+    }
+  }
+
+  // Optional fallback plain numbering if you set FALLBACK_MAX > 0
+  for(let i=1;i<=FALLBACK_MAX;i++){
+    const cand = await tryCandidates(buildFallback(i));
+    if(cand){
+      found.push(cand);
+      addCard(cand.thumb, cand.full);
+      any = true;
+    }
+  }
+
+  if(!any){ emptyNote.style.display = 'block'; }
+}
+// --- End progressive gallery patch ---
+
+
     // Thumbnails-first gallery: prefer images/small for grid, images/large for lightbox.
     // Falls back gracefully to originals and to legacy folders (Images/, assets/images) and extension variants.
     const MAX = 120;
     const exts = ["jpg","jpeg","png","webp","JPG","JPEG","PNG","WEBP"];
     const bases = ["images","Images","assets/images"];
 
-    function buildCandidates(i){
+    /*__PATCHED_OUT__ function buildCandidates(i){
       const originals = [].concat(
         exts.map(e=>`images/3-${i}.`+e),
         exts.map(e=>`images/${i}.`+e),
@@ -93,7 +228,7 @@
     const emptyNote = document.getElementById('emptyNote');
     const found = []; // [{thumb, full}]
 
-    function probe(src){ 
+    /*__PATCHED_OUT__ function probe(src){ 
       return new Promise(res=>{
         const img = new Image();
         const q = src + (src.includes('?')?'&':'?') + 'v=' + v;
@@ -103,7 +238,7 @@
       });
     }
 
-    async function detect(){
+    async /*__PATCHED_OUT__ function detect(){
       for(let i=1;i<=MAX;i++){
         const {thumbs, larges, originals} = buildCandidates(i);
         let thumb=null, full=null;
