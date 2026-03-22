@@ -4,6 +4,7 @@
   --pink: #f19bb8;
   --dark: #111216;
   --text: #3a3a3a;
+  --nav-text: #3a3a3a;
   --nav-height: 75px;
 }
 
@@ -71,11 +72,19 @@ nav {
   height: 100%;
   display: flex;
   align-items: center;
+  border-left: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.menu li::before {
+  content: none;
 }
 
 .menu a {
   text-decoration: none;
-  color: var(--text);
+  color: var(--nav-text);
+  font-family: 'Outfit', -apple-system, system-ui, sans-serif;
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 0.5px;
