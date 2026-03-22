@@ -5,7 +5,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Home — The Wedding Crashers</title>
-
+  <link rel="stylesheet" href="nav.css">
   <style>
     :root { --max:1180px; --pink:#f19bb8; }
 
@@ -21,18 +21,6 @@
       background:#fff;
     }
 
-    .container { max-width:1180px; margin:0 auto; padding:0 20px; }
-
-    /* Nav bar */
-    .nav { background:var(--pink); position:sticky; top:0; z-index:40; }
-    .nav-inner { height:66px; display:flex; align-items:center; justify-content:center; }
-    .menu { display:flex; gap:22px; align-items:center; justify-content:center; }
-    .menu a {
-      color:#fff; text-decoration:none; text-transform:uppercase;
-      letter-spacing:.14em; font-weight:400; padding:8px 2px;
-    }
-    .menu a:hover { text-decoration:underline; }
-
     /* Background logo */
     .bg-logo {
       position:fixed; inset:0;
@@ -40,7 +28,7 @@
       opacity:.75; pointer-events:none; z-index:0;
     }
 
-    main { position:relative; z-index:1; text-align:center; min-height:calc(100svh - 66px); display:grid; place-items:center; padding:8vh 0; }
+    main { position:relative; z-index:1; text-align:center; min-height:calc(100svh - 75px); display:grid; place-items:center; padding:8vh 0; }
 
     /* --- Hot pink speech box --- */
     .speech-box {
@@ -80,15 +68,17 @@
 </head>
 
 <body>
-  <nav class="nav">
-    <div class="container nav-inner">
-      <div class="menu" role="navigation" aria-label="Main">
-        <a href="index.html">Home</a>
-        <a href="packages.html">Packages</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="video.html">Video</a>
-        <a href="contact.html">Contact</a>
-      </div>
+  <nav>
+    <div class="nav-container">
+      <div class="logo">TWC</div>
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="video.html">Videos</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="contact.html" class="cta-btn">Contact</a></li>
+      </ul>
     </div>
   </nav>
 
@@ -100,8 +90,8 @@
       <div class="kicker">Hello from Hunter &amp; Joey</div>
       <h1 class="headline">Capturing love stories with honesty, fun &amp; zero cheese.</h1>
       <p class="body">
-        We’re two film and Photography graduates turned visual storytellers, working in the wedding industry now for two years, we now look forward to sharing our new adventure with The Wedding Crashers!
-        Our aim is simple... to create films and photos that feel as real and joyful as your day itself. No awkward poses, no forced smiles, just genuine moments captured in a way that’s fun and fresh.
+        We're two film and Photography graduates turned visual storytellers, working in the wedding industry now for two years, we now look forward to sharing our new adventure with The Wedding Crashers!
+        Our aim is simple... to create films and photos that feel as real and joyful as your day itself. No awkward poses, no forced smiles, just genuine moments captured in a way that's fun and fresh.
         All whilst having a laugh and a good time doing it!
       </p>
     </section>

@@ -1,21 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        main {
-            padding-top: 75px;
-        }
-    </style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Gallery — The Wedding Crashers</title>
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    .gallery-header {
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+    .gallery-header h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+    .gallery-header p {
+      font-size: 1.1rem;
+      color: #666;
+    }
+    .gallery-grid {
+      columns: 3;
+      column-gap: 12px;
+      padding: 0 20px 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .gallery-grid img {
+      width: 100%;
+      display: block;
+      margin-bottom: 12px;
+      break-inside: avoid;
+      border-radius: 6px;
+    }
+    @media (max-width: 900px) {
+      .gallery-grid { columns: 2; }
+    }
+    @media (max-width: 560px) {
+      .gallery-grid { columns: 1; }
+      .gallery-header h1 { font-size: 2rem; }
+    }
+  </style>
 </head>
 <body>
-    <main>
-        <!-- Existing gallery content -->
-    </main>
+  <nav>
+    <div class="nav-container">
+      <div class="logo">TWC</div>
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="video.html">Videos</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="contact.html" class="cta-btn">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="gallery-header">
+      <h1>Gallery</h1>
+      <p>Moments captured from weddings we've had the pleasure of shooting</p>
+    </div>
+    <div class="gallery-grid">
+        <img src="images/3-1.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-2.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-3.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-4.JPG" alt="Wedding photo" loading="lazy">
+        <img src="images/3-6.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-8.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-10.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-12.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-13.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/3-14.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-16.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-17.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-18.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-19.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-20.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-22.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-23.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-24.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-25.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-26.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-27.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-28.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-29.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-30.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-31.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-32.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-33.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-34.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-35.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-36.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-37.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-38.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-39.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-40.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-41.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-42.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-43.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-44.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-45.png" alt="Wedding photo" loading="lazy">
+        <img src="images/3-46.png" alt="Wedding photo" loading="lazy">
+        <img src="images/4-1.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-2.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-3.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-4.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-5.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-6.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-7.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-8.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-9.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-10.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-11.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-12.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-13.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-14.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-15.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-16.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-17.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-18.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-19.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-20.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-21.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-22.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-23.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-24.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/4-25.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-1.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-2.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-3.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-4.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-5.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-6.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-7.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-8.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-9.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-10.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-11.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-12.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-13.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-14.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-15.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-16.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-17.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-18.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-19.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-20.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-21.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-22.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-23.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-24.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-25.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-26.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-27.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-28.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-29.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-30.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/5-31.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-1.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-2.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-3.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-4.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-5.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-6.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-7.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-8.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-9.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-10.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-12.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-13.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-14.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-15.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-16.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-17.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-18.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-19.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-20.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-21.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-22.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-23.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-24.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-25.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-26.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-27.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-28.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-29.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-30.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-31.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-32.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-33.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-34.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-35.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-36.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-37.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-38.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-39.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-40.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-41.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-42.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-43.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-44.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-45.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-46.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-47.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-48.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-49.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-50.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-51.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-52.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-53.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-54.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-55.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-56.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-57.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-58.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-59.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-60.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-61.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-62.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-63.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-64.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-65.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-66.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-67.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-68.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-69.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-70.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-71.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-72.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-73.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-74.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-75.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-76.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-77.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-78.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-79.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-80.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-81.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-82.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-83.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-84.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-85.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-86.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-87.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-88.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-89.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/6-90.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/10-1.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/10-2.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/10-3.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/10-4.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/10-5.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/10-6.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/10-7.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/10-8.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/10-9.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/10-10.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/10-11.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/10-12.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/10-13.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/10-14.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/10-15.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/10-16.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/10-17.jpg" alt="Wedding photo" loading="lazy">
+        <img src="images/11-1.jpg" alt="Wedding photo" loading="lazy">
+    </div>
+  </main>
+
+  <script>
+  (function(){
+    const version = new Date().toISOString().slice(0,13).replace(/\D/g,'');
+    document.querySelectorAll('a[href$=".html"]').forEach(a=>{
+      try{
+        const url = new URL(a.href, location.origin);
+        if(url.origin === location.origin){
+          url.searchParams.set('v', version);
+          a.href = url.toString();
+        }
+      }catch(e){}
+    });
+  })();
+  </script>
 </body>
 </html>
