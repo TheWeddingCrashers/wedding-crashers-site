@@ -4,6 +4,7 @@
   --pink: #f19bb8;
   --dark: #111216;
   --text: #3a3a3a;
+  --nav-height: 75px;
 }
 
 * {
@@ -32,7 +33,7 @@ nav {
   border-bottom: 1px solid #f0f0f0;
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.98);
-  height: 75px;
+  height: var(--nav-height);
   display: flex;
   align-items: center;
 }
@@ -41,7 +42,7 @@ nav {
   width: 100%;
   max-width: 100%;
   padding: 0 40px;
-  height: 75px;
+  height: var(--nav-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -63,7 +64,7 @@ nav {
   list-style: none;
   flex: 1;
   justify-content: flex-end;
-  height: 75px;
+  height: var(--nav-height);
 }
 
 .menu li {
@@ -141,7 +142,7 @@ html, body {
 }
 
 main {
-  padding-top: 75px;
+  padding-top: var(--nav-height);
 }
 
 @media (max-width: 768px) {
