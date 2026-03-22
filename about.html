@@ -4,10 +4,15 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>About — The Wedding Crashers</title>
-  <link rel="stylesheet" href="nav.css">
-  
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+    /* Nav */
+    .nav { background:#f19bb8; position:sticky; top:0; z-index:40; }
+    .nav-inner { height:66px; display:flex; align-items:center; justify-content:center; }
+    .menu { display:flex; gap:22px; align-items:center; justify-content:center; }
+    .menu a { color:#fff; text-decoration:none; text-transform:uppercase; letter-spacing:.14em; font-weight:400; font-size:14px; padding:8px 2px; }
+    .menu a:hover { text-decoration:underline; }
 
     :root {
       --pink: #f19bb8;
@@ -206,18 +211,16 @@
   </style>
 </head>
 <body>
-  <!-- NAVIGATION -->
-  <nav>
-    <div class="nav-container">
-      <div class="logo">TWC</div>
-      <ul class="menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="video.html">Videos</a></li>
-        <li><a href="packages.html">Packages</a></li>
-        <li><a href="contact.html" class="cta-btn">Contact</a></li>
-      </ul>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="menu" role="navigation" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="video.html">Video</a>
+        <a href="packages.html">Packages</a>
+        <a href="contact.html">Contact</a>
+      </div>
     </div>
   </nav>
 
