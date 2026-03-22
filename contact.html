@@ -6,7 +6,9 @@
 <title>Contact — The Wedding Crashers</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<style>:root{ --bg:#ffffff; --panel:#f7f7f8; --muted:#5b5f66; --text:#111216; --accent:#f4c9d8; --accent-strong:#f19bb8; --max:1180px; }
+<link rel="stylesheet" href="nav.css">
+<style>
+:root{ --bg:#ffffff; --panel:#f7f7f8; --muted:#5b5f66; --text:#111216; --accent:#f4c9d8; --accent-strong:#f19bb8; --max:1180px; }
 @font-face{
   font-family:'Hillstown Sans';
   src: url('fonts/Hillstown Sans Clean Demo.otf') format('opentype');
@@ -16,180 +18,30 @@
 }
 *{box-sizing:border-box}
 body{ margin:0; background: var(--bg); color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
-.container{     }
+.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
 .bg-logo{ position:fixed; inset:0; background:url('images/logo.svg') center 12%/120vmin no-repeat; opacity:.15; pointer-events:none; z-index:0; will-change:transform; }
 main{ position:relative; z-index:1; }
 .section{ padding:80px 0; }
 h1,h2,h3{ font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; text-align:center; text-transform:uppercase; letter-spacing:.08em; margin:0 0 10px; }
 .lead{ text-align:center; color:var(--muted); }
-
-/* Basic card + grid styles in case the extracted form uses them */
-.card{ background:var(--panel); border:1px solid rgba(0,0,0,.06); border-radius:0; padding:22px 18px; box-shadow:none; }
-.grid{ display:grid; gap:12px; }
-.grid label{ display:flex; flex-direction:column; gap:6px; font-weight:600; color:#333; }
-input, textarea{ width:100%; padding:10px 12px; border:1px solid #ddd; border-radius:0; font:inherit; }
 .btn{ display:inline-flex; align-items:center; justify-content:center; height:44px; padding:0 16px; border:1px solid rgba(0,0,0,.08); background:rgba(0,0,0,.04); color:#111; font-weight:600; border-radius:0; }
 .btn.primary{ background:#f19bb8; color:#111; border:0; }
-
-/* Contact page spacing */
-.section.contact-hero{     
-
-/* Background logo */
-.bg-logo{ position:fixed; inset:0; background:url('images/logo.svg') center 12%/120vmin no-repeat; opacity:.75; pointer-events:none; z-index:0; will-change:transform; }
-
-:root { --max:1180px; }
-.container{      
-/* === END NAV FROM PACKAGES === */
-/* === NAV: single source of truth from packages === */
-
-/* === TWC: Uniform pink nav across site === */
-:root { --max:1180px; }
-
-.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
-
-/* === TWC: Uniform pink nav across site === */
-:root { --max:1180px; }
-
-.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
-/* === end nav === */
-/* === NAV (copied from packages) === */
-
-    :root{ --bg:#ffffff; --panel:#f7f7f8; --muted:#5b5f66; --text:#111216; --accent:#f4c9d8; --accent-strong:#f19bb8; --ring: rgba(241,155,184,.35); --radius:18px; --shadow:0 10px 24px rgba(0,0,0,.08); --max:980px; }
-
-/* === TWC: Uniform pink nav across site === */
-:root { --max:1180px; }
-
-.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
-
-/* === TWC: Uniform pink nav across site === */
-:root { --max:1180px; }
-
-.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
-/* === END NAV === */
-/* === NAV (copied from packages) === */
-
-    :root{ --bg:#ffffff; --panel:#f7f7f8; --muted:#5b5f66; --text:#111216; --accent:#f4c9d8; --accent-strong:#f19bb8; --ring: rgba(241,155,184,.35); --radius:18px; --shadow:0 10px 24px rgba(0,0,0,.08); --max:980px; }
-
-/* === TWC: Uniform pink nav across site === */
-:root { --max:1180px; }
-
-.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
-
-/* Typography smoothing for crisp text */
-html, body, .nav, .menu a, h1, h2, h3 {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-.nav{
-  background:#f19bb8 !important;
-  position:sticky; top:0; z-index:40;
-  border-bottom:0 !important;
-}
-
-.nav-inner{
-  height:66px !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-}
-
-.menu{
-  display:flex !important;
-  gap:22px !important;
-  align-items:center !important;
-  justify-content:center !important;
-  margin:0 auto !important;
-}
-
-.menu a{
-  color:#ffffff !important;
-  text-decoration:none !important;
-  font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
-  text-transform:uppercase !important;
-  letter-spacing:.14em !important;
-  font-weight:400 !important;
-  font-size:14px !important;       /* consistent size across pages */
-  line-height:1 !important;
-  padding:8px 2px !important;
-  border:0 !important;
-  background:transparent !important;
-  box-shadow:none !important;
-  text-shadow:none !important;
-  filter:none !important;
-  outline:none !important;
-}
-
-.menu a:hover{ text-decoration:underline !important; }
-
-/* === TWC: Uniform pink nav across site === */
-:root { --max:1180px; }
-
-.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
-
-/* Typography smoothing for crisp text */
-html, body, .nav, .menu a {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-.nav{
-  background:#f19bb8 !important;
-  position:sticky; top:0; z-index:40;
-  border-bottom:0 !important;
-}
-
-.nav-inner{
-  height:66px !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-}
-
-.menu{
-  display:flex !important;
-  gap:22px !important;
-  align-items:center !important;
-  justify-content:center !important;
-  margin:0 auto !important;
-}
-
-.menu a{
-  color:#ffffff !important;
-  text-decoration:none !important;
-  font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
-  text-transform:uppercase !important;
-  letter-spacing:.14em !important;
-  font-weight:400 !important;
-  font-size:14px !important;
-  line-height:1 !important;
-  padding:8px 2px !important;
-  border:0 !important;
-  background:transparent !important;
-  box-shadow:none !important;
-  text-shadow:none !important;
-  filter:none !important;
-  outline:none !important;
-}
-
-.menu a:hover{ text-decoration:underline !important; }
-/* === END NAV === */
 </style>
   <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
 </head>
 <body>
-<nav class="nav" style="background:#f19bb8;position:sticky;top:0;z-index:40;border-bottom:0;display:block;">
-<div class="container nav-inner" style="height:66px;display:flex;align-items:center;justify-content:center;margin:0 auto;padding:0 20px;max-width:1180px;">
-<div aria-label="Main" class="menu" role="navigation" style="display:flex;gap:22px;align-items:center;justify-content:center;margin:0 auto;">
-<a href="index.html" style="color:#fff;text-decoration:none;text-transform:uppercase;letter-spacing:.14em;font-weight:400;font-size:14px;line-height:1;padding:8px 2px;display:inline-block;">Home</a>
-<a href="packages.html" style="color:#fff;text-decoration:none;text-transform:uppercase;letter-spacing:.14em;font-weight:400;font-size:14px;line-height:1;padding:8px 2px;display:inline-block;">Packages</a>
-<a href="gallery.html" style="color:#fff;text-decoration:none;text-transform:uppercase;letter-spacing:.14em;font-weight:400;font-size:14px;line-height:1;padding:8px 2px;display:inline-block;">Gallery</a>
-<a href="video.html" style="color:#fff;text-decoration:none;text-transform:uppercase;letter-spacing:.14em;font-weight:400;font-size:14px;line-height:1;padding:8px 2px;display:inline-block;">Video</a>
-<a href="contact.html" style="color:#fff;text-decoration:none;text-transform:uppercase;letter-spacing:.14em;font-weight:400;font-size:14px;line-height:1;padding:8px 2px;display:inline-block;">Contact</a>
-</div>
-</div>
+<nav>
+  <div class="nav-container">
+    <div class="logo">TWC</div>
+    <ul class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="video.html">Videos</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="contact.html" class="cta-btn">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 <div aria-hidden="true" class="bg-logo"></div>
 <main>
