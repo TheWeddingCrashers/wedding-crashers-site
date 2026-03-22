@@ -1,385 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>The Wedding Crashers — Wedding Films & Photography</title>
-  <link rel="stylesheet" href="nav.css">
-  
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding Crashers — Wedding Films & Photography</title>
+    <link rel="stylesheet" href="nav.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    :root {
-      --pink: #f19bb8;
-      --light-pink: #f4c9d8;
-      --dark: #111216;
-      --text: #3a3a3a;
-      --light: #f9f9f9;
-    }
-
-    body {
-      background: #fff;
-      line-height: 1.6;
-      font-weight: 400;
-    }
-    
-    /* ===== HERO ===== */
-    .hero {
-      min-height: 90vh;
-      background: linear-gradient(135deg, rgba(241, 155, 184, 0.08) 0%, rgba(244, 201, 216, 0.05) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -10%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(244, 201, 216, 0.1) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    
-    .hero-content {
-      max-width: 800px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-    
-    .hero h1 {
-      font-size: clamp(3rem, 8vw, 4.5rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 20px;
-      letter-spacing: -1px;
-      color: var(--dark);
-    }
-    
-    .hero p {
-      font-size: clamp(1.1rem, 3vw, 1.3rem);
-      font-weight: 400;
-      color: #666;
-      margin-bottom: 40px;
-      line-height: 1.8;
-      letter-spacing: 0.2px;
-    }
-    
-    .hero-buttons {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    
-    .btn-primary {
-      background: var(--pink);
-      color: #fff;
-      padding: 16px 40px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 15px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      letter-spacing: 0.5px;
-      text-decoration: none;
-      display: inline-block;
-    }
-    
-    .btn-primary:hover {
-      background: #e87fa5;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(241, 155, 184, 0.4);
-    }
-    
-    .btn-secondary {
-      background: transparent;
-      color: var(--pink);
-      padding: 16px 40px;
-      border: 2px solid var(--pink);
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 15px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      letter-spacing: 0.5px;
-      text-decoration: none;
-      display: inline-block;
-    }
-    
-    .btn-secondary:hover {
-      background: var(--pink);
-      color: #fff;
-      transform: translateY(-3px);
-    }
-    
-    /* ===== SECTIONS ===== */
-    section {
-      padding: 100px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    h2 {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      font-weight: 800;
-      margin-bottom: 50px;
-      text-align: center;
-      letter-spacing: -0.5px;
-      color: var(--dark);
-    }
-    
-    h3 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 15px;
-      letter-spacing: -0.3px;
-    }
-    
-    /* ===== ABOUT SECTION ===== */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      margin-bottom: 80px;
-    }
-    
-    .about-text h3 {
-      color: var(--pink);
-      text-transform: uppercase;
-      font-size: 1.2rem;
-      letter-spacing: 1px;
-      margin-bottom: 20px;
-    }
-    
-    .about-text p {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: #555;
-      margin-bottom: 20px;
-      font-weight: 400;
-    }
-    
-    @media (max-width: 768px) {
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-    }
-    
-    /* ===== FEATURES GRID ===== */
-    .features {
-      background: var(--light);
-      padding: 100px 20px;
-    }
-    
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .feature-card {
-      background: #fff;
-      padding: 40px;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-      border: 1px solid #f0f0f0;
-    }
-    
-    .feature-card:hover {
-      box-shadow: 0 20px 40px rgba(241, 155, 184, 0.15);
-      transform: translateY(-8px);
-    }
-    
-    .feature-icon {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-    
-    .feature-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 15px;
-    }
-    
-    .feature-card p {
-      color: #666;
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-    
-    /* ===== CTA SECTION ===== */
-    .cta {
-      background: linear-gradient(135deg, var(--pink) 0%, #e87fa5 100%);
-      color: #fff;
-      text-align: center;
-      padding: 100px 20px;
-      border-radius: 20px;
-      margin: 100px 20px 0;
-    }
-    
-    .cta h2 {
-      color: #fff;
-      margin-bottom: 20px;
-    }
-    
-    .cta p {
-      font-size: 1.2rem;
-      margin-bottom: 40px;
-      opacity: 0.95;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--dark);
-      color: #fff;
-      text-align: center;
-      padding: 50px 20px;
-      margin-top: 100px;
-    }
-    
-    footer p {
-      margin: 10px 0;
-      font-size: 0.95rem;
-      opacity: 0.9;
-    }
-    
-    footer a {
-      color: var(--pink);
-      text-decoration: none;
-      font-weight: 600;
-    }
-    
-    footer a:hover {
-      opacity: 0.8;
-    }
-  </style>
+    <style>
+        :root {
+            --pink: #f19bb8;
+            --dark-pink: #e87fa5;
+            --cream: #faf8f5;
+            --dark: #1a1a1a;
+            --text: #3a3a3a;
+            --gray: #e8e6e3;
+            --light: #f9f9f9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Outfit', -apple-system, system-ui, sans-serif;
+            background: #fff;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(250, 248, 245, 0.5) 0%, rgba(244, 201, 216, 0.05) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200"><circle cx="600" cy="600" r="500" fill="rgba(241,155,184,0.08)"/></svg>');
+            background-size: cover, 150%;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(244, 201, 216, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 8vw, 4.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 30px;
+            letter-spacing: -1.5px;
+            color: var(--dark);
+            word-spacing: 100vw;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 400;
+            color: #777;
+            margin-bottom: 50px;
+            line-height: 1.8;
+            letter-spacing: 0.3px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 18px 48px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            border: 2px solid transparent;
+            text-transform: uppercase;
+        }
+        
+        .btn-primary {
+            background: var(--pink);
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(241, 155, 184, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--dark-pink);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px rgba(241, 155, 184, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--pink);
+            border-color: var(--pink);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--pink);
+            color: #fff;
+            transform: translateY(-4px);
+        }
+        
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 120px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 60px;
+            text-align: center;
+            letter-spacing: -0.5px;
+            color: var(--dark);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -0.3px;
+        }
+        
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            background: var(--cream);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: start;
+        }
+        
+        .about-text h3 {
+            color: var(--pink);
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .about-text p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: #666;
+            margin-bottom: 25px;
+        }
+        
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+        }
+        
+        /* ===== FEATURES SECTION ===== */
+        .features-section {
+            background: #fff;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
+        }
+        
+        .feature-card {
+            background: var(--light);
+            padding: 50px 40px;
+            border-radius: 16px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--pink);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            box-shadow: 0 24px 48px rgba(241, 155, 184, 0.12);
+            transform: translateY(-12px);
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            display: block;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: #777;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+        
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--pink) 0%, var(--dark-pink) 100%);
+            color: #fff;
+            text-align: center;
+            padding: 120px 40px;
+            border-radius: 24px;
+            margin: 100px 20px 0;
+            max-width: calc(100% - 40px);
+            box-shadow: 0 20px 60px rgba(241, 155, 184, 0.3);
+        }
+        
+        .cta-section h2 {
+            color: #fff;
+            margin-bottom: 25px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark);
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 0;
+        }
+        
+        footer p {
+            margin: 12px 0;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        footer a {
+            color: var(--pink);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+        }
+        
+        footer a:hover {
+            opacity: 0.8;
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 20px;
+            }
+            
+            h2 {
+                margin-bottom: 40px;
+            }
+            
+            .cta-section {
+                padding: 80px 30px;
+                margin: 60px 20px 0;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- NAVIGATION -->
-  <nav>
-    <div class="nav-container">
-      <div class="logo">TWC</div>
-      <ul class="menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="video.html">Videos</a></li>
-        <li><a href="packages.html">Packages</a></li>
-        <li><a href="contact.html" class="cta-btn">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1>Capturing Love Stories with Zero Cheese</h1>
-        <p>Cinematic films & authentic photography that feel as real and joyful as your day itself</p>
-        <div class="hero-buttons">
-          <a href="gallery.html" class="btn-primary">View Our Work</a>
-          <a href="contact.html" class="btn-secondary">Let's Chat</a>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">TWC</div>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="video.html">Videos</a></li>
+                <li><a href="packages.html">Packages</a></li>
+                <li><a href="contact.html" class="cta-btn">Contact</a></li>
+            </ul>
         </div>
-      </div>
-    </section>
+    </nav>
 
-    <!-- ABOUT TEASER -->
-    <section>
-      <h2>About The Wedding Crashers</h2>
-      <div class="about-grid">
-        <div class="about-text">
-          <h3>Our Story</h3>
-          <p>We're Hunter & Joey — two film and photography graduates turned visual storytellers. After working in the industry for two years, we're bringing The Wedding Crashers to life.</p>
-          <p>No awkward poses. No forced smiles. Just genuine, joyful moments captured in a way that's authentic and vibrant.</p>
-        </div>
-        <div class="about-text">
-          <h3>Our Promise</h3>
-          <p>We believe weddings should be celebrated, not staged. Your day is about love, joy, and connection — and that's exactly what we capture.</p>
-          <p>All whilst having a laugh and a good time doing it. You'll get to know us, and we'll invest in your day like it's our own.</p>
-        </div>
-      </div>
-    </section>
+    <main>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Capturing Love Stories with Zero Cheese</h1>
+                <p class="hero-subtitle">Cinematic films & authentic photography that feel as real and joyful as your day itself</p>
+                <div class="hero-buttons">
+                    <a href="gallery.html" class="btn btn-primary">View Our Work</a>
+                    <a href="contact.html" class="btn btn-secondary">Let's Chat</a>
+                </div>
+            </div>
+        </section>
 
-    <!-- FEATURES -->
-    <section class="features">
-      <div style="max-width: 1200px; margin: 0 auto;">
-        <h2 style="margin-bottom: 60px;">Why Choose Us</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">🎬</div>
-            <h3>Cinematic Quality</h3>
-            <p>Professional-grade equipment combined with artistic vision ensures your wedding is captured beautifully.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">😄</div>
-            <h3>Authentic Moments</h3>
-            <p>We capture the real joy, laughter, and connection that makes your day uniquely yours.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🤝</div>
-            <h3>Personal Touch</h3>
-            <p>We're not just vendors — we're part of your celebration. You'll get to know us personally.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">💻</div>
-            <h3>Quick Turnaround</h3>
-            <p>Expert editing and efficient workflow means you get your photos & videos fast.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🎯</div>
-            <h3>Complete Packages</h3>
-            <p>Photography, videography, prints, albums — flexible packages to suit your needs.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">✨</div>
-            <h3>Creative Freedom</h3>
-            <p>Open to your ideas and inspired by your vision. We collaborate to create something special.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+        <!-- ABOUT TEASER -->
+        <section class="about-section">
+            <h2>About The Wedding Crashers</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>Our Story</h3>
+                    <p>We're Hunter & Joey — two film and photography graduates turned visual storytellers. After working in the industry for two years, we're bringing The Wedding Crashers to life.</p>
+                    <p>No awkward poses. No forced smiles. Just genuine, joyful moments captured in a way that's authentic and vibrant.</p>
+                </div>
+                <div class="about-text">
+                    <h3>Our Promise</h3>
+                    <p>We believe weddings should be celebrated, not staged. Your day is about love, joy, and connection — and that's exactly what we capture.</p>
+                    <p>All whilst having a laugh and a good time doing it. You'll get to know us, and we'll invest in your day like it's our own.</p>
+                </div>
+            </div>
+        </section>
 
-    <!-- CTA -->
-    <section style="padding: 0;">
-      <div class="cta">
-        <h2>Ready to Crash Your Wedding?</h2>
-        <p>Let's chat about your special day and create something beautiful together</p>
-        <a href="contact.html" class="btn-primary" style="background: #fff; color: var(--pink);">Get In Touch</a>
-      </div>
-    </section>
-  </main>
+        <!-- FEATURES -->
+        <section class="features-section">
+            <h2>Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🎬</span>
+                    <h3>Cinematic Quality</h3>
+                    <p>Professional-grade equipment combined with artistic vision ensures your wedding is captured beautifully.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">😄</span>
+                    <h3>Authentic Moments</h3>
+                    <p>We capture the real joy, laughter, and connection that makes your day uniquely yours.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🤝</span>
+                    <h3>Personal Touch</h3>
+                    <p>We're not just vendors — we're part of your celebration. You'll get to know us personally.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Quick Turnaround</h3>
+                    <p>Expert editing and efficient workflow means you get your photos & videos fast.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📦</span>
+                    <h3>Complete Packages</h3>
+                    <p>Photography, videography, prints, albums — flexible packages to suit your needs.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">✨</span>
+                    <h3>Creative Freedom</h3>
+                    <p>Open to your ideas and inspired by your vision. We collaborate to create something special.</p>
+                </div>
+            </div>
+        </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2025 The Wedding Crashers. All rights reserved.</p>
-    <p><a href="https://instagram.com/thewedding.crashers" target="_blank">📸 Follow us on Instagram</a></p>
-  </footer>
+        <!-- CTA -->
+        <section style="padding: 0;">
+            <div class="cta-section">
+                <h2>Ready to Crash Your Wedding?</h2>
+                <p>Let's chat about your special day and create something beautiful together</p>
+                <a href="contact.html" class="btn btn-primary" style="background: #fff; color: var(--pink);">Get In Touch</a>
+            </div>
+        </section>
+    </main>
 
-  <script>
-    (function(){
-      const version = new Date().toISOString().slice(0,13).replace(/\D/g,'');
-      document.querySelectorAll('a[href$=".html"]').forEach(a=>{
-        try{
-          const url = new URL(a.href, location.origin);
-          if(url.origin === location.origin){
-            url.searchParams.set('v', version);
-            a.href = url.toString();
-          }
-        }catch(e){}
-      });
-    })();
-  </script>
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 The Wedding Crashers. All rights reserved.</p>
+        <p><a href="https://instagram.com/thewedding.crashers" target="_blank">📸 Follow us on Instagram</a></p>
+    </footer>
+
+    <script>
+        (function(){
+            const version = new Date().toISOString().slice(0,13).replace(/\D/g,'');
+            document.querySelectorAll('a[href$=".html"]').forEach(a=>{
+                try{
+                    const url = new URL(a.href, location.origin);
+                    if(url.origin === location.origin){
+                        url.searchParams.set('v', version);
+                        a.href = url.toString();
+                    }
+                }catch(e){}
+            });
+        })();
+    </script>
 </body>
 </html>
