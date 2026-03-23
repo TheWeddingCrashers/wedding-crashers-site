@@ -154,21 +154,52 @@ main {
 }
 
 @media (max-width: 768px) {
+  nav {
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* Hide scrollbar visually but keep it functional */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Subtle fade on right edge to hint at scrollable content */
+  nav::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: var(--nav-height);
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.95));
+    pointer-events: none;
+    z-index: 1001;
+  }
+
   .nav-container {
     padding: 0 20px;
+    min-width: max-content;
+    justify-content: flex-start;
+    gap: 16px;
   }
 
   .menu {
-    gap: 5px;
+    gap: 4px;
+    flex: none;
   }
 
   .menu a {
     padding: 0 12px;
     font-size: 12px;
+    white-space: nowrap;
   }
 
   .cta-btn {
     padding: 10px 16px;
     font-size: 11px;
+    white-space: nowrap;
   }
 }
