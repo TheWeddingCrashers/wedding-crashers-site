@@ -166,19 +166,6 @@ main {
     display: none;
   }
 
-  /* Subtle fade on right edge to hint at scrollable content */
-  nav::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 40px;
-    height: var(--nav-height);
-    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.95));
-    pointer-events: none;
-    z-index: 1001;
-  }
-
   .nav-container {
     padding: 0 20px;
     min-width: max-content;
