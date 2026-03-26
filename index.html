@@ -476,25 +476,14 @@
             var END   = 330; // 5 minutes 30 seconds
 
             var player = new Vimeo.Player('vimeo-bg-player', {
-                id: 1131352277,
+                // Use URL with #t= so the player begins buffering from the correct
+                // timestamp immediately, avoiding any seek delay on load
+                url: 'https://vimeo.com/1131352277#t=' + Math.floor(START) + 's',
                 background: 1,
                 autoplay: 1,
                 muted: 1,
                 // Disable native loop so we can implement a custom time-bounded loop (4:30–5:30)
                 loop: 0
-            });
-
-            player.on('loaded', function () {
-                // Seek to the start of our clip, then explicitly play to ensure
-                // playback begins from the correct position after the seek
-                player.setCurrentTime(START)
-                    .then(function () {
-                        // Return the play() promise so any errors propagate to the catch below
-                        return player.play();
-                    })
-                    .catch(function (error) {
-                        console.warn('Vimeo player initial playback failed:', error);
-                    });
             });
 
             player.on('timeupdate', function (data) {
