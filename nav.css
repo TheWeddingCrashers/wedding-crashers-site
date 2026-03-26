@@ -50,12 +50,15 @@ nav {
 }
 
 .logo {
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  color: var(--dark);
-  text-transform: uppercase;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 50px;
+  width: auto;
+  display: block;
 }
 
 .menu {
