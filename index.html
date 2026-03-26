@@ -487,21 +487,34 @@
             player.on('loaded', function () {
                 // Seek to the start of our clip, then explicitly play to ensure
                 // playback begins from the correct position after the seek
-                player.setCurrentTime(START).then(function () {
-                    player.play();
-                });
+                player.setCurrentTime(START)
+                    .then(function () {
+                        // Return the play() promise so any errors propagate to the catch below
+                        return player.play();
+                    })
+                    .catch(function (error) {
+                        console.warn('Vimeo player initial playback failed:', error);
+                    });
             });
 
             player.on('timeupdate', function (data) {
                 if (data.seconds >= END) {
-                    player.setCurrentTime(START);
+                    player.setCurrentTime(START)
+                        .catch(function (error) {
+                            console.warn('Vimeo player loop seek failed:', error);
+                        });
                 }
             });
 
             // Fallback: if the video somehow reaches its end, restart the clip
             player.on('ended', function () {
-                player.setCurrentTime(START);
-                player.play();
+                player.setCurrentTime(START)
+                    .then(function () {
+                        return player.play();
+                    })
+                    .catch(function (error) {
+                        console.warn('Vimeo player restart failed:', error);
+                    });
             });
         }());
     </script>
