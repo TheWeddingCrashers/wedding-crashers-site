@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding Crashers — Wedding Films & Photography</title>
+    <!-- Preconnect to Vimeo servers so the player and CDN connections are established early -->
+    <link rel="preconnect" href="https://player.vimeo.com">
+    <link rel="preconnect" href="https://vimeo.com">
+    <link rel="preconnect" href="https://i.vimeocdn.com">
+    <link rel="preconnect" href="https://f.vimeocdn.com">
+    <!-- Load the Vimeo Player SDK as early as possible so it is ready when the page finishes parsing -->
+    <script src="https://player.vimeo.com/api/player.js" defer></script>
     <link rel="stylesheet" href="nav.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
@@ -35,7 +42,9 @@
         /* ===== HERO SECTION ===== */
         .hero {
             min-height: 100vh;
-            background: #111;
+            /* Poster image fills the hero while the Vimeo player is loading/seeking,
+               preventing the black-screen flash. The video fades in on top once ready. */
+            background: #111 url('images/3-1.png') center/cover no-repeat;
             display: flex;
             align-items: flex-start;
             justify-content: center;
@@ -454,7 +463,6 @@
         <p><a href="https://instagram.com/thewedding.crashers" target="_blank">📸 Follow us on Instagram</a></p>
     </footer>
 
-    <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
         // Vimeo background video: Catherine's wedding (4:34 → 5:30 on loop)
         (function () {
@@ -467,6 +475,8 @@
                 background: 1,
                 autoplay: 1,
                 muted: 1,
+                // Force the highest available quality to avoid a pixelated picture
+                quality: '1080p',
                 // Disable native loop so we can implement a custom time-bounded loop
                 loop: 0
             });
