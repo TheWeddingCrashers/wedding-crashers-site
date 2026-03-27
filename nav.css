@@ -5,7 +5,7 @@
   --dark: #111216;
   --text: #3a3a3a;
   --nav-text: #3a3a3a;
-  --nav-height: 75px;
+  --nav-height: 131px;
 }
 
 * {
@@ -56,7 +56,7 @@ nav {
 }
 
 .logo-img {
-  height: 50px;
+  height: 88px;
   width: auto;
   display: block;
 }
