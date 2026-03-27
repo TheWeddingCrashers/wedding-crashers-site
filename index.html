@@ -516,13 +516,21 @@
 
             function applyParallax() {
                 var scrolled    = window.pageYOffset;
+                var heroTop     = heroEl.offsetTop;
                 var heroHeight  = heroEl.offsetHeight;
 
-                if (scrolled <= heroHeight) {
-                    // Offset starts at 20% (matching the top: -20% from CSS) so the
-                    // video fills the frame at rest, then lags behind on scroll.
-                    var offset = scrolled * 0.4;
+                // Scroll amount past the hero's own top edge
+                var heroScroll = scrolled - heroTop;
+
+                if (heroScroll >= 0 && heroScroll <= heroHeight) {
+                    // Offset is 0 when the hero first enters the viewport so the
+                    // video fills the frame at rest, then lags behind on scroll
+                    // at 40% of the normal scroll speed (0.4 = parallax factor).
+                    var offset = heroScroll * 0.4;
                     heroBg.style.transform = 'translateY(' + offset + 'px)';
+                } else if (heroScroll < 0) {
+                    // Hero not yet in view — no extra shift
+                    heroBg.style.transform = 'translateY(0px)';
                 }
             }
 
