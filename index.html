@@ -197,43 +197,25 @@
             letter-spacing: -0.3px;
         }
         
-        /* ===== ABOUT SECTION ===== */
-        .about-section {
-            background: var(--cream);
+        /* ===== PHOTO PARALLAX SECTION ===== */
+        .photo-parallax-section {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
         }
-        
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
-            align-items: start;
-        }
-        
-        .about-text h3 {
-            color: var(--pink);
-            text-transform: uppercase;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            font-weight: 600;
-        }
-        
-        .about-text p {
-            font-size: 1.05rem;
-            line-height: 1.9;
-            color: #666;
-            margin-bottom: 25px;
-        }
-        
-        .about-text p:last-child {
-            margin-bottom: 0;
-        }
-        
-        @media (max-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 60px;
-            }
+
+        .photo-parallax-bg {
+            position: absolute;
+            top: -20%;
+            left: 0;
+            width: 100%;
+            height: 140%;
+            background-image: url('images/3-1.png');
+            background-size: cover;
+            background-position: center;
         }
         
         /* ===== FEATURES SECTION ===== */
@@ -410,26 +392,14 @@
                 <div class="hero-video-overlay"></div>
             </div>
             <div class="hero-content">
-                <h1>gone in a blink... unless we're there</h1>
+                <h1 aria-label="gone in a blink, unless we're there">gone in a blink<br>unless we're there</h1>
             </div>
         </section>
 
-        <!-- ABOUT TEASER -->
-        <section class="about-section">
-            <h2>About The Wedding Crashers</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <h3>Our Story</h3>
-                    <p>We're Hunter & Joey — two film and photography graduates turned visual storytellers. After working in the industry for two years, we're bringing The Wedding Crashers to life.</p>
-                    <p>No awkward poses. No forced smiles. Just genuine, joyful moments captured in a way that's authentic and vibrant.</p>
-                </div>
-                <div class="about-text">
-                    <h3>Our Promise</h3>
-                    <p>We believe weddings should be celebrated, not staged. Your day is about love, joy, and connection — and that's exactly what we capture.</p>
-                    <p>All whilst having a laugh and a good time doing it. You'll get to know us, and we'll invest in your day like it's our own.</p>
-                </div>
-            </div>
-        </section>
+        <!-- PHOTO PARALLAX SECTION -->
+        <div class="photo-parallax-section">
+            <div class="photo-parallax-bg"></div>
+        </div>
 
         <!-- FEATURES -->
         <section class="features-section">
@@ -559,6 +529,30 @@
             window.addEventListener('scroll', applyParallax, { passive: true });
             // Initialize on load in case the page is already scrolled
             applyParallax();
+        }());
+
+        // Parallax: photo section background scrolls slower than surrounding content.
+        (function () {
+            var photoBg      = document.querySelector('.photo-parallax-bg');
+            var photoSection = document.querySelector('.photo-parallax-section');
+
+            if (!photoBg || !photoSection) return;
+
+            function applyPhotoParallax() {
+                var scrolled    = window.scrollY;
+                var sectionTop  = photoSection.offsetTop;
+
+                if (scrolled + window.innerHeight >= sectionTop &&
+                        scrolled <= sectionTop + photoSection.offsetHeight) {
+                    // Move background at 30% of the scroll relative to the section,
+                    // slower than the surrounding content (normal speed).
+                    var offset = (scrolled - sectionTop) * 0.3;
+                    photoBg.style.transform = 'translateY(' + offset + 'px)';
+                }
+            }
+
+            window.addEventListener('scroll', applyPhotoParallax, { passive: true });
+            applyPhotoParallax();
         }());
     </script>
     <script>
