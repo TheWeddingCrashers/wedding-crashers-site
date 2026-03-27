@@ -244,7 +244,21 @@
             overflow: hidden;
         }
 
-        .homepage-video-wrapper iframe {
+        /* Scale the Vimeo player div to cover the wrapper at 16:9 */
+        #homepage-vimeo-player {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 177.78vh;
+            min-width: 100%;
+            height: 56.25vw;
+            min-height: 100%;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        #homepage-vimeo-player iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -439,12 +453,7 @@
         <!-- HOMEPAGE VIDEO -->
         <div class="homepage-video-section">
             <div class="homepage-video-wrapper">
-                <iframe
-                    src="https://player.vimeo.com/video/1131352277?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    title="Wedding Videography Sample — Catherine's Wedding">
-                </iframe>
+                <div id="homepage-vimeo-player"></div>
             </div>
         </div>
 
@@ -552,6 +561,57 @@
                     })
                     .catch(function (error) {
                         console.warn('Vimeo player restart failed:', error);
+                    });
+            });
+        }());
+
+        // Homepage video: Catherine's wedding, autoplays from 4:35 and loops back to that time
+        (function () {
+            var START = 275; // 4 minutes 35 seconds
+            var hpEl  = document.getElementById('homepage-vimeo-player');
+
+            var hpPlayer = new Vimeo.Player('homepage-vimeo-player', {
+                url: 'https://vimeo.com/1131352277',
+                background: 1,
+                autoplay: 1,
+                muted: 1,
+                quality: '1080p',
+                loop: 0
+            });
+
+            // Seek to the requested start position as soon as the player is ready
+            hpPlayer.on('loaded', function () {
+                hpPlayer.setCurrentTime(START).catch(function (error) {
+                    console.warn('Homepage Vimeo player initial seek failed:', error);
+                });
+            });
+
+            var hpRevealed = false;
+            hpPlayer.on('timeupdate', function (data) {
+                // Reveal once playback reaches the start position
+                if (!hpRevealed && data.seconds >= START) {
+                    hpRevealed = true;
+                    hpEl.style.opacity = '1';
+                }
+            });
+
+            // Fallback: reveal the player after 5 seconds in case the seek
+            // fails and timeupdate never reaches START
+            setTimeout(function () {
+                if (!hpRevealed) {
+                    hpRevealed = true;
+                    hpEl.style.opacity = '1';
+                }
+            }, 5000);
+
+            // When the video ends, loop back to the start position
+            hpPlayer.on('ended', function () {
+                hpPlayer.setCurrentTime(START)
+                    .then(function () {
+                        return hpPlayer.play();
+                    })
+                    .catch(function (error) {
+                        console.warn('Homepage Vimeo player restart failed:', error);
                     });
             });
         }());
