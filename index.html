@@ -16,6 +16,7 @@
             --text: #3a3a3a;
             --gray: #e8e6e3;
             --light: #f9f9f9;
+            --pastel-green: #8dbf8a;
         }
         
         * {
@@ -38,9 +39,11 @@
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            padding: 0 20px 80px;
+            padding: 0;
             position: relative;
             overflow: hidden;
+            max-width: 100%;
+            margin: 0;
         }
 
         /* Video background container — extended height so parallax never shows gaps */
@@ -96,23 +99,23 @@
         }
         
         .hero-content {
-            max-width: 760px;
+            width: 100%;
             text-align: center;
             position: relative;
             z-index: 2;
-            border: 1px solid rgba(255, 255, 255, 0.55);
-            padding: 48px 64px;
+            background: var(--pastel-green);
+            padding: 22px 40px;
         }
         
         .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 400;
+            font-family: 'Outfit', -apple-system, system-ui, sans-serif;
+            font-size: clamp(0.95rem, 2.5vw, 1.5rem);
+            font-weight: 700;
             line-height: 1.35;
-            margin-bottom: 24px;
-            letter-spacing: 3px;
+            margin-bottom: 0;
+            letter-spacing: 0.5px;
             color: #fff;
-            text-transform: lowercase;
+            text-transform: uppercase;
         }
         
         .hero-subtitle {
@@ -369,11 +372,15 @@
             }
 
             .hero {
-                padding: 0 16px 50px;
+                padding: 0;
             }
 
             .hero-content {
-                padding: 32px 28px;
+                padding: 18px 20px;
+            }
+
+            .hero h1 {
+                font-size: clamp(0.8rem, 4vw, 1.1rem);
             }
         }
     </style>
@@ -403,12 +410,7 @@
                 <div class="hero-video-overlay"></div>
             </div>
             <div class="hero-content">
-                <h1>Gone in a blink but captured forever</h1>
-                <p class="hero-subtitle">Cinematic films & authentic photography that feel as real and joyful as your day itself</p>
-                <div class="hero-buttons">
-                    <a href="gallery.html" class="btn btn-primary">View Our Work</a>
-                    <a href="contact.html" class="btn btn-secondary">Let's Chat</a>
-                </div>
+                <h1>gone in a blink... unless we're there</h1>
             </div>
         </section>
 
