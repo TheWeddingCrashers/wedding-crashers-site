@@ -36,20 +36,20 @@
             min-height: 100vh;
             background: #111;
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: center;
-            padding: 80px 20px;
+            padding: 0 20px 80px;
             position: relative;
             overflow: hidden;
         }
 
-        /* Video background container */
+        /* Video background container — extended height so parallax never shows gaps */
         .hero-video-bg {
             position: absolute;
-            top: 0;
+            top: -20%;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 140%;
             z-index: 0;
             overflow: hidden;
             pointer-events: none;
@@ -96,30 +96,33 @@
         }
         
         .hero-content {
-            max-width: 900px;
+            max-width: 760px;
             text-align: center;
             position: relative;
             z-index: 2;
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            padding: 48px 64px;
         }
         
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.8rem, 8vw, 4.2rem);
-            font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 30px;
-            letter-spacing: -1.5px;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            line-height: 1.35;
+            margin-bottom: 24px;
+            letter-spacing: 3px;
             color: #fff;
-            word-spacing: 100vw;
+            text-transform: lowercase;
         }
         
         .hero-subtitle {
-            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-size: clamp(0.85rem, 2vw, 1rem);
             font-weight: 400;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 50px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
             line-height: 1.8;
-            letter-spacing: 0.3px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
         
         .hero-buttons {
@@ -364,6 +367,14 @@
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
+
+            .hero {
+                padding: 0 16px 50px;
+            }
+
+            .hero-content {
+                padding: 32px 28px;
+            }
         }
     </style>
 </head>
@@ -392,7 +403,7 @@
                 <div class="hero-video-overlay"></div>
             </div>
             <div class="hero-content">
-                <h1>Capturing Love Stories with Zero Cheese</h1>
+                <h1>Gone in a blink but captured forever</h1>
                 <p class="hero-subtitle">Cinematic films & authentic photography that feel as real and joyful as your day itself</p>
                 <div class="hero-buttons">
                     <a href="gallery.html" class="btn btn-primary">View Our Work</a>
@@ -523,6 +534,29 @@
                         console.warn('Vimeo player restart failed:', error);
                     });
             });
+        }());
+
+        // Parallax: video layer scrolls at ~40% of normal scroll speed,
+        // giving text and border in front a subtle 3-D depth effect.
+        (function () {
+            var heroBg   = document.querySelector('.hero-video-bg');
+            var heroEl   = document.querySelector('.hero');
+
+            function applyParallax() {
+                var scrolled    = window.pageYOffset;
+                var heroHeight  = heroEl.offsetHeight;
+
+                if (scrolled <= heroHeight) {
+                    // Offset starts at 20% (matching the top: -20% from CSS) so the
+                    // video fills the frame at rest, then lags behind on scroll.
+                    var offset = scrolled * 0.4;
+                    heroBg.style.transform = 'translateY(' + offset + 'px)';
+                }
+            }
+
+            window.addEventListener('scroll', applyParallax, { passive: true });
+            // Initialize on load in case the page is already scrolled
+            applyParallax();
         }());
     </script>
     <script>
