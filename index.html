@@ -207,6 +207,11 @@
             letter-spacing: -0.3px;
         }
         
+        /* Remove the nav border-bottom so there is no white hairline gap between the nav and the photo section */
+        nav {
+            border-bottom-color: transparent;
+        }
+
         /* ===== VIDEO PARALLAX SECTION (3D scroll — replaces static photo section) ===== */
         .photo-parallax-section {
             position: relative;
@@ -215,16 +220,16 @@
             max-width: 100%;
             margin: 0;
             padding: 0;
-            background: #1a1a1a;
+            background: #111;
         }
 
-        /* Image background container — full section width; slight extra height for smooth parallax movement */
+        /* Image background container — full section width; extra height so 3D rotation never exposes the background */
         .photo-parallax-bg {
             position: absolute;
-            top: -10%;
+            top: -15%;
             left: 0;
             width: 100%;
-            height: 120%;
+            height: 130%;
             will-change: transform;
             transform-origin: center center;
         }
@@ -632,30 +637,37 @@
             });
         }());
 
-        // Parallax: video layer scrolls at ~40% of normal scroll speed,
-        // giving text and border in front a subtle 3-D depth effect.
+        // Hero section video background: same dynamic 3D scroll effect as the photo section above,
+        // so the "gone in a blink" hero and the first image move as a visual unit.
         (function () {
-            var heroBg   = document.querySelector('.hero-video-bg');
-            var heroEl   = document.querySelector('.hero');
+            var SCROLL_RANGE_FACTOR = 0.7;
+            var MAX_ROTATION_DEG    = 6;
+            var BASE_SCALE          = 1.0;
+            var SCALE_DELTA         = 0.025;
+            var PARALLAX_SPEED      = 0.35;
+
+            var heroBg = document.querySelector('.hero-video-bg');
+            var heroEl = document.querySelector('.hero');
 
             function applyParallax() {
-                var scrolled    = window.pageYOffset;
-                var heroTop     = heroEl.offsetTop;
-                var heroHeight  = heroEl.offsetHeight;
+                if (!heroBg || !heroEl) return;
 
-                // Scroll amount past the hero's own top edge
-                var heroScroll = scrolled - heroTop;
+                var rect = heroEl.getBoundingClientRect();
+                var vpH  = window.innerHeight;
+                var sH   = heroEl.offsetHeight;
 
-                if (heroScroll >= 0 && heroScroll <= heroHeight) {
-                    // Offset is 0 when the hero first enters the viewport so the
-                    // video fills the frame at rest, then lags behind on scroll
-                    // at 40% of the normal scroll speed (0.4 = parallax factor).
-                    var offset = heroScroll * 0.4;
-                    heroBg.style.transform = 'translateY(' + offset + 'px)';
-                } else if (heroScroll < 0) {
-                    // Hero not yet in view — no extra shift
-                    heroBg.style.transform = 'translateY(0px)';
-                }
+                // Same normalised position formula as the photo section above
+                var norm = (rect.top + sH / 2 - vpH / 2) / (vpH * SCROLL_RANGE_FACTOR);
+                norm = Math.max(-1, Math.min(1, norm));
+
+                var rotateX   = norm * MAX_ROTATION_DEG;
+                var scale     = BASE_SCALE + Math.abs(norm) * SCALE_DELTA;
+                var parallaxY = (window.scrollY - heroEl.offsetTop) * PARALLAX_SPEED;
+
+                heroBg.style.transform =
+                    'translateY(' + parallaxY + 'px) ' +
+                    'perspective(1100px) rotateX(' + rotateX + 'deg) ' +
+                    'scale(' + scale + ')';
             }
 
             window.addEventListener('scroll', applyParallax, { passive: true });
