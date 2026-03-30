@@ -207,25 +207,51 @@
             letter-spacing: -0.3px;
         }
         
-        /* ===== PHOTO PARALLAX SECTION ===== */
+        /* ===== VIDEO PARALLAX SECTION (3D scroll — replaces static photo section) ===== */
         .photo-parallax-section {
             position: relative;
-            height: 70vh;
+            height: 85vh;
             overflow: hidden;
             max-width: 100%;
             margin: 0;
             padding: 0;
         }
 
-        .photo-parallax-bg {
+        /* Video background container — extra height so parallax translateY never reveals edges */
+        .photo-parallax-video-bg {
             position: absolute;
-            top: -20%;
+            top: -25%;
             left: 0;
             width: 100%;
-            height: 140%;
-            background-image: url('images/3-1.png');
-            background-size: cover;
-            background-position: center;
+            height: 150%;
+            will-change: transform;
+            transform-origin: center center;
+        }
+
+        /* Vimeo player sized to always cover the container at 16:9, zoomed in */
+        #parallax-vimeo-player {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* 16:9 cover sizing — same pattern as the hero video */
+            width: 177.78vh;
+            min-width: 100%;
+            height: 56.25vw;
+            min-height: 100%;
+            /* Start hidden; revealed once video reaches the correct start time */
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            filter: saturate(1.1) contrast(1.08);
+        }
+
+        #parallax-vimeo-player iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
         
         /* ===== HOMEPAGE VIDEO SECTION ===== */
@@ -433,9 +459,11 @@
     </nav>
 
     <main>
-        <!-- PHOTO PARALLAX SECTION — shown first so it appears immediately while the video loads -->
+        <!-- VIDEO PARALLAX SECTION — Catherine's wedding, autoplays with dynamic 3D scroll -->
         <div class="photo-parallax-section">
-            <div class="photo-parallax-bg"></div>
+            <div class="photo-parallax-video-bg">
+                <div id="parallax-vimeo-player"></div>
+            </div>
         </div>
 
         <!-- HERO — Vimeo background video loads behind the photo above -->
@@ -647,28 +675,90 @@
             applyParallax();
         }());
 
-        // Parallax: photo section background scrolls slower than surrounding content.
+        // Video parallax section: Catherine's wedding, autoplays from 4:35 with dynamic 3D scroll
         (function () {
-            var photoBg      = document.querySelector('.photo-parallax-bg');
-            var photoSection = document.querySelector('.photo-parallax-section');
+            var START                = 275;    // 4 minutes 35 seconds into Catherine's wedding
+            var FALLBACK_REVEAL_MS   = 5000;   // reveal after 5 s if timeupdate never fires at START
+            var SCROLL_RANGE_FACTOR  = 0.7;    // fraction of viewport height used to normalise scroll position
+            var MAX_ROTATION_DEG     = 6;      // maximum X-axis tilt (degrees) at section edges
+            var BASE_SCALE           = 1.17;   // zoomed-in scale when section is centred
+            var SCALE_DELTA          = 0.06;   // extra scale applied at the edges (BASE_SCALE + SCALE_DELTA)
+            var PARALLAX_SPEED       = 0.35;   // video moves at 35 % of the page-scroll speed
 
-            if (!photoBg || !photoSection) return;
+            var ppEl    = document.getElementById('parallax-vimeo-player');
+            var ppBg    = document.querySelector('.photo-parallax-video-bg');
+            var section = document.querySelector('.photo-parallax-section');
 
-            function applyPhotoParallax() {
-                var scrolled    = window.scrollY;
-                var sectionTop  = photoSection.offsetTop;
+            // Initialise the background Vimeo player (muted autoplay, same video as hero)
+            var ppPlayer = new Vimeo.Player('parallax-vimeo-player', {
+                url: 'https://vimeo.com/1131352277',
+                background: 1,
+                autoplay:   1,
+                muted:      1,
+                quality:    '1080p',
+                loop:       1
+            });
 
-                if (scrolled + window.innerHeight >= sectionTop &&
-                        scrolled <= sectionTop + photoSection.offsetHeight) {
-                    // Move background at 30% of the scroll relative to the section,
-                    // slower than the surrounding content (normal speed).
-                    var offset = (scrolled - sectionTop) * 0.3;
-                    photoBg.style.transform = 'translateY(' + offset + 'px)';
+            // Seek to the cinematic start position once the player is ready
+            ppPlayer.on('loaded', function () {
+                ppPlayer.setCurrentTime(START).catch(function (err) {
+                    console.warn('Parallax Vimeo seek failed:', err);
+                });
+            });
+
+            // Reveal the player as soon as playback reaches the start position
+            var ppRevealed = false;
+            ppPlayer.on('timeupdate', function (data) {
+                if (!ppRevealed && data.seconds >= START) {
+                    ppRevealed = true;
+                    ppEl.style.opacity = '1';
                 }
+            });
+
+            // Fallback reveal after FALLBACK_REVEAL_MS in case the seek never fires timeupdate at START
+            setTimeout(function () {
+                if (!ppRevealed) { ppRevealed = true; ppEl.style.opacity = '1'; }
+            }, FALLBACK_REVEAL_MS);
+
+            // ── Dynamic 3D scroll effect ──────────────────────────────────────────
+            // As the section enters / centres / exits the viewport the video
+            // background is simultaneously:
+            //   • translated at PARALLAX_SPEED of the scroll rate (depth parallax)
+            //   • rotated on the X-axis (±MAX_ROTATION_DEG °) for a 3-D tilt
+            //   • scaled between BASE_SCALE and BASE_SCALE+SCALE_DELTA (zoomed in)
+            // Together these three transforms recreate the cinematic 3-D scroll
+            // effect seen on premium wedding-film sites.
+            function apply3D() {
+                if (!ppBg || !section) return;
+
+                var rect = section.getBoundingClientRect();
+                var vpH  = window.innerHeight;
+                var sH   = section.offsetHeight;
+
+                // normalised: −1 = section bottom at viewport top (exited above)
+                //              0 = section centred in viewport
+                //             +1 = section top at viewport bottom (not yet entered)
+                var norm = (rect.top + sH / 2 - vpH / 2) / (vpH * SCROLL_RANGE_FACTOR);
+                norm = Math.max(-1, Math.min(1, norm));
+
+                // RotateX: section tilts "into" the screen slightly as it approaches
+                var rotateX = norm * MAX_ROTATION_DEG;
+
+                // Scale: zoomed in, slightly more at the edges for drama
+                var scale = BASE_SCALE + Math.abs(norm) * SCALE_DELTA;
+
+                // Parallax translateY: video moves at PARALLAX_SPEED of the scroll speed
+                var parallaxY = (window.scrollY - section.offsetTop) * PARALLAX_SPEED;
+
+                // Apply all three transforms on the video-bg element
+                ppBg.style.transform =
+                    'translateY(' + parallaxY + 'px) ' +
+                    'perspective(1100px) rotateX(' + rotateX + 'deg) ' +
+                    'scale(' + scale + ')';
             }
 
-            window.addEventListener('scroll', applyPhotoParallax, { passive: true });
-            applyPhotoParallax();
+            window.addEventListener('scroll', apply3D, { passive: true });
+            apply3D(); // initialise on load
         }());
     </script>
     <script>
