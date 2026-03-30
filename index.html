@@ -215,6 +215,7 @@
             max-width: 100%;
             margin: 0;
             padding: 0;
+            background: #1a1a1a;
         }
 
         /* Image background container — extra height so parallax translateY never reveals edges */
@@ -666,8 +667,8 @@
         (function () {
             var SCROLL_RANGE_FACTOR  = 0.7;    // fraction of viewport height used to normalise scroll position
             var MAX_ROTATION_DEG     = 6;      // maximum X-axis tilt (degrees) at section edges
-            var BASE_SCALE           = 0.704;  // base scale factor when section is centred
-            var SCALE_DELTA          = 0.05;   // extra scale applied at the edges (BASE_SCALE + SCALE_DELTA)
+            var BASE_SCALE           = 0.528;  // base scale factor when section is centred (zoomed out ~25 % from 0.704)
+            var SCALE_DELTA          = 0.0375; // extra scale applied at the edges (BASE_SCALE + SCALE_DELTA)
             var PARALLAX_SPEED       = 0.35;   // image moves at 35 % of the page-scroll speed
 
             var ppBg    = document.querySelector('.photo-parallax-bg');
