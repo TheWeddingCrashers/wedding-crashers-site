@@ -220,10 +220,10 @@
         /* Image background container — extra height so parallax translateY never reveals edges */
         .photo-parallax-bg {
             position: absolute;
-            top: -25%;
-            left: -7.5%;
-            width: 115%;
-            height: 150%;
+            top: -30%;
+            left: -22.5%;
+            width: 145%;
+            height: 160%;
             will-change: transform;
             transform-origin: center center;
         }
@@ -666,7 +666,7 @@
         (function () {
             var SCROLL_RANGE_FACTOR  = 0.7;    // fraction of viewport height used to normalise scroll position
             var MAX_ROTATION_DEG     = 6;      // maximum X-axis tilt (degrees) at section edges
-            var BASE_SCALE           = 0.88;   // base scale factor when section is centred
+            var BASE_SCALE           = 0.704;  // base scale factor when section is centred
             var SCALE_DELTA          = 0.05;   // extra scale applied at the edges (BASE_SCALE + SCALE_DELTA)
             var PARALLAX_SPEED       = 0.35;   // image moves at 35 % of the page-scroll speed
 
