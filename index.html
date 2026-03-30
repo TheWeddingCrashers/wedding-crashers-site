@@ -217,8 +217,8 @@
             padding: 0;
         }
 
-        /* Video background container — extra height so parallax translateY never reveals edges */
-        .photo-parallax-video-bg {
+        /* Image background container — extra height so parallax translateY never reveals edges */
+        .photo-parallax-bg {
             position: absolute;
             top: -25%;
             left: 0;
@@ -228,30 +228,17 @@
             transform-origin: center center;
         }
 
-        /* Vimeo player sized to always cover the container at 16:9, zoomed in */
-        #parallax-vimeo-player {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            /* 16:9 cover sizing — same pattern as the hero video */
-            width: 177.78vh;
-            min-width: 100%;
-            height: 56.25vw;
-            min-height: 100%;
-            /* Start hidden; revealed once video reaches the correct start time */
-            opacity: 0;
-            transition: opacity 0.6s ease;
-            filter: saturate(1.1) contrast(1.08);
-        }
-
-        #parallax-vimeo-player iframe {
+        /* Image sized to fully cover the container, zoomed in via JS scale transform */
+        .parallax-hero-img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: 0;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            filter: saturate(1.1) contrast(1.08);
         }
         
         /* ===== HOMEPAGE VIDEO SECTION ===== */
@@ -459,10 +446,10 @@
     </nav>
 
     <main>
-        <!-- VIDEO PARALLAX SECTION — Catherine's wedding, autoplays with dynamic 3D scroll -->
+        <!-- IMAGE PARALLAX SECTION — 3-8.png with zoomed-in dynamic 3D scroll -->
         <div class="photo-parallax-section">
-            <div class="photo-parallax-video-bg">
-                <div id="parallax-vimeo-player"></div>
+            <div class="photo-parallax-bg">
+                <img src="images/3-8.png" alt="" class="parallax-hero-img">
             </div>
         </div>
 
@@ -675,53 +662,19 @@
             applyParallax();
         }());
 
-        // Video parallax section: Catherine's wedding, autoplays from 4:35 with dynamic 3D scroll
+        // Image parallax section: 3-8.png with zoomed-in dynamic 3D scroll
         (function () {
-            var START                = 275;    // 4 minutes 35 seconds into Catherine's wedding
-            var FALLBACK_REVEAL_MS   = 5000;   // reveal after 5 s if timeupdate never fires at START
             var SCROLL_RANGE_FACTOR  = 0.7;    // fraction of viewport height used to normalise scroll position
             var MAX_ROTATION_DEG     = 6;      // maximum X-axis tilt (degrees) at section edges
             var BASE_SCALE           = 1.17;   // zoomed-in scale when section is centred
             var SCALE_DELTA          = 0.06;   // extra scale applied at the edges (BASE_SCALE + SCALE_DELTA)
-            var PARALLAX_SPEED       = 0.35;   // video moves at 35 % of the page-scroll speed
+            var PARALLAX_SPEED       = 0.35;   // image moves at 35 % of the page-scroll speed
 
-            var ppEl    = document.getElementById('parallax-vimeo-player');
-            var ppBg    = document.querySelector('.photo-parallax-video-bg');
+            var ppBg    = document.querySelector('.photo-parallax-bg');
             var section = document.querySelector('.photo-parallax-section');
 
-            // Initialise the background Vimeo player (muted autoplay, same video as hero)
-            var ppPlayer = new Vimeo.Player('parallax-vimeo-player', {
-                url: 'https://vimeo.com/1131352277',
-                background: 1,
-                autoplay:   1,
-                muted:      1,
-                quality:    '1080p',
-                loop:       1
-            });
-
-            // Seek to the cinematic start position once the player is ready
-            ppPlayer.on('loaded', function () {
-                ppPlayer.setCurrentTime(START).catch(function (err) {
-                    console.warn('Parallax Vimeo seek failed:', err);
-                });
-            });
-
-            // Reveal the player as soon as playback reaches the start position
-            var ppRevealed = false;
-            ppPlayer.on('timeupdate', function (data) {
-                if (!ppRevealed && data.seconds >= START) {
-                    ppRevealed = true;
-                    ppEl.style.opacity = '1';
-                }
-            });
-
-            // Fallback reveal after FALLBACK_REVEAL_MS in case the seek never fires timeupdate at START
-            setTimeout(function () {
-                if (!ppRevealed) { ppRevealed = true; ppEl.style.opacity = '1'; }
-            }, FALLBACK_REVEAL_MS);
-
             // ── Dynamic 3D scroll effect ──────────────────────────────────────────
-            // As the section enters / centres / exits the viewport the video
+            // As the section enters / centres / exits the viewport the image
             // background is simultaneously:
             //   • translated at PARALLAX_SPEED of the scroll rate (depth parallax)
             //   • rotated on the X-axis (±MAX_ROTATION_DEG °) for a 3-D tilt
@@ -747,10 +700,10 @@
                 // Scale: zoomed in, slightly more at the edges for drama
                 var scale = BASE_SCALE + Math.abs(norm) * SCALE_DELTA;
 
-                // Parallax translateY: video moves at PARALLAX_SPEED of the scroll speed
+                // Parallax translateY: image moves at PARALLAX_SPEED of the scroll speed
                 var parallaxY = (window.scrollY - section.offsetTop) * PARALLAX_SPEED;
 
-                // Apply all three transforms on the video-bg element
+                // Apply all three transforms on the image-bg element
                 ppBg.style.transform =
                     'translateY(' + parallaxY + 'px) ' +
                     'perspective(1100px) rotateX(' + rotateX + 'deg) ' +
