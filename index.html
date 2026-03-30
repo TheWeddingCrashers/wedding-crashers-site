@@ -218,25 +218,25 @@
             background: #1a1a1a;
         }
 
-        /* Image background container — full section width; extra height so parallax translateY never reveals edges */
+        /* Image background container — full section width; slight extra height for smooth parallax movement */
         .photo-parallax-bg {
             position: absolute;
-            top: -43%;
+            top: -10%;
             left: 0;
             width: 100%;
-            height: 186%;
+            height: 120%;
             will-change: transform;
             transform-origin: center center;
         }
 
-        /* Image sized to fully cover the container, zoomed in via JS scale transform */
+        /* Image sized to fully contain the image so the whole photo is visible */
         .parallax-hero-img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             object-position: center;
             display: block;
             filter: saturate(1.1) contrast(1.08);
@@ -667,7 +667,7 @@
         (function () {
             var SCROLL_RANGE_FACTOR  = 0.7;    // fraction of viewport height used to normalise scroll position
             var MAX_ROTATION_DEG     = 6;      // maximum X-axis tilt (degrees) at section edges
-            var BASE_SCALE           = 0.8;    // zoomed out to 80% — image fills 80% of the section width
+            var BASE_SCALE           = 1.0;    // no extra scaling — image shown at full size
             var SCALE_DELTA          = 0.025;  // slight zoom-in at section edges for 3D drama
             var PARALLAX_SPEED       = 0.35;   // image moves at 35 % of the page-scroll speed
 
