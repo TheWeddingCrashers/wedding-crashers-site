@@ -218,13 +218,13 @@
             background: #1a1a1a;
         }
 
-        /* Image background container — extra height so parallax translateY never reveals edges */
+        /* Image background container — full section width; extra height so parallax translateY never reveals edges */
         .photo-parallax-bg {
             position: absolute;
-            top: -30%;
-            left: -22.5%;
-            width: 145%;
-            height: 160%;
+            top: -43%;
+            left: 0;
+            width: 100%;
+            height: 186%;
             will-change: transform;
             transform-origin: center center;
         }
@@ -447,7 +447,7 @@
     </nav>
 
     <main>
-        <!-- IMAGE PARALLAX SECTION — 3-8.png with zoomed-in dynamic 3D scroll -->
+        <!-- IMAGE PARALLAX SECTION — 3-8.png with dynamic 3D scroll (fully zoomed out) -->
         <div class="photo-parallax-section">
             <div class="photo-parallax-bg">
                 <img src="images/3-8.png" alt="" class="parallax-hero-img">
@@ -663,12 +663,12 @@
             applyParallax();
         }());
 
-        // Image parallax section: 3-8.png with zoomed-in dynamic 3D scroll
+        // Image parallax section: 3-8.png with dynamic 3D scroll (fully zoomed out)
         (function () {
             var SCROLL_RANGE_FACTOR  = 0.7;    // fraction of viewport height used to normalise scroll position
             var MAX_ROTATION_DEG     = 6;      // maximum X-axis tilt (degrees) at section edges
-            var BASE_SCALE           = 0.528;  // base scale factor when section is centred (zoomed out ~25 % from 0.704)
-            var SCALE_DELTA          = 0.0375; // extra scale applied at the edges (BASE_SCALE + SCALE_DELTA)
+            var BASE_SCALE           = 1.0;    // natural scale — fills section width with no crop/zoom-in
+            var SCALE_DELTA          = 0.025;  // slight zoom-in at section edges for 3D drama
             var PARALLAX_SPEED       = 0.35;   // image moves at 35 % of the page-scroll speed
 
             var ppBg    = document.querySelector('.photo-parallax-bg');
@@ -679,7 +679,7 @@
             // background is simultaneously:
             //   • translated at PARALLAX_SPEED of the scroll rate (depth parallax)
             //   • rotated on the X-axis (±MAX_ROTATION_DEG °) for a 3-D tilt
-            //   • scaled between BASE_SCALE and BASE_SCALE+SCALE_DELTA (zoomed in)
+            //   • scaled between BASE_SCALE and BASE_SCALE+SCALE_DELTA (slight zoom at edges)
             // Together these three transforms recreate the cinematic 3-D scroll
             // effect seen on premium wedding-film sites.
             function apply3D() {
@@ -698,7 +698,7 @@
                 // RotateX: section tilts "into" the screen slightly as it approaches
                 var rotateX = norm * MAX_ROTATION_DEG;
 
-                // Scale: zoomed in, slightly more at the edges for drama
+                // Scale: slight zoom-in at edges for 3D drama
                 var scale = BASE_SCALE + Math.abs(norm) * SCALE_DELTA;
 
                 // Parallax translateY: image moves at PARALLAX_SPEED of the scroll speed
