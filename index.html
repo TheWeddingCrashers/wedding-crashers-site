@@ -23,7 +23,7 @@
             --text: #3a3a3a;
             --gray: #e8e6e3;
             --light: #f9f9f9;
-            --pastel-green: #8dbf8a;
+            --cobalt-blue: #1a3a8f;
         }
         
         * {
@@ -113,7 +113,7 @@
             text-align: center;
             position: relative;
             z-index: 2;
-            background: var(--pastel-green);
+            background: var(--cobalt-blue);
             padding: 22px 40px;
         }
         
@@ -445,14 +445,18 @@
     <!-- NAVIGATION -->
     <nav>
         <div class="nav-container">
-            <ul class="menu">
+            <ul class="menu-left">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
-                <li class="logo-item"><div class="logo"><img src="images/logo.svg" alt="The Wedding Crashers" class="logo-img"></div></li>
+            </ul>
+            <div class="logo-item">
+                <div class="logo"><img src="images/logo.svg" alt="The Wedding Crashers" class="logo-img"></div>
+            </div>
+            <ul class="menu-right">
                 <li><a href="video.html">Videos</a></li>
                 <li><a href="packages.html">Packages</a></li>
-                <li><a href="contact.html" class="cta-btn">Contact</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -473,7 +477,7 @@
                 <div class="hero-video-overlay"></div>
             </div>
             <div class="hero-content">
-                <h1 aria-label="gone in a blink, unless we're there">gone in a blink<br>unless we're there</h1>
+                <h1 aria-label="you've got the story and we've got the glory">you've got the story<br>and we've got the glory</h1>
             </div>
         </section>
 

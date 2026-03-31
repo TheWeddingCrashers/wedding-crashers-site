@@ -74,63 +74,67 @@ nav {
   display: block;
 }
 
-.menu {
+.menu-left,
+.menu-right {
   display: flex;
-  gap: 0;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 4px;
   list-style: none;
   flex: 1;
-  justify-content: space-evenly;
-  height: var(--nav-height);
 }
 
-.menu li {
-  height: 100%;
-  display: flex;
-  align-items: center;
+.menu-left li,
+.menu-right li {
+  list-style: none;
   border-left: none;
   padding-left: 0;
   margin: 0;
 }
 
-.menu li::before {
+.menu-left li::before,
+.menu-right li::before {
   content: none;
 }
 
-.menu a {
+.menu-left a,
+.menu-right a {
   text-decoration: none;
   color: var(--nav-text);
   font-family: 'Outfit', -apple-system, system-ui, sans-serif;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 15px;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
   position: relative;
-  padding: 0 27px;
-  height: 100%;
-  display: flex;
-  align-items: center;
+  padding: 6px 24px;
+  display: block;
+  text-align: center;
   text-transform: uppercase;
 }
 
-.menu a:hover {
+.menu-left a:hover,
+.menu-right a:hover {
   color: var(--pink);
 }
 
-.menu a::after {
+.menu-left a::after,
+.menu-right a::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 27px;
-  right: 27px;
-  height: 3px;
+  bottom: 2px;
+  left: 24px;
+  right: 24px;
+  height: 2px;
   background: var(--pink);
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.3s ease;
 }
 
-.menu a:hover::after {
+.menu-left a:hover::after,
+.menu-right a:hover::after {
   transform: scaleX(1);
 }
 
@@ -170,47 +174,42 @@ main {
 }
 
 @media (max-width: 768px) {
-  nav {
-    overflow-x: auto;
-    overflow-y: hidden;
-    /* Hide scrollbar visually but keep it functional */
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  nav::-webkit-scrollbar {
-    display: none;
+  :root {
+    --nav-height: 140px;
   }
 
   .nav-container {
-    padding: 0 20px;
-    min-width: max-content;
-    justify-content: flex-start;
-    gap: 16px;
-  }
-
-  .menu {
-    gap: 4px;
-    flex: none;
-  }
-
-  .menu a {
-    padding: 0 15px;
-    font-size: 15px;
-    white-space: nowrap;
-  }
-
-  .cta-btn {
-    padding: 12px 20px;
-    font-size: 14px;
-    white-space: nowrap;
-  }
-
-  .logo-item {
     padding: 0 12px;
   }
 
+  .menu-left a,
+  .menu-right a {
+    padding: 4px 12px;
+    font-size: 12px;
+  }
+
+  .logo-item {
+    padding: 0 8px;
+  }
+
   .logo-img {
-    height: 88px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --nav-height: 120px;
+  }
+
+  .menu-left a,
+  .menu-right a {
+    padding: 3px 8px;
+    font-size: 10px;
+    letter-spacing: 0.3px;
+  }
+
+  .logo-img {
+    height: 64px;
   }
 }
