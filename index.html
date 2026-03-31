@@ -234,14 +234,14 @@
             transform-origin: center center;
         }
 
-        /* Image sized to fully contain the image so the whole photo is visible */
+        /* Image sized to fully cover the section — no dark gaps at edges */
         .parallax-hero-img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             object-position: center;
             display: block;
             filter: saturate(1.1) contrast(1.08);
