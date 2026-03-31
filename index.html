@@ -100,7 +100,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.45);
+            background: rgba(0, 0, 0, 0.1);
         }
         
         @keyframes float {
@@ -244,26 +244,32 @@
             object-fit: cover;
             object-position: center;
             display: block;
-            filter: saturate(1.1) contrast(1.08);
+            filter: brightness(1.2) saturate(1.1) contrast(1.08);
         }
         
-        /* ===== HOMEPAGE VIDEO SECTION ===== */
-        .homepage-video-section {
-            padding: 80px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .homepage-video-wrapper {
-            width: 100%;
-            aspect-ratio: 16 / 9;
+        /* ===== HOMEPAGE VIDEO PARALLAX SECTION (Catherine's wedding — full-screen 3D scroll) ===== */
+        .video-parallax-section {
             position: relative;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
-            border-radius: 16px;
+            height: 85vh;
             overflow: hidden;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #111;
         }
 
-        /* Scale the Vimeo player div to cover the wrapper at 16:9 */
+        /* Video background container — full section width; extra height for 3D tilt without gaps */
+        .video-parallax-bg {
+            position: absolute;
+            top: -15%;
+            left: 0;
+            width: 100%;
+            height: 130%;
+            will-change: transform;
+            transform-origin: center center;
+        }
+
+        /* Vimeo player sized to fill the section fully */
         #homepage-vimeo-player {
             position: absolute;
             top: 50%;
@@ -439,11 +445,11 @@
     <!-- NAVIGATION -->
     <nav>
         <div class="nav-container">
-            <div class="logo"><img src="images/logo.svg" alt="The Wedding Crashers" class="logo-img"></div>
             <ul class="menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
+                <li class="logo-item"><div class="logo"><img src="images/logo.svg" alt="The Wedding Crashers" class="logo-img"></div></li>
                 <li><a href="video.html">Videos</a></li>
                 <li><a href="packages.html">Packages</a></li>
                 <li><a href="contact.html" class="cta-btn">Contact</a></li>
@@ -471,9 +477,9 @@
             </div>
         </section>
 
-        <!-- HOMEPAGE VIDEO -->
-        <div class="homepage-video-section">
-            <div class="homepage-video-wrapper">
+        <!-- HOMEPAGE VIDEO — Catherine's wedding (4:35 on loop) with full-screen 3D parallax -->
+        <div class="video-parallax-section">
+            <div class="video-parallax-bg" id="video-parallax-bg">
                 <div id="homepage-vimeo-player"></div>
             </div>
         </div>
@@ -614,6 +620,12 @@
                     hpRevealed = true;
                     hpEl.style.opacity = '1';
                 }
+                // Loop: jump back to START when we reach the end of the section
+                if (data.seconds >= data.duration - 2) {
+                    hpPlayer.setCurrentTime(START).catch(function (error) {
+                        console.warn('Homepage Vimeo player loop seek failed:', error);
+                    });
+                }
             });
 
             // Fallback: reveal the player after 5 seconds in case the seek
@@ -635,6 +647,39 @@
                         console.warn('Homepage Vimeo player restart failed:', error);
                     });
             });
+
+            // 3D parallax scroll effect for the video section — identical physics to the photo section
+            var SCROLL_RANGE_FACTOR = 0.7;
+            var MAX_ROTATION_DEG    = 6;
+            var BASE_SCALE          = 1.0;
+            var SCALE_DELTA         = 0.025;
+            var PARALLAX_SPEED      = 0.35;
+
+            var vpBg    = document.getElementById('video-parallax-bg');
+            var vpSec   = document.querySelector('.video-parallax-section');
+
+            function applyVideoParallax() {
+                if (!vpBg || !vpSec) return;
+
+                var rect = vpSec.getBoundingClientRect();
+                var vpH  = window.innerHeight;
+                var sH   = vpSec.offsetHeight;
+
+                var norm = (rect.top + sH / 2 - vpH / 2) / (vpH * SCROLL_RANGE_FACTOR);
+                norm = Math.max(-1, Math.min(1, norm));
+
+                var rotateX   = norm * MAX_ROTATION_DEG;
+                var scale     = BASE_SCALE + Math.abs(norm) * SCALE_DELTA;
+                var parallaxY = (window.scrollY - vpSec.offsetTop) * PARALLAX_SPEED;
+
+                vpBg.style.transform =
+                    'translateY(' + parallaxY + 'px) ' +
+                    'perspective(1100px) rotateX(' + rotateX + 'deg) ' +
+                    'scale(' + scale + ')';
+            }
+
+            window.addEventListener('scroll', applyVideoParallax, { passive: true });
+            applyVideoParallax();
         }());
 
         // Hero section video background: same dynamic 3D scroll effect as the photo section above,
