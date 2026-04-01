@@ -109,15 +109,19 @@
         }
         
         .hero-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
             width: 100%;
             text-align: center;
-            position: relative;
-            z-index: 2;
+            z-index: 10;
             background: var(--cobalt-blue);
             padding: 22px 40px;
+            will-change: transform;
+            transform-origin: center center;
         }
         
-        .hero h1 {
+        .hero-content h1 {
             font-family: 'Outfit', -apple-system, system-ui, sans-serif;
             font-size: clamp(0.95rem, 2.5vw, 1.5rem);
             font-weight: 700;
@@ -435,7 +439,7 @@
                 padding: 18px 20px;
             }
 
-            .hero h1 {
+            .hero-content h1 {
                 font-size: clamp(0.8rem, 4vw, 1.1rem);
             }
         }
@@ -467,6 +471,10 @@
             <div class="photo-parallax-bg">
                 <img src="images/3-8.png" alt="" class="parallax-hero-img">
             </div>
+            <!-- Banner overlaid in front of the parallax image — follows the same 3D scroll effect -->
+            <div class="hero-content">
+                <h1 aria-label="you've got the story and we've got the glory">you've got the story<br>and we've got the glory</h1>
+            </div>
         </div>
 
         <!-- HERO — Vimeo background video loads behind the photo above -->
@@ -475,9 +483,6 @@
             <div class="hero-video-bg">
                 <div id="vimeo-bg-player"></div>
                 <div class="hero-video-overlay"></div>
-            </div>
-            <div class="hero-content">
-                <h1 aria-label="you've got the story and we've got the glory">you've got the story<br>and we've got the glory</h1>
             </div>
         </section>
 
@@ -731,9 +736,11 @@
             var BASE_SCALE           = 1.0;    // no extra scaling — image shown at full size
             var SCALE_DELTA          = 0.025;  // slight zoom-in at section edges for 3D drama
             var PARALLAX_SPEED       = 0.35;   // image moves at 35 % of the page-scroll speed
+            var BANNER_PARALLAX_SPEED = 0.08;  // banner moves slower — appears "in front" at a closer depth
 
-            var ppBg    = document.querySelector('.photo-parallax-bg');
-            var section = document.querySelector('.photo-parallax-section');
+            var ppBg      = document.querySelector('.photo-parallax-bg');
+            var section   = document.querySelector('.photo-parallax-section');
+            var heroBanner = document.querySelector('.hero-content');
 
             // ── Dynamic 3D scroll effect ──────────────────────────────────────────
             // As the section enters / centres / exits the viewport the image
@@ -741,8 +748,9 @@
             //   • translated at PARALLAX_SPEED of the scroll rate (depth parallax)
             //   • rotated on the X-axis (±MAX_ROTATION_DEG °) for a 3-D tilt
             //   • scaled between BASE_SCALE and BASE_SCALE+SCALE_DELTA (slight zoom at edges)
-            // Together these three transforms recreate the cinematic 3-D scroll
-            // effect seen on premium wedding-film sites.
+            // The banner overlay follows the same 3D rotation but translates more slowly
+            // (BANNER_PARALLAX_SPEED), which creates a layered depth illusion — it
+            // appears to float in front of the image on its own z-plane.
             function apply3D() {
                 if (!ppBg || !section) return;
 
@@ -770,6 +778,17 @@
                     'translateY(' + parallaxY + 'px) ' +
                     'perspective(1100px) rotateX(' + rotateX + 'deg) ' +
                     'scale(' + scale + ')';
+
+                // Apply the same 3D rotation to the banner but at a much slower
+                // parallax translation — the difference in speed creates the
+                // perception of the banner sitting on a closer depth plane.
+                if (heroBanner) {
+                    var bannerParallaxY = (window.scrollY - section.offsetTop) * BANNER_PARALLAX_SPEED;
+                    heroBanner.style.transform =
+                        'translateY(' + bannerParallaxY + 'px) ' +
+                        'perspective(1100px) rotateX(' + rotateX + 'deg) ' +
+                        'scale(' + scale + ')';
+                }
             }
 
             window.addEventListener('scroll', apply3D, { passive: true });
