@@ -227,6 +227,12 @@
             background: #111;
         }
 
+        /* Ensure the first parallax section (with the text banner) renders above the
+           second photo section so the hero-content is never covered by the image below */
+        .photo-parallax-section:not(.second-photo-section) {
+            z-index: 1;
+        }
+
         /* Image background container — full section width; extra height so 3D rotation never exposes the background */
         .photo-parallax-bg {
             position: absolute;
