@@ -281,67 +281,6 @@
             filter: brightness(1.2) saturate(1.1) contrast(1.08);
         }
         
-        /* ===== FEATURES SECTION ===== */
-        .features-section {
-            background: #fff;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 50px;
-        }
-        
-        .feature-card {
-            background: var(--light);
-            padding: 50px 40px;
-            border-radius: 16px;
-            border: 1px solid #f0f0f0;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--pink);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            box-shadow: 0 24px 48px rgba(241, 155, 184, 0.12);
-            transform: translateY(-12px);
-        }
-        
-        .feature-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .feature-icon {
-            font-size: 3.5rem;
-            margin-bottom: 25px;
-            display: block;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-        
-        .feature-card p {
-            color: #777;
-            font-size: 1rem;
-            line-height: 1.8;
-            margin: 0;
-        }
         
         /* ===== CTA SECTION ===== */
         .cta-section {
@@ -411,10 +350,6 @@
                 margin: 60px 20px 0;
             }
             
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
 
             .hero {
                 padding: 0;
@@ -485,43 +420,6 @@
             <div class="hero-video-bg">
                 <div id="vimeo-bg-player"></div>
                 <div class="hero-video-overlay"></div>
-            </div>
-        </section>
-
-        <!-- FEATURES -->
-        <section class="features-section">
-            <h2>Why Choose Us</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <span class="feature-icon">🎬</span>
-                    <h3>Cinematic Quality</h3>
-                    <p>Professional-grade equipment combined with artistic vision ensures your wedding is captured beautifully.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">😄</span>
-                    <h3>Authentic Moments</h3>
-                    <p>We capture the real joy, laughter, and connection that makes your day uniquely yours.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">🤝</span>
-                    <h3>Personal Touch</h3>
-                    <p>We're not just vendors — we're part of your celebration. You'll get to know us personally.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">⚡</span>
-                    <h3>Quick Turnaround</h3>
-                    <p>Expert editing and efficient workflow means you get your photos & videos fast.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">📦</span>
-                    <h3>Complete Packages</h3>
-                    <p>Photography, videography, prints, albums — flexible packages to suit your needs.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">✨</span>
-                    <h3>Creative Freedom</h3>
-                    <p>Open to your ideas and inspired by your vision. We collaborate to create something special.</p>
-                </div>
             </div>
         </section>
 
