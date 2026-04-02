@@ -227,9 +227,28 @@
             background: #111;
         }
 
-        /* Ensure the first parallax section (with the text banner) renders above the
-           second photo section so the hero-content is never covered by the image below */
+        /* The first parallax section (with the text banner) must render above the second
+           photo section so the hero-content is never covered by the image below.
+           overflow:visible lets the banner escape the clip boundary; the background
+           image is kept inside its own .photo-parallax-clip wrapper instead. */
         .photo-parallax-section:not(.second-photo-section) {
+            z-index: 2;
+            overflow: visible;
+            background: transparent;
+        }
+
+        /* Clip wrapper — contains only the background image so that overflow:visible on
+           the parent section does not reveal raw dark fill around the image edges. */
+        .photo-parallax-clip {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            background: #111;
+            z-index: 0;
+        }
+
+        /* The second photo section sits behind the first */
+        .second-photo-section {
             z-index: 1;
         }
 
@@ -429,10 +448,14 @@
     <main>
         <!-- IMAGE PARALLAX SECTION — 3-8.png with dynamic 3D scroll (fully zoomed out) -->
         <div class="photo-parallax-section">
-            <div class="photo-parallax-bg">
-                <img src="images/3-8.png" alt="" class="parallax-hero-img">
+            <!-- Clip wrapper keeps the bg image inside section bounds while the section itself
+                 uses overflow:visible so the hero-content banner is never clipped. -->
+            <div class="photo-parallax-clip">
+                <div class="photo-parallax-bg">
+                    <img src="images/3-8.png" alt="" class="parallax-hero-img">
+                </div>
             </div>
-            <!-- Banner overlaid in front of the parallax image — follows the same 3D scroll effect -->
+            <!-- Banner overlaid in front of the parallax image — sits above both photo sections -->
             <div class="hero-content">
                 <h1 aria-label="you've got the story and we've got the glory">you've got the story<br>and we've got the glory</h1>
             </div>
@@ -618,7 +641,6 @@
             var BASE_SCALE           = 1.0;
             var SCALE_DELTA          = 0.025;
             var PARALLAX_SPEED       = 0.35;
-            var BANNER_PARALLAX_SPEED = 0.08;
 
             if (!bgEl || !sectionEl) return;
 
@@ -641,11 +663,11 @@
                 'perspective(1100px) rotateX(' + rotateX + 'deg) ' +
                 'scale(' + scale + ')';
 
-            // Optional banner: same rotation, slower translation creates depth illusion
+            // Optional banner: apply the same 3D rotation as the image for depth,
+            // but NO translateY — without this the banner would be translated downward
+            // out of the visible area as the user scrolls.
             if (bannerEl) {
-                var bannerParallaxY = (window.scrollY - sectionEl.offsetTop) * BANNER_PARALLAX_SPEED;
                 bannerEl.style.transform =
-                    'translateY(' + bannerParallaxY + 'px) ' +
                     'perspective(1100px) rotateX(' + rotateX + 'deg) ' +
                     'scale(' + scale + ')';
             }
@@ -653,7 +675,7 @@
 
         // Image parallax section: 3-8.png with dynamic 3D scroll (fully zoomed out)
         (function () {
-            var ppBg      = document.querySelector('.photo-parallax-bg');
+            var ppBg      = document.querySelector('.photo-parallax-clip .photo-parallax-bg');
             var section   = document.querySelector('.photo-parallax-section');
             var heroBanner = document.querySelector('.hero-content');
 
