@@ -72,12 +72,14 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            /* Maintain 16:9 while always covering the container */
-            width: 177.78vh;  /* 16/9 × 100vh */
-            min-width: 100%;
-            height: 56.25vw;  /* 9/16 × 100vw */
-            min-height: 100%;
+            transform: translate(-50%, -50%) scale(0.85);
+            /* Maintain 16:9 while always covering the container — values increased to
+               compensate for the 0.85 scale so there are no visible edge gaps.
+               Formula: original ÷ 0.85 (e.g. 177.78vh ÷ 0.85 ≈ 209vh, 56.25vw ÷ 0.85 ≈ 66vw) */
+            width: 210vh;
+            min-width: 120%;  /* 100% ÷ 0.85 ≈ 117.6%, rounded up for safety */
+            height: 67vw;
+            min-height: 120%;  /* 100% ÷ 0.85 ≈ 117.6%, rounded up for safety */
             /* Hidden until playback reaches the correct start position */
             opacity: 0;
             transition: opacity 0.4s ease;
@@ -251,51 +253,6 @@
             filter: brightness(1.2) saturate(1.1) contrast(1.08);
         }
         
-        /* ===== HOMEPAGE VIDEO PARALLAX SECTION (Catherine's wedding — full-screen 3D scroll) ===== */
-        .video-parallax-section {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            max-width: 100%;
-            margin: 0;
-            padding: 0;
-            background: #111;
-        }
-
-        /* Video background container — full section width; extra height for 3D tilt without gaps */
-        .video-parallax-bg {
-            position: absolute;
-            top: -15%;
-            left: 0;
-            width: 100%;
-            height: 130%;
-            will-change: transform;
-            transform-origin: center center;
-        }
-
-        /* Vimeo player sized to fill the section fully */
-        #homepage-vimeo-player {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 177.78vh;
-            min-width: 100%;
-            height: 56.25vw;
-            min-height: 100%;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        #homepage-vimeo-player iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
         /* ===== FEATURES SECTION ===== */
         .features-section {
             background: #fff;
@@ -486,13 +443,6 @@
             </div>
         </section>
 
-        <!-- HOMEPAGE VIDEO — Catherine's wedding (4:35 on loop) with full-screen 3D parallax -->
-        <div class="video-parallax-section">
-            <div class="video-parallax-bg" id="video-parallax-bg">
-                <div id="homepage-vimeo-player"></div>
-            </div>
-        </div>
-
         <!-- FEATURES -->
         <section class="features-section">
             <h2>Why Choose Us</h2>
@@ -572,6 +522,8 @@
             // As soon as the video is ready, jump straight to the start position
             // so the very first visible frame is at 4:34
             player.on('loaded', function () {
+                // Force HD quality
+                player.setQuality('1080p').catch(function () {});
                 player.setCurrentTime(START).catch(function (error) {
                     console.warn('Vimeo player initial seek failed:', error);
                 });
@@ -604,96 +556,6 @@
                         console.warn('Vimeo player restart failed:', error);
                     });
             });
-        }());
-
-        // Homepage video: Catherine's wedding, autoplays from 4:38 and loops back to that time
-        (function () {
-            var START = 278; // 4 minutes 38 seconds
-            var hpEl  = document.getElementById('homepage-vimeo-player');
-
-            var hpPlayer = new Vimeo.Player('homepage-vimeo-player', {
-                url: 'https://vimeo.com/1131352277',
-                background: 1,
-                autoplay: 1,
-                muted: 1,
-                quality: '1080p',
-                loop: 0
-            });
-
-            // Seek to the requested start position as soon as the player is ready
-            hpPlayer.on('loaded', function () {
-                hpPlayer.setCurrentTime(START).catch(function (error) {
-                    console.warn('Homepage Vimeo player initial seek failed:', error);
-                });
-            });
-
-            var hpRevealed = false;
-            hpPlayer.on('timeupdate', function (data) {
-                // Reveal once playback reaches the start position
-                if (!hpRevealed && data.seconds >= START) {
-                    hpRevealed = true;
-                    hpEl.style.opacity = '1';
-                }
-                // Loop: jump back to START when we reach the end of the section
-                if (data.seconds >= data.duration - 2) {
-                    hpPlayer.setCurrentTime(START).catch(function (error) {
-                        console.warn('Homepage Vimeo player loop seek failed:', error);
-                    });
-                }
-            });
-
-            // Fallback: reveal the player after 5 seconds in case the seek
-            // fails and timeupdate never reaches START
-            setTimeout(function () {
-                if (!hpRevealed) {
-                    hpRevealed = true;
-                    hpEl.style.opacity = '1';
-                }
-            }, 5000);
-
-            // When the video ends, loop back to the start position
-            hpPlayer.on('ended', function () {
-                hpPlayer.setCurrentTime(START)
-                    .then(function () {
-                        return hpPlayer.play();
-                    })
-                    .catch(function (error) {
-                        console.warn('Homepage Vimeo player restart failed:', error);
-                    });
-            });
-
-            // 3D parallax scroll effect for the video section — identical physics to the photo section
-            var SCROLL_RANGE_FACTOR = 0.7;
-            var MAX_ROTATION_DEG    = 6;
-            var BASE_SCALE          = 1.0;
-            var SCALE_DELTA         = 0.025;
-            var PARALLAX_SPEED      = 0.35;
-
-            var vpBg    = document.getElementById('video-parallax-bg');
-            var vpSec   = document.querySelector('.video-parallax-section');
-
-            function applyVideoParallax() {
-                if (!vpBg || !vpSec) return;
-
-                var rect = vpSec.getBoundingClientRect();
-                var vpH  = window.innerHeight;
-                var sH   = vpSec.offsetHeight;
-
-                var norm = (rect.top + sH / 2 - vpH / 2) / (vpH * SCROLL_RANGE_FACTOR);
-                norm = Math.max(-1, Math.min(1, norm));
-
-                var rotateX   = norm * MAX_ROTATION_DEG;
-                var scale     = BASE_SCALE + Math.abs(norm) * SCALE_DELTA;
-                var parallaxY = (window.scrollY - vpSec.offsetTop) * PARALLAX_SPEED;
-
-                vpBg.style.transform =
-                    'translateY(' + parallaxY + 'px) ' +
-                    'perspective(1100px) rotateX(' + rotateX + 'deg) ' +
-                    'scale(' + scale + ')';
-            }
-
-            window.addEventListener('scroll', applyVideoParallax, { passive: true });
-            applyVideoParallax();
         }());
 
         // Hero section video background: same dynamic 3D scroll effect as the photo section above,
