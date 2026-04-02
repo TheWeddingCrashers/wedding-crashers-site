@@ -247,9 +247,14 @@
             z-index: 0;
         }
 
-        /* The second photo section sits behind the first */
+        /* The second photo section sits behind the first but in front of the video.
+           overflow:visible lets the banner escape the clip boundary (same as the
+           first section); the background image is kept inside its own
+           .second-photo-clip wrapper. */
         .second-photo-section {
             z-index: 1;
+            overflow: visible;
+            background: transparent;
         }
 
         /* Image background container — full section width; extra height so 3D rotation never exposes the background */
@@ -463,8 +468,14 @@
 
         <!-- SECOND PHOTO SECTION — 3-1.png (couple in black suit and sunglasses) -->
         <div class="photo-parallax-section second-photo-section">
-            <div class="photo-parallax-bg second-photo-bg">
-                <img src="images/3-1.png" alt="" class="parallax-hero-img">
+            <div class="photo-parallax-clip second-photo-clip">
+                <div class="photo-parallax-bg second-photo-bg">
+                    <img src="images/3-1.png" alt="" class="parallax-hero-img">
+                </div>
+            </div>
+            <!-- Banner overlaid in front of the second parallax image — separates it from the video below -->
+            <div class="hero-content hero-content-2">
+                <h1 aria-label="you've got the story and we've got the glory">you've got the story<br>and we've got the glory</h1>
             </div>
         </div>
 
@@ -691,9 +702,10 @@
         (function () {
             var ppBg2    = document.querySelector('.second-photo-bg');
             var section2 = document.querySelector('.second-photo-section');
+            var heroBanner2 = document.querySelector('.hero-content-2');
 
             function apply3D2() {
-                applyPhotoParallax(ppBg2, section2, null);
+                applyPhotoParallax(ppBg2, section2, heroBanner2);
             }
 
             window.addEventListener('scroll', apply3D2, { passive: true });
