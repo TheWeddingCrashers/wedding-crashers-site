@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://vimeo.com">
     <link rel="preconnect" href="https://i.vimeocdn.com">
     <link rel="preconnect" href="https://f.vimeocdn.com">
-    <!-- Load the Vimeo Player SDK as early as possible so it is ready when the page finishes parsing -->
-    <script src="https://player.vimeo.com/api/player.js" defer></script>
+    <!-- Preload hint so the browser starts fetching the Vimeo SDK early -->
+    <link rel="preload" href="https://player.vimeo.com/api/player.js" as="script">
     <link rel="stylesheet" href="nav.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
@@ -545,6 +545,11 @@
         <p>&copy; 2025 The Wedding Crashers. All rights reserved.</p>
         <p><a href="https://instagram.com/thewedding.crashers" target="_blank">📸 Follow us on Instagram</a></p>
     </footer>
+
+    <!-- Vimeo Player SDK — loaded synchronously here so it is available when the
+         player-initialisation scripts below execute. (Moving it out of <head defer>
+         fixes the race condition where the IIFEs ran before the SDK was ready.) -->
+    <script src="https://player.vimeo.com/api/player.js"></script>
 
     <script>
         // Vimeo background video: Catherine's wedding (4:34 → 5:30 on loop)
