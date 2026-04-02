@@ -42,9 +42,7 @@
         /* ===== HERO SECTION ===== */
         .hero {
             min-height: 100vh;
-            /* Poster image fills the hero while the Vimeo player is loading/seeking,
-               preventing the black-screen flash. The video fades in on top once ready. */
-            background: #111 url('images/3-1.png') center/cover no-repeat;
+            background: #111;
             display: flex;
             align-items: flex-start;
             justify-content: center;
@@ -434,7 +432,14 @@
             </div>
         </div>
 
-        <!-- HERO — Vimeo background video loads behind the photo above -->
+        <!-- SECOND PHOTO SECTION — 3-1.png (couple in black suit and sunglasses) -->
+        <div class="photo-parallax-section second-photo-section">
+            <div class="photo-parallax-bg second-photo-bg">
+                <img src="images/3-1.png" alt="" class="parallax-hero-img">
+            </div>
+        </div>
+
+        <!-- HERO — Vimeo background video -->
         <section class="hero">
             <!-- Vimeo background video: Catherine's wedding, 4:30–5:30 on loop -->
             <div class="hero-video-bg">
@@ -596,70 +601,75 @@
             applyParallax();
         }());
 
+        // ── Shared helper: apply 3D parallax to any photo section ──────────────
+        // Parameters:
+        //   bgEl    – the inner background element to transform (the image container)
+        //   sectionEl – the outer section element used for scroll position
+        //   bannerEl  – (optional) a banner overlay to animate on a closer depth plane
+        function applyPhotoParallax(bgEl, sectionEl, bannerEl) {
+            var SCROLL_RANGE_FACTOR  = 0.7;
+            var MAX_ROTATION_DEG     = 6;
+            var BASE_SCALE           = 1.0;
+            var SCALE_DELTA          = 0.025;
+            var PARALLAX_SPEED       = 0.35;
+            var BANNER_PARALLAX_SPEED = 0.08;
+
+            if (!bgEl || !sectionEl) return;
+
+            var rect = sectionEl.getBoundingClientRect();
+            var vpH  = window.innerHeight;
+            var sH   = sectionEl.offsetHeight;
+
+            // normalised: −1 = section bottom at viewport top (exited above)
+            //              0 = section centred in viewport
+            //             +1 = section top at viewport bottom (not yet entered)
+            var norm = (rect.top + sH / 2 - vpH / 2) / (vpH * SCROLL_RANGE_FACTOR);
+            norm = Math.max(-1, Math.min(1, norm));
+
+            var rotateX   = norm * MAX_ROTATION_DEG;
+            var scale     = BASE_SCALE + Math.abs(norm) * SCALE_DELTA;
+            var parallaxY = (window.scrollY - sectionEl.offsetTop) * PARALLAX_SPEED;
+
+            bgEl.style.transform =
+                'translateY(' + parallaxY + 'px) ' +
+                'perspective(1100px) rotateX(' + rotateX + 'deg) ' +
+                'scale(' + scale + ')';
+
+            // Optional banner: same rotation, slower translation creates depth illusion
+            if (bannerEl) {
+                var bannerParallaxY = (window.scrollY - sectionEl.offsetTop) * BANNER_PARALLAX_SPEED;
+                bannerEl.style.transform =
+                    'translateY(' + bannerParallaxY + 'px) ' +
+                    'perspective(1100px) rotateX(' + rotateX + 'deg) ' +
+                    'scale(' + scale + ')';
+            }
+        }
+
         // Image parallax section: 3-8.png with dynamic 3D scroll (fully zoomed out)
         (function () {
-            var SCROLL_RANGE_FACTOR  = 0.7;    // fraction of viewport height used to normalise scroll position
-            var MAX_ROTATION_DEG     = 6;      // maximum X-axis tilt (degrees) at section edges
-            var BASE_SCALE           = 1.0;    // no extra scaling — image shown at full size
-            var SCALE_DELTA          = 0.025;  // slight zoom-in at section edges for 3D drama
-            var PARALLAX_SPEED       = 0.35;   // image moves at 35 % of the page-scroll speed
-            var BANNER_PARALLAX_SPEED = 0.08;  // banner moves slower — appears "in front" at a closer depth
-
             var ppBg      = document.querySelector('.photo-parallax-bg');
             var section   = document.querySelector('.photo-parallax-section');
             var heroBanner = document.querySelector('.hero-content');
 
-            // ── Dynamic 3D scroll effect ──────────────────────────────────────────
-            // As the section enters / centres / exits the viewport the image
-            // background is simultaneously:
-            //   • translated at PARALLAX_SPEED of the scroll rate (depth parallax)
-            //   • rotated on the X-axis (±MAX_ROTATION_DEG °) for a 3-D tilt
-            //   • scaled between BASE_SCALE and BASE_SCALE+SCALE_DELTA (slight zoom at edges)
-            // The banner overlay follows the same 3D rotation but translates more slowly
-            // (BANNER_PARALLAX_SPEED), which creates a layered depth illusion — it
-            // appears to float in front of the image on its own z-plane.
             function apply3D() {
-                if (!ppBg || !section) return;
-
-                var rect = section.getBoundingClientRect();
-                var vpH  = window.innerHeight;
-                var sH   = section.offsetHeight;
-
-                // normalised: −1 = section bottom at viewport top (exited above)
-                //              0 = section centred in viewport
-                //             +1 = section top at viewport bottom (not yet entered)
-                var norm = (rect.top + sH / 2 - vpH / 2) / (vpH * SCROLL_RANGE_FACTOR);
-                norm = Math.max(-1, Math.min(1, norm));
-
-                // RotateX: section tilts "into" the screen slightly as it approaches
-                var rotateX = norm * MAX_ROTATION_DEG;
-
-                // Scale: slight zoom-in at edges for 3D drama
-                var scale = BASE_SCALE + Math.abs(norm) * SCALE_DELTA;
-
-                // Parallax translateY: image moves at PARALLAX_SPEED of the scroll speed
-                var parallaxY = (window.scrollY - section.offsetTop) * PARALLAX_SPEED;
-
-                // Apply all three transforms on the image-bg element
-                ppBg.style.transform =
-                    'translateY(' + parallaxY + 'px) ' +
-                    'perspective(1100px) rotateX(' + rotateX + 'deg) ' +
-                    'scale(' + scale + ')';
-
-                // Apply the same 3D rotation to the banner but at a much slower
-                // parallax translation — the difference in speed creates the
-                // perception of the banner sitting on a closer depth plane.
-                if (heroBanner) {
-                    var bannerParallaxY = (window.scrollY - section.offsetTop) * BANNER_PARALLAX_SPEED;
-                    heroBanner.style.transform =
-                        'translateY(' + bannerParallaxY + 'px) ' +
-                        'perspective(1100px) rotateX(' + rotateX + 'deg) ' +
-                        'scale(' + scale + ')';
-                }
+                applyPhotoParallax(ppBg, section, heroBanner);
             }
 
             window.addEventListener('scroll', apply3D, { passive: true });
             apply3D(); // initialise on load
+        }());
+
+        // Second photo section (3-1.png — couple in black suit and sunglasses): same 3D scroll effect
+        (function () {
+            var ppBg2    = document.querySelector('.second-photo-bg');
+            var section2 = document.querySelector('.second-photo-section');
+
+            function apply3D2() {
+                applyPhotoParallax(ppBg2, section2, null);
+            }
+
+            window.addEventListener('scroll', apply3D2, { passive: true });
+            apply3D2();
         }());
     </script>
     <script>
