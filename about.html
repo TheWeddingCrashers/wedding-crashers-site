@@ -23,27 +23,35 @@
     
     .hero-header {
       background: linear-gradient(135deg, rgba(241, 155, 184, 0.1) 0%, rgba(244, 201, 216, 0.08) 100%);
-      padding: 100px 20px;
+      padding: 100px 20px 0;
       text-align: center;
     }
     
     .hero-header h1 {
       font-size: 3.5rem;
       font-weight: 800;
-      margin-bottom: 20px;
+      margin-bottom: 0;
       letter-spacing: -0.5px;
+      position: relative;
+      z-index: 2;
     }
     
     .hero-header p {
       font-size: 1.2rem;
       color: #666;
       font-weight: 400;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
     }
 
     .hero-image-wrapper {
       display: flex;
       justify-content: center;
-      padding: 40px 20px;
+      padding: 0 20px 40px;
+      margin-top: -1.5rem;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-image-wrapper img {
@@ -150,12 +158,11 @@
   </nav>
   <main>
     <div class="hero-header">
-      <h1>Meet Joey and Hunter</h1>
       <p style="font-size: 1rem;">come and see what we're about</p>
-    </div>
-
-    <div class="hero-image-wrapper">
-      <img src="images/IMG_7527.png" alt="Portrait of Joey and Hunter, The Wedding Crashers founders">
+      <h1>Meet Joey and Hunter</h1>
+      <div class="hero-image-wrapper">
+        <img src="images/IMG_7527.png" alt="Portrait of Joey and Hunter, The Wedding Crashers founders">
+      </div>
     </div>
 
     <section>
