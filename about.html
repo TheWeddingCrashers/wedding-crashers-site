@@ -9,6 +9,14 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 
+    @font-face {
+      font-family: 'Hillstown Sans';
+      src: url('fonts/Hillstown Sans Clean Demo.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
     :root {
       --pink: #f19bb8;
       --light-pink: #f4c9d8;
@@ -72,11 +80,32 @@
       margin: 0 auto;
     }
     
+    .about-text {
+      background: var(--pink);
+      border-radius: 20px;
+      padding: 50px 60px;
+      text-align: center;
+    }
+
     .about-text p {
-      font-size: 1.1rem;
+      font-family: 'Hillstown Sans', 'Outfit', -apple-system, system-ui, sans-serif;
+      font-size: 1.35rem;
       line-height: 1.9;
-      color: #555;
+      color: #000;
       margin-bottom: 28px;
+    }
+
+    .about-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 600px) {
+      .about-text {
+        padding: 32px 24px;
+      }
+      .about-text p {
+        font-size: 1.15rem;
+      }
     }
     
     @media (max-width: 768px) {
