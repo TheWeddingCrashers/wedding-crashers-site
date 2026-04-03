@@ -113,23 +113,50 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            text-align: center;
             z-index: 10;
             background: #fff;
-            padding: 40px 40px;
+            padding: 28px 0;
+            overflow: hidden;
             will-change: transform;
             transform-origin: center center;
         }
-        
-        .hero-content h1 {
+
+        .marquee-track {
+            display: flex;
+            white-space: nowrap;
+            width: max-content;
+            animation: marquee-scroll 22s linear infinite;
+        }
+
+        .marquee-track span {
             font-family: 'Outfit', -apple-system, system-ui, sans-serif;
             font-size: clamp(1.3rem, 3.5vw, 2.2rem);
             font-weight: 700;
             line-height: 1.69;
-            margin-bottom: 0;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.18em;
             color: #f19bb8;
             text-transform: uppercase;
+            flex-shrink: 0;
+            padding: 0 1.5rem;
+        }
+
+        .marquee-sep {
+            flex-shrink: 0;
+            padding: 0 1rem;
+            color: #f19bb8;
+            font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+            line-height: 1.69;
+        }
+
+        @keyframes marquee-scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .marquee-track {
+                animation-play-state: paused;
+            }
         }
         
         .hero-subtitle {
@@ -322,10 +349,10 @@
             }
 
             .hero-content {
-                padding: 28px 20px;
+                padding: 20px 0;
             }
 
-            .hero-content h1 {
+            .marquee-track span {
                 font-size: clamp(1rem, 4.5vw, 1.5rem);
             }
         }
@@ -362,8 +389,17 @@
                 </div>
             </div>
             <!-- Banner overlaid in front of the parallax image — sits above both photo sections -->
-            <div class="hero-content">
-                <h1 aria-label="zero moments missed">zero moments missed</h1>
+            <div class="hero-content" aria-label="THW Wedding Crashers">
+                <div class="marquee-track" aria-hidden="true">
+                    <span>T H W &ensp; W E D D I N G &ensp; C R A S H E R S</span><span class="marquee-sep">★</span>
+                    <span>T H W &ensp; W E D D I N G &ensp; C R A S H E R S</span><span class="marquee-sep">★</span>
+                    <span>T H W &ensp; W E D D I N G &ensp; C R A S H E R S</span><span class="marquee-sep">★</span>
+                    <span>T H W &ensp; W E D D I N G &ensp; C R A S H E R S</span><span class="marquee-sep">★</span>
+                    <span>T H W &ensp; W E D D I N G &ensp; C R A S H E R S</span><span class="marquee-sep">★</span>
+                    <span>T H W &ensp; W E D D I N G &ensp; C R A S H E R S</span><span class="marquee-sep">★</span>
+                    <span>T H W &ensp; W E D D I N G &ensp; C R A S H E R S</span><span class="marquee-sep">★</span>
+                    <span>T H W &ensp; W E D D I N G &ensp; C R A S H E R S</span><span class="marquee-sep">★</span>
+                </div>
             </div>
         </div>
 
