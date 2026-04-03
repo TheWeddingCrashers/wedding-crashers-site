@@ -101,41 +101,35 @@ nav {
 .menu-left a,
 .menu-right a {
   text-decoration: none;
-  color: var(--nav-text);
+  color: #000000;
   font-family: 'Outfit', -apple-system, system-ui, sans-serif;
   font-weight: 700;
   font-size: 24px;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
   position: relative;
-  padding: 11px 39px;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   text-transform: uppercase;
+  width: 180px;
+  height: 60px;
+  background: var(--pink);
+  border-radius: 6px;
 }
 
 .menu-left a:hover,
 .menu-right a:hover {
-  color: var(--pink);
+  background: #e87fa5;
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(241, 155, 184, 0.4);
 }
 
 .menu-left a::after,
 .menu-right a::after {
-  content: '';
-  position: absolute;
-  bottom: 2px;
-  left: 39px;
-  right: 39px;
-  height: 2px;
-  background: var(--pink);
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.3s ease;
-}
-
-.menu-left a:hover::after,
-.menu-right a:hover::after {
-  transform: scaleX(1);
+  content: none;
 }
 
 .cta-btn {
@@ -184,7 +178,8 @@ main {
 
   .menu-left a,
   .menu-right a {
-    padding: 7px 20px;
+    width: 130px;
+    height: 50px;
     font-size: 18px;
   }
 
@@ -204,7 +199,8 @@ main {
 
   .menu-left a,
   .menu-right a {
-    padding: 6px 13px;
+    width: 100px;
+    height: 44px;
     font-size: 15px;
     letter-spacing: 0.3px;
   }
