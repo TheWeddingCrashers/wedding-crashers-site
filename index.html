@@ -314,6 +314,14 @@
             filter: brightness(1.2) saturate(1.1) contrast(1.08);
         }
 
+        /* Desktop and mobile landscape: shift the first hero image upward so the
+           female's face is visible rather than cropped out by centre-alignment */
+        @media (min-width: 768px), (orientation: landscape) {
+            .photo-parallax-section:not(.second-photo-section) .parallax-hero-img {
+                object-position: center 15%;
+            }
+        }
+
         /* Second photo (couple in black) — display with no colour editing */
         .second-photo-bg .parallax-hero-img {
             filter: none;
