@@ -314,6 +314,56 @@
             filter: brightness(1.2) saturate(1.1) contrast(1.08);
         }
         
+        /* ===== WHY CHOOSE US SECTION ===== */
+        .why-choose-us {
+            background: #fff;
+            padding: 80px 40px;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .why-choose-us-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+        }
+
+        .why-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .why-item-title {
+            font-family: 'Outfit', -apple-system, system-ui, sans-serif;
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-weight: 700;
+            color: var(--pink);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 12px;
+        }
+
+        .why-item-body {
+            font-family: 'Outfit', -apple-system, system-ui, sans-serif;
+            font-size: clamp(0.92rem, 1.4vw, 1.05rem);
+            line-height: 1.75;
+            color: var(--text);
+        }
+
+        @media (max-width: 768px) {
+            .why-choose-us {
+                padding: 60px 24px;
+            }
+
+            .why-choose-us-inner {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+        }
+
         /* ===== FOOTER ===== */
         footer {
             background: var(--dark);
@@ -420,6 +470,24 @@
             <div class="hero-content hero-content-2">
                 <div class="marquee-track marquee-track-static">
                     <span>W H Y &ensp; C H O O S E &ensp; U S ?</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- WHY CHOOSE US — content cards below the banner -->
+        <div class="why-choose-us">
+            <div class="why-choose-us-inner">
+                <div class="why-item">
+                    <div class="why-item-title">Quality &amp; Quantity</div>
+                    <p class="why-item-body">Top-of-the-line equipment paired with generous package items — you get more of everything without compromising on quality.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-item-title">Quick Turn Around</div>
+                    <p class="why-item-body">Trailer video and photos delivered within 2 weeks. Full package delivery between 2–4 weeks — so you're reliving your day in no time.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-item-title">Creative Freedom</div>
+                    <p class="why-item-body">We can adapt our relative abilities in all areas of the industry. This helps accommodate whichever style or themed wedding you may desire. So really, there's not much we can't do ;)</p>
                 </div>
             </div>
         </div>
