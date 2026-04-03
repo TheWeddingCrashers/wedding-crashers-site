@@ -72,7 +72,7 @@
     .hero-image-wrapper {
       display: flex;
       justify-content: center;
-      padding: 0 20px 40px;
+      padding: 0 20px 0;
       position: relative;
       z-index: 1;
     }
@@ -86,16 +86,86 @@
       border-radius: 12px;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
     }
-    
+
+    /* Wrapper that holds the image + labels together */
+    .image-with-labels {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    /* Bouncing animation for the arrows */
+    @keyframes arrowBounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    /* Outer div: handles absolute positioning only */
+    .person-label {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Inner div: handles the bounce animation and layout */
+    .person-label .label-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: arrowBounce 1.4s ease-in-out infinite;
+    }
+
+    .person-label .label-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      white-space: nowrap;
+    }
+
+    .person-label .label-arrow {
+      font-size: 1.5rem;
+      color: #fff;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.7));
+      line-height: 1;
+    }
+
+    /* Hunter is on the LEFT of the image — centred at ~25% */
+    .label-hunter {
+      left: 25%;
+      top: 12%;
+      transform: translateX(-50%);
+    }
+
+    /* Joey is on the RIGHT of the image — centred at ~75% */
+    .label-joey {
+      left: 75%;
+      top: 12%;
+      transform: translateX(-50%);
+    }
+
     section {
       padding: 80px 20px;
       max-width: 1200px;
       margin: 0 auto;
     }
-    
+
+    /* Override for the about-text section — flush to edges, no top gap */
+    .about-section {
+      padding: 0;
+      max-width: none;
+      margin: 0;
+    }
+
     .about-text {
       background: var(--pink);
-      border-radius: 20px;
+      border-radius: 0;
       padding: 50px 60px;
       text-align: center;
     }
@@ -118,6 +188,12 @@
       }
       .about-text p {
         font-size: 1.15rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .person-label .label-inner {
+        animation: none;
       }
     }
     
@@ -207,11 +283,27 @@
       <h1>Come and meet the duo!</h1>
       <p class="hero-subtitle">we always come as a pair ;)</p>
       <div class="hero-image-wrapper">
-        <img src="images/IMG_7527.png" alt="Portrait of Joey and Hunter, The Wedding Crashers founders">
+        <div class="image-with-labels">
+          <img src="images/IMG_7527.png" alt="Portrait of Joey and Hunter, The Wedding Crashers founders">
+          <!-- Animated label: Hunter (left person) -->
+          <div class="person-label label-hunter">
+            <div class="label-inner">
+              <span class="label-name">Hunter</span>
+              <span class="label-arrow">↓</span>
+            </div>
+          </div>
+          <!-- Animated label: Joey (right person) -->
+          <div class="person-label label-joey">
+            <div class="label-inner">
+              <span class="label-name">Joey</span>
+              <span class="label-arrow">↓</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <section>
+    <section class="about-section">
       <div class="about-text">
         <p>Hey lovers! We're The Wedding Crashers - An LGBT owned duo providing the most stylish photography and videography service.</p>
         <p>If you prefer a more artistic approach, then you have come to the right people. We're creative directors, outside of the wedding industry we shoot music videos, editorials, artworks and campaigns; so we couldn't help but incorporate this into a business we feel the most fulfilled in.</p>
