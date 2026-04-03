@@ -148,6 +148,12 @@
             line-height: 1.69;
         }
 
+        .marquee-track-static {
+            animation: none;
+            justify-content: center;
+            width: 100%;
+        }
+
         @keyframes marquee-scroll {
             from { transform: translateX(0); }
             to   { transform: translateX(-50%); }
@@ -412,7 +418,9 @@
             </div>
             <!-- Banner overlaid in front of the second parallax image — separates it from the video below -->
             <div class="hero-content hero-content-2">
-                <h1 aria-label="bringing the cinema to your story">bringing the cinema to your story</h1>
+                <div class="marquee-track marquee-track-static">
+                    <span>W H Y &ensp; C H O O S E &ensp; U S ?</span>
+                </div>
             </div>
         </div>
 
