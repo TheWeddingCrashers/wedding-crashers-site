@@ -314,10 +314,17 @@
             filter: brightness(1.2) saturate(1.1) contrast(1.08);
         }
 
-        /* Shift the first hero image up by ~40% so subjects are better framed
-           on all viewports (mobile portrait, desktop, and landscape) */
+        /* Shift the first hero image up so subjects are better framed on portrait mobile */
         .photo-parallax-section:not(.second-photo-section) .parallax-hero-img {
             object-position: center 10%;
+        }
+
+        /* On desktop and landscape-orientation mobile the landscape image is used —
+           centre it so the full width fills the section naturally */
+        @media (min-width: 768px), (orientation: landscape) {
+            .photo-parallax-section:not(.second-photo-section) .parallax-hero-img {
+                object-position: center center;
+            }
         }
 
         /* Second photo (couple in black) — display with no colour editing */
@@ -452,7 +459,12 @@
                  uses overflow:visible so the hero-content banner is never clipped. -->
             <div class="photo-parallax-clip">
                 <div class="photo-parallax-bg">
-                    <img src="images/3-8.png" alt="" class="parallax-hero-img">
+                    <picture>
+                        <!-- Landscape image for desktop and landscape-orientation mobile -->
+                        <source media="(min-width: 768px), (orientation: landscape)" srcset="images/6-1.jpg">
+                        <!-- Portrait image for portrait-orientation mobile (default) -->
+                        <img src="images/3-8.png" alt="" class="parallax-hero-img">
+                    </picture>
                 </div>
             </div>
             <!-- Banner overlaid in front of the parallax image — sits above both photo sections -->
