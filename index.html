@@ -16,8 +16,8 @@
     
     <style>
         :root {
-            --pink: #f19bb8;
-            --dark-pink: #e87fa5;
+            --pink: #c0394a;
+            --dark-pink: #a52d3e;
             --cream: #faf8f5;
             --dark: #1a1a1a;
             --text: #3a3a3a;
@@ -134,7 +134,7 @@
             font-weight: 700;
             line-height: 1.69;
             letter-spacing: 0.18em;
-            color: #f19bb8;
+            color: #c0394a;
             text-transform: uppercase;
             flex-shrink: 0;
             padding: 0 1.5rem;
@@ -143,7 +143,7 @@
         .marquee-sep {
             flex-shrink: 0;
             padding: 0 1rem;
-            color: #f19bb8;
+            color: #c0394a;
             font-size: clamp(1.3rem, 3.5vw, 2.2rem);
             line-height: 1.69;
         }
@@ -331,6 +331,55 @@
         .second-photo-bg .parallax-hero-img {
             filter: none;
         }
+
+        /* ===== CINEMATIC HERO EFFECTS ===== */
+
+        /* Slow zoom animation — scale 1 → 1.05 over 15 s, ease-in-out, holds at end */
+        @keyframes heroZoom {
+            from { transform: scale(1); }
+            to   { transform: scale(1.05); }
+        }
+
+        /* Fade-in with a subtle upward drift for the hero text/marquee */
+        @keyframes heroFadeIn {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Apply slow zoom to the first (cinematic) hero image */
+        .photo-parallax-section:not(.second-photo-section) .parallax-hero-img {
+            animation: heroZoom 15s ease-in-out forwards;
+        }
+
+        /* Subtle gradient overlay on the first hero section for contrast */
+        .photo-parallax-section:not(.second-photo-section) .photo-parallax-clip::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.28) 0%,
+                rgba(0, 0, 0, 0.08) 45%,
+                rgba(0, 0, 0, 0.35) 100%
+            );
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Fade-in for the first marquee/hero content with a calm delay */
+        .hero-content {
+            animation: heroFadeIn 1.8s ease-out 0.5s both;
+        }
+
+        /* Respect reduced-motion preference — disable all hero animations */
+        @media (prefers-reduced-motion: reduce) {
+            .photo-parallax-section:not(.second-photo-section) .parallax-hero-img {
+                animation: none;
+            }
+            .hero-content {
+                animation: none;
+            }
+        }
         
         /* ===== WHY CHOOSE US SECTION ===== */
         .why-choose-us {
@@ -442,7 +491,7 @@
                 <li><a href="gallery.html">Gallery</a></li>
             </ul>
             <div class="logo-item">
-                <div class="logo"><img src="images/logo.svg" alt="The Wedding Crashers" class="logo-img"></div>
+                <div class="logo"><img src="images/Glamorous retro logo design.png" alt="Glambient Studios" class="logo-img"></div>
             </div>
             <ul class="menu-right">
                 <li><a href="video.html">Videos</a></li>

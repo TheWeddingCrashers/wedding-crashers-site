@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --pink: #f19bb8;
+  --pink: #c0394a;
+  --dark-pink: #a52d3e;
+  --forest-green: #1a3d2b;
+  --midnight-blue: #0d1b3e;
   --dark: #111216;
   --text: #3a3a3a;
   --nav-text: #ffffff;
@@ -101,7 +104,7 @@ nav {
 .menu-left a,
 .menu-right a {
   text-decoration: none;
-  color: #000000;
+  color: #ffffff;
   font-family: 'Outfit', -apple-system, system-ui, sans-serif;
   font-weight: 700;
   font-size: 24px;
@@ -115,16 +118,16 @@ nav {
   text-transform: uppercase;
   width: 180px;
   height: 44px;
-  background: var(--pink);
+  background: var(--midnight-blue);
   border-radius: 0;
 }
 
 .menu-left a:hover,
 .menu-right a:hover {
-  background: #e87fa5;
-  color: #000000;
+  background: var(--forest-green);
+  color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(241, 155, 184, 0.4);
+  box-shadow: 0 4px 12px rgba(26, 61, 43, 0.4);
 }
 
 .menu-left a::after,
@@ -152,9 +155,9 @@ nav {
 }
 
 .cta-btn:hover {
-  background: #e87fa5;
+  background: var(--dark-pink);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(241, 155, 184, 0.3);
+  box-shadow: 0 8px 20px rgba(192, 57, 74, 0.3);
 }
 
 /* Ensure no page shift */
