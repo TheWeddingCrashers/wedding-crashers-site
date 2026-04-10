@@ -51,10 +51,10 @@ nav {
 /* Logo placed as a nav item — no text-link hover effects */
 .logo-item {
   display: flex;
-  align-items: flex-start;
-  padding: 5px 20px 0;
+  align-items: center;
+  padding: 0 20px;
   list-style: none;
-  align-self: flex-start;
+  align-self: center;
 }
 
 .logo-item::before {
@@ -189,7 +189,7 @@ main {
   }
 
   .logo-item {
-    padding: 4px 8px 0;
+    padding: 0 8px;
   }
 
   .logo-img {
@@ -211,7 +211,7 @@ main {
   }
 
   .logo-item {
-    padding: 3px 5px 0;
+    padding: 0 5px;
   }
 
   .logo-img {
@@ -234,7 +234,7 @@ main {
   }
 
   .logo-item {
-    padding: 2px 4px 0;
+    padding: 0 4px;
   }
 
   .logo-img {
@@ -267,13 +267,13 @@ main {
     flex: 0 0 100%;
     justify-content: center;
     align-self: center;
-    padding: 4px 0 2px;
+    padding: 4px 0;
     height: auto;
     order: 1;
   }
 
   .logo-img {
-    height: clamp(55px, 8vw, 160px);
+    height: clamp(80px, 12vw, 220px);
     max-height: none;
   }
 
@@ -282,15 +282,15 @@ main {
   .menu-right {
     flex-direction: row;
     flex: none;
-    gap: 6px;
+    gap: 8px;
     order: 2;
   }
 
   .menu-left a,
   .menu-right a {
-    width: clamp(76px, 10vw, 160px);
-    height: clamp(28px, 4.5vh, 44px);
-    font-size: clamp(10px, 1.4vw, 22px);
+    width: clamp(100px, 13vw, 200px);
+    height: clamp(36px, 5.5vh, 54px);
+    font-size: clamp(12px, 1.8vw, 26px);
     letter-spacing: 0.3px;
   }
 }
