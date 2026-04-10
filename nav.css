@@ -8,7 +8,7 @@
   --dark: #111216;
   --text: #3a3a3a;
   --nav-text: #ffffff;
-  --nav-height: 270px;
+  --nav-height: 290px;
 }
 
 * {
@@ -50,11 +50,11 @@ nav {
 
 /* Logo placed as a nav item — no text-link hover effects */
 .logo-item {
-  height: 100%;
   display: flex;
-  align-items: center;
-  padding: 0 20px;
+  align-items: flex-start;
+  padding: 5px 20px 0;
   list-style: none;
+  align-self: flex-start;
 }
 
 .logo-item::before {
@@ -72,7 +72,8 @@ nav {
 }
 
 .logo-img {
-  height: 276px;
+  height: 280px;
+  max-height: calc(var(--nav-height) - 10px);
   width: auto;
   display: block;
 }
@@ -86,6 +87,7 @@ nav {
   gap: 4px;
   list-style: none;
   flex: 1;
+  min-width: 0;
 }
 
 .menu-left li,
@@ -172,7 +174,7 @@ main {
 
 @media (max-width: 768px) {
   :root {
-    --nav-height: 200px;
+    --nav-height: 210px;
   }
 
   .nav-container {
@@ -187,28 +189,108 @@ main {
   }
 
   .logo-item {
-    padding: 0 8px;
+    padding: 4px 8px 0;
   }
 
   .logo-img {
-    height: 190px;
+    height: 195px;
   }
 }
 
 @media (max-width: 480px) {
   :root {
-    --nav-height: 160px;
+    --nav-height: 165px;
   }
 
   .menu-left a,
   .menu-right a {
-    width: 100px;
+    width: 96px;
     height: 33px;
-    font-size: 15px;
-    letter-spacing: 0.3px;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+  }
+
+  .logo-item {
+    padding: 3px 5px 0;
   }
 
   .logo-img {
-    height: 141px;
+    height: 105px;
+  }
+}
+
+/* Narrow phones (iPhone SE, Galaxy A series, etc.) */
+@media (max-width: 390px) {
+  :root {
+    --nav-height: 155px;
+  }
+
+  .menu-left a,
+  .menu-right a {
+    width: 84px;
+    height: 30px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+
+  .logo-item {
+    padding: 2px 4px 0;
+  }
+
+  .logo-img {
+    height: 95px;
+  }
+}
+
+/* === LANDSCAPE LAYOUT: logo on top, all 6 buttons in one horizontal row === */
+@media (orientation: landscape) {
+  :root {
+    --nav-height: auto;
+  }
+
+  nav {
+    height: auto;
+    min-height: 80px;
+  }
+
+  .nav-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 8px 20px 10px;
+    gap: 6px;
+  }
+
+  /* Logo centred on its own full-width row */
+  .logo-item {
+    flex: 0 0 100%;
+    justify-content: center;
+    align-self: center;
+    padding: 4px 0 2px;
+    height: auto;
+    order: 1;
+  }
+
+  .logo-img {
+    height: clamp(55px, 8vw, 160px);
+    max-height: none;
+  }
+
+  /* Both button groups share the second row, displayed horizontally */
+  .menu-left,
+  .menu-right {
+    flex-direction: row;
+    flex: none;
+    gap: 6px;
+    order: 2;
+  }
+
+  .menu-left a,
+  .menu-right a {
+    width: clamp(76px, 10vw, 160px);
+    height: clamp(28px, 4.5vh, 44px);
+    font-size: clamp(10px, 1.4vw, 22px);
+    letter-spacing: 0.3px;
   }
 }
