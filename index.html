@@ -212,6 +212,33 @@
       display: block;
     }
 
+    .testimonial {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      padding: 2rem 0 1rem;
+      text-align: center;
+    }
+
+    .testimonial-quote {
+      font-size: clamp(2.1rem, 6vw, 4.2rem);
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .testimonial-client {
+      display: inline-block;
+      margin-top: 0.8rem;
+      padding: 0.15rem 0.5rem;
+      font-size: clamp(0.78rem, 1.7vw, 0.95rem);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0.06);
+      border-radius: 999px;
+    }
+
     @media (max-width: 1100px) {
       .brand-statement {
         --statement-size: 4rem;
@@ -240,6 +267,10 @@
 
       .brand-statement {
         --statement-size: 1.9rem;
+      }
+
+      .testimonial {
+        padding-top: 1.3rem;
       }
     }
   </style>
@@ -284,6 +315,11 @@
         <span class="brand-line">No Fake Moments</span>
         <span class="brand-line">Just Real Energy</span>
       </p>
+    </section>
+
+    <section class="testimonial" aria-label="Client testimonial">
+      <p class="testimonial-quote">“A DREAM.”</p>
+      <p class="testimonial-client">— Client Name</p>
     </section>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
