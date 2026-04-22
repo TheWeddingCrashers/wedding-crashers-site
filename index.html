@@ -189,6 +189,38 @@
       display: block;
     }
 
+    .brand-statement {
+      --statement-size: 5rem;
+      width: 100%;
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .brand-statement-text {
+      font-size: var(--statement-size);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      line-height: 1.35;
+      margin: 0 auto;
+    }
+
+    .brand-line {
+      display: block;
+    }
+
+    @media (max-width: 1100px) {
+      .brand-statement {
+        --statement-size: 4rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .brand-statement {
+        --statement-size: 2.8rem;
+      }
+    }
+
     @media (max-width: 640px) {
       .page {
         padding: 20px;
@@ -201,6 +233,10 @@
 
       h1 {
         line-height: 0.95;
+      }
+
+      .brand-statement {
+        --statement-size: 1.9rem;
       }
     }
   </style>
@@ -238,6 +274,14 @@
         <span class="headline-line">UK &amp; Destination</span>
       </h1>
     </main>
+
+    <section class="brand-statement" aria-label="Brand statement">
+      <p class="brand-statement-text">
+        <span class="brand-line">No Awkward Posing</span>
+        <span class="brand-line">No Fake Moments</span>
+        <span class="brand-line">Just Real Energy</span>
+      </p>
+    </section>
   </div>
 </body>
 </html>
