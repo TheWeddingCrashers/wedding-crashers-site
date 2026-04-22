@@ -104,6 +104,73 @@
       flex: 1;
       display: flex;
       align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      padding: clamp(24px, 5vw, 56px) 0;
+    }
+
+    .hero-collage {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-shot {
+      position: absolute;
+      object-fit: cover;
+      border-radius: 18px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+    }
+
+    .shot-1 {
+      width: clamp(130px, 16vw, 230px);
+      left: 7%;
+      top: 14%;
+      transform: rotate(-2.2deg);
+      z-index: 2;
+    }
+
+    .shot-2 {
+      width: clamp(120px, 14vw, 210px);
+      left: 18%;
+      bottom: 8%;
+      transform: rotate(1.9deg);
+      z-index: 5;
+    }
+
+    .shot-3 {
+      width: clamp(120px, 15vw, 220px);
+      right: 10%;
+      top: 18%;
+      transform: rotate(2.6deg);
+      z-index: 2;
+    }
+
+    .shot-4 {
+      width: clamp(155px, 20vw, 280px);
+      right: 4%;
+      bottom: 6%;
+      transform: rotate(-1.8deg);
+      z-index: 5;
+    }
+
+    .shot-5 {
+      width: clamp(110px, 13vw, 195px);
+      left: 33%;
+      top: 7%;
+      transform: rotate(1.2deg);
+      z-index: 3;
+    }
+
+    .shot-6 {
+      width: clamp(110px, 14vw, 205px);
+      right: 30%;
+      bottom: 2%;
+      transform: rotate(-2.7deg);
+      z-index: 1;
     }
 
     h1 {
@@ -113,6 +180,8 @@
       letter-spacing: 0.02em;
       line-height: 0.92;
       max-width: 15ch;
+      position: relative;
+      z-index: 4;
     }
 
     .headline-line {
@@ -122,6 +191,11 @@
     @media (max-width: 640px) {
       .page {
         padding: 20px;
+      }
+
+      .shot-2,
+      .shot-4 {
+        display: none;
       }
 
       h1 {
@@ -149,6 +223,14 @@
     </header>
 
     <main class="hero">
+      <div class="hero-collage" aria-hidden="true">
+        <img class="hero-shot shot-1" src="images/6-35.jpg" alt="">
+        <img class="hero-shot shot-2" src="images/6-46.jpg" alt="">
+        <img class="hero-shot shot-3" src="images/6-58.jpg" alt="">
+        <img class="hero-shot shot-4" src="images/6-75.jpg" alt="">
+        <img class="hero-shot shot-5" src="images/6-22.jpg" alt="">
+        <img class="hero-shot shot-6" src="images/6-83.jpg" alt="">
+      </div>
       <h1>
         <span class="headline-line">Cinematic Wedding Photography</span>
         <span class="headline-line">Raw / Real / Unstaged</span>
