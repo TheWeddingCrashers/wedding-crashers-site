@@ -289,7 +289,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
   <script>
-    window.addEventListener("load", () => {
+    window.addEventListener("DOMContentLoaded", () => {
       if (!window.gsap || !window.ScrollTrigger) return;
 
       const MOBILE_BREAKPOINT = 768;
@@ -324,7 +324,12 @@
       const DESKTOP_SCRUB = 1.8;
 
       shots.forEach((shot) => {
-        const depth = Number(shot.dataset.depth || 1);
+        const depthValue = shot.dataset.depth;
+        if (!depthValue) return;
+
+        const depth = Number(depthValue);
+        if (Number.isNaN(depth)) return;
+
         const distance = (isMobile ? MOBILE_BASE_DISTANCE : DESKTOP_BASE_DISTANCE) * depth;
 
         gsap.fromTo(
