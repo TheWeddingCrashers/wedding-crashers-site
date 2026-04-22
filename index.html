@@ -41,8 +41,6 @@
     .menu-icon {
       width: 24px;
       height: 18px;
-      border: 0;
-      background: transparent;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -71,6 +69,10 @@
       max-width: 15ch;
     }
 
+    .headline-line {
+      display: block;
+    }
+
     @media (max-width: 640px) {
       .page {
         padding: 20px;
@@ -85,18 +87,18 @@
 <body>
   <div class="page">
     <header class="topbar">
-      <button class="menu-icon" aria-label="Open menu" type="button">
+      <div class="menu-icon" aria-hidden="true">
         <span></span>
         <span></span>
         <span></span>
-      </button>
+      </div>
     </header>
 
     <main class="hero">
       <h1>
-        Cinematic Wedding Photography<br>
-        Raw / Real / Unstaged<br>
-        UK &amp; Destination
+        <span class="headline-line">Cinematic Wedding Photography</span>
+        <span class="headline-line">Raw / Real / Unstaged</span>
+        <span class="headline-line">UK &amp; Destination</span>
       </h1>
     </main>
   </div>
