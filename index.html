@@ -286,8 +286,8 @@
       </p>
     </section>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       if (!window.gsap || !window.ScrollTrigger) {
@@ -329,15 +329,16 @@
 
       shots.forEach((shot) => {
         const depthValue = shot.dataset.depth;
+        let depth = 1;
         if (!depthValue) {
-          if (isDev) console.warn("Missing data-depth on hero image:", shot);
-          return;
-        }
-
-        const depth = Number(depthValue);
-        if (Number.isNaN(depth)) {
-          if (isDev) console.warn("Invalid data-depth on hero image:", shot, depthValue);
-          return;
+          if (isDev) console.warn("Missing data-depth on hero image; using default depth=1:", shot);
+        } else {
+          const parsedDepth = Number(depthValue);
+          if (Number.isNaN(parsedDepth)) {
+            if (isDev) console.warn("Invalid data-depth on hero image; using default depth=1:", shot, depthValue);
+          } else {
+            depth = parsedDepth;
+          }
         }
 
         const distance = (isMobile ? MOBILE_BASE_DISTANCE : DESKTOP_BASE_DISTANCE) * depth;
