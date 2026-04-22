@@ -124,6 +124,9 @@
       aspect-ratio: 3 / 4;
       border-radius: 18px;
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+      transform-origin: center center;
     }
 
     .shot-1 {
@@ -261,12 +264,12 @@
 
     <main class="hero">
       <div class="hero-collage" aria-hidden="true">
-        <img class="hero-shot shot-1" src="images/6-35.jpg" alt="" role="presentation">
-        <img class="hero-shot shot-2" src="images/6-46.jpg" alt="" role="presentation">
-        <img class="hero-shot shot-3" src="images/6-58.jpg" alt="" role="presentation">
-        <img class="hero-shot shot-4" src="images/6-75.jpg" alt="" role="presentation">
-        <img class="hero-shot shot-5" src="images/6-22.jpg" alt="" role="presentation">
-        <img class="hero-shot shot-6" src="images/6-83.jpg" alt="" role="presentation">
+        <img class="hero-shot shot-1" src="images/6-35.jpg" alt="" role="presentation" data-depth="0.8">
+        <img class="hero-shot shot-2" src="images/6-46.jpg" alt="" role="presentation" data-depth="1.4">
+        <img class="hero-shot shot-3" src="images/6-58.jpg" alt="" role="presentation" data-depth="0.8">
+        <img class="hero-shot shot-4" src="images/6-75.jpg" alt="" role="presentation" data-depth="1.4">
+        <img class="hero-shot shot-5" src="images/6-22.jpg" alt="" role="presentation" data-depth="1.1">
+        <img class="hero-shot shot-6" src="images/6-83.jpg" alt="" role="presentation" data-depth="0.6">
       </div>
       <h1>
         <span class="headline-line">Cinematic Wedding Photography</span>
@@ -283,5 +286,60 @@
       </p>
     </section>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+  <script>
+    window.addEventListener("load", () => {
+      if (!window.gsap || !window.ScrollTrigger) return;
+
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      const hero = document.querySelector(".hero");
+      const shots = Array.from(document.querySelectorAll(".hero-shot")).filter((shot) => shot.offsetParent !== null);
+
+      if (!hero || !shots.length) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.set(shots, { force3D: true });
+
+      gsap.fromTo(
+        shots,
+        { autoAlpha: 0 },
+        {
+          autoAlpha: 1,
+          duration: 0.9,
+          ease: "power2.out",
+          stagger: 0.08
+        }
+      );
+
+      if (prefersReducedMotion) return;
+
+      const mobileBaseDistance = 20;
+      const desktopBaseDistance = 34;
+
+      shots.forEach((shot) => {
+        const depth = Number(shot.dataset.depth || 1);
+        const distance = (isMobile ? mobileBaseDistance : desktopBaseDistance) * depth;
+
+        gsap.fromTo(
+          shot,
+          { y: -distance, scale: 1 },
+          {
+            y: distance,
+            scale: 1.05,
+            ease: "none",
+            scrollTrigger: {
+              trigger: hero,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: isMobile ? 1.1 : 1.8,
+              invalidateOnRefresh: true
+            }
+          }
+        );
+      });
+    });
+  </script>
 </body>
 </html>
