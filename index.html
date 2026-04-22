@@ -189,6 +189,26 @@
       display: block;
     }
 
+    .brand-statement {
+      width: 100%;
+      padding: clamp(56px, 10vw, 120px) 0 clamp(36px, 7vw, 84px);
+      text-align: center;
+    }
+
+    .brand-statement-text {
+      font-size: clamp(1.6rem, 6.8vw, 5.8rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      line-height: 1.35;
+      max-width: 18ch;
+      margin: 0 auto;
+    }
+
+    .brand-line {
+      display: block;
+    }
+
     @media (max-width: 640px) {
       .page {
         padding: 20px;
@@ -238,6 +258,14 @@
         <span class="headline-line">UK &amp; Destination</span>
       </h1>
     </main>
+
+    <section class="brand-statement" aria-label="Brand statement">
+      <p class="brand-statement-text">
+        <span class="brand-line">No Awkward Posing</span>
+        <span class="brand-line">No Fake Moments</span>
+        <span class="brand-line">Just Real Energy</span>
+      </p>
+    </section>
   </div>
 </body>
 </html>
