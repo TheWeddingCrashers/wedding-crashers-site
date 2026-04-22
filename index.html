@@ -290,9 +290,13 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
   <script>
     window.addEventListener("DOMContentLoaded", () => {
-      if (!window.gsap || !window.ScrollTrigger) return;
+      if (!window.gsap || !window.ScrollTrigger) {
+        console.error("GSAP or ScrollTrigger failed to load; hero parallax animations are disabled.");
+        return;
+      }
 
       const MOBILE_BREAKPOINT = 768;
+      const isDev = ["localhost", "127.0.0.1"].includes(window.location.hostname);
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const isMobile = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`).matches;
       const hero = document.querySelector(".hero");
@@ -325,10 +329,16 @@
 
       shots.forEach((shot) => {
         const depthValue = shot.dataset.depth;
-        if (!depthValue) return;
+        if (!depthValue) {
+          if (isDev) console.warn("Missing data-depth on hero image:", shot);
+          return;
+        }
 
         const depth = Number(depthValue);
-        if (Number.isNaN(depth)) return;
+        if (Number.isNaN(depth)) {
+          if (isDev) console.warn("Invalid data-depth on hero image:", shot, depthValue);
+          return;
+        }
 
         const distance = (isMobile ? MOBILE_BASE_DISTANCE : DESKTOP_BASE_DISTANCE) * depth;
 
