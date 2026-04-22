@@ -45,6 +45,11 @@
     .gallery-grid img:hover {
       transform: translateY(-5px);
     }
+    .gallery-grid img:focus-visible {
+      transform: translateY(-5px);
+      outline: 2px solid #1a3d2b;
+      outline-offset: 3px;
+    }
     .gallery-grid img:nth-child(6n + 1) {
       width: clamp(240px, 27vw, 380px);
       aspect-ratio: 3 / 4;
