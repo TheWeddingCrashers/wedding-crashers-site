@@ -42,11 +42,10 @@
       position: relative;
       z-index: 1;
     }
-    .gallery-grid img:hover {
+    .gallery-grid img:is(:hover, :focus-visible) {
       transform: translateY(-5px);
     }
     .gallery-grid img:focus-visible {
-      transform: translateY(-5px);
       outline: 2px solid #1a3d2b;
       outline-offset: 3px;
     }
