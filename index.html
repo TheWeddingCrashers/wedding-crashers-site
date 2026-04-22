@@ -85,6 +85,18 @@
       letter-spacing: 0.08em;
     }
 
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+      white-space: nowrap;
+    }
+
     .hero {
       flex: 1;
       display: flex;
@@ -119,12 +131,13 @@
   <div class="page">
     <header class="topbar">
       <details class="menu">
-        <summary class="menu-icon" aria-label="Open site menu">
+        <summary class="menu-icon">
+          <span class="visually-hidden">Menu</span>
           <span></span>
           <span></span>
           <span></span>
         </summary>
-        <nav class="menu-panel" aria-label="Site">
+        <nav class="menu-panel" aria-label="Primary navigation">
           <a href="about.html">About</a>
           <a href="gallery.html">Gallery</a>
           <a href="contact.html">Contact</a>
