@@ -1,769 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glambient — Wedding Films & Photography</title>
-    <!-- Preconnect to Vimeo servers so the player and CDN connections are established early -->
-    <link rel="preconnect" href="https://player.vimeo.com">
-    <link rel="preconnect" href="https://vimeo.com">
-    <link rel="preconnect" href="https://i.vimeocdn.com">
-    <link rel="preconnect" href="https://f.vimeocdn.com">
-    <!-- Preload hint so the browser starts fetching the Vimeo SDK early -->
-    <link rel="preload" href="https://player.vimeo.com/api/player.js" as="script">
-    <link rel="stylesheet" href="nav.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --pink: #c0394a;
-            --dark-pink: #a52d3e;
-            --cream: #faf8f5;
-            --dark: #1a1a1a;
-            --text: #3a3a3a;
-            --gray: #e8e6e3;
-            --light: #f9f9f9;
-            --cobalt-blue: #1a3a8f;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Outfit', -apple-system, system-ui, sans-serif;
-            background: #fff;
-            color: var(--text);
-            line-height: 1.6;
-        }
-        
-        /* ===== HERO SECTION ===== */
-        .hero {
-            min-height: 100vh;
-            background: #111;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding: 0;
-            position: relative;
-            overflow: hidden;
-            max-width: 100%;
-            margin: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glambient — Cinematic Wedding Photography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* Video background container — extended height so parallax never shows gaps */
-        .hero-video-bg {
-            position: absolute;
-            top: -20%;
-            left: 0;
-            width: 100%;
-            height: 140%;
-            z-index: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      background: #fff;
+      color: #000;
+      font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
 
-        /* Scale the Vimeo player div to cover the section at 16:9 */
-        #vimeo-bg-player {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.85);
-            /* Maintain 16:9 while always covering the container — values increased to
-               compensate for the 0.85 scale so there are no visible edge gaps.
-               Formula: original ÷ 0.85 (e.g. 177.78vh ÷ 0.85 ≈ 209vh, 56.25vw ÷ 0.85 ≈ 66vw) */
-            width: 210vh;
-            min-width: 120%;  /* 100% ÷ 0.85 ≈ 117.6%, rounded up for safety */
-            height: 67vw;
-            min-height: 120%;  /* 100% ÷ 0.85 ≈ 117.6%, rounded up for safety */
-            /* Hidden until playback reaches the correct start position */
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            filter: saturate(1.1) contrast(1.08);
-        }
+    .page {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: clamp(24px, 3vw, 48px);
+    }
 
-        #vimeo-bg-player iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: clamp(48px, 8vh, 120px);
+    }
 
-        /* Dark overlay so text remains legible */
-        .hero-video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.1);
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(30px); }
-        }
-        
-        .hero-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            z-index: 10;
-            background: #fff;
-            padding: 28px 0;
-            overflow: hidden;
-            will-change: transform;
-            transform-origin: center center;
-        }
+    .menu-icon {
+      width: 24px;
+      height: 18px;
+      border: 0;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0;
+    }
 
-        .marquee-track {
-            display: flex;
-            white-space: nowrap;
-            width: max-content;
-            animation: marquee-scroll 22s linear infinite;
-        }
+    .menu-icon span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: #000;
+    }
 
-        .marquee-track span {
-            font-family: 'Outfit', -apple-system, system-ui, sans-serif;
-            font-size: clamp(1.3rem, 3.5vw, 2.2rem);
-            font-weight: 700;
-            line-height: 1.69;
-            letter-spacing: 0.18em;
-            color: #c0394a;
-            text-transform: uppercase;
-            flex-shrink: 0;
-            padding: 0 1.5rem;
-        }
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
 
-        .marquee-sep {
-            flex-shrink: 0;
-            padding: 0 1rem;
-            color: #c0394a;
-            font-size: clamp(1.3rem, 3.5vw, 2.2rem);
-            line-height: 1.69;
-        }
+    h1 {
+      font-size: clamp(2rem, 8.8vw, 8.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      line-height: 0.92;
+      max-width: 15ch;
+    }
 
-        .marquee-track-static {
-            animation: none;
-            justify-content: center;
-            width: 100%;
-        }
+    @media (max-width: 640px) {
+      .page {
+        padding: 20px;
+      }
 
-        @keyframes marquee-scroll {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .marquee-track {
-                animation-play-state: paused;
-            }
-        }
-        
-        .hero-subtitle {
-            font-size: clamp(0.85rem, 2vw, 1rem);
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 40px;
-            line-height: 1.8;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            padding: 18px 48px;
-            font-size: 15px;
-            font-weight: 700;
-            letter-spacing: 0.6px;
-            border-radius: 50px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            border: 2px solid transparent;
-            text-transform: uppercase;
-        }
-        
-        .btn-primary {
-            background: var(--pink);
-            color: #fff;
-            box-shadow: 0 8px 24px rgba(241, 155, 184, 0.3);
-        }
-        
-        .btn-primary:hover {
-            background: var(--dark-pink);
-            transform: translateY(-4px);
-            box-shadow: 0 16px 32px rgba(241, 155, 184, 0.4);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--pink);
-            border-color: var(--pink);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--pink);
-            color: #fff;
-            transform: translateY(-4px);
-        }
-        
-        /* ===== SECTIONS ===== */
-        section {
-            padding: 120px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            margin-bottom: 60px;
-            text-align: center;
-            letter-spacing: -0.5px;
-            color: var(--dark);
-        }
-        
-        h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            letter-spacing: -0.3px;
-        }
-        
-        /* Remove the nav border-bottom so there is no white hairline gap between the nav and the photo section */
-        nav {
-            border-bottom-color: transparent;
-        }
-
-        /* ===== VIDEO PARALLAX SECTION (3D scroll — replaces static photo section) ===== */
-        .photo-parallax-section {
-            position: relative;
-            height: 85vh;
-            overflow: hidden;
-            max-width: 100%;
-            margin: 0;
-            padding: 0;
-            background: #111;
-        }
-
-        /* The first parallax section (with the text banner) must render above the second
-           photo section so the hero-content is never covered by the image below.
-           overflow:visible lets the banner escape the clip boundary; the background
-           image is kept inside its own .photo-parallax-clip wrapper instead. */
-        .photo-parallax-section:not(.second-photo-section) {
-            z-index: 2;
-            overflow: visible;
-            background: transparent;
-        }
-
-        /* Clip wrapper — contains only the background image so that overflow:visible on
-           the parent section does not reveal raw dark fill around the image edges. */
-        .photo-parallax-clip {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            background: #111;
-            z-index: 0;
-        }
-
-        /* The second photo section sits behind the first but in front of the video.
-           overflow:visible lets the banner escape the clip boundary (same as the
-           first section); the background image is kept inside its own
-           .second-photo-clip wrapper. */
-        .second-photo-section {
-            z-index: 1;
-            overflow: visible;
-            background: transparent;
-        }
-
-        /* Image background container — full section width; extra height so 3D rotation never exposes the background */
-        .photo-parallax-bg {
-            position: absolute;
-            top: -15%;
-            left: 0;
-            width: 100%;
-            height: 130%;
-            will-change: transform;
-            transform-origin: center center;
-        }
-
-        /* Image sized to fully cover the section — no dark gaps at edges */
-        .parallax-hero-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-            filter: brightness(1.2) saturate(1.1) contrast(1.08);
-        }
-
-        /* Shift the first hero image up so subjects are better framed on portrait mobile */
-        .photo-parallax-section:not(.second-photo-section) .parallax-hero-img {
-            object-position: center 10%;
-        }
-
-        /* On desktop and landscape-orientation mobile the landscape image is used —
-           centre it so the full width fills the section naturally */
-        @media (min-width: 768px), (orientation: landscape) {
-            .photo-parallax-section:not(.second-photo-section) .parallax-hero-img {
-                object-position: center center;
-            }
-        }
-
-        /* Second photo (couple in black) — display with no colour editing */
-        .second-photo-bg .parallax-hero-img {
-            filter: none;
-        }
-
-        /* ===== CINEMATIC HERO EFFECTS ===== */
-
-        /* Slow zoom animation — scale 1 → 1.05 over 15 s, ease-in-out, holds at end */
-        @keyframes heroZoom {
-            from { transform: scale(1); }
-            to   { transform: scale(1.05); }
-        }
-
-        /* Fade-in with a subtle upward drift for the hero text/marquee */
-        @keyframes heroFadeIn {
-            from { opacity: 0; transform: translateY(14px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Apply slow zoom to the first (cinematic) hero image */
-        .photo-parallax-section:not(.second-photo-section) .parallax-hero-img {
-            animation: heroZoom 15s ease-in-out forwards;
-        }
-
-        /* Subtle gradient overlay on the first hero section for contrast */
-        .photo-parallax-section:not(.second-photo-section) .photo-parallax-clip::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0.28) 0%,
-                rgba(0, 0, 0, 0.08) 45%,
-                rgba(0, 0, 0, 0.35) 100%
-            );
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        /* Fade-in for the first marquee/hero content with a calm delay */
-        .hero-content {
-            animation: heroFadeIn 1.8s ease-out 0.5s both;
-        }
-
-        /* Respect reduced-motion preference — disable all hero animations */
-        @media (prefers-reduced-motion: reduce) {
-            .photo-parallax-section:not(.second-photo-section) .parallax-hero-img {
-                animation: none;
-            }
-            .hero-content {
-                animation: none;
-            }
-        }
-        
-        /* ===== WHY CHOOSE US SECTION ===== */
-        .why-choose-us {
-            background: #fff;
-            padding: 80px 40px;
-            max-width: 100%;
-            margin: 0;
-        }
-
-        .why-choose-us-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
-        }
-
-        .why-item {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .why-item-title {
-            font-family: 'Outfit', -apple-system, system-ui, sans-serif;
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
-            font-weight: 700;
-            color: var(--pink);
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            margin-bottom: 12px;
-        }
-
-        .why-item-body {
-            font-family: 'Outfit', -apple-system, system-ui, sans-serif;
-            font-size: clamp(0.92rem, 1.4vw, 1.05rem);
-            line-height: 1.75;
-            color: var(--text);
-        }
-
-        @media (max-width: 768px) {
-            .why-choose-us {
-                padding: 60px 24px;
-            }
-
-            .why-choose-us-inner {
-                grid-template-columns: 1fr;
-                gap: 36px;
-            }
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: var(--dark);
-            color: #fff;
-            text-align: center;
-            padding: 60px 20px;
-            margin-top: 0;
-        }
-        
-        footer p {
-            margin: 12px 0;
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-        
-        footer a {
-            color: var(--pink);
-            text-decoration: none;
-            font-weight: 600;
-            transition: opacity 0.3s ease;
-        }
-        
-        footer a:hover {
-            opacity: 0.8;
-        }
-        
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            section {
-                padding: 80px 20px;
-            }
-            
-            h2 {
-                margin-bottom: 40px;
-            }
-            
-            .hero {
-                padding: 0;
-            }
-
-            .hero-content {
-                padding: 20px 0;
-            }
-
-            .marquee-track span {
-                font-size: clamp(1rem, 4.5vw, 1.5rem);
-            }
-        }
-    </style>
+      h1 {
+        line-height: 0.95;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- NAVIGATION -->
-    <nav>
-        <div class="nav-container">
-            <ul class="menu-left">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-            </ul>
-            <div class="logo-item">
-                <div class="logo"><img src="images/Glamorous retro logo design.png" alt="Glambient Studios" class="logo-img"></div>
-            </div>
-            <ul class="menu-right">
-                <li><a href="video.html">Videos</a></li>
-                <li><a href="packages.html">Packages</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+  <div class="page">
+    <header class="topbar">
+      <button class="menu-icon" aria-label="Open menu" type="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
 
-    <main>
-        <!-- IMAGE PARALLAX SECTION — 3-8.png with dynamic 3D scroll (fully zoomed out) -->
-        <div class="photo-parallax-section">
-            <!-- Clip wrapper keeps the bg image inside section bounds while the section itself
-                 uses overflow:visible so the hero-content banner is never clipped. -->
-            <div class="photo-parallax-clip">
-                <div class="photo-parallax-bg">
-                    <picture>
-                        <!-- Landscape image for desktop and landscape-orientation mobile -->
-                        <source media="(min-width: 768px), (orientation: landscape)" srcset="images/6-1.jpg">
-                        <!-- Portrait image for portrait-orientation mobile (default) -->
-                        <img src="images/3-8.png" alt="" class="parallax-hero-img">
-                    </picture>
-                </div>
-            </div>
-            <!-- Banner overlaid in front of the parallax image — sits above both photo sections -->
-            <div class="hero-content" aria-label="Glambient">
-                <div class="marquee-track" aria-hidden="true">
-                    <span>G L A M B I E N T &ensp; ★ &ensp; V I S U A L S</span><span class="marquee-sep">★</span>
-                    <span>G L A M B I E N T &ensp; ★ &ensp; V I S U A L S</span><span class="marquee-sep">★</span>
-                    <span>G L A M B I E N T &ensp; ★ &ensp; V I S U A L S</span><span class="marquee-sep">★</span>
-                    <span>G L A M B I E N T &ensp; ★ &ensp; V I S U A L S</span><span class="marquee-sep">★</span>
-                    <span>G L A M B I E N T &ensp; ★ &ensp; V I S U A L S</span><span class="marquee-sep">★</span>
-                    <span>G L A M B I E N T &ensp; ★ &ensp; V I S U A L S</span><span class="marquee-sep">★</span>
-                    <span>G L A M B I E N T &ensp; ★ &ensp; V I S U A L S</span><span class="marquee-sep">★</span>
-                    <span>G L A M B I E N T &ensp; ★ &ensp; V I S U A L S</span><span class="marquee-sep">★</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- SECOND PHOTO SECTION — 3-1.png (couple in black suit and sunglasses) -->
-        <div class="photo-parallax-section second-photo-section">
-            <div class="photo-parallax-clip second-photo-clip">
-                <div class="photo-parallax-bg second-photo-bg">
-                    <img src="images/3-1.png" alt="" class="parallax-hero-img">
-                </div>
-            </div>
-            <!-- Banner overlaid in front of the second parallax image — separates it from the video below -->
-            <div class="hero-content hero-content-2">
-                <div class="marquee-track marquee-track-static">
-                    <span>W H Y &ensp; C H O O S E &ensp; U S ?</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- WHY CHOOSE US — content cards below the banner -->
-        <div class="why-choose-us">
-            <div class="why-choose-us-inner">
-                <div class="why-item">
-                    <div class="why-item-title">Both quality and quantity</div>
-                    <p class="why-item-body">We upgrade our equipment regularly to make sure our quality is the best on the market. What makes us a bit different is how much we will deliver for you. As well as your wedding film you will also get edits of your ceromony, first dance, speeches and social edits. It is our pleasure to give you a generous package.</p>
-                </div>
-                <div class="why-item">
-                    <div class="why-item-title">Quick turn around</div>
-                    <p class="why-item-body">Getting your pictures and films to you polished at a good speed is important to us. We schedule to start your editing process within 48 hours of your wedding. Our turn around is between 2-4 weeks for your full package.</p>
-                </div>
-                <div class="why-item">
-                    <div class="why-item-title">Creative freedom</div>
-                    <p class="why-item-body">We are both Film School graduates, whilst we specialise in editorial documentary style shooting, there is nothing in the way of us achieving your artistic vision. If you are quirky and enjoy alternative styles, those sort of briefs excite us as we see them as a fulfilling creative challenge.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- HERO — Vimeo background video -->
-        <section class="hero">
-            <!-- Vimeo background video: Catherine's wedding, 4:30–5:30 on loop -->
-            <div class="hero-video-bg">
-                <div id="vimeo-bg-player"></div>
-                <div class="hero-video-overlay"></div>
-            </div>
-        </section>
+    <main class="hero">
+      <h1>
+        Cinematic Wedding Photography<br>
+        Raw / Real / Unstaged<br>
+        UK &amp; Destination
+      </h1>
     </main>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2025 Glambient. All rights reserved.</p>
-        <p><a href="https://instagram.com/glambient.visuals" target="_blank" rel="noopener noreferrer">📸 Follow us on Instagram</a></p>
-    </footer>
-
-    <!-- Vimeo Player SDK — loaded synchronously here so it is available when the
-         player-initialisation scripts below execute. (Moving it out of <head defer>
-         fixes the race condition where the IIFEs ran before the SDK was ready.) -->
-    <script src="https://player.vimeo.com/api/player.js"></script>
-
-    <script>
-        // Vimeo background video: Catherine's wedding (4:48 → 5:30 on loop)
-        (function () {
-            var START = 288; // 4 minutes 48 seconds
-            var END   = 330; // 5 minutes 30 seconds
-            var bgEl  = document.getElementById('vimeo-bg-player');
-
-            var player = new Vimeo.Player('vimeo-bg-player', {
-                url: 'https://vimeo.com/1131352277',
-                background: 1,
-                autoplay: 1,
-                muted: 1,
-                // Force the highest available quality to avoid a pixelated picture
-                quality: '1080p',
-                // Disable native loop so we can implement a custom time-bounded loop
-                loop: 0
-            });
-
-            // As soon as the video is ready, jump straight to the start position
-            // so the very first visible frame is at 4:34
-            player.on('loaded', function () {
-                // Force HD quality
-                player.setQuality('1080p').catch(function () {});
-                player.setCurrentTime(START).catch(function (error) {
-                    console.warn('Vimeo player initial seek failed:', error);
-                });
-            });
-
-            var revealed = false;
-            player.on('timeupdate', function (data) {
-                // Reveal the player the first time we confirm it is playing at START
-                if (!revealed && data.seconds >= START) {
-                    revealed = true;
-                    bgEl.style.opacity = '1';
-                }
-
-                // Loop: jump back to START when we reach END
-                if (data.seconds >= END) {
-                    player.setCurrentTime(START)
-                        .catch(function (error) {
-                            console.warn('Vimeo player loop seek failed:', error);
-                        });
-                }
-            });
-
-            // Fallback: if the video somehow reaches its end, restart the clip
-            player.on('ended', function () {
-                player.setCurrentTime(START)
-                    .then(function () {
-                        return player.play();
-                    })
-                    .catch(function (error) {
-                        console.warn('Vimeo player restart failed:', error);
-                    });
-            });
-        }());
-
-        // Hero section video background: same dynamic 3D scroll effect as the photo section above,
-        // so the "gone in a blink" hero and the first image move as a visual unit.
-        (function () {
-            var SCROLL_RANGE_FACTOR = 0.7;
-            var MAX_ROTATION_DEG    = 6;
-            var BASE_SCALE          = 1.0;
-            var SCALE_DELTA         = 0.025;
-            var PARALLAX_SPEED      = 0.35;
-
-            var heroBg = document.querySelector('.hero-video-bg');
-            var heroEl = document.querySelector('.hero');
-
-            function applyParallax() {
-                if (!heroBg || !heroEl) return;
-
-                var rect = heroEl.getBoundingClientRect();
-                var vpH  = window.innerHeight;
-                var sH   = heroEl.offsetHeight;
-
-                // Same normalised position formula as the photo section above
-                var norm = (rect.top + sH / 2 - vpH / 2) / (vpH * SCROLL_RANGE_FACTOR);
-                norm = Math.max(-1, Math.min(1, norm));
-
-                var rotateX   = norm * MAX_ROTATION_DEG;
-                var scale     = BASE_SCALE + Math.abs(norm) * SCALE_DELTA;
-                var parallaxY = (window.scrollY - heroEl.offsetTop) * PARALLAX_SPEED;
-
-                heroBg.style.transform =
-                    'translateY(' + parallaxY + 'px) ' +
-                    'perspective(1100px) rotateX(' + rotateX + 'deg) ' +
-                    'scale(' + scale + ')';
-            }
-
-            window.addEventListener('scroll', applyParallax, { passive: true });
-            // Initialize on load in case the page is already scrolled
-            applyParallax();
-        }());
-
-        // ── Shared helper: apply 3D parallax to any photo section ──────────────
-        // Parameters:
-        //   bgEl    – the inner background element to transform (the image container)
-        //   sectionEl – the outer section element used for scroll position
-        //   bannerEl  – (optional) a banner overlay to animate on a closer depth plane
-        function applyPhotoParallax(bgEl, sectionEl, bannerEl) {
-            var SCROLL_RANGE_FACTOR  = 0.7;
-            var MAX_ROTATION_DEG     = 6;
-            var BASE_SCALE           = 1.0;
-            var SCALE_DELTA          = 0.025;
-            var PARALLAX_SPEED       = 0.35;
-
-            if (!bgEl || !sectionEl) return;
-
-            var rect = sectionEl.getBoundingClientRect();
-            var vpH  = window.innerHeight;
-            var sH   = sectionEl.offsetHeight;
-
-            // normalised: −1 = section bottom at viewport top (exited above)
-            //              0 = section centred in viewport
-            //             +1 = section top at viewport bottom (not yet entered)
-            var norm = (rect.top + sH / 2 - vpH / 2) / (vpH * SCROLL_RANGE_FACTOR);
-            norm = Math.max(-1, Math.min(1, norm));
-
-            var rotateX   = norm * MAX_ROTATION_DEG;
-            var scale     = BASE_SCALE + Math.abs(norm) * SCALE_DELTA;
-            var parallaxY = (window.scrollY - sectionEl.offsetTop) * PARALLAX_SPEED;
-
-            bgEl.style.transform =
-                'translateY(' + parallaxY + 'px) ' +
-                'perspective(1100px) rotateX(' + rotateX + 'deg) ' +
-                'scale(' + scale + ')';
-
-            // Optional banner: apply the same 3D rotation as the image for depth,
-            // but NO translateY — without this the banner would be translated downward
-            // out of the visible area as the user scrolls.
-            if (bannerEl) {
-                bannerEl.style.transform =
-                    'perspective(1100px) rotateX(' + rotateX + 'deg) ' +
-                    'scale(' + scale + ')';
-            }
-        }
-
-        // Image parallax section: 3-8.png with dynamic 3D scroll (fully zoomed out)
-        (function () {
-            var ppBg      = document.querySelector('.photo-parallax-clip .photo-parallax-bg');
-            var section   = document.querySelector('.photo-parallax-section');
-            var heroBanner = document.querySelector('.hero-content');
-
-            function apply3D() {
-                applyPhotoParallax(ppBg, section, heroBanner);
-            }
-
-            window.addEventListener('scroll', apply3D, { passive: true });
-            apply3D(); // initialise on load
-        }());
-
-        // Second photo section (3-1.png — couple in black suit and sunglasses): same 3D scroll effect
-        (function () {
-            var ppBg2    = document.querySelector('.second-photo-bg');
-            var section2 = document.querySelector('.second-photo-section');
-            var heroBanner2 = document.querySelector('.hero-content-2');
-
-            function apply3D2() {
-                applyPhotoParallax(ppBg2, section2, heroBanner2);
-            }
-
-            window.addEventListener('scroll', apply3D2, { passive: true });
-            apply3D2();
-        }());
-    </script>
-    <script>
-        (function(){
-            const version = new Date().toISOString().slice(0,13).replace(/\D/g,'');
-            document.querySelectorAll('a[href$=".html"]').forEach(a=>{
-                try{
-                    const url = new URL(a.href, location.origin);
-                    if(url.origin === location.origin){
-                        url.searchParams.set('v', version);
-                        a.href = url.toString();
-                    }
-                }catch(e){}
-            });
-        })();
-    </script>
+  </div>
 </body>
 </html>
