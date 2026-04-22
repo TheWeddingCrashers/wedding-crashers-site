@@ -53,8 +53,12 @@
       list-style: none;
     }
 
-    .menu-icon::-webkit-details-marker {
+    .menu summary::-webkit-details-marker {
       display: none;
+    }
+
+    .menu summary {
+      list-style-type: none;
     }
 
     .menu-icon span {
@@ -137,11 +141,11 @@
           <span></span>
           <span></span>
         </summary>
-        <nav class="menu-panel" aria-label="Primary navigation">
+        <div class="menu-panel">
           <a href="about.html">About</a>
           <a href="gallery.html">Gallery</a>
           <a href="contact.html">Contact</a>
-        </nav>
+        </div>
       </details>
     </header>
 
