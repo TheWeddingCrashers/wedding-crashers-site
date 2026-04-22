@@ -315,12 +315,14 @@
 
       if (prefersReducedMotion) return;
 
-      const mobileBaseDistance = 20;
-      const desktopBaseDistance = 34;
+      const MOBILE_BASE_DISTANCE = 20;
+      const DESKTOP_BASE_DISTANCE = 34;
+      const MOBILE_SCRUB = 1.1;
+      const DESKTOP_SCRUB = 1.8;
 
       shots.forEach((shot) => {
         const depth = Number(shot.dataset.depth || 1);
-        const distance = (isMobile ? mobileBaseDistance : desktopBaseDistance) * depth;
+        const distance = (isMobile ? MOBILE_BASE_DISTANCE : DESKTOP_BASE_DISTANCE) * depth;
 
         gsap.fromTo(
           shot,
@@ -333,7 +335,7 @@
               trigger: hero,
               start: "top bottom",
               end: "bottom top",
-              scrub: isMobile ? 1.1 : 1.8,
+              scrub: isMobile ? MOBILE_SCRUB : DESKTOP_SCRUB,
               invalidateOnRefresh: true
             }
           }
