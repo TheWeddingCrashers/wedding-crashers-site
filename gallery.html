@@ -143,6 +143,16 @@
       }
       .gallery-header h1 { font-size: 1.6rem; }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      .gallery-grid img {
+        transition: none;
+      }
+
+      .gallery-grid img:is(:hover, :focus-visible) {
+        --hover-scale: 1;
+      }
+    }
   </style>
 </head>
 <body>

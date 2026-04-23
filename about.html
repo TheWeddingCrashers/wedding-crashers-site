@@ -219,6 +219,14 @@
       .person-label .label-arrow {
         animation: none;
       }
+
+      .hero-image-wrapper img {
+        transition: none;
+      }
+
+      .hero-image-wrapper img:is(:hover, :focus-visible) {
+        transform: scale(1);
+      }
     }
     
     @media (max-width: 768px) {
