@@ -21,6 +21,7 @@
       background: #fff;
       color: #000;
       font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      scroll-behavior: smooth;
     }
 
     .page {
@@ -271,6 +272,13 @@
 
       .testimonial {
         padding-top: 1.3rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html,
+      body {
+        scroll-behavior: auto;
       }
     }
   </style>
