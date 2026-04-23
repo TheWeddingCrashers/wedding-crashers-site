@@ -92,6 +92,12 @@
       object-position: 50% 0%;
       border-radius: 12px;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      transform: scale(1);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .hero-image-wrapper img:is(:hover, :focus-visible) {
+      transform: scale(1.03);
     }
 
     /* Wrapper that holds the labels row + image in a column */
@@ -248,7 +254,7 @@
       font-weight: 700;
       font-size: 15px;
       text-decoration: none;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     
     .cta-btn-white:hover {
@@ -314,7 +320,7 @@
               <span class="label-arrow">↓</span>
             </div>
           </div>
-          <img src="images/IMG_7527.png" alt="Portrait of Joey and Hunter, Glambient founders">
+          <img src="images/IMG_7527.png" alt="Portrait of Joey and Hunter, Glambient founders" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
