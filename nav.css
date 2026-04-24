@@ -35,13 +35,14 @@ main {
 
 /* ===== NAVIGATION ===== */
 nav {
-  position: relative;
+  position: sticky;
+  top: 0;
   background: var(--bg);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   height: var(--nav-height);
   display: flex;
   align-items: center;
-  z-index: 10;
+  z-index: 100;
 }
 
 .nav-container {
@@ -109,6 +110,24 @@ nav {
   content: none;
 }
 
+.nav-logo {
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text);
+  white-space: nowrap;
+  padding: 0 1rem;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+
+.nav-logo:hover {
+  opacity: 0.6;
+}
+
 .cta-btn {
   background: var(--text);
   color: #fff;
@@ -163,7 +182,8 @@ nav {
 
   .menu-left a,
   .menu-right a,
-  .cta-btn {
+  .cta-btn,
+  .nav-logo {
     transition: none;
   }
 }
