@@ -22,41 +22,7 @@
 
     .hero-header {
       background: #ffffff;
-      padding: 48px 20px 0;
-      text-align: center;
       overflow: hidden;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    }
-    
-    .hero-header h1 {
-      font-size: 2.2rem;
-      margin-top: 0;
-      margin-bottom: 10px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: #080808;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-subtitle {
-      font-size: 1.1rem;
-      font-weight: 400;
-      font-style: italic;
-      color: var(--muted);
-      margin-top: 0;
-      margin-bottom: 28px;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .hero-header p {
-      font-size: 1.2rem;
-      color: #080808;
-      font-weight: 400;
-      margin-bottom: 20px;
-      position: relative;
-      z-index: 2;
     }
 
     .hero-image-wrapper {
@@ -214,7 +180,7 @@
     }
     
     @media (max-width: 768px) {
-      .hero-header h1 { font-size: 1.6rem; }
+      .hero-header h1 { font-size: clamp(2rem, 11vw, 3.5rem); }
     }
     
     .cta {
@@ -295,8 +261,15 @@
   </nav>
   <main>
     <div class="hero-header">
-      <h1>Come and meet the duo!</h1>
-      <p class="hero-subtitle">we always come as a pair ;)</p>
+      <div class="page-banner" style="border-bottom: none; padding-bottom: 32px;">
+        <div class="banner-inner">
+          <span class="banner-eyebrow">Glambient Studios</span>
+          <hr class="banner-rule">
+          <h1>About</h1>
+          <hr class="banner-rule">
+          <p class="banner-sub">we always come as a pair ;)</p>
+        </div>
+      </div>
       <div class="hero-image-wrapper">
         <div class="image-with-labels">
           <div class="labels-above">
