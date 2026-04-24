@@ -207,6 +207,11 @@ nav {
   margin: 20px 0;
 }
 
+.page-banner--flush {
+  border-bottom: none;
+  padding-bottom: 32px;
+}
+
 .page-banner .banner-sub {
   font-size: 0.95rem;
   color: #5b5f66;
