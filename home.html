@@ -7,7 +7,7 @@
   <title>Home — Glambient</title>
   <link rel="stylesheet" href="nav.css">
   <style>
-    :root { --max:1180px; --pink:#c0394a; }
+    :root { --max:1180px; --accent: #fff064; }
 
     @font-face {
       font-family:'Hillstown Sans';
@@ -17,7 +17,7 @@
 
     body {
       margin:0;
-      font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-family:"Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
       background:#fff;
     }
 
@@ -25,39 +25,58 @@
     .bg-logo {
       position:fixed; inset:0;
       background:url('images/Glamorous retro logo design.png') center 12%/120vmin no-repeat;
-      opacity:.75; pointer-events:none; z-index:0;
+      opacity:.06; pointer-events:none; z-index:0;
     }
 
     main { position:relative; z-index:1; text-align:center; min-height:calc(100svh - var(--nav-height)); display:grid; place-items:center; padding:8vh 0; }
 
-    /* --- Hot pink speech box --- */
+    /* --- Editorial speech box --- */
     .speech-box {
-      background:rgba(241,155,184,0.92);
+      background:#080808;
       color:#fff;
       padding:50px 60px;
-      border-radius:25px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.1);
       max-width:820px;
       width:min(90vw,820px);
       text-align:center;
-      backdrop-filter:saturate(1.2) blur(4px);
     }
     .kicker {
       text-transform:uppercase;
       letter-spacing:.18em;
-      font-size:.85rem;
-      opacity:.85;
-      margin-bottom:8px;
+      font-size:.8rem;
+      font-weight:700;
+      opacity:.6;
+      margin-bottom:10px;
     }
     .headline {
       font-size:clamp(1.8rem, 2.6vw + 1rem, 2.6rem);
-      line-height:1.25;
-      margin:0 0 14px;
+      font-weight:900;
+      line-height:1.15;
+      text-transform:uppercase;
+      letter-spacing:0.02em;
+      margin:0 0 16px;
     }
     .body {
-      font-size:1.1rem;
+      font-size:1rem;
       line-height:1.7;
       margin:0;
+      opacity:0.85;
+    }
+
+    .speech-box .cta-link {
+      display: inline-block;
+      margin-top: 24px;
+      background: var(--accent);
+      color: #080808;
+      padding: 10px 24px;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .speech-box .cta-link:hover {
+      background: #ffe838;
     }
 
     @media(max-width:600px){
