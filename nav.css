@@ -53,35 +53,6 @@ nav {
   justify-content: space-between;
 }
 
-/* Logo centred between the two link groups */
-.logo-item {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  padding: 0 clamp(0.5rem, 2vw, 1.5rem);
-  flex-shrink: 0;
-}
-
-.logo-item::before {
-  content: none;
-}
-
-.logo-item a,
-.logo-item a::after {
-  display: none;
-}
-
-.logo-item .logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo-img {
-  height: calc(var(--nav-height) - 16px); /* 16px total vertical padding keeps logo from touching nav edges */
-  max-height: 64px;
-  width: auto;
-  display: block;
-}
 
 .menu-left,
 .menu-right {
@@ -170,10 +141,6 @@ nav {
     padding: 7px 8px;
     letter-spacing: 0.07em;
   }
-
-  .logo-item {
-    padding: 0 8px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -186,10 +153,6 @@ nav {
     font-size: 10px;
     padding: 6px 6px;
     letter-spacing: 0.05em;
-  }
-
-  .logo-item {
-    padding: 0 4px;
   }
 }
 
