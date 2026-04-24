@@ -38,7 +38,7 @@
       max-width: 700px;
       aspect-ratio: 860 / 1275;
       object-fit: cover;
-      object-position: 50% 0%;
+      object-position: 50% 50%;
       border-radius: 12px;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
       transform: scale(1);
@@ -49,7 +49,7 @@
       transform: scale(1.03);
     }
 
-    /* Wrapper that holds the labels row + image in a column */
+    /* Wrapper that holds the image in a column */
     .image-with-labels {
       display: flex;
       flex-direction: column;
@@ -58,59 +58,6 @@
       max-width: 700px;
     }
 
-    /* Row that sits above the image, holding both name labels */
-    .labels-above {
-      position: relative;
-      width: 100%;
-      height: 64px;
-    }
-
-    /* Bouncing animation for the downward arrows */
-    @keyframes arrowBounceDown {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(6px); }
-    }
-
-    /* Each label: name on top, arrow below, vertically stacked */
-    .person-label {
-      position: absolute;
-      bottom: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    /* Hunter is on the LEFT of the image — centred at ~34% */
-    .label-hunter {
-      left: 34%;
-      transform: translateX(-50%);
-    }
-
-    /* Joey is to the right of Hunter in the image — centred at ~57% */
-    .label-joey {
-      left: 57%;
-      transform: translateX(-50%);
-    }
-
-    .person-label .label-name {
-      font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #080808;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      margin-bottom: 2px;
-    }
-
-    .person-label .label-arrow {
-      font-size: 1.5rem;
-      color: #080808;
-      line-height: 1;
-      animation: arrowBounceDown 1.4s ease-in-out infinite;
-    }
 
     section {
       padding: 80px 20px;
@@ -166,10 +113,6 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .person-label .label-arrow {
-        animation: none;
-      }
-
       .hero-image-wrapper img {
         transition: none;
       }
@@ -273,18 +216,6 @@
     <div class="hero-header">
       <div class="hero-image-wrapper">
         <div class="image-with-labels">
-          <div class="labels-above">
-            <!-- Label: Hunter (left person) -->
-            <div class="person-label label-hunter">
-              <span class="label-name">Hunter</span>
-              <span class="label-arrow">↓</span>
-            </div>
-            <!-- Label: Joey (right person) -->
-            <div class="person-label label-joey">
-              <span class="label-name">Joey</span>
-              <span class="label-arrow">↓</span>
-            </div>
-          </div>
           <img src="images/IMG_7527.png" alt="Portrait of Joey and Hunter, Glambient founders" loading="eager" decoding="async">
         </div>
       </div>
