@@ -1,14 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 
 :root {
-  --pink: #c0394a;
-  --dark-pink: #a52d3e;
-  --forest-green: #1a3d2b;
-  --midnight-blue: #0d1b3e;
-  --dark: #111216;
-  --text: #3a3a3a;
-  --nav-text: #ffffff;
-  --nav-height: 290px;
+  --bg: #ffffff;
+  --text: #080808;
+  --accent: #fff064;
+  --muted: #5b5f66;
+  --nav-height: 80px;
 }
 
 * {
@@ -21,40 +18,48 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: 'Outfit', -apple-system, system-ui, sans-serif;
-  color: var(--text);
+html, body {
+  width: 100%;
+  overflow-x: hidden;
 }
 
-/* ===== STATIC NAVIGATION - IDENTICAL ON ALL PAGES ===== */
+body {
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+main {
+  padding-top: 0;
+}
+
+/* ===== NAVIGATION ===== */
 nav {
   position: relative;
-  background: #000;
-  border-bottom: 1px solid #000;
-  backdrop-filter: blur(10px);
-  background: rgba(0, 0, 0, 0.98);
+  background: var(--bg);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   height: var(--nav-height);
   display: flex;
   align-items: center;
+  z-index: 10;
 }
 
 .nav-container {
   width: 100%;
-  max-width: 100%;
-  padding: 0 40px;
+  padding: 0 clamp(1rem, 3vw, 2.5rem);
   height: var(--nav-height);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
-/* Logo placed as a nav item — no text-link hover effects */
+/* Logo centred between the two link groups */
 .logo-item {
   display: flex;
   align-items: center;
-  padding: 0 20px;
   list-style: none;
-  align-self: center;
+  padding: 0 clamp(0.5rem, 2vw, 1.5rem);
+  flex-shrink: 0;
 }
 
 .logo-item::before {
@@ -72,8 +77,8 @@ nav {
 }
 
 .logo-img {
-  height: 280px;
-  max-height: calc(var(--nav-height) - 10px);
+  height: calc(var(--nav-height) - 16px);
+  max-height: 64px;
   width: auto;
   display: block;
 }
@@ -81,21 +86,21 @@ nav {
 .menu-left,
 .menu-right {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 4px;
+  gap: 2px;
   list-style: none;
   flex: 1;
   min-width: 0;
 }
 
+.menu-right {
+  justify-content: flex-end;
+}
+
 .menu-left li,
 .menu-right li {
   list-style: none;
-  border-left: none;
-  padding-left: 0;
-  margin: 0;
 }
 
 .menu-left li::before,
@@ -106,30 +111,26 @@ nav {
 .menu-left a,
 .menu-right a {
   text-decoration: none;
-  color: #ffffff;
-  font-family: 'Outfit', -apple-system, system-ui, sans-serif;
+  color: var(--text);
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
-  font-size: 24px;
-  letter-spacing: 0.5px;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  background: transparent;
+  border-radius: 0;
+  transition: background 0.2s ease, color 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  text-transform: uppercase;
-  width: 180px;
-  height: 44px;
-  background: var(--midnight-blue);
-  border-radius: 0;
+  white-space: nowrap;
 }
 
 .menu-left a:hover,
 .menu-right a:hover {
-  background: var(--forest-green);
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(26, 61, 43, 0.4);
+  background: var(--accent);
+  color: var(--text);
 }
 
 .menu-left a::after,
@@ -138,160 +139,57 @@ nav {
 }
 
 .cta-btn {
-  background: var(--pink);
+  background: var(--text);
   color: #fff;
-  padding: 15px 35px;
-  border-radius: 50px;
+  padding: 10px 22px;
   font-weight: 700;
-  font-size: 16px;
-  letter-spacing: 0.5px;
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  border: none;
-  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  flex-shrink: 0;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.2s ease;
+  border: none;
+  cursor: pointer;
 }
 
 .cta-btn:hover {
-  background: var(--dark-pink);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(192, 57, 74, 0.3);
-}
-
-/* Ensure no page shift */
-html, body {
-  width: 100%;
-  overflow-x: hidden;
-}
-
-main {
-  padding-top: 0;
+  background: #333;
 }
 
 @media (max-width: 768px) {
   :root {
-    --nav-height: 210px;
-  }
-
-  .nav-container {
-    padding: 0 12px;
+    --nav-height: 64px;
   }
 
   .menu-left a,
   .menu-right a {
-    width: 130px;
-    height: 37px;
-    font-size: 18px;
+    font-size: 11px;
+    padding: 7px 8px;
+    letter-spacing: 0.07em;
   }
 
   .logo-item {
     padding: 0 8px;
   }
-
-  .logo-img {
-    height: 195px;
-  }
 }
 
 @media (max-width: 480px) {
   :root {
-    --nav-height: 165px;
+    --nav-height: 56px;
   }
 
   .menu-left a,
   .menu-right a {
-    width: 96px;
-    height: 33px;
-    font-size: 14px;
-    letter-spacing: 0.2px;
-  }
-
-  .logo-item {
-    padding: 0 5px;
-  }
-
-  .logo-img {
-    height: 105px;
-  }
-}
-
-/* Narrow phones (iPhone SE, Galaxy A series, etc.) */
-@media (max-width: 390px) {
-  :root {
-    --nav-height: 155px;
-  }
-
-  .menu-left a,
-  .menu-right a {
-    width: 84px;
-    height: 30px;
-    font-size: 12px;
-    letter-spacing: 0;
+    font-size: 10px;
+    padding: 6px 6px;
+    letter-spacing: 0.05em;
   }
 
   .logo-item {
     padding: 0 4px;
-  }
-
-  .logo-img {
-    height: 95px;
-  }
-}
-
-/* === LANDSCAPE LAYOUT: logo on top, all 6 buttons in one horizontal row === */
-@media (orientation: landscape) {
-  :root {
-    --nav-height: auto;
-  }
-
-  nav {
-    height: auto;
-    min-height: 80px;
-  }
-
-  .nav-container {
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    padding: 8px 20px 10px;
-    gap: 6px;
-  }
-
-  /* Logo centred on its own full-width row */
-  .logo-item {
-    flex: 0 0 100%;
-    justify-content: center;
-    align-self: center;
-    padding: 4px 0;
-    height: auto;
-    order: 1;
-  }
-
-  .logo-img {
-    height: clamp(80px, 12vw, 220px);
-    max-height: none;
-  }
-
-  /* Both button groups share the second row, displayed horizontally */
-  .menu-left,
-  .menu-right {
-    flex-direction: row;
-    flex: none;
-    gap: 8px;
-    order: 2;
-  }
-
-  .menu-left a,
-  .menu-right a {
-    width: clamp(100px, 13vw, 200px);
-    height: clamp(36px, 5.5vh, 54px);
-    font-size: clamp(12px, 1.8vw, 26px);
-    letter-spacing: 0.3px;
   }
 }
 
