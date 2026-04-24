@@ -77,7 +77,7 @@ nav {
 }
 
 .logo-img {
-  height: calc(var(--nav-height) - 16px);
+  height: calc(var(--nav-height) - 16px); /* 16px total vertical padding keeps logo from touching nav edges */
   max-height: 64px;
   width: auto;
   display: block;
