@@ -47,11 +47,11 @@
 
     .hero {
       position: relative;
-      min-height: 100vh;
+      min-height: calc(100vh - var(--nav-height));
       display: grid;
       align-items: center;
       isolation: isolate;
-      padding-block: clamp(4.5rem, 10vh, 8rem) clamp(2rem, 6vh, 3rem);
+      padding-block: clamp(2rem, 5vh, 4rem) clamp(2rem, 6vh, 3rem);
     }
 
     .hero-copy {
@@ -201,7 +201,7 @@
 
     @media (max-width: 680px) {
       .hero {
-        min-height: 92vh;
+        min-height: calc(92vh - var(--nav-height));
       }
 
       .hero-copy {
