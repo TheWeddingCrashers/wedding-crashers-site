@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="nav.css"/>
 <style>:root{
       --bg:#ffffff;
       --panel:#f7f7f8;
@@ -68,140 +69,11 @@
     .wrap, .card, footer { position: relative; z-index: 1; }
     .brandmark-lg { display: none !important; }
 
-  
-@font-face{
-  font-family:'Hillstown Sans';
-  src: url('fonts/Hillstown Sans Clean Demo.otf') format('opentype');
-  font-weight:400;
-  font-style:normal;
-  font-display:swap;
-}
-
-:root { --max:1180px; }
-.container{      
-/* === END NAV FROM PACKAGES === */
-/* === NAV: single source of truth from packages === */
-
-/* === TWC: Uniform pink nav across site === */
-:root { --max:1180px; }
-
-.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
-
-/* Typography smoothing for crisp text */
-html, body, .nav, .menu a, h1, h2, h3 {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-.nav{
-  background:#f19bb8 !important;
-  position:sticky; top:0; z-index:40;
-  border-bottom:0 !important;
-}
-
-.nav-inner{
-  height:66px !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-}
-
-.menu{
-  display:flex !important;
-  gap:22px !important;
-  align-items:center !important;
-  justify-content:center !important;
-  margin:0 auto !important;
-}
-
-.menu a{
-  color:#ffffff !important;
-  text-decoration:none !important;
-  font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
-  text-transform:uppercase !important;
-  letter-spacing:.14em !important;
-  font-weight:400 !important;
-  font-size:14px !important;       /* consistent size across pages */
-  line-height:1 !important;
-  padding:8px 2px !important;
-  border:0 !important;
-  background:transparent !important;
-  box-shadow:none !important;
-  text-shadow:none !important;
-  filter:none !important;
-  outline:none !important;
-}
-
-.menu a:hover{ text-decoration:underline !important; }
-
-/* === TWC: Uniform pink nav across site === */
-:root { --max:1180px; }
-
-.container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
-
-/* Typography smoothing for crisp text */
-html, body, .nav, .menu a {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-.nav{
-  background:#f19bb8 !important;
-  position:sticky; top:0; z-index:40;
-  border-bottom:0 !important;
-}
-
-.nav-inner{
-  height:66px !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-}
-
-.menu{
-  display:flex !important;
-  gap:22px !important;
-  align-items:center !important;
-  justify-content:center !important;
-  margin:0 auto !important;
-}
-
-.menu a{
-  color:#ffffff !important;
-  text-decoration:none !important;
-  font-family:'Hillstown Sans', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
-  text-transform:uppercase !important;
-  letter-spacing:.14em !important;
-  font-weight:400 !important;
-  font-size:14px !important;
-  line-height:1 !important;
-  padding:8px 2px !important;
-  border:0 !important;
-  background:transparent !important;
-  box-shadow:none !important;
-  text-shadow:none !important;
-  filter:none !important;
-  outline:none !important;
-}
-
-.menu a:hover{ text-decoration:underline !important; }
-/* === end nav === */</style>
+</style>
   <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
 </head>
 <body>
-<nav class="nav">
-<div class="container nav-inner">
-<div aria-label="Main" class="menu" role="navigation">
-<a href="index.html">Home</a>
-<a href="packages.html">Packages</a>
-<a href="gallery.html">Gallery</a>
-<a href="video.html">Video</a>
-<a href="contact.html">Contact</a>
-</div>
-</div>
-</nav>
+<script src="assets/js/nav.js"></script>
 <div aria-hidden="true" class="bg-logo"></div>
 <main class="wrap">
 <section aria-label="Thank you" class="card">
