@@ -5,7 +5,7 @@
   --text: #080808;
   --accent: #fff064;
   --muted: #5b5f66;
-  --nav-height: 80px;
+  --nav-height: 104px;
 }
 
 * {
@@ -39,19 +39,23 @@ nav {
   top: 0;
   background: var(--bg);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  height: var(--nav-height);
-  display: flex;
-  align-items: center;
   z-index: 100;
 }
 
 .nav-container {
   width: 100%;
-  padding: 0 clamp(1rem, 3vw, 2.5rem);
-  height: var(--nav-height);
+  padding: 16px clamp(1rem, 3vw, 2.5rem);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  gap: 20px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
 }
 
 
@@ -62,12 +66,6 @@ nav {
   align-items: center;
   gap: 2px;
   list-style: none;
-  flex: 1;
-  min-width: 0;
-}
-
-.menu-right {
-  justify-content: flex-end;
 }
 
 .menu-left li,
@@ -151,7 +149,12 @@ nav {
 
 @media (max-width: 768px) {
   :root {
-    --nav-height: 64px;
+    --nav-height: 88px;
+  }
+
+  .nav-container {
+    gap: 16px;
+    padding: 12px clamp(1rem, 3vw, 2.5rem);
   }
 
   .menu-left a,
@@ -164,7 +167,12 @@ nav {
 
 @media (max-width: 480px) {
   :root {
-    --nav-height: 56px;
+    --nav-height: 80px;
+  }
+
+  .nav-container {
+    gap: 16px;
+    padding: 12px clamp(1rem, 3vw, 2.5rem);
   }
 
   .menu-left a,
